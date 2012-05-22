@@ -1,0 +1,35 @@
+﻿@using MTP1
+@model MTP1.Models.TestProgram
+
+@{
+    this.ViewBag.Title = string.Format("Удаление программы тестирования | {0}", Constants.TITLE);
+
+}
+<fieldset>
+    <legend>Удаление программы тестирования "@this.Model.Title"</legend>
+    @this.Html.ActionLink("Отменить", "Index")
+
+    <h2 style="color: Red">Вы уверены, что хотите удалить эту запись?</h2>
+
+    @using (this.Html.BeginForm())
+    {
+        <input type="submit" value="Удалить" />
+    }
+    <div class="display-label">Программа тестирования</div>
+    <div class="display-field">
+        @this.Html.DisplayFor(model => model.Title)
+    </div>
+    <div class="display-label">Описание</div>
+    <div class="display-field">
+        @this.Html.DisplayFor(model => model.Description)
+    </div>
+    <div class="display-label">Проект</div>
+    <div class="display-field">
+        @this.Html.DisplayFor(model => model.Project1.Title)
+    </div>
+    <div class="display-label">Метод тестирования</div>
+    <div class="display-field">
+        @this.Html.DisplayFor(model => model.TestMethodDic.Title)
+    </div>
+   
+    @this.Html.ActionLink("Программы тестирования", "Index")</fieldset>

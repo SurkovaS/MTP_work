@@ -1,0 +1,33 @@
+﻿@using MTP1
+@model MTP1.Models.TestProgram
+
+@{
+    this.ViewBag.Title = string.Format("Use case {0} | {1}", this.Model.Title, Constants.TITLE);
+
+}
+
+<fieldset>
+    <legend>Программа тестирования "@this.Model.Title", проект "@this.Model.Project1.Title"</legend>
+
+    <div class="display-label">Программа тестирования</div>
+    <div class="display-field">
+        @this.Html.DisplayFor(model => model.Title)
+    </div>
+    <div class="display-label">Описание</div>
+    <div class="display-field">
+        @this.Html.DisplayFor(model => model.Description)
+    </div>
+    <div class="display-label">Проект</div>
+    <div class="display-field">
+        @this.Html.DisplayFor(model => model.Project1.Title)
+    </div>
+    <div class="display-label">Метод тестирования</div>
+    <div class="display-field">
+        @this.Html.DisplayFor(model => model.TestMethodDic.Title)
+    </div>
+
+</fieldset>
+<p>
+    @this.Html.ActionLink("Редактировать", "Edit", new { id = this.Model.ID }) |
+    @this.Html.ActionLink("Программы тестирования", "Index")
+</p>

@@ -1,0 +1,56 @@
+﻿@using MTP1
+@using MTP1.Models
+@model IEnumerable<TestProgram>
+
+@{
+    this.ViewBag.Title = string.Format("Программы тестирования| {0}", Constants.TITLE);
+
+}
+
+<h2>программы тестирования</h2>
+
+<p>
+   @this.Html.ActionLink("Создать", "Create","UseCase")
+
+</p>
+<table>
+    <tr>
+        <th>
+            Программа тестирования
+        </th>
+        <th>
+            Описание программы
+        </th>
+        <th>
+            Проект
+        </th>
+        <th>
+            Метод тестирования
+        </th>
+        
+    </tr>
+
+    @foreach (TestProgram item in this.Model)
+    {
+        <tr>
+            <td>
+                @this.Html.ActionLink(item.Title, "Details", new { id = item.ID })
+            </td>
+            <td>
+                @this.Html.DisplayFor(modelItem => item.Description)
+            </td>
+            <td>
+                @this.Html.DisplayFor(modelItem => item.Project1.Title)
+            </td>
+            <td>
+                @this.Html.DisplayFor(modelItem => item.TestMethodDic.Title)
+            </td>
+            
+            <td>
+                @this.Html.ActionLink("Редактировать", "Edit", new { id = item.ID }) |
+                @this.Html.ActionLink("Удалить", "Delete", new { id = item.ID })
+            </td>
+        
+        </tr>
+    }
+</table>

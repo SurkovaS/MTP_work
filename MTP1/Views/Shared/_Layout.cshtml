@@ -21,7 +21,14 @@
                 </div>
                 <div class="blue">
                     <ul id="menu" class="mega-menu">
-                        <li><a href="@this.Url.Action("Index", "Project")">Проекты</a></li>
+                        <li><a href="#">Проекты</a>
+                            <ul>
+                                <li><a href="@this.Url.Action("Index", "Project")">Проекты</a></li>
+                                <li><a href="@this.Url.Action("Create", "Project")">Новый проект</a></li>
+                                <li><a href="@this.Url.Action("Index", "TestProgram")">Программы тестирования</a></li>
+                                <li><a href="@this.Url.Action("Create", "TestProgram")">Новая программа тестирования</a></li>
+                            </ul>
+                        </li>
                         <li><a href="#">UseCase</a>
                             <ul>
                                 <li><a href="@this.Url.Action("Index", "UseCase")">Use Cases</a></li>
@@ -40,14 +47,14 @@
                             </ul>
                         </li>
                         <li><a href="#">Отчеты</a>
-                        <ul>
-                            <li>План тестирования</li>
-                            <li>Тестовые сценарии</li>
-                            <li>Отчеты об отслеживании дефектов</li>
-                            <li>Отчет о ходе тестирования</li>
-                            <li>Отчет о тестировании</li>
-                            <li>Отчет о состоянии функциональных характеристик</li>
-                        </ul>
+                            <ul>
+                                <li>План тестирования</li>
+                                <li>Тестовые сценарии</li>
+                                <li>Отчеты об отслеживании дефектов</li>
+                                <li>Отчет о ходе тестирования</li>
+                                <li>Отчет о тестировании</li>
+                                <li>Отчет о состоянии функциональных характеристик</li>
+                            </ul>
                         </li>
                         
 

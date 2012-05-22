@@ -5481,11 +5481,13 @@ namespace MTP1.Models
         /// Создание нового объекта WeightCoefficientDic.
         /// </summary>
         /// <param name="id">Исходное значение свойства ID.</param>
+        /// <param name="title">Исходное значение свойства Title.</param>
         /// <param name="value">Исходное значение свойства Value.</param>
-        public static WeightCoefficientDic CreateWeightCoefficientDic(global::System.Int32 id, global::System.Int32 value)
+        public static WeightCoefficientDic CreateWeightCoefficientDic(global::System.Int32 id, global::System.String title, global::System.Int32 value)
         {
             WeightCoefficientDic weightCoefficientDic = new WeightCoefficientDic();
             weightCoefficientDic.ID = id;
+            weightCoefficientDic.Title = title;
             weightCoefficientDic.Value = value;
             return weightCoefficientDic;
         }
@@ -5523,7 +5525,7 @@ namespace MTP1.Models
         /// <summary>
         /// Нет доступной документации по метаданным.
         /// </summary>
-        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=true)]
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=false)]
         [DataMemberAttribute()]
         public global::System.String Title
         {
@@ -5535,7 +5537,7 @@ namespace MTP1.Models
             {
                 OnTitleChanging(value);
                 ReportPropertyChanging("Title");
-                _Title = StructuralObject.SetValidValue(value, true);
+                _Title = StructuralObject.SetValidValue(value, false);
                 ReportPropertyChanged("Title");
                 OnTitleChanged();
             }

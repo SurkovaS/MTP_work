@@ -1,0 +1,86 @@
+﻿@model MTP1.Models.Project
+           
+@Html.ValidationSummary()
+
+
+   <div class="editor-label">
+            Проекта тестирования
+        </div>
+        <div class="editor-field">
+            @Html.EditorFor(model => model.Title)
+            @Html.ValidationMessageFor(model => model.Title)
+        </div>
+
+        <div class="editor-label">
+            Версия проекта тестирования
+        </div>
+        <div class="editor-field">
+            @Html.EditorFor(model => model.Version)
+            @Html.ValidationMessageFor(model => model.Version)
+        </div>
+
+        <div class="editor-label">
+            Плановая дата начала тестирования
+        </div>
+        <div class="editor-field">
+            @Html.EditorFor(model => model.BeginDatePlaning)
+            @Html.ValidationMessageFor(model => model.BeginDatePlaning)
+        </div>
+
+        <div class="editor-label">
+            Плановая дата окончания тестирования
+        </div>
+        <div class="editor-field">
+            @Html.EditorFor(model => model.EndDatePlaning)
+            @Html.ValidationMessageFor(model => model.EndDatePlaning)
+        </div>
+
+        <div class="editor-label">
+            Фактическая дата начала тестирования
+        </div>
+        <div class="editor-field">
+            @Html.EditorFor(model => model.BeginDateActual)
+            @Html.ValidationMessageFor(model => model.BeginDateActual)
+        </div>
+
+        <div class="editor-label">
+            Фактическая дата окончания тестирования
+        </div>
+        <div class="editor-field">
+            @Html.EditorFor(model => model.EndDateActual)
+            @Html.ValidationMessageFor(model => model.EndDateActual)
+        </div>
+
+       <div class="editor-label">
+            Показатель UCP
+        </div>
+        <div class="editor-field">
+            @Html.EditorFor(model => model.Ucp)
+            @Html.ValidationMessageFor(model => model.Ucp)
+        </div>
+
+        <div class="editor-label">
+            Трудозатраты, человеко-часы
+        </div>
+        <div class="editor-field">
+            @Html.EditorFor(model => model.ManHour)
+            @Html.ValidationMessageFor(model => model.ManHour)
+        </div>
+
+        <div class="editor-label">
+            Показатель надежности
+        </div>
+        <div class="editor-field">
+            @Html.EditorFor(model => model.ReliabilityEvaluation)
+            @Html.ValidationMessageFor(model => model.ReliabilityEvaluation)
+        </div>
+
+        
+
+
+
+
+       
+
+
+    

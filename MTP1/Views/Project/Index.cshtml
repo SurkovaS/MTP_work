@@ -1,0 +1,101 @@
+﻿@model IEnumerable<MTP1.Models.Project>
+<script src="@Url.Content("~/Scripts/jqgrid/jquery.jqGrid.min.js")" type="text/javascript"></script>
+<script src="@Url.Content("~/Scripts/jqgrid/i18n/grid.locale-ru.js")" type="text/javascript"></script>
+@{
+    ViewBag.Title = string.Format("Проекты тестирования | {0}", MTP1.Constants.TITLE);
+}
+<p>
+    @Html.ActionLink("Создать", "Create")
+</p>
+<div id="myDiv" style="width: 100%">
+    <table id="grid" cellpadding="0" cellspacing="0">
+    </table>
+    <div id="pager" style="text-align: center;">
+    </div>
+    <div id="search" style="margin-left: 30%; display: none">
+    </div>
+</div>
+<script type="text/javascript">
+    var serverRoot = '@Url.Action("GetProjects", "Project")';
+    var lastsel;
+    $(function () {
+
+        $("#grid").jqGrid({
+            colNames: ['Наименование', 'Версия', 'Плановая дата начала', 'Плановая дата окончания', 'Фактическая дата начала',
+                'Фактическая дата окончания'],
+            colModel: [
+                {
+                    name: 'Title',
+                    sortable: false,
+                    align: 'center',
+                    width: '250'
+                },
+                {
+                    name: 'Version',
+                    sortable: false,
+                    align: 'center',
+                    width: '100'
+                },
+                {
+                    name: 'BeginDatePlaning',
+                    sortable: false,
+                    align: 'left',
+                    width: '200'
+                },
+                {
+                    name: 'EndDatePlaning',
+                    sortable: false,
+                    align: 'left',
+                    width: '200'
+                },
+                {
+                    name: 'BeginDateActual',
+                    sortable: false,
+                    align: 'left',
+                    width: '200'
+                },
+                {
+                    name: 'EndDateActual',
+                    sortable: false,
+                    align: 'left',
+                    width: '200'
+                }
+            ],
+            pager: $("#pager"),
+            sortname: 'Title',
+            sortorder: "",
+            rowNum: 10,
+            rowList: [10, 20, 50],
+            viewrecords: true,
+            rownumbers: true,
+            shrinkToFit: true,
+            width: 1100,
+            altRows: true,
+            altclass: 'myAltRowClass',
+            height: 'auto',
+            gridview: true,
+            url: serverRoot,
+            datatype: 'json',
+            mtype: 'GET',
+            caption: 'Проекты тестирования',
+            loadError: function (xhr, status, error) {
+                alert(error);
+            },
+            loadComplete: function (data) {
+            }
+        });
+
+
+        jQuery("#grid").jqGrid('navGrid', '#pager',
+            { edit: false, add: true, del: true, search: false, refresh: true },
+            { closeOnEscape: true, reloadAfterSubmit: true,
+                closeAfterEdit: true, left: 400, top: 300
+            },
+            { closeOnEscape: true, reloadAfterSubmit: true,
+                closeAfterAdd: true, left: 450, top: 300, width: 520
+            },
+            { closeOnEscape: true, reloadAfterSubmit: true, left: 450, top: 300 });
+
+    });
+
+</script>

@@ -1,0 +1,60 @@
+﻿@model MTP1.Models.Project
+
+@{
+    ViewBag.Title = string.Format("{0} | Проекты тестирования | {1}", Model.Title, MTP1.Constants.TITLE);
+}
+<fieldset>
+    <legend>Проект тестирования @Model.Title</legend>
+    <div class="display-label">Проект</div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.Title)
+    </div>
+
+    <div class="display-label">Версия</div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.Version)
+    </div>
+
+    <div class="display-label">Плановая дата начала</div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.BeginDatePlaning)
+    </div>
+
+    <div class="display-label">Плановая дата окончания</div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.EndDatePlaning)
+    </div>
+
+    <div class="display-label">Фактическая дата начала</div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.BeginDateActual)
+    </div>
+
+    <div class="display-label">Фактическая дата окончания</div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.EndDateActual)
+    </div>
+
+    <div class="display-label">UCP</div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.Ucp)
+    </div>
+
+    <div class="display-label">Трудозатраты, чел.-часы</div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.ManHour)
+    </div>
+
+    <div class="display-label">Показатель надежности</div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.ReliabilityEvaluation)
+    </div>
+</fieldset>
+<p>
+    @Html.ActionLink("Редактировать", "Edit", new { id = Model.ID }) |
+    @Html.ActionLink("Проекты тестирования", "Index")
+</p>
+<p>
+    @Html.ActionLink("Группа тестирования", "Index", "TestGroup") 
+
+</p>

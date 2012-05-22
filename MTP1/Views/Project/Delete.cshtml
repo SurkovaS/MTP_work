@@ -1,0 +1,63 @@
+﻿@model MTP1.Models.Project
+
+@{
+    ViewBag.Title = string.Format("Удаление проекта тестирования | {0}", MTP.Constants.TITLE);
+}
+<fieldset>
+    <legend>Удаление проекта тестирования @Model.ProjectTitle</legend>
+    @Html.ActionLink("Отменить", "Index")
+
+    <h2 style="color:Red">Вы уверены, что хотите удалить этот проект?</h2>
+
+@using (Html.BeginForm())
+{
+    <input type="submit" value="Удалить" />
+}
+
+    <div class="display-label">Проект</div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.Title)
+    </div>
+
+    <div class="display-label">Версия</div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.Version)
+    </div>
+
+    <div class="display-label">Плановая дата начала</div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.BeginDatePlaning)
+    </div>
+
+    <div class="display-label">Плановая дата окончания</div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.EndDatePlaning)
+    </div>
+
+    <div class="display-label">Фактическая дата начала</div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.BeginDateActual)
+    </div>
+
+    <div class="display-label">Фактическая дата окончания</div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.EndDateActual)
+    </div>
+
+    <div class="display-label">UCP</div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.Ucp)
+    </div>
+
+    <div class="display-label">Трудозатраты, чел.-часы</div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.ManHour)
+    </div>
+
+    <div class="display-label">Показатель надежности</div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.ReliabilityEvaluation)
+    </div>
+
+</fieldset>
+

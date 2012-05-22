@@ -44,13 +44,5 @@ namespace MTP1.Controllers
         }
 
         #endregion
-
-        /// <summary>
-        /// The dictionaries.
-        /// </summary>
-        /// <returns>
-        /// </returns>
-       
     }
-    
 }

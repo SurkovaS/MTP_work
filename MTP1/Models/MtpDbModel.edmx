@@ -1,0 +1,2030 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+
+<edmx:Edmx Version="2.0" xmlns:edmx="http://schemas.microsoft.com/ado/2008/10/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+    <Schema Namespace="MtpDbModel.Store" Alias="Self" Provider="System.Data.SqlClient" ProviderManifestToken="2008" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns="http://schemas.microsoft.com/ado/2009/02/edm/ssdl">
+        <EntityContainer Name="MtpDbModelStoreContainer">
+          <EntitySet Name="Actor" EntityType="MtpDbModel.Store.Actor" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="ActorDic" EntityType="MtpDbModel.Store.ActorDic" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="Defect" EntityType="MtpDbModel.Store.Defect" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="DefectDic" EntityType="MtpDbModel.Store.DefectDic" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="DefectPrimaryMetric" EntityType="MtpDbModel.Store.DefectPrimaryMetric" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="Dictionaries" EntityType="MtpDbModel.Store.Dictionaries" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="EnvironmentFactor" EntityType="MtpDbModel.Store.EnvironmentFactor" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="EnvironmentFactorDic" EntityType="MtpDbModel.Store.EnvironmentFactorDic" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="PrimaryMetricDic" EntityType="MtpDbModel.Store.PrimaryMetricDic" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="PriorityDic" EntityType="MtpDbModel.Store.PriorityDic" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="Project" EntityType="MtpDbModel.Store.Project" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="ReliabilityEvaluation" EntityType="MtpDbModel.Store.ReliabilityEvaluation" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="ReliabilityEvaluationDic" EntityType="MtpDbModel.Store.ReliabilityEvaluationDic" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="SecondaryMetricDic" EntityType="MtpDbModel.Store.SecondaryMetricDic" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="TechnicalFactor" EntityType="MtpDbModel.Store.TechnicalFactor" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="TechnicalFactorDic" EntityType="MtpDbModel.Store.TechnicalFactorDic" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="TestMethodDic" EntityType="MtpDbModel.Store.TestMethodDic" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="TestProgram" EntityType="MtpDbModel.Store.TestProgram" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="UseCase" EntityType="MtpDbModel.Store.UseCase" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="UseCasePrimaryMetric" EntityType="MtpDbModel.Store.UseCasePrimaryMetric" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="UseCaseSecondaryMetric" EntityType="MtpDbModel.Store.UseCaseSecondaryMetric" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="WeightCoefficientDic" EntityType="MtpDbModel.Store.WeightCoefficientDic" store:Type="Tables" Schema="dbo" />
+          <AssociationSet Name="FK_Actor_ActorDic" Association="MtpDbModel.Store.FK_Actor_ActorDic">
+            <End Role="ActorDic" EntitySet="ActorDic" />
+            <End Role="Actor" EntitySet="Actor" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Actor_UseCase" Association="MtpDbModel.Store.FK_Actor_UseCase">
+            <End Role="UseCase" EntitySet="UseCase" />
+            <End Role="Actor" EntitySet="Actor" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Actor_WeightCoefficientDic" Association="MtpDbModel.Store.FK_Actor_WeightCoefficientDic">
+            <End Role="WeightCoefficientDic" EntitySet="WeightCoefficientDic" />
+            <End Role="Actor" EntitySet="Actor" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Defect_Defect" Association="MtpDbModel.Store.FK_Defect_Defect">
+            <End Role="UseCase" EntitySet="UseCase" />
+            <End Role="Defect" EntitySet="Defect" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Defect_DefectDic" Association="MtpDbModel.Store.FK_Defect_DefectDic">
+            <End Role="DefectDic" EntitySet="DefectDic" />
+            <End Role="Defect" EntitySet="Defect" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Defect_PriorityDic" Association="MtpDbModel.Store.FK_Defect_PriorityDic">
+            <End Role="PriorityDic" EntitySet="PriorityDic" />
+            <End Role="Defect" EntitySet="Defect" />
+          </AssociationSet>
+          <AssociationSet Name="FK_DefectPrimaryMetric_Defect" Association="MtpDbModel.Store.FK_DefectPrimaryMetric_Defect">
+            <End Role="Defect" EntitySet="Defect" />
+            <End Role="DefectPrimaryMetric" EntitySet="DefectPrimaryMetric" />
+          </AssociationSet>
+          <AssociationSet Name="FK_DefectPrimaryMetric_MetricDic" Association="MtpDbModel.Store.FK_DefectPrimaryMetric_MetricDic">
+            <End Role="SecondaryMetricDic" EntitySet="SecondaryMetricDic" />
+            <End Role="DefectPrimaryMetric" EntitySet="DefectPrimaryMetric" />
+          </AssociationSet>
+          <AssociationSet Name="FK_DefectPrimaryMetric_TestMethodDic" Association="MtpDbModel.Store.FK_DefectPrimaryMetric_TestMethodDic">
+            <End Role="TestMethodDic" EntitySet="TestMethodDic" />
+            <End Role="DefectPrimaryMetric" EntitySet="DefectPrimaryMetric" />
+          </AssociationSet>
+          <AssociationSet Name="FK_EnvironmentFactor_EnvironmentFactorTypeDic" Association="MtpDbModel.Store.FK_EnvironmentFactor_EnvironmentFactorTypeDic">
+            <End Role="EnvironmentFactorDic" EntitySet="EnvironmentFactorDic" />
+            <End Role="EnvironmentFactor" EntitySet="EnvironmentFactor" />
+          </AssociationSet>
+          <AssociationSet Name="FK_EnvironmentFactor_UseCase" Association="MtpDbModel.Store.FK_EnvironmentFactor_UseCase">
+            <End Role="UseCase" EntitySet="UseCase" />
+            <End Role="EnvironmentFactor" EntitySet="EnvironmentFactor" />
+          </AssociationSet>
+          <AssociationSet Name="FK_EnvironmentFactor_WeightCoefficientDic" Association="MtpDbModel.Store.FK_EnvironmentFactor_WeightCoefficientDic">
+            <End Role="WeightCoefficientDic" EntitySet="WeightCoefficientDic" />
+            <End Role="EnvironmentFactor" EntitySet="EnvironmentFactor" />
+          </AssociationSet>
+          <AssociationSet Name="FK_ReliabilityEvaluation_Project" Association="MtpDbModel.Store.FK_ReliabilityEvaluation_Project">
+            <End Role="Project" EntitySet="Project" />
+            <End Role="ReliabilityEvaluation" EntitySet="ReliabilityEvaluation" />
+          </AssociationSet>
+          <AssociationSet Name="FK_ReliabilityEvaluation_ReliabilityEvaluationDic" Association="MtpDbModel.Store.FK_ReliabilityEvaluation_ReliabilityEvaluationDic">
+            <End Role="ReliabilityEvaluationDic" EntitySet="ReliabilityEvaluationDic" />
+            <End Role="ReliabilityEvaluation" EntitySet="ReliabilityEvaluation" />
+          </AssociationSet>
+          <AssociationSet Name="FK_ReliabilityEvaluation_TestProgram" Association="MtpDbModel.Store.FK_ReliabilityEvaluation_TestProgram">
+            <End Role="TestProgram" EntitySet="TestProgram" />
+            <End Role="ReliabilityEvaluation" EntitySet="ReliabilityEvaluation" />
+          </AssociationSet>
+          <AssociationSet Name="FK_TechnicalFactor_TechnicalFactorDic" Association="MtpDbModel.Store.FK_TechnicalFactor_TechnicalFactorDic">
+            <End Role="TechnicalFactorDic" EntitySet="TechnicalFactorDic" />
+            <End Role="TechnicalFactor" EntitySet="TechnicalFactor" />
+          </AssociationSet>
+          <AssociationSet Name="FK_TechnicalFactor_UseCase" Association="MtpDbModel.Store.FK_TechnicalFactor_UseCase">
+            <End Role="UseCase" EntitySet="UseCase" />
+            <End Role="TechnicalFactor" EntitySet="TechnicalFactor" />
+          </AssociationSet>
+          <AssociationSet Name="FK_TechnicalFactor_WeightCoefficientDic" Association="MtpDbModel.Store.FK_TechnicalFactor_WeightCoefficientDic">
+            <End Role="WeightCoefficientDic" EntitySet="WeightCoefficientDic" />
+            <End Role="TechnicalFactor" EntitySet="TechnicalFactor" />
+          </AssociationSet>
+          <AssociationSet Name="FK_TechnicalFactor_WeightCoefficientDic1" Association="MtpDbModel.Store.FK_TechnicalFactor_WeightCoefficientDic1">
+            <End Role="WeightCoefficientDic" EntitySet="WeightCoefficientDic" />
+            <End Role="TechnicalFactor" EntitySet="TechnicalFactor" />
+          </AssociationSet>
+          <AssociationSet Name="FK_TestProgram_Project" Association="MtpDbModel.Store.FK_TestProgram_Project">
+            <End Role="Project" EntitySet="Project" />
+            <End Role="TestProgram" EntitySet="TestProgram" />
+          </AssociationSet>
+          <AssociationSet Name="FK_TestProgram_TestMethodDic" Association="MtpDbModel.Store.FK_TestProgram_TestMethodDic">
+            <End Role="TestMethodDic" EntitySet="TestMethodDic" />
+            <End Role="TestProgram" EntitySet="TestProgram" />
+          </AssociationSet>
+          <AssociationSet Name="FK_UseCase_PriorityDic" Association="MtpDbModel.Store.FK_UseCase_PriorityDic">
+            <End Role="PriorityDic" EntitySet="PriorityDic" />
+            <End Role="UseCase" EntitySet="UseCase" />
+          </AssociationSet>
+          <AssociationSet Name="FK_UseCase_Project" Association="MtpDbModel.Store.FK_UseCase_Project">
+            <End Role="Project" EntitySet="Project" />
+            <End Role="UseCase" EntitySet="UseCase" />
+          </AssociationSet>
+          <AssociationSet Name="FK_UseCase_TestProgram" Association="MtpDbModel.Store.FK_UseCase_TestProgram">
+            <End Role="TestProgram" EntitySet="TestProgram" />
+            <End Role="UseCase" EntitySet="UseCase" />
+          </AssociationSet>
+          <AssociationSet Name="FK_UseCasePrimaryMetric_PrimaryMetricDic" Association="MtpDbModel.Store.FK_UseCasePrimaryMetric_PrimaryMetricDic">
+            <End Role="PrimaryMetricDic" EntitySet="PrimaryMetricDic" />
+            <End Role="UseCasePrimaryMetric" EntitySet="UseCasePrimaryMetric" />
+          </AssociationSet>
+          <AssociationSet Name="FK_UseCasePrimaryMetric_Project" Association="MtpDbModel.Store.FK_UseCasePrimaryMetric_Project">
+            <End Role="Project" EntitySet="Project" />
+            <End Role="UseCasePrimaryMetric" EntitySet="UseCasePrimaryMetric" />
+          </AssociationSet>
+          <AssociationSet Name="FK_UseCasePrimaryMetric_TestProgram" Association="MtpDbModel.Store.FK_UseCasePrimaryMetric_TestProgram">
+            <End Role="TestProgram" EntitySet="TestProgram" />
+            <End Role="UseCasePrimaryMetric" EntitySet="UseCasePrimaryMetric" />
+          </AssociationSet>
+          <AssociationSet Name="FK_UseCasePrimaryMetric_UseCase" Association="MtpDbModel.Store.FK_UseCasePrimaryMetric_UseCase">
+            <End Role="UseCase" EntitySet="UseCase" />
+            <End Role="UseCasePrimaryMetric" EntitySet="UseCasePrimaryMetric" />
+          </AssociationSet>
+          <AssociationSet Name="FK_UseCaseSecondaryMetric_MetricDic" Association="MtpDbModel.Store.FK_UseCaseSecondaryMetric_MetricDic">
+            <End Role="SecondaryMetricDic" EntitySet="SecondaryMetricDic" />
+            <End Role="UseCaseSecondaryMetric" EntitySet="UseCaseSecondaryMetric" />
+          </AssociationSet>
+          <AssociationSet Name="FK_UseCaseSecondaryMetric_UseCase" Association="MtpDbModel.Store.FK_UseCaseSecondaryMetric_UseCase">
+            <End Role="UseCase" EntitySet="UseCase" />
+            <End Role="UseCaseSecondaryMetric" EntitySet="UseCaseSecondaryMetric" />
+          </AssociationSet>
+        </EntityContainer>
+        <EntityType Name="Actor">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="Actor" Type="int" Nullable="false" />
+          <Property Name="UseCase" Type="int" Nullable="false" />
+          <Property Name="WeightCoefficient" Type="int" />
+          <Property Name="Quantity" Type="int" />
+        </EntityType>
+        <EntityType Name="ActorDic">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="Title" Type="nvarchar" Nullable="false" MaxLength="50" />
+          <Property Name="Description" Type="nvarchar" MaxLength="50" />
+        </EntityType>
+        <EntityType Name="Defect">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" Nullable="false" />
+          <Property Name="UseCase" Type="int" Nullable="false" />
+          <Property Name="Title" Type="nvarchar" Nullable="false" MaxLength="50" />
+          <Property Name="Type" Type="int" Nullable="false" />
+          <Property Name="Priority" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="DefectDic">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="Title" Type="nvarchar" Nullable="false" MaxLength="50" />
+          <Property Name="Description" Type="nvarchar(max)" />
+        </EntityType>
+        <EntityType Name="DefectPrimaryMetric">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="Type" Type="int" Nullable="false" />
+          <Property Name="Value" Type="int" Nullable="false" />
+          <Property Name="TestMethod" Type="int" Nullable="false" />
+          <Property Name="Defect" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Dictionaries">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="Title" Type="nvarchar(max)" Nullable="false" />
+          <Property Name="TitleEng" Type="nvarchar(max)" />
+        </EntityType>
+        <EntityType Name="EnvironmentFactor">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="UseCase" Type="int" Nullable="false" />
+          <Property Name="EnvironmentFactor" Type="int" Nullable="false" />
+          <Property Name="WeightCoefficient" Type="int" />
+          <Property Name="Difficulty" Type="int" />
+        </EntityType>
+        <EntityType Name="EnvironmentFactorDic">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="Title" Type="nvarchar" Nullable="false" MaxLength="50" />
+          <Property Name="Description" Type="nvarchar(max)" />
+        </EntityType>
+        <EntityType Name="PrimaryMetricDic">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="Title" Type="nvarchar(max)" Nullable="false" />
+          <Property Name="Description" Type="nvarchar(max)" />
+        </EntityType>
+        <EntityType Name="PriorityDic">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="Title" Type="nvarchar" Nullable="false" MaxLength="50" />
+          <Property Name="Description" Type="nvarchar(max)" />
+        </EntityType>
+        <EntityType Name="Project">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="Title" Type="nvarchar" Nullable="false" MaxLength="50" />
+          <Property Name="Version" Type="nvarchar" MaxLength="50" />
+          <Property Name="BeginDatePlaning" Type="date" />
+          <Property Name="EndDatePlaning" Type="date" />
+          <Property Name="BeginDateActual" Type="date" />
+          <Property Name="EndDateActual" Type="date" />
+          <Property Name="Ucp" Type="int" />
+          <Property Name="ManHour" Type="int" />
+          <Property Name="ReliabilityEvaluation" Type="int" />
+          <Property Name="TechnicalFactor" Type="int" />
+        </EntityType>
+        <EntityType Name="ReliabilityEvaluation">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="ReliabilityEvaluation" Type="int" Nullable="false" />
+          <Property Name="Value" Type="int" Nullable="false" />
+          <Property Name="Project" Type="int" Nullable="false" />
+          <Property Name="Program" Type="int" />
+        </EntityType>
+        <EntityType Name="ReliabilityEvaluationDic">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="Title" Type="nvarchar(max)" Nullable="false" />
+          <Property Name="Description" Type="nvarchar(max)" />
+        </EntityType>
+        <EntityType Name="SecondaryMetricDic">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="Title" Type="nvarchar" Nullable="false" MaxLength="50" />
+          <Property Name="Description" Type="nvarchar(max)" />
+        </EntityType>
+        <EntityType Name="TechnicalFactor">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="UseCase" Type="int" Nullable="false" />
+          <Property Name="TechnicalFactor" Type="int" Nullable="false" />
+          <Property Name="WeightCoefficient" Type="int" Nullable="false" />
+          <Property Name="Difficulty" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="TechnicalFactorDic">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="Title" Type="nvarchar" Nullable="false" MaxLength="50" />
+          <Property Name="Description" Type="nvarchar(max)" />
+        </EntityType>
+        <EntityType Name="TestMethodDic">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="Title" Type="nvarchar" Nullable="false" MaxLength="50" />
+          <Property Name="Description" Type="nvarchar(max)" />
+        </EntityType>
+        <EntityType Name="TestProgram">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="Project" Type="int" Nullable="false" />
+          <Property Name="Title" Type="nvarchar" Nullable="false" MaxLength="50" />
+          <Property Name="Description" Type="nvarchar(max)" />
+          <Property Name="TestMethod" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="UseCase">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="Project" Type="int" />
+          <Property Name="TestProgram" Type="int" />
+          <Property Name="Title" Type="nvarchar" Nullable="false" MaxLength="50" />
+          <Property Name="Description" Type="nvarchar(max)" />
+          <Property Name="Priority" Type="int" />
+          <Property Name="Actor" Type="int" />
+          <Property Name="EnvironmentFactor" Type="int" />
+          <Property Name="TechnicalFactor" Type="int" />
+          <Property Name="Ucp" Type="int" />
+          <Property Name="ManHour" Type="int" />
+        </EntityType>
+        <EntityType Name="UseCasePrimaryMetric">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="Project" Type="int" />
+          <Property Name="Program" Type="int" />
+          <Property Name="UseCase" Type="int" />
+          <Property Name="Type" Type="int" Nullable="false" />
+          <Property Name="Value" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="UseCaseSecondaryMetric">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" Nullable="false" />
+          <Property Name="Type" Type="int" Nullable="false" />
+          <Property Name="Value" Type="int" Nullable="false" />
+          <Property Name="UseCase" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="WeightCoefficientDic">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="Title" Type="nvarchar" MaxLength="50" />
+          <Property Name="Value" Type="int" Nullable="false" />
+          <Property Name="Description" Type="nvarchar(max)" />
+        </EntityType>
+        <Association Name="FK_Actor_ActorDic">
+          <End Role="ActorDic" Type="MtpDbModel.Store.ActorDic" Multiplicity="1" />
+          <End Role="Actor" Type="MtpDbModel.Store.Actor" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="ActorDic">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="Actor">
+              <PropertyRef Name="Actor" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Actor_UseCase">
+          <End Role="UseCase" Type="MtpDbModel.Store.UseCase" Multiplicity="1" />
+          <End Role="Actor" Type="MtpDbModel.Store.Actor" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="UseCase">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="Actor">
+              <PropertyRef Name="UseCase" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Actor_WeightCoefficientDic">
+          <End Role="WeightCoefficientDic" Type="MtpDbModel.Store.WeightCoefficientDic" Multiplicity="0..1" />
+          <End Role="Actor" Type="MtpDbModel.Store.Actor" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="WeightCoefficientDic">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="Actor">
+              <PropertyRef Name="WeightCoefficient" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Defect_Defect">
+          <End Role="UseCase" Type="MtpDbModel.Store.UseCase" Multiplicity="1" />
+          <End Role="Defect" Type="MtpDbModel.Store.Defect" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="UseCase">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="Defect">
+              <PropertyRef Name="UseCase" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Defect_DefectDic">
+          <End Role="DefectDic" Type="MtpDbModel.Store.DefectDic" Multiplicity="1" />
+          <End Role="Defect" Type="MtpDbModel.Store.Defect" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="DefectDic">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="Defect">
+              <PropertyRef Name="Type" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Defect_PriorityDic">
+          <End Role="PriorityDic" Type="MtpDbModel.Store.PriorityDic" Multiplicity="1" />
+          <End Role="Defect" Type="MtpDbModel.Store.Defect" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="PriorityDic">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="Defect">
+              <PropertyRef Name="Priority" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_DefectPrimaryMetric_Defect">
+          <End Role="Defect" Type="MtpDbModel.Store.Defect" Multiplicity="1" />
+          <End Role="DefectPrimaryMetric" Type="MtpDbModel.Store.DefectPrimaryMetric" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Defect">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="DefectPrimaryMetric">
+              <PropertyRef Name="Defect" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_DefectPrimaryMetric_MetricDic">
+          <End Role="SecondaryMetricDic" Type="MtpDbModel.Store.SecondaryMetricDic" Multiplicity="1" />
+          <End Role="DefectPrimaryMetric" Type="MtpDbModel.Store.DefectPrimaryMetric" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="SecondaryMetricDic">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="DefectPrimaryMetric">
+              <PropertyRef Name="Type" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_DefectPrimaryMetric_TestMethodDic">
+          <End Role="TestMethodDic" Type="MtpDbModel.Store.TestMethodDic" Multiplicity="1" />
+          <End Role="DefectPrimaryMetric" Type="MtpDbModel.Store.DefectPrimaryMetric" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="TestMethodDic">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="DefectPrimaryMetric">
+              <PropertyRef Name="TestMethod" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_EnvironmentFactor_EnvironmentFactorTypeDic">
+          <End Role="EnvironmentFactorDic" Type="MtpDbModel.Store.EnvironmentFactorDic" Multiplicity="1" />
+          <End Role="EnvironmentFactor" Type="MtpDbModel.Store.EnvironmentFactor" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="EnvironmentFactorDic">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="EnvironmentFactor">
+              <PropertyRef Name="EnvironmentFactor" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_EnvironmentFactor_UseCase">
+          <End Role="UseCase" Type="MtpDbModel.Store.UseCase" Multiplicity="1" />
+          <End Role="EnvironmentFactor" Type="MtpDbModel.Store.EnvironmentFactor" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="UseCase">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="EnvironmentFactor">
+              <PropertyRef Name="UseCase" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_EnvironmentFactor_WeightCoefficientDic">
+          <End Role="WeightCoefficientDic" Type="MtpDbModel.Store.WeightCoefficientDic" Multiplicity="0..1" />
+          <End Role="EnvironmentFactor" Type="MtpDbModel.Store.EnvironmentFactor" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="WeightCoefficientDic">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="EnvironmentFactor">
+              <PropertyRef Name="WeightCoefficient" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_ReliabilityEvaluation_Project">
+          <End Role="Project" Type="MtpDbModel.Store.Project" Multiplicity="1" />
+          <End Role="ReliabilityEvaluation" Type="MtpDbModel.Store.ReliabilityEvaluation" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Project">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="ReliabilityEvaluation">
+              <PropertyRef Name="Project" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_ReliabilityEvaluation_ReliabilityEvaluationDic">
+          <End Role="ReliabilityEvaluationDic" Type="MtpDbModel.Store.ReliabilityEvaluationDic" Multiplicity="1" />
+          <End Role="ReliabilityEvaluation" Type="MtpDbModel.Store.ReliabilityEvaluation" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="ReliabilityEvaluationDic">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="ReliabilityEvaluation">
+              <PropertyRef Name="ReliabilityEvaluation" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_ReliabilityEvaluation_TestProgram">
+          <End Role="TestProgram" Type="MtpDbModel.Store.TestProgram" Multiplicity="0..1" />
+          <End Role="ReliabilityEvaluation" Type="MtpDbModel.Store.ReliabilityEvaluation" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="TestProgram">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="ReliabilityEvaluation">
+              <PropertyRef Name="Program" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_TechnicalFactor_TechnicalFactorDic">
+          <End Role="TechnicalFactorDic" Type="MtpDbModel.Store.TechnicalFactorDic" Multiplicity="1" />
+          <End Role="TechnicalFactor" Type="MtpDbModel.Store.TechnicalFactor" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="TechnicalFactorDic">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="TechnicalFactor">
+              <PropertyRef Name="TechnicalFactor" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_TechnicalFactor_UseCase">
+          <End Role="UseCase" Type="MtpDbModel.Store.UseCase" Multiplicity="1" />
+          <End Role="TechnicalFactor" Type="MtpDbModel.Store.TechnicalFactor" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="UseCase">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="TechnicalFactor">
+              <PropertyRef Name="UseCase" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_TechnicalFactor_WeightCoefficientDic">
+          <End Role="WeightCoefficientDic" Type="MtpDbModel.Store.WeightCoefficientDic" Multiplicity="1" />
+          <End Role="TechnicalFactor" Type="MtpDbModel.Store.TechnicalFactor" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="WeightCoefficientDic">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="TechnicalFactor">
+              <PropertyRef Name="WeightCoefficient" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_TechnicalFactor_WeightCoefficientDic1">
+          <End Role="WeightCoefficientDic" Type="MtpDbModel.Store.WeightCoefficientDic" Multiplicity="1" />
+          <End Role="TechnicalFactor" Type="MtpDbModel.Store.TechnicalFactor" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="WeightCoefficientDic">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="TechnicalFactor">
+              <PropertyRef Name="Difficulty" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_TestProgram_Project">
+          <End Role="Project" Type="MtpDbModel.Store.Project" Multiplicity="1" />
+          <End Role="TestProgram" Type="MtpDbModel.Store.TestProgram" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Project">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="TestProgram">
+              <PropertyRef Name="Project" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_TestProgram_TestMethodDic">
+          <End Role="TestMethodDic" Type="MtpDbModel.Store.TestMethodDic" Multiplicity="1" />
+          <End Role="TestProgram" Type="MtpDbModel.Store.TestProgram" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="TestMethodDic">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="TestProgram">
+              <PropertyRef Name="TestMethod" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_UseCase_PriorityDic">
+          <End Role="PriorityDic" Type="MtpDbModel.Store.PriorityDic" Multiplicity="0..1" />
+          <End Role="UseCase" Type="MtpDbModel.Store.UseCase" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="PriorityDic">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="UseCase">
+              <PropertyRef Name="Priority" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_UseCase_Project">
+          <End Role="Project" Type="MtpDbModel.Store.Project" Multiplicity="0..1" />
+          <End Role="UseCase" Type="MtpDbModel.Store.UseCase" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Project">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="UseCase">
+              <PropertyRef Name="Project" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_UseCase_TestProgram">
+          <End Role="TestProgram" Type="MtpDbModel.Store.TestProgram" Multiplicity="0..1" />
+          <End Role="UseCase" Type="MtpDbModel.Store.UseCase" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="TestProgram">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="UseCase">
+              <PropertyRef Name="TestProgram" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_UseCasePrimaryMetric_PrimaryMetricDic">
+          <End Role="PrimaryMetricDic" Type="MtpDbModel.Store.PrimaryMetricDic" Multiplicity="1" />
+          <End Role="UseCasePrimaryMetric" Type="MtpDbModel.Store.UseCasePrimaryMetric" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="PrimaryMetricDic">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="UseCasePrimaryMetric">
+              <PropertyRef Name="Type" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_UseCasePrimaryMetric_Project">
+          <End Role="Project" Type="MtpDbModel.Store.Project" Multiplicity="0..1" />
+          <End Role="UseCasePrimaryMetric" Type="MtpDbModel.Store.UseCasePrimaryMetric" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Project">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="UseCasePrimaryMetric">
+              <PropertyRef Name="Project" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_UseCasePrimaryMetric_TestProgram">
+          <End Role="TestProgram" Type="MtpDbModel.Store.TestProgram" Multiplicity="0..1" />
+          <End Role="UseCasePrimaryMetric" Type="MtpDbModel.Store.UseCasePrimaryMetric" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="TestProgram">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="UseCasePrimaryMetric">
+              <PropertyRef Name="Program" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_UseCasePrimaryMetric_UseCase">
+          <End Role="UseCase" Type="MtpDbModel.Store.UseCase" Multiplicity="0..1" />
+          <End Role="UseCasePrimaryMetric" Type="MtpDbModel.Store.UseCasePrimaryMetric" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="UseCase">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="UseCasePrimaryMetric">
+              <PropertyRef Name="UseCase" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_UseCaseSecondaryMetric_MetricDic">
+          <End Role="SecondaryMetricDic" Type="MtpDbModel.Store.SecondaryMetricDic" Multiplicity="1" />
+          <End Role="UseCaseSecondaryMetric" Type="MtpDbModel.Store.UseCaseSecondaryMetric" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="SecondaryMetricDic">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="UseCaseSecondaryMetric">
+              <PropertyRef Name="Type" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_UseCaseSecondaryMetric_UseCase">
+          <End Role="UseCase" Type="MtpDbModel.Store.UseCase" Multiplicity="1" />
+          <End Role="UseCaseSecondaryMetric" Type="MtpDbModel.Store.UseCaseSecondaryMetric" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="UseCase">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="UseCaseSecondaryMetric">
+              <PropertyRef Name="UseCase" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+      </Schema></edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="MtpDbModel" Alias="Self"
+              xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation"
+              xmlns="http://schemas.microsoft.com/ado/2008/09/edm">
+        <EntityContainer Name="MtpDbEntities" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="Actor" EntityType="MtpDbModel.Actor" />
+          <EntitySet Name="ActorDic" EntityType="MtpDbModel.ActorDic" />
+          <EntitySet Name="Defect" EntityType="MtpDbModel.Defect" />
+          <EntitySet Name="DefectDic" EntityType="MtpDbModel.DefectDic" />
+          <EntitySet Name="DefectPrimaryMetric" EntityType="MtpDbModel.DefectPrimaryMetric" />
+          <EntitySet Name="Dictionaries" EntityType="MtpDbModel.Dictionaries" />
+          <EntitySet Name="EnvironmentFactor" EntityType="MtpDbModel.EnvironmentFactor" />
+          <EntitySet Name="EnvironmentFactorDic" EntityType="MtpDbModel.EnvironmentFactorDic" />
+          <EntitySet Name="PrimaryMetricDic" EntityType="MtpDbModel.PrimaryMetricDic" />
+          <EntitySet Name="PriorityDic" EntityType="MtpDbModel.PriorityDic" />
+          <EntitySet Name="Project" EntityType="MtpDbModel.Project" />
+          <EntitySet Name="ReliabilityEvaluation" EntityType="MtpDbModel.ReliabilityEvaluation" />
+          <EntitySet Name="ReliabilityEvaluationDic" EntityType="MtpDbModel.ReliabilityEvaluationDic" />
+          <EntitySet Name="SecondaryMetricDic" EntityType="MtpDbModel.SecondaryMetricDic" />
+          <EntitySet Name="TechnicalFactor" EntityType="MtpDbModel.TechnicalFactor" />
+          <EntitySet Name="TechnicalFactorDic" EntityType="MtpDbModel.TechnicalFactorDic" />
+          <EntitySet Name="TestMethodDic" EntityType="MtpDbModel.TestMethodDic" />
+          <EntitySet Name="TestProgram" EntityType="MtpDbModel.TestProgram" />
+          <EntitySet Name="UseCase" EntityType="MtpDbModel.UseCase" />
+          <EntitySet Name="UseCasePrimaryMetric" EntityType="MtpDbModel.UseCasePrimaryMetric" />
+          <EntitySet Name="UseCaseSecondaryMetric" EntityType="MtpDbModel.UseCaseSecondaryMetric" />
+          <EntitySet Name="WeightCoefficientDic" EntityType="MtpDbModel.WeightCoefficientDic" />
+          <AssociationSet Name="FK_Actor_ActorDic" Association="MtpDbModel.FK_Actor_ActorDic">
+            <End Role="ActorDic" EntitySet="ActorDic" />
+            <End Role="Actor" EntitySet="Actor" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Actor_UseCase" Association="MtpDbModel.FK_Actor_UseCase">
+            <End Role="UseCase" EntitySet="UseCase" />
+            <End Role="Actor" EntitySet="Actor" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Actor_WeightCoefficientDic" Association="MtpDbModel.FK_Actor_WeightCoefficientDic">
+            <End Role="WeightCoefficientDic" EntitySet="WeightCoefficientDic" />
+            <End Role="Actor" EntitySet="Actor" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Defect_Defect" Association="MtpDbModel.FK_Defect_Defect">
+            <End Role="UseCase" EntitySet="UseCase" />
+            <End Role="Defect" EntitySet="Defect" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Defect_DefectDic" Association="MtpDbModel.FK_Defect_DefectDic">
+            <End Role="DefectDic" EntitySet="DefectDic" />
+            <End Role="Defect" EntitySet="Defect" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Defect_PriorityDic" Association="MtpDbModel.FK_Defect_PriorityDic">
+            <End Role="PriorityDic" EntitySet="PriorityDic" />
+            <End Role="Defect" EntitySet="Defect" />
+          </AssociationSet>
+          <AssociationSet Name="FK_DefectPrimaryMetric_Defect" Association="MtpDbModel.FK_DefectPrimaryMetric_Defect">
+            <End Role="Defect" EntitySet="Defect" />
+            <End Role="DefectPrimaryMetric" EntitySet="DefectPrimaryMetric" />
+          </AssociationSet>
+          <AssociationSet Name="FK_DefectPrimaryMetric_MetricDic" Association="MtpDbModel.FK_DefectPrimaryMetric_MetricDic">
+            <End Role="SecondaryMetricDic" EntitySet="SecondaryMetricDic" />
+            <End Role="DefectPrimaryMetric" EntitySet="DefectPrimaryMetric" />
+          </AssociationSet>
+          <AssociationSet Name="FK_DefectPrimaryMetric_TestMethodDic" Association="MtpDbModel.FK_DefectPrimaryMetric_TestMethodDic">
+            <End Role="TestMethodDic" EntitySet="TestMethodDic" />
+            <End Role="DefectPrimaryMetric" EntitySet="DefectPrimaryMetric" />
+          </AssociationSet>
+          <AssociationSet Name="FK_EnvironmentFactor_EnvironmentFactorTypeDic" Association="MtpDbModel.FK_EnvironmentFactor_EnvironmentFactorTypeDic">
+            <End Role="EnvironmentFactorDic" EntitySet="EnvironmentFactorDic" />
+            <End Role="EnvironmentFactor" EntitySet="EnvironmentFactor" />
+          </AssociationSet>
+          <AssociationSet Name="FK_EnvironmentFactor_UseCase" Association="MtpDbModel.FK_EnvironmentFactor_UseCase">
+            <End Role="UseCase" EntitySet="UseCase" />
+            <End Role="EnvironmentFactor" EntitySet="EnvironmentFactor" />
+          </AssociationSet>
+          <AssociationSet Name="FK_EnvironmentFactor_WeightCoefficientDic" Association="MtpDbModel.FK_EnvironmentFactor_WeightCoefficientDic">
+            <End Role="WeightCoefficientDic" EntitySet="WeightCoefficientDic" />
+            <End Role="EnvironmentFactor" EntitySet="EnvironmentFactor" />
+          </AssociationSet>
+          <AssociationSet Name="FK_UseCasePrimaryMetric_PrimaryMetricDic" Association="MtpDbModel.FK_UseCasePrimaryMetric_PrimaryMetricDic">
+            <End Role="PrimaryMetricDic" EntitySet="PrimaryMetricDic" />
+            <End Role="UseCasePrimaryMetric" EntitySet="UseCasePrimaryMetric" />
+          </AssociationSet>
+          <AssociationSet Name="FK_UseCase_PriorityDic" Association="MtpDbModel.FK_UseCase_PriorityDic">
+            <End Role="PriorityDic" EntitySet="PriorityDic" />
+            <End Role="UseCase" EntitySet="UseCase" />
+          </AssociationSet>
+          <AssociationSet Name="FK_ReliabilityEvaluation_Project" Association="MtpDbModel.FK_ReliabilityEvaluation_Project">
+            <End Role="Project" EntitySet="Project" />
+            <End Role="ReliabilityEvaluation" EntitySet="ReliabilityEvaluation" />
+          </AssociationSet>
+          <AssociationSet Name="FK_TestProgram_Project" Association="MtpDbModel.FK_TestProgram_Project">
+            <End Role="Project" EntitySet="Project" />
+            <End Role="TestProgram" EntitySet="TestProgram" />
+          </AssociationSet>
+          <AssociationSet Name="FK_UseCase_Project" Association="MtpDbModel.FK_UseCase_Project">
+            <End Role="Project" EntitySet="Project" />
+            <End Role="UseCase" EntitySet="UseCase" />
+          </AssociationSet>
+          <AssociationSet Name="FK_UseCasePrimaryMetric_Project" Association="MtpDbModel.FK_UseCasePrimaryMetric_Project">
+            <End Role="Project" EntitySet="Project" />
+            <End Role="UseCasePrimaryMetric" EntitySet="UseCasePrimaryMetric" />
+          </AssociationSet>
+          <AssociationSet Name="FK_ReliabilityEvaluation_ReliabilityEvaluationDic" Association="MtpDbModel.FK_ReliabilityEvaluation_ReliabilityEvaluationDic">
+            <End Role="ReliabilityEvaluationDic" EntitySet="ReliabilityEvaluationDic" />
+            <End Role="ReliabilityEvaluation" EntitySet="ReliabilityEvaluation" />
+          </AssociationSet>
+          <AssociationSet Name="FK_ReliabilityEvaluation_TestProgram" Association="MtpDbModel.FK_ReliabilityEvaluation_TestProgram">
+            <End Role="TestProgram" EntitySet="TestProgram" />
+            <End Role="ReliabilityEvaluation" EntitySet="ReliabilityEvaluation" />
+          </AssociationSet>
+          <AssociationSet Name="FK_UseCaseSecondaryMetric_MetricDic" Association="MtpDbModel.FK_UseCaseSecondaryMetric_MetricDic">
+            <End Role="SecondaryMetricDic" EntitySet="SecondaryMetricDic" />
+            <End Role="UseCaseSecondaryMetric" EntitySet="UseCaseSecondaryMetric" />
+          </AssociationSet>
+          <AssociationSet Name="FK_TechnicalFactor_TechnicalFactorDic" Association="MtpDbModel.FK_TechnicalFactor_TechnicalFactorDic">
+            <End Role="TechnicalFactorDic" EntitySet="TechnicalFactorDic" />
+            <End Role="TechnicalFactor" EntitySet="TechnicalFactor" />
+          </AssociationSet>
+          <AssociationSet Name="FK_TechnicalFactor_UseCase" Association="MtpDbModel.FK_TechnicalFactor_UseCase">
+            <End Role="UseCase" EntitySet="UseCase" />
+            <End Role="TechnicalFactor" EntitySet="TechnicalFactor" />
+          </AssociationSet>
+          <AssociationSet Name="FK_TechnicalFactor_WeightCoefficientDic" Association="MtpDbModel.FK_TechnicalFactor_WeightCoefficientDic">
+            <End Role="WeightCoefficientDic" EntitySet="WeightCoefficientDic" />
+            <End Role="TechnicalFactor" EntitySet="TechnicalFactor" />
+          </AssociationSet>
+          <AssociationSet Name="FK_TechnicalFactor_WeightCoefficientDic1" Association="MtpDbModel.FK_TechnicalFactor_WeightCoefficientDic1">
+            <End Role="WeightCoefficientDic" EntitySet="WeightCoefficientDic" />
+            <End Role="TechnicalFactor" EntitySet="TechnicalFactor" />
+          </AssociationSet>
+          <AssociationSet Name="FK_TestProgram_TestMethodDic" Association="MtpDbModel.FK_TestProgram_TestMethodDic">
+            <End Role="TestMethodDic" EntitySet="TestMethodDic" />
+            <End Role="TestProgram" EntitySet="TestProgram" />
+          </AssociationSet>
+          <AssociationSet Name="FK_UseCase_TestProgram" Association="MtpDbModel.FK_UseCase_TestProgram">
+            <End Role="TestProgram" EntitySet="TestProgram" />
+            <End Role="UseCase" EntitySet="UseCase" />
+          </AssociationSet>
+          <AssociationSet Name="FK_UseCasePrimaryMetric_TestProgram" Association="MtpDbModel.FK_UseCasePrimaryMetric_TestProgram">
+            <End Role="TestProgram" EntitySet="TestProgram" />
+            <End Role="UseCasePrimaryMetric" EntitySet="UseCasePrimaryMetric" />
+          </AssociationSet>
+          <AssociationSet Name="FK_UseCasePrimaryMetric_UseCase" Association="MtpDbModel.FK_UseCasePrimaryMetric_UseCase">
+            <End Role="UseCase" EntitySet="UseCase" />
+            <End Role="UseCasePrimaryMetric" EntitySet="UseCasePrimaryMetric" />
+          </AssociationSet>
+          <AssociationSet Name="FK_UseCaseSecondaryMetric_UseCase" Association="MtpDbModel.FK_UseCaseSecondaryMetric_UseCase">
+            <End Role="UseCase" EntitySet="UseCase" />
+            <End Role="UseCaseSecondaryMetric" EntitySet="UseCaseSecondaryMetric" />
+          </AssociationSet>
+        </EntityContainer>
+        <EntityType Name="Actor">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Type="Int32" Name="ID" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Type="Int32" Name="Actor1" Nullable="false" />
+          <Property Type="Int32" Name="UseCase" Nullable="false" />
+          <Property Type="Int32" Name="WeightCoefficient" />
+          <Property Type="Int32" Name="Quantity" />
+          <NavigationProperty Name="ActorDic" Relationship="MtpDbModel.FK_Actor_ActorDic" FromRole="Actor" ToRole="ActorDic" />
+          <NavigationProperty Name="UseCase1" Relationship="MtpDbModel.FK_Actor_UseCase" FromRole="Actor" ToRole="UseCase" />
+          <NavigationProperty Name="WeightCoefficientDic" Relationship="MtpDbModel.FK_Actor_WeightCoefficientDic" FromRole="Actor" ToRole="WeightCoefficientDic" />
+        </EntityType>
+        <EntityType Name="ActorDic">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Type="Int32" Name="ID" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Type="String" Name="Title" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Type="String" Name="Description" MaxLength="50" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="Actor" Relationship="MtpDbModel.FK_Actor_ActorDic" FromRole="ActorDic" ToRole="Actor" />
+        </EntityType>
+        <EntityType Name="Defect">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Type="Int32" Name="ID" Nullable="false" />
+          <Property Type="Int32" Name="UseCase" Nullable="false" />
+          <Property Type="String" Name="Title" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Type="Int32" Name="Type" Nullable="false" />
+          <Property Type="Int32" Name="Priority" Nullable="false" />
+          <NavigationProperty Name="UseCase1" Relationship="MtpDbModel.FK_Defect_Defect" FromRole="Defect" ToRole="UseCase" />
+          <NavigationProperty Name="DefectDic" Relationship="MtpDbModel.FK_Defect_DefectDic" FromRole="Defect" ToRole="DefectDic" />
+          <NavigationProperty Name="PriorityDic" Relationship="MtpDbModel.FK_Defect_PriorityDic" FromRole="Defect" ToRole="PriorityDic" />
+          <NavigationProperty Name="DefectPrimaryMetric" Relationship="MtpDbModel.FK_DefectPrimaryMetric_Defect" FromRole="Defect" ToRole="DefectPrimaryMetric" />
+        </EntityType>
+        <EntityType Name="DefectDic">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Type="Int32" Name="ID" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Type="String" Name="Title" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Type="String" Name="Description" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="Defect" Relationship="MtpDbModel.FK_Defect_DefectDic" FromRole="DefectDic" ToRole="Defect" />
+        </EntityType>
+        <EntityType Name="DefectPrimaryMetric">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Type="Int32" Name="ID" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Type="Int32" Name="Type" Nullable="false" />
+          <Property Type="Int32" Name="Value" Nullable="false" />
+          <Property Type="Int32" Name="TestMethod" Nullable="false" />
+          <Property Type="Int32" Name="Defect" Nullable="false" />
+          <NavigationProperty Name="Defect1" Relationship="MtpDbModel.FK_DefectPrimaryMetric_Defect" FromRole="DefectPrimaryMetric" ToRole="Defect" />
+          <NavigationProperty Name="SecondaryMetricDic" Relationship="MtpDbModel.FK_DefectPrimaryMetric_MetricDic" FromRole="DefectPrimaryMetric" ToRole="SecondaryMetricDic" />
+          <NavigationProperty Name="TestMethodDic" Relationship="MtpDbModel.FK_DefectPrimaryMetric_TestMethodDic" FromRole="DefectPrimaryMetric" ToRole="TestMethodDic" />
+        </EntityType>
+        <EntityType Name="Dictionaries">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Type="Int32" Name="ID" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Type="String" Name="Title" Nullable="false" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Type="String" Name="TitleEng" MaxLength="Max" FixedLength="false" Unicode="true" />
+        </EntityType>
+        <EntityType Name="EnvironmentFactor">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Type="Int32" Name="ID" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Type="Int32" Name="UseCase" Nullable="false" />
+          <Property Type="Int32" Name="EnvironmentFactor1" Nullable="false" />
+          <Property Type="Int32" Name="WeightCoefficient" />
+          <Property Type="Int32" Name="Difficulty" />
+          <NavigationProperty Name="EnvironmentFactorDic" Relationship="MtpDbModel.FK_EnvironmentFactor_EnvironmentFactorTypeDic" FromRole="EnvironmentFactor" ToRole="EnvironmentFactorDic" />
+          <NavigationProperty Name="UseCase1" Relationship="MtpDbModel.FK_EnvironmentFactor_UseCase" FromRole="EnvironmentFactor" ToRole="UseCase" />
+          <NavigationProperty Name="WeightCoefficientDic" Relationship="MtpDbModel.FK_EnvironmentFactor_WeightCoefficientDic" FromRole="EnvironmentFactor" ToRole="WeightCoefficientDic" />
+        </EntityType>
+        <EntityType Name="EnvironmentFactorDic">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Type="Int32" Name="ID" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Type="String" Name="Title" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Type="String" Name="Description" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="EnvironmentFactor" Relationship="MtpDbModel.FK_EnvironmentFactor_EnvironmentFactorTypeDic" FromRole="EnvironmentFactorDic" ToRole="EnvironmentFactor" />
+        </EntityType>
+        <EntityType Name="PrimaryMetricDic">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Type="Int32" Name="ID" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Type="String" Name="Title" Nullable="false" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Type="String" Name="Description" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="UseCasePrimaryMetric" Relationship="MtpDbModel.FK_UseCasePrimaryMetric_PrimaryMetricDic" FromRole="PrimaryMetricDic" ToRole="UseCasePrimaryMetric" />
+        </EntityType>
+        <EntityType Name="PriorityDic">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Type="Int32" Name="ID" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Type="String" Name="Title" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Type="String" Name="Description" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="Defect" Relationship="MtpDbModel.FK_Defect_PriorityDic" FromRole="PriorityDic" ToRole="Defect" />
+          <NavigationProperty Name="UseCase" Relationship="MtpDbModel.FK_UseCase_PriorityDic" FromRole="PriorityDic" ToRole="UseCase" />
+        </EntityType>
+        <EntityType Name="Project">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Type="Int32" Name="ID" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Type="String" Name="Title" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Type="String" Name="Version" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Type="DateTime" Name="BeginDatePlaning" />
+          <Property Type="DateTime" Name="EndDatePlaning" />
+          <Property Type="DateTime" Name="BeginDateActual" />
+          <Property Type="DateTime" Name="EndDateActual" />
+          <Property Type="Int32" Name="Ucp" />
+          <Property Type="Int32" Name="ManHour" />
+          <Property Type="Int32" Name="ReliabilityEvaluation" />
+          <Property Type="Int32" Name="TechnicalFactor" />
+          <NavigationProperty Name="ReliabilityEvaluation1" Relationship="MtpDbModel.FK_ReliabilityEvaluation_Project" FromRole="Project" ToRole="ReliabilityEvaluation" />
+          <NavigationProperty Name="TestProgram" Relationship="MtpDbModel.FK_TestProgram_Project" FromRole="Project" ToRole="TestProgram" />
+          <NavigationProperty Name="UseCase" Relationship="MtpDbModel.FK_UseCase_Project" FromRole="Project" ToRole="UseCase" />
+          <NavigationProperty Name="UseCasePrimaryMetric" Relationship="MtpDbModel.FK_UseCasePrimaryMetric_Project" FromRole="Project" ToRole="UseCasePrimaryMetric" />
+        </EntityType>
+        <EntityType Name="ReliabilityEvaluation">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Type="Int32" Name="ID" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Type="Int32" Name="ReliabilityEvaluation1" Nullable="false" />
+          <Property Type="Int32" Name="Value" Nullable="false" />
+          <Property Type="Int32" Name="Project" Nullable="false" />
+          <Property Type="Int32" Name="Program" />
+          <NavigationProperty Name="Project1" Relationship="MtpDbModel.FK_ReliabilityEvaluation_Project" FromRole="ReliabilityEvaluation" ToRole="Project" />
+          <NavigationProperty Name="ReliabilityEvaluationDic" Relationship="MtpDbModel.FK_ReliabilityEvaluation_ReliabilityEvaluationDic" FromRole="ReliabilityEvaluation" ToRole="ReliabilityEvaluationDic" />
+          <NavigationProperty Name="TestProgram" Relationship="MtpDbModel.FK_ReliabilityEvaluation_TestProgram" FromRole="ReliabilityEvaluation" ToRole="TestProgram" />
+        </EntityType>
+        <EntityType Name="ReliabilityEvaluationDic">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Type="Int32" Name="ID" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Type="String" Name="Title" Nullable="false" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Type="String" Name="Description" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="ReliabilityEvaluation" Relationship="MtpDbModel.FK_ReliabilityEvaluation_ReliabilityEvaluationDic" FromRole="ReliabilityEvaluationDic" ToRole="ReliabilityEvaluation" />
+        </EntityType>
+        <EntityType Name="SecondaryMetricDic">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Type="Int32" Name="ID" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Type="String" Name="Title" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Type="String" Name="Description" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="DefectPrimaryMetric" Relationship="MtpDbModel.FK_DefectPrimaryMetric_MetricDic" FromRole="SecondaryMetricDic" ToRole="DefectPrimaryMetric" />
+          <NavigationProperty Name="UseCaseSecondaryMetric" Relationship="MtpDbModel.FK_UseCaseSecondaryMetric_MetricDic" FromRole="SecondaryMetricDic" ToRole="UseCaseSecondaryMetric" />
+        </EntityType>
+        <EntityType Name="TechnicalFactor">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Type="Int32" Name="ID" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Type="Int32" Name="UseCase" Nullable="false" />
+          <Property Type="Int32" Name="TechnicalFactor1" Nullable="false" />
+          <Property Type="Int32" Name="WeightCoefficient" Nullable="false" />
+          <Property Type="Int32" Name="Difficulty" Nullable="false" />
+          <NavigationProperty Name="TechnicalFactorDic" Relationship="MtpDbModel.FK_TechnicalFactor_TechnicalFactorDic" FromRole="TechnicalFactor" ToRole="TechnicalFactorDic" />
+          <NavigationProperty Name="UseCase1" Relationship="MtpDbModel.FK_TechnicalFactor_UseCase" FromRole="TechnicalFactor" ToRole="UseCase" />
+          <NavigationProperty Name="WeightCoefficientDic" Relationship="MtpDbModel.FK_TechnicalFactor_WeightCoefficientDic" FromRole="TechnicalFactor" ToRole="WeightCoefficientDic" />
+          <NavigationProperty Name="WeightCoefficientDic1" Relationship="MtpDbModel.FK_TechnicalFactor_WeightCoefficientDic1" FromRole="TechnicalFactor" ToRole="WeightCoefficientDic" />
+        </EntityType>
+        <EntityType Name="TechnicalFactorDic">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Type="Int32" Name="ID" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Type="String" Name="Title" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Type="String" Name="Description" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="TechnicalFactor" Relationship="MtpDbModel.FK_TechnicalFactor_TechnicalFactorDic" FromRole="TechnicalFactorDic" ToRole="TechnicalFactor" />
+        </EntityType>
+        <EntityType Name="TestMethodDic">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Type="Int32" Name="ID" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Type="String" Name="Title" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Type="String" Name="Description" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="DefectPrimaryMetric" Relationship="MtpDbModel.FK_DefectPrimaryMetric_TestMethodDic" FromRole="TestMethodDic" ToRole="DefectPrimaryMetric" />
+          <NavigationProperty Name="TestProgram" Relationship="MtpDbModel.FK_TestProgram_TestMethodDic" FromRole="TestMethodDic" ToRole="TestProgram" />
+        </EntityType>
+        <EntityType Name="TestProgram">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Type="Int32" Name="ID" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Type="Int32" Name="Project" Nullable="false" />
+          <Property Type="String" Name="Title" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Type="String" Name="Description" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Type="Int32" Name="TestMethod" Nullable="false" />
+          <NavigationProperty Name="Project1" Relationship="MtpDbModel.FK_TestProgram_Project" FromRole="TestProgram" ToRole="Project" />
+          <NavigationProperty Name="ReliabilityEvaluation" Relationship="MtpDbModel.FK_ReliabilityEvaluation_TestProgram" FromRole="TestProgram" ToRole="ReliabilityEvaluation" />
+          <NavigationProperty Name="TestMethodDic" Relationship="MtpDbModel.FK_TestProgram_TestMethodDic" FromRole="TestProgram" ToRole="TestMethodDic" />
+          <NavigationProperty Name="UseCase" Relationship="MtpDbModel.FK_UseCase_TestProgram" FromRole="TestProgram" ToRole="UseCase" />
+          <NavigationProperty Name="UseCasePrimaryMetric" Relationship="MtpDbModel.FK_UseCasePrimaryMetric_TestProgram" FromRole="TestProgram" ToRole="UseCasePrimaryMetric" />
+        </EntityType>
+        <EntityType Name="UseCase">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Type="Int32" Name="ID" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Type="Int32" Name="Project" />
+          <Property Type="Int32" Name="TestProgram" />
+          <Property Type="String" Name="Title" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Type="String" Name="Description" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Type="Int32" Name="Priority" />
+          <Property Type="Int32" Name="Actor" />
+          <Property Type="Int32" Name="EnvironmentFactor" />
+          <Property Type="Int32" Name="TechnicalFactor" />
+          <Property Type="Int32" Name="Ucp" />
+          <Property Type="Int32" Name="ManHour" />
+          <NavigationProperty Name="Actor1" Relationship="MtpDbModel.FK_Actor_UseCase" FromRole="UseCase" ToRole="Actor" />
+          <NavigationProperty Name="Defect" Relationship="MtpDbModel.FK_Defect_Defect" FromRole="UseCase" ToRole="Defect" />
+          <NavigationProperty Name="EnvironmentFactor1" Relationship="MtpDbModel.FK_EnvironmentFactor_UseCase" FromRole="UseCase" ToRole="EnvironmentFactor" />
+          <NavigationProperty Name="PriorityDic" Relationship="MtpDbModel.FK_UseCase_PriorityDic" FromRole="UseCase" ToRole="PriorityDic" />
+          <NavigationProperty Name="Project1" Relationship="MtpDbModel.FK_UseCase_Project" FromRole="UseCase" ToRole="Project" />
+          <NavigationProperty Name="TechnicalFactor1" Relationship="MtpDbModel.FK_TechnicalFactor_UseCase" FromRole="UseCase" ToRole="TechnicalFactor" />
+          <NavigationProperty Name="TestProgram1" Relationship="MtpDbModel.FK_UseCase_TestProgram" FromRole="UseCase" ToRole="TestProgram" />
+          <NavigationProperty Name="UseCasePrimaryMetric" Relationship="MtpDbModel.FK_UseCasePrimaryMetric_UseCase" FromRole="UseCase" ToRole="UseCasePrimaryMetric" />
+          <NavigationProperty Name="UseCaseSecondaryMetric" Relationship="MtpDbModel.FK_UseCaseSecondaryMetric_UseCase" FromRole="UseCase" ToRole="UseCaseSecondaryMetric" />
+        </EntityType>
+        <EntityType Name="UseCasePrimaryMetric">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Type="Int32" Name="ID" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Type="Int32" Name="Project" />
+          <Property Type="Int32" Name="Program" />
+          <Property Type="Int32" Name="UseCase" />
+          <Property Type="Int32" Name="Type" Nullable="false" />
+          <Property Type="Int32" Name="Value" Nullable="false" />
+          <NavigationProperty Name="PrimaryMetricDic" Relationship="MtpDbModel.FK_UseCasePrimaryMetric_PrimaryMetricDic" FromRole="UseCasePrimaryMetric" ToRole="PrimaryMetricDic" />
+          <NavigationProperty Name="Project1" Relationship="MtpDbModel.FK_UseCasePrimaryMetric_Project" FromRole="UseCasePrimaryMetric" ToRole="Project" />
+          <NavigationProperty Name="TestProgram" Relationship="MtpDbModel.FK_UseCasePrimaryMetric_TestProgram" FromRole="UseCasePrimaryMetric" ToRole="TestProgram" />
+          <NavigationProperty Name="UseCase1" Relationship="MtpDbModel.FK_UseCasePrimaryMetric_UseCase" FromRole="UseCasePrimaryMetric" ToRole="UseCase" />
+        </EntityType>
+        <EntityType Name="UseCaseSecondaryMetric">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Type="Int32" Name="ID" Nullable="false" />
+          <Property Type="Int32" Name="Type" Nullable="false" />
+          <Property Type="Int32" Name="Value" Nullable="false" />
+          <Property Type="Int32" Name="UseCase" Nullable="false" />
+          <NavigationProperty Name="SecondaryMetricDic" Relationship="MtpDbModel.FK_UseCaseSecondaryMetric_MetricDic" FromRole="UseCaseSecondaryMetric" ToRole="SecondaryMetricDic" />
+          <NavigationProperty Name="UseCase1" Relationship="MtpDbModel.FK_UseCaseSecondaryMetric_UseCase" FromRole="UseCaseSecondaryMetric" ToRole="UseCase" />
+        </EntityType>
+        <EntityType Name="WeightCoefficientDic">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Type="Int32" Name="ID" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Type="String" Name="Title" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Type="Int32" Name="Value" Nullable="false" />
+          <Property Type="String" Name="Description" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="Actor" Relationship="MtpDbModel.FK_Actor_WeightCoefficientDic" FromRole="WeightCoefficientDic" ToRole="Actor" />
+          <NavigationProperty Name="EnvironmentFactor" Relationship="MtpDbModel.FK_EnvironmentFactor_WeightCoefficientDic" FromRole="WeightCoefficientDic" ToRole="EnvironmentFactor" />
+          <NavigationProperty Name="TechnicalFactor" Relationship="MtpDbModel.FK_TechnicalFactor_WeightCoefficientDic" FromRole="WeightCoefficientDic" ToRole="TechnicalFactor" />
+          <NavigationProperty Name="TechnicalFactor1" Relationship="MtpDbModel.FK_TechnicalFactor_WeightCoefficientDic1" FromRole="WeightCoefficientDic" ToRole="TechnicalFactor" />
+        </EntityType>
+        <Association Name="FK_Actor_ActorDic">
+          <End Type="MtpDbModel.ActorDic" Role="ActorDic" Multiplicity="1" />
+          <End Type="MtpDbModel.Actor" Role="Actor" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="ActorDic">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="Actor">
+              <PropertyRef Name="Actor1" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Actor_UseCase">
+          <End Type="MtpDbModel.UseCase" Role="UseCase" Multiplicity="1" />
+          <End Type="MtpDbModel.Actor" Role="Actor" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="UseCase">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="Actor">
+              <PropertyRef Name="UseCase" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Actor_WeightCoefficientDic">
+          <End Type="MtpDbModel.WeightCoefficientDic" Role="WeightCoefficientDic" Multiplicity="0..1" />
+          <End Type="MtpDbModel.Actor" Role="Actor" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="WeightCoefficientDic">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="Actor">
+              <PropertyRef Name="WeightCoefficient" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Defect_Defect">
+          <End Type="MtpDbModel.UseCase" Role="UseCase" Multiplicity="1" />
+          <End Type="MtpDbModel.Defect" Role="Defect" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="UseCase">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="Defect">
+              <PropertyRef Name="UseCase" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Defect_DefectDic">
+          <End Type="MtpDbModel.DefectDic" Role="DefectDic" Multiplicity="1" />
+          <End Type="MtpDbModel.Defect" Role="Defect" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="DefectDic">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="Defect">
+              <PropertyRef Name="Type" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Defect_PriorityDic">
+          <End Type="MtpDbModel.PriorityDic" Role="PriorityDic" Multiplicity="1" />
+          <End Type="MtpDbModel.Defect" Role="Defect" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="PriorityDic">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="Defect">
+              <PropertyRef Name="Priority" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_DefectPrimaryMetric_Defect">
+          <End Type="MtpDbModel.Defect" Role="Defect" Multiplicity="1" />
+          <End Type="MtpDbModel.DefectPrimaryMetric" Role="DefectPrimaryMetric" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Defect">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="DefectPrimaryMetric">
+              <PropertyRef Name="Defect" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_DefectPrimaryMetric_MetricDic">
+          <End Type="MtpDbModel.SecondaryMetricDic" Role="SecondaryMetricDic" Multiplicity="1" />
+          <End Type="MtpDbModel.DefectPrimaryMetric" Role="DefectPrimaryMetric" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="SecondaryMetricDic">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="DefectPrimaryMetric">
+              <PropertyRef Name="Type" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_DefectPrimaryMetric_TestMethodDic">
+          <End Type="MtpDbModel.TestMethodDic" Role="TestMethodDic" Multiplicity="1" />
+          <End Type="MtpDbModel.DefectPrimaryMetric" Role="DefectPrimaryMetric" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="TestMethodDic">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="DefectPrimaryMetric">
+              <PropertyRef Name="TestMethod" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_EnvironmentFactor_EnvironmentFactorTypeDic">
+          <End Type="MtpDbModel.EnvironmentFactorDic" Role="EnvironmentFactorDic" Multiplicity="1" />
+          <End Type="MtpDbModel.EnvironmentFactor" Role="EnvironmentFactor" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="EnvironmentFactorDic">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="EnvironmentFactor">
+              <PropertyRef Name="EnvironmentFactor1" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_EnvironmentFactor_UseCase">
+          <End Type="MtpDbModel.UseCase" Role="UseCase" Multiplicity="1" />
+          <End Type="MtpDbModel.EnvironmentFactor" Role="EnvironmentFactor" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="UseCase">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="EnvironmentFactor">
+              <PropertyRef Name="UseCase" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_EnvironmentFactor_WeightCoefficientDic">
+          <End Type="MtpDbModel.WeightCoefficientDic" Role="WeightCoefficientDic" Multiplicity="0..1" />
+          <End Type="MtpDbModel.EnvironmentFactor" Role="EnvironmentFactor" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="WeightCoefficientDic">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="EnvironmentFactor">
+              <PropertyRef Name="WeightCoefficient" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_UseCasePrimaryMetric_PrimaryMetricDic">
+          <End Type="MtpDbModel.PrimaryMetricDic" Role="PrimaryMetricDic" Multiplicity="1" />
+          <End Type="MtpDbModel.UseCasePrimaryMetric" Role="UseCasePrimaryMetric" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="PrimaryMetricDic">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="UseCasePrimaryMetric">
+              <PropertyRef Name="Type" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_UseCase_PriorityDic">
+          <End Type="MtpDbModel.PriorityDic" Role="PriorityDic" Multiplicity="0..1" />
+          <End Type="MtpDbModel.UseCase" Role="UseCase" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="PriorityDic">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="UseCase">
+              <PropertyRef Name="Priority" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_ReliabilityEvaluation_Project">
+          <End Type="MtpDbModel.Project" Role="Project" Multiplicity="1" />
+          <End Type="MtpDbModel.ReliabilityEvaluation" Role="ReliabilityEvaluation" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Project">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="ReliabilityEvaluation">
+              <PropertyRef Name="Project" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_TestProgram_Project">
+          <End Type="MtpDbModel.Project" Role="Project" Multiplicity="1" />
+          <End Type="MtpDbModel.TestProgram" Role="TestProgram" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Project">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="TestProgram">
+              <PropertyRef Name="Project" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_UseCase_Project">
+          <End Type="MtpDbModel.Project" Role="Project" Multiplicity="0..1" />
+          <End Type="MtpDbModel.UseCase" Role="UseCase" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Project">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="UseCase">
+              <PropertyRef Name="Project" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_UseCasePrimaryMetric_Project">
+          <End Type="MtpDbModel.Project" Role="Project" Multiplicity="0..1" />
+          <End Type="MtpDbModel.UseCasePrimaryMetric" Role="UseCasePrimaryMetric" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Project">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="UseCasePrimaryMetric">
+              <PropertyRef Name="Project" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_ReliabilityEvaluation_ReliabilityEvaluationDic">
+          <End Type="MtpDbModel.ReliabilityEvaluationDic" Role="ReliabilityEvaluationDic" Multiplicity="1" />
+          <End Type="MtpDbModel.ReliabilityEvaluation" Role="ReliabilityEvaluation" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="ReliabilityEvaluationDic">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="ReliabilityEvaluation">
+              <PropertyRef Name="ReliabilityEvaluation1" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_ReliabilityEvaluation_TestProgram">
+          <End Type="MtpDbModel.TestProgram" Role="TestProgram" Multiplicity="0..1" />
+          <End Type="MtpDbModel.ReliabilityEvaluation" Role="ReliabilityEvaluation" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="TestProgram">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="ReliabilityEvaluation">
+              <PropertyRef Name="Program" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_UseCaseSecondaryMetric_MetricDic">
+          <End Type="MtpDbModel.SecondaryMetricDic" Role="SecondaryMetricDic" Multiplicity="1" />
+          <End Type="MtpDbModel.UseCaseSecondaryMetric" Role="UseCaseSecondaryMetric" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="SecondaryMetricDic">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="UseCaseSecondaryMetric">
+              <PropertyRef Name="Type" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_TechnicalFactor_TechnicalFactorDic">
+          <End Type="MtpDbModel.TechnicalFactorDic" Role="TechnicalFactorDic" Multiplicity="1" />
+          <End Type="MtpDbModel.TechnicalFactor" Role="TechnicalFactor" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="TechnicalFactorDic">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="TechnicalFactor">
+              <PropertyRef Name="TechnicalFactor1" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_TechnicalFactor_UseCase">
+          <End Type="MtpDbModel.UseCase" Role="UseCase" Multiplicity="1" />
+          <End Type="MtpDbModel.TechnicalFactor" Role="TechnicalFactor" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="UseCase">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="TechnicalFactor">
+              <PropertyRef Name="UseCase" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_TechnicalFactor_WeightCoefficientDic">
+          <End Type="MtpDbModel.WeightCoefficientDic" Role="WeightCoefficientDic" Multiplicity="1" />
+          <End Type="MtpDbModel.TechnicalFactor" Role="TechnicalFactor" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="WeightCoefficientDic">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="TechnicalFactor">
+              <PropertyRef Name="WeightCoefficient" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_TechnicalFactor_WeightCoefficientDic1">
+          <End Type="MtpDbModel.WeightCoefficientDic" Role="WeightCoefficientDic" Multiplicity="1" />
+          <End Type="MtpDbModel.TechnicalFactor" Role="TechnicalFactor" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="WeightCoefficientDic">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="TechnicalFactor">
+              <PropertyRef Name="Difficulty" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_TestProgram_TestMethodDic">
+          <End Type="MtpDbModel.TestMethodDic" Role="TestMethodDic" Multiplicity="1" />
+          <End Type="MtpDbModel.TestProgram" Role="TestProgram" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="TestMethodDic">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="TestProgram">
+              <PropertyRef Name="TestMethod" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_UseCase_TestProgram">
+          <End Type="MtpDbModel.TestProgram" Role="TestProgram" Multiplicity="0..1" />
+          <End Type="MtpDbModel.UseCase" Role="UseCase" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="TestProgram">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="UseCase">
+              <PropertyRef Name="TestProgram" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_UseCasePrimaryMetric_TestProgram">
+          <End Type="MtpDbModel.TestProgram" Role="TestProgram" Multiplicity="0..1" />
+          <End Type="MtpDbModel.UseCasePrimaryMetric" Role="UseCasePrimaryMetric" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="TestProgram">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="UseCasePrimaryMetric">
+              <PropertyRef Name="Program" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_UseCasePrimaryMetric_UseCase">
+          <End Type="MtpDbModel.UseCase" Role="UseCase" Multiplicity="0..1" />
+          <End Type="MtpDbModel.UseCasePrimaryMetric" Role="UseCasePrimaryMetric" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="UseCase">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="UseCasePrimaryMetric">
+              <PropertyRef Name="UseCase" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_UseCaseSecondaryMetric_UseCase">
+          <End Type="MtpDbModel.UseCase" Role="UseCase" Multiplicity="1" />
+          <End Type="MtpDbModel.UseCaseSecondaryMetric" Role="UseCaseSecondaryMetric" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="UseCase">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="UseCaseSecondaryMetric">
+              <PropertyRef Name="UseCase" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2008/09/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="MtpDbModelStoreContainer" CdmEntityContainer="MtpDbEntities">
+          <EntitySetMapping Name="Actor">
+            <EntityTypeMapping TypeName="MtpDbModel.Actor">
+              <MappingFragment StoreEntitySet="Actor">
+                <ScalarProperty Name="Quantity" ColumnName="Quantity" />
+                <ScalarProperty Name="WeightCoefficient" ColumnName="WeightCoefficient" />
+                <ScalarProperty Name="UseCase" ColumnName="UseCase" />
+                <ScalarProperty Name="Actor1" ColumnName="Actor" />
+                <ScalarProperty Name="ID" ColumnName="ID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="ActorDic">
+            <EntityTypeMapping TypeName="MtpDbModel.ActorDic">
+              <MappingFragment StoreEntitySet="ActorDic">
+                <ScalarProperty Name="Description" ColumnName="Description" />
+                <ScalarProperty Name="Title" ColumnName="Title" />
+                <ScalarProperty Name="ID" ColumnName="ID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Defect">
+            <EntityTypeMapping TypeName="MtpDbModel.Defect">
+              <MappingFragment StoreEntitySet="Defect">
+                <ScalarProperty Name="Priority" ColumnName="Priority" />
+                <ScalarProperty Name="Type" ColumnName="Type" />
+                <ScalarProperty Name="Title" ColumnName="Title" />
+                <ScalarProperty Name="UseCase" ColumnName="UseCase" />
+                <ScalarProperty Name="ID" ColumnName="ID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="DefectDic">
+            <EntityTypeMapping TypeName="MtpDbModel.DefectDic">
+              <MappingFragment StoreEntitySet="DefectDic">
+                <ScalarProperty Name="Description" ColumnName="Description" />
+                <ScalarProperty Name="Title" ColumnName="Title" />
+                <ScalarProperty Name="ID" ColumnName="ID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="DefectPrimaryMetric">
+            <EntityTypeMapping TypeName="MtpDbModel.DefectPrimaryMetric">
+              <MappingFragment StoreEntitySet="DefectPrimaryMetric">
+                <ScalarProperty Name="Defect" ColumnName="Defect" />
+                <ScalarProperty Name="TestMethod" ColumnName="TestMethod" />
+                <ScalarProperty Name="Value" ColumnName="Value" />
+                <ScalarProperty Name="Type" ColumnName="Type" />
+                <ScalarProperty Name="ID" ColumnName="ID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Dictionaries">
+            <EntityTypeMapping TypeName="MtpDbModel.Dictionaries">
+              <MappingFragment StoreEntitySet="Dictionaries">
+                <ScalarProperty Name="TitleEng" ColumnName="TitleEng" />
+                <ScalarProperty Name="Title" ColumnName="Title" />
+                <ScalarProperty Name="ID" ColumnName="ID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="EnvironmentFactor">
+            <EntityTypeMapping TypeName="MtpDbModel.EnvironmentFactor">
+              <MappingFragment StoreEntitySet="EnvironmentFactor">
+                <ScalarProperty Name="Difficulty" ColumnName="Difficulty" />
+                <ScalarProperty Name="WeightCoefficient" ColumnName="WeightCoefficient" />
+                <ScalarProperty Name="EnvironmentFactor1" ColumnName="EnvironmentFactor" />
+                <ScalarProperty Name="UseCase" ColumnName="UseCase" />
+                <ScalarProperty Name="ID" ColumnName="ID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="EnvironmentFactorDic">
+            <EntityTypeMapping TypeName="MtpDbModel.EnvironmentFactorDic">
+              <MappingFragment StoreEntitySet="EnvironmentFactorDic">
+                <ScalarProperty Name="Description" ColumnName="Description" />
+                <ScalarProperty Name="Title" ColumnName="Title" />
+                <ScalarProperty Name="ID" ColumnName="ID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="PrimaryMetricDic">
+            <EntityTypeMapping TypeName="MtpDbModel.PrimaryMetricDic">
+              <MappingFragment StoreEntitySet="PrimaryMetricDic">
+                <ScalarProperty Name="Description" ColumnName="Description" />
+                <ScalarProperty Name="Title" ColumnName="Title" />
+                <ScalarProperty Name="ID" ColumnName="ID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="PriorityDic">
+            <EntityTypeMapping TypeName="MtpDbModel.PriorityDic">
+              <MappingFragment StoreEntitySet="PriorityDic">
+                <ScalarProperty Name="Description" ColumnName="Description" />
+                <ScalarProperty Name="Title" ColumnName="Title" />
+                <ScalarProperty Name="ID" ColumnName="ID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Project">
+            <EntityTypeMapping TypeName="MtpDbModel.Project">
+              <MappingFragment StoreEntitySet="Project">
+                <ScalarProperty Name="TechnicalFactor" ColumnName="TechnicalFactor" />
+                <ScalarProperty Name="ReliabilityEvaluation" ColumnName="ReliabilityEvaluation" />
+                <ScalarProperty Name="ManHour" ColumnName="ManHour" />
+                <ScalarProperty Name="Ucp" ColumnName="Ucp" />
+                <ScalarProperty Name="EndDateActual" ColumnName="EndDateActual" />
+                <ScalarProperty Name="BeginDateActual" ColumnName="BeginDateActual" />
+                <ScalarProperty Name="EndDatePlaning" ColumnName="EndDatePlaning" />
+                <ScalarProperty Name="BeginDatePlaning" ColumnName="BeginDatePlaning" />
+                <ScalarProperty Name="Version" ColumnName="Version" />
+                <ScalarProperty Name="Title" ColumnName="Title" />
+                <ScalarProperty Name="ID" ColumnName="ID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="ReliabilityEvaluation">
+            <EntityTypeMapping TypeName="MtpDbModel.ReliabilityEvaluation">
+              <MappingFragment StoreEntitySet="ReliabilityEvaluation">
+                <ScalarProperty Name="Program" ColumnName="Program" />
+                <ScalarProperty Name="Project" ColumnName="Project" />
+                <ScalarProperty Name="Value" ColumnName="Value" />
+                <ScalarProperty Name="ReliabilityEvaluation1" ColumnName="ReliabilityEvaluation" />
+                <ScalarProperty Name="ID" ColumnName="ID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="ReliabilityEvaluationDic">
+            <EntityTypeMapping TypeName="MtpDbModel.ReliabilityEvaluationDic">
+              <MappingFragment StoreEntitySet="ReliabilityEvaluationDic">
+                <ScalarProperty Name="Description" ColumnName="Description" />
+                <ScalarProperty Name="Title" ColumnName="Title" />
+                <ScalarProperty Name="ID" ColumnName="ID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="SecondaryMetricDic">
+            <EntityTypeMapping TypeName="MtpDbModel.SecondaryMetricDic">
+              <MappingFragment StoreEntitySet="SecondaryMetricDic">
+                <ScalarProperty Name="Description" ColumnName="Description" />
+                <ScalarProperty Name="Title" ColumnName="Title" />
+                <ScalarProperty Name="ID" ColumnName="ID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="TechnicalFactor">
+            <EntityTypeMapping TypeName="MtpDbModel.TechnicalFactor">
+              <MappingFragment StoreEntitySet="TechnicalFactor">
+                <ScalarProperty Name="Difficulty" ColumnName="Difficulty" />
+                <ScalarProperty Name="WeightCoefficient" ColumnName="WeightCoefficient" />
+                <ScalarProperty Name="TechnicalFactor1" ColumnName="TechnicalFactor" />
+                <ScalarProperty Name="UseCase" ColumnName="UseCase" />
+                <ScalarProperty Name="ID" ColumnName="ID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="TechnicalFactorDic">
+            <EntityTypeMapping TypeName="MtpDbModel.TechnicalFactorDic">
+              <MappingFragment StoreEntitySet="TechnicalFactorDic">
+                <ScalarProperty Name="Description" ColumnName="Description" />
+                <ScalarProperty Name="Title" ColumnName="Title" />
+                <ScalarProperty Name="ID" ColumnName="ID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="TestMethodDic">
+            <EntityTypeMapping TypeName="MtpDbModel.TestMethodDic">
+              <MappingFragment StoreEntitySet="TestMethodDic">
+                <ScalarProperty Name="Description" ColumnName="Description" />
+                <ScalarProperty Name="Title" ColumnName="Title" />
+                <ScalarProperty Name="ID" ColumnName="ID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="TestProgram">
+            <EntityTypeMapping TypeName="MtpDbModel.TestProgram">
+              <MappingFragment StoreEntitySet="TestProgram">
+                <ScalarProperty Name="TestMethod" ColumnName="TestMethod" />
+                <ScalarProperty Name="Description" ColumnName="Description" />
+                <ScalarProperty Name="Title" ColumnName="Title" />
+                <ScalarProperty Name="Project" ColumnName="Project" />
+                <ScalarProperty Name="ID" ColumnName="ID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="UseCase">
+            <EntityTypeMapping TypeName="MtpDbModel.UseCase">
+              <MappingFragment StoreEntitySet="UseCase">
+                <ScalarProperty Name="ManHour" ColumnName="ManHour" />
+                <ScalarProperty Name="Ucp" ColumnName="Ucp" />
+                <ScalarProperty Name="TechnicalFactor" ColumnName="TechnicalFactor" />
+                <ScalarProperty Name="EnvironmentFactor" ColumnName="EnvironmentFactor" />
+                <ScalarProperty Name="Actor" ColumnName="Actor" />
+                <ScalarProperty Name="Priority" ColumnName="Priority" />
+                <ScalarProperty Name="Description" ColumnName="Description" />
+                <ScalarProperty Name="Title" ColumnName="Title" />
+                <ScalarProperty Name="TestProgram" ColumnName="TestProgram" />
+                <ScalarProperty Name="Project" ColumnName="Project" />
+                <ScalarProperty Name="ID" ColumnName="ID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="UseCasePrimaryMetric">
+            <EntityTypeMapping TypeName="MtpDbModel.UseCasePrimaryMetric">
+              <MappingFragment StoreEntitySet="UseCasePrimaryMetric">
+                <ScalarProperty Name="Value" ColumnName="Value" />
+                <ScalarProperty Name="Type" ColumnName="Type" />
+                <ScalarProperty Name="UseCase" ColumnName="UseCase" />
+                <ScalarProperty Name="Program" ColumnName="Program" />
+                <ScalarProperty Name="Project" ColumnName="Project" />
+                <ScalarProperty Name="ID" ColumnName="ID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="UseCaseSecondaryMetric">
+            <EntityTypeMapping TypeName="MtpDbModel.UseCaseSecondaryMetric">
+              <MappingFragment StoreEntitySet="UseCaseSecondaryMetric">
+                <ScalarProperty Name="UseCase" ColumnName="UseCase" />
+                <ScalarProperty Name="Value" ColumnName="Value" />
+                <ScalarProperty Name="Type" ColumnName="Type" />
+                <ScalarProperty Name="ID" ColumnName="ID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="WeightCoefficientDic">
+            <EntityTypeMapping TypeName="MtpDbModel.WeightCoefficientDic">
+              <MappingFragment StoreEntitySet="WeightCoefficientDic">
+                <ScalarProperty Name="Description" ColumnName="Description" />
+                <ScalarProperty Name="Value" ColumnName="Value" />
+                <ScalarProperty Name="Title" ColumnName="Title" />
+                <ScalarProperty Name="ID" ColumnName="ID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2008/10/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="False" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="True" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams>
+      <Diagram Name="MtpDbModel">
+        <EntityTypeShape EntityType="MtpDbModel.Actor" Width="1.5" PointX="10.5" PointY="12.125" Height="2.5571907552083246" />
+        <EntityTypeShape EntityType="MtpDbModel.ActorDic" Width="1.5" PointX="8.25" PointY="17.5" Height="1.7879850260416674" />
+        <EntityTypeShape EntityType="MtpDbModel.Defect" Width="1.5" PointX="13.5" PointY="12" Height="2.749492187499996" />
+        <EntityTypeShape EntityType="MtpDbModel.DefectDic" Width="1.5" PointX="11.25" PointY="20.5" Height="1.7879850260416674" />
+        <EntityTypeShape EntityType="MtpDbModel.DefectPrimaryMetric" Width="1.5" PointX="15.75" PointY="12.125" Height="2.5571907552083246" />
+        <EntityTypeShape EntityType="MtpDbModel.Dictionaries" Width="1.5" PointX="0.75" PointY="0.75" Height="1.5956835937500102" />
+        <EntityTypeShape EntityType="MtpDbModel.EnvironmentFactor" Width="1.5" PointX="10.5" PointY="8.125" Height="2.5571907552083246" />
+        <EntityTypeShape EntityType="MtpDbModel.EnvironmentFactorDic" Width="1.5" PointX="8.25" PointY="6.75" Height="1.7879850260416674" />
+        <EntityTypeShape EntityType="MtpDbModel.PrimaryMetricDic" Width="1.5" PointX="11.25" PointY="5.5" Height="1.7879850260416674" />
+        <EntityTypeShape EntityType="MtpDbModel.PriorityDic" Width="1.5" PointX="6" PointY="8.375" Height="1.9802864583333388" />
+        <EntityTypeShape EntityType="MtpDbModel.Project" Width="1.5" PointX="0.75" PointY="11.375" Height="3.903300781249996" />
+        <EntityTypeShape EntityType="MtpDbModel.ReliabilityEvaluation" Width="1.5" PointX="3" PointY="12.125" Height="2.5571907552083246" />
+        <EntityTypeShape EntityType="MtpDbModel.ReliabilityEvaluationDic" Width="1.5" PointX="0.75" PointY="8.125" Height="1.7879850260416674" />
+        <EntityTypeShape EntityType="MtpDbModel.SecondaryMetricDic" Width="1.5" PointX="13.5" PointY="19.375" Height="1.9802864583333388" />
+        <EntityTypeShape EntityType="MtpDbModel.TechnicalFactor" Width="1.5" PointX="10.5" PointY="16" Height="2.749492187499996" />
+        <EntityTypeShape EntityType="MtpDbModel.TechnicalFactorDic" Width="1.5" PointX="8.25" PointY="20.5" Height="1.7879850260416674" />
+        <EntityTypeShape EntityType="MtpDbModel.TestMethodDic" Width="1.5" PointX="3.75" PointY="8.375" Height="1.9802864583333388" />
+        <EntityTypeShape EntityType="MtpDbModel.TestProgram" Width="1.5" PointX="6" PointY="11.875" Height="2.9417936197916674" />
+        <EntityTypeShape EntityType="MtpDbModel.UseCase" Width="1.5" PointX="8.25" PointY="10.875" Height="4.8648079427083246" />
+        <EntityTypeShape EntityType="MtpDbModel.UseCasePrimaryMetric" Width="1.5" PointX="13.5" PointY="7.875" Height="2.9417936197916674" />
+        <EntityTypeShape EntityType="MtpDbModel.UseCaseSecondaryMetric" Width="1.5" PointX="13.5" PointY="16.25" Height="2.1725878906250102" />
+        <EntityTypeShape EntityType="MtpDbModel.WeightCoefficientDic" Width="1.5" PointX="8.25" PointY="3.375" Height="2.5571907552083246" />
+        <AssociationConnector Association="MtpDbModel.FK_Actor_ActorDic" >
+          <ConnectorPoint PointX="9.75" PointY="17.5" />
+          <ConnectorPoint PointX="10.125" PointY="17.125" />
+          <ConnectorPoint PointX="10.125" PointY="13.403595377604162" />
+          <ConnectorPoint PointX="10.229166666666666" PointY="13.403595377604161" />
+          <ConnectorPoint PointX="10.489583333333334" PointY="13.403595377604162" />
+          <ConnectorPoint PointX="10.5" PointY="13.403595377604162" />
+        </AssociationConnector>
+        <AssociationConnector Association="MtpDbModel.FK_Actor_UseCase" >
+          <ConnectorPoint PointX="9.75" PointY="12.701797688802081" />
+          <ConnectorPoint PointX="10.072916666666666" PointY="12.701797688802079" />
+          <ConnectorPoint PointX="10.489583333333334" PointY="12.701797688802081" />
+          <ConnectorPoint PointX="10.5" PointY="12.701797688802081" />
+        </AssociationConnector>
+        <AssociationConnector Association="MtpDbModel.FK_Actor_WeightCoefficientDic" >
+          <ConnectorPoint PointX="9.75" PointY="5.8941128321314009" />
+          <ConnectorPoint PointX="10.3125" PointY="6.4566128321314009" />
+          <ConnectorPoint PointX="10.3125" PointY="14.074145066406238" />
+          <ConnectorPoint PointX="10.322916666666666" PointY="14.074145066406238" />
+          <ConnectorPoint PointX="10.489583333333334" PointY="14.074145066406238" />
+          <ConnectorPoint PointX="10.5" PointY="14.074145066406238" />
+        </AssociationConnector>
+        <AssociationConnector Association="MtpDbModel.FK_Defect_Defect" >
+          <ConnectorPoint PointX="9.75" PointY="12.03125" />
+          <ConnectorPoint PointX="10.072916666666666" PointY="12.031249999999998" />
+          <ConnectorPoint PointX="10.489583333333334" PointY="12.03125" />
+          <ConnectorPoint PointX="13.5" PointY="12.03125" />
+        </AssociationConnector>
+        <AssociationConnector Association="MtpDbModel.FK_Defect_DefectDic" >
+          <ConnectorPoint PointX="12.40625" PointY="20.5" />
+          <ConnectorPoint PointX="12.40625" PointY="12.046875" />
+          <ConnectorPoint PointX="13.5" PointY="12.046875" />
+        </AssociationConnector>
+        <AssociationConnector Association="MtpDbModel.FK_Defect_PriorityDic" >
+          <ConnectorPoint PointX="7.5" PointY="9.4778852421875044" />
+          <ConnectorPoint PointX="10" PointY="9.4778852421875044" />
+          <ConnectorPoint PointX="10" PointY="11.066793619791667" />
+          <ConnectorPoint PointX="10.041666666666666" PointY="11.066793619791666" />
+          <ConnectorPoint PointX="10.489583333333334" PointY="11.066793619791667" />
+          <ConnectorPoint PointX="13.166666666666666" PointY="11.066793619791667" />
+          <ConnectorPoint PointX="13.333333333333334" PointY="11.066793619791667" />
+          <ConnectorPoint PointX="14.25" PointY="11.066793619791667" />
+          <ConnectorPoint PointX="14.25" PointY="12" />
+        </AssociationConnector>
+        <AssociationConnector Association="MtpDbModel.FK_DefectPrimaryMetric_Defect" >
+          <ConnectorPoint PointX="15" PointY="13.403595377604162" />
+          <ConnectorPoint PointX="15.75" PointY="13.403595377604162" />
+        </AssociationConnector>
+        <AssociationConnector Association="MtpDbModel.FK_DefectPrimaryMetric_MetricDic" >
+          <ConnectorPoint PointX="15" PointY="20.365143229166669" />
+          <ConnectorPoint PointX="16.5" PointY="20.365143229166669" />
+          <ConnectorPoint PointX="16.5" PointY="14.682190755208325" />
+        </AssociationConnector>
+        <AssociationConnector Association="MtpDbModel.FK_DefectPrimaryMetric_TestMethodDic" >
+          <ConnectorPoint PointX="5.25" PointY="9.36514322916667" />
+          <ConnectorPoint PointX="5.75" PointY="9.36514322916667" />
+          <ConnectorPoint PointX="5.75" PointY="10.605286458333339" />
+          <ConnectorPoint PointX="7.666666666666667" PointY="10.605286458333339" />
+          <ConnectorPoint PointX="7.833333333333333" PointY="10.605286458333339" />
+          <ConnectorPoint PointX="7.8969531250000058" PointY="10.605286458333339" />
+          <ConnectorPoint PointX="8.0636197916666728" PointY="10.605286458333339" />
+          <ConnectorPoint PointX="9.9121494391025582" PointY="10.605286458333339" />
+          <ConnectorPoint PointX="10.083333333333334" PointY="10.605286458333339" />
+          <ConnectorPoint PointX="10.125" PointY="10.605286458333339" />
+          <ConnectorPoint PointX="10.125" PointY="11.316793619791667" />
+          <ConnectorPoint PointX="10.229166666666666" PointY="11.316793619791666" />
+          <ConnectorPoint PointX="10.489583333333334" PointY="11.316793619791667" />
+          <ConnectorPoint PointX="14.166666666666666" PointY="11.316793619791667" />
+          <ConnectorPoint PointX="14.333333333333334" PointY="11.316793619791667" />
+          <ConnectorPoint PointX="16.5" PointY="11.316793619791667" />
+          <ConnectorPoint PointX="16.5" PointY="12.125" />
+        </AssociationConnector>
+        <AssociationConnector Association="MtpDbModel.FK_EnvironmentFactor_EnvironmentFactorTypeDic" >
+          <ConnectorPoint PointX="9.75" PointY="8.3314925130208337" />
+          <ConnectorPoint PointX="9.9166666666666661" PointY="8.3314925130208319" />
+          <ConnectorPoint PointX="10.489583333333334" PointY="8.3314925130208337" />
+          <ConnectorPoint PointX="10.5" PointY="8.3314925130208337" />
+        </AssociationConnector>
+        <AssociationConnector Association="MtpDbModel.FK_EnvironmentFactor_UseCase" >
+          <ConnectorPoint PointX="9.7257692307692309" PointY="10.875" />
+          <ConnectorPoint PointX="9.94107443490112" PointY="10.659694795868109" />
+          <ConnectorPoint PointX="10.058925565098878" PointY="10.541843665670353" />
+          <ConnectorPoint PointX="10.09732443490112" PointY="10.503444795868109" />
+          <ConnectorPoint PointX="10.215175565098878" PointY="10.385593665670353" />
+          <ConnectorPoint PointX="10.25" PointY="10.350769230769231" />
+          <ConnectorPoint PointX="10.25" PointY="10.932190755208325" />
+          <ConnectorPoint PointX="10.25357443490112" PointY="10.928616320307203" />
+          <ConnectorPoint PointX="10.465175565098878" PointY="10.717015190109446" />
+          <ConnectorPoint PointX="10.5" PointY="10.682190755208325" />
+        </AssociationConnector>
+        <AssociationConnector Association="MtpDbModel.FK_EnvironmentFactor_WeightCoefficientDic" >
+          <ConnectorPoint PointX="9.75" PointY="4.40625" />
+          <ConnectorPoint PointX="10.84375" PointY="4.40625" />
+          <ConnectorPoint PointX="10.84375" PointY="8.125" />
+        </AssociationConnector>
+        <AssociationConnector Association="MtpDbModel.FK_UseCasePrimaryMetric_PrimaryMetricDic" >
+          <ConnectorPoint PointX="12.75" PointY="6.3939925130208337" />
+          <ConnectorPoint PointX="14.25" PointY="6.3939925130208337" />
+          <ConnectorPoint PointX="14.25" PointY="7.875" />
+        </AssociationConnector>
+        <AssociationConnector Association="MtpDbModel.FK_UseCase_PriorityDic" >
+          <ConnectorPoint PointX="7.5" PointY="10.355286458333339" />
+          <ConnectorPoint PointX="7.875" PointY="10.730286458333339" />
+          <ConnectorPoint PointX="7.875" PointY="10.5" />
+          <ConnectorPoint PointX="8.25" PointY="10.875" />
+        </AssociationConnector>
+        <AssociationConnector Association="MtpDbModel.FK_ReliabilityEvaluation_Project" >
+          <ConnectorPoint PointX="2.25" PointY="13.403595377604162" />
+          <ConnectorPoint PointX="3" PointY="13.403595377604162" />
+        </AssociationConnector>
+        <AssociationConnector Association="MtpDbModel.FK_TestProgram_Project" >
+          <ConnectorPoint PointX="2.25" PointY="11.96875" />
+          <ConnectorPoint PointX="3.1666666666666665" PointY="11.96875" />
+          <ConnectorPoint PointX="3.3333333333333335" PointY="11.96875" />
+          <ConnectorPoint PointX="4.822916666666667" PointY="11.96875" />
+          <ConnectorPoint PointX="4.989583333333333" PointY="11.96875" />
+          <ConnectorPoint PointX="6" PointY="11.96875" />
+        </AssociationConnector>
+        <AssociationConnector Association="MtpDbModel.FK_UseCase_Project" >
+          <ConnectorPoint PointX="2.25" PointY="11.59375" />
+          <ConnectorPoint PointX="3.1666666666666665" PointY="11.59375" />
+          <ConnectorPoint PointX="3.3333333333333335" PointY="11.59375" />
+          <ConnectorPoint PointX="4.822916666666667" PointY="11.59375" />
+          <ConnectorPoint PointX="4.989583333333333" PointY="11.59375" />
+          <ConnectorPoint PointX="7.916666666666667" PointY="11.59375" />
+          <ConnectorPoint PointX="8.0833333333333339" PointY="11.59375" />
+          <ConnectorPoint PointX="8.25" PointY="11.59375" />
+        </AssociationConnector>
+        <AssociationConnector Association="MtpDbModel.FK_UseCasePrimaryMetric_Project" >
+          <ConnectorPoint PointX="1.5" PointY="11.375" />
+          <ConnectorPoint PointX="1.5" PointY="10.162985026041667" />
+          <ConnectorPoint PointX="3.1666666666666665" PointY="10.162985026041667" />
+          <ConnectorPoint PointX="3.3333333333333335" PointY="10.162985026041667" />
+          <ConnectorPoint PointX="3.5" PointY="10.162985026041667" />
+          <ConnectorPoint PointX="3.5" PointY="8.125" />
+          <ConnectorPoint PointX="8" PointY="8.125" />
+          <ConnectorPoint PointX="8" PointY="8.7879850260416674" />
+          <ConnectorPoint PointX="10" PointY="8.7879850260416674" />
+          <ConnectorPoint PointX="10" PointY="7.875" />
+          <ConnectorPoint PointX="10.072916666666666" PointY="7.8749999999999982" />
+          <ConnectorPoint PointX="10.489583333333334" PointY="7.875" />
+          <ConnectorPoint PointX="10.760416666666666" PointY="7.8749999999999991" />
+          <ConnectorPoint PointX="10.927083333333334" PointY="7.875" />
+          <ConnectorPoint PointX="13.125" PointY="7.875" />
+          <ConnectorPoint PointX="13.125" PointY="9.3458968098958337" />
+          <ConnectorPoint PointX="13.5" PointY="9.3458968098958337" />
+        </AssociationConnector>
+        <AssociationConnector Association="MtpDbModel.FK_ReliabilityEvaluation_ReliabilityEvaluationDic" >
+          <ConnectorPoint PointX="2.25" PointY="8.21875" />
+          <ConnectorPoint PointX="3.25" PointY="8.21875" />
+          <ConnectorPoint PointX="3.25" PointY="12.125" />
+        </AssociationConnector>
+        <AssociationConnector Association="MtpDbModel.FK_ReliabilityEvaluation_TestProgram" >
+          <ConnectorPoint PointX="6" PointY="13.403595377604162" />
+          <ConnectorPoint PointX="4.989583333333333" PointY="13.403595377604162" />
+          <ConnectorPoint PointX="4.822916666666667" PointY="13.403595377604162" />
+          <ConnectorPoint PointX="4.5" PointY="13.403595377604162" />
+        </AssociationConnector>
+        <AssociationConnector Association="MtpDbModel.FK_UseCaseSecondaryMetric_MetricDic" >
+          <ConnectorPoint PointX="14.25" PointY="19.375" />
+          <ConnectorPoint PointX="14.25" PointY="18.42258789062501" />
+        </AssociationConnector>
+        <AssociationConnector Association="MtpDbModel.FK_TechnicalFactor_TechnicalFactorDic" >
+          <ConnectorPoint PointX="9.75" PointY="20.5" />
+          <ConnectorPoint PointX="10.125" PointY="20.125" />
+          <ConnectorPoint PointX="10.125" PointY="17.374746093749998" />
+          <ConnectorPoint PointX="10.322916666666666" PointY="17.374746093749998" />
+          <ConnectorPoint PointX="10.489583333333334" PointY="17.374746093749998" />
+          <ConnectorPoint PointX="10.5" PointY="17.374746093749998" />
+        </AssociationConnector>
+        <AssociationConnector Association="MtpDbModel.FK_TechnicalFactor_UseCase" >
+          <ConnectorPoint PointX="9.75" PointY="15.677499250400635" />
+          <ConnectorPoint PointX="10.066074434901122" PointY="15.993573685301756" />
+          <ConnectorPoint PointX="10.215175565098878" PointY="16.142674815499515" />
+          <ConnectorPoint PointX="10.3125" PointY="16.239999250400636" />
+          <ConnectorPoint PointX="10.3125" PointY="15.8125" />
+          <ConnectorPoint PointX="10.347324434901122" PointY="15.84732443490112" />
+          <ConnectorPoint PointX="10.465175565098878" PointY="15.965175565098878" />
+          <ConnectorPoint PointX="10.5" PointY="16" />
+        </AssociationConnector>
+        <AssociationConnector Association="MtpDbModel.FK_TechnicalFactor_WeightCoefficientDic" >
+          <ConnectorPoint PointX="9.7130769230769243" PointY="5.9321907552083246" />
+          <ConnectorPoint PointX="10.40625" PointY="6.6253638321314" />
+          <ConnectorPoint PointX="10.40625" PointY="18.093371140624988" />
+          <ConnectorPoint PointX="10.5" PointY="18.093371140624988" />
+        </AssociationConnector>
+        <AssociationConnector Association="MtpDbModel.FK_TechnicalFactor_WeightCoefficientDic1" >
+          <ConnectorPoint PointX="9.75" PointY="5.8998820629006321" />
+          <ConnectorPoint PointX="10.15625" PointY="6.3061320629006321" />
+          <ConnectorPoint PointX="10.15625" PointY="18.093371140624988" />
+          <ConnectorPoint PointX="10.5" PointY="18.093371140624988" />
+        </AssociationConnector>
+        <AssociationConnector Association="MtpDbModel.FK_TestProgram_TestMethodDic" >
+          <ConnectorPoint PointX="4.90625" PointY="10.355286458333339" />
+          <ConnectorPoint PointX="4.90625" PointY="14.780742187499996" />
+          <ConnectorPoint PointX="6" PointY="14.780742187499996" />
+        </AssociationConnector>
+        <AssociationConnector Association="MtpDbModel.FK_UseCase_TestProgram" >
+          <ConnectorPoint PointX="7.5" PointY="13.345896809895834" />
+          <ConnectorPoint PointX="8.25" PointY="13.345896809895834" />
+        </AssociationConnector>
+        <AssociationConnector Association="MtpDbModel.FK_UseCasePrimaryMetric_TestProgram" >
+          <ConnectorPoint PointX="7.5" PointY="12.579196404947922" />
+          <ConnectorPoint PointX="8" PointY="12.579196404947922" />
+          <ConnectorPoint PointX="8" PointY="10.75" />
+          <ConnectorPoint PointX="8.0416666666666661" PointY="10.75" />
+          <ConnectorPoint PointX="8.2083333333333339" PointY="10.75" />
+          <ConnectorPoint PointX="9.875" PointY="10.75" />
+          <ConnectorPoint PointX="9.875" PointY="11.066793619791667" />
+          <ConnectorPoint PointX="10.041666666666666" PointY="11.066793619791666" />
+          <ConnectorPoint PointX="10.489583333333334" PointY="11.066793619791667" />
+          <ConnectorPoint PointX="13.166666666666666" PointY="11.066793619791667" />
+          <ConnectorPoint PointX="13.333333333333334" PointY="11.066793619791667" />
+          <ConnectorPoint PointX="13.875000499999999" PointY="11.066793619791667" />
+          <ConnectorPoint PointX="13.875000499999999" PointY="10.816793619791667" />
+        </AssociationConnector>
+        <AssociationConnector Association="MtpDbModel.FK_UseCasePrimaryMetric_UseCase" >
+          <ConnectorPoint PointX="9.75" PointY="10.915383615384616" />
+          <ConnectorPoint PointX="9.94107443490112" PointY="10.724309180483495" />
+          <ConnectorPoint PointX="10.058925565098878" PointY="10.606458050285738" />
+          <ConnectorPoint PointX="10.203125" PointY="10.462258615384616" />
+          <ConnectorPoint PointX="10.203125" PointY="11.191793619791667" />
+          <ConnectorPoint PointX="10.229166666666666" PointY="11.191793619791666" />
+          <ConnectorPoint PointX="10.489583333333334" PointY="11.191793619791667" />
+          <ConnectorPoint PointX="13.125" PointY="11.191793619791667" />
+          <ConnectorPoint PointX="13.5" PointY="10.816793619791667" />
+        </AssociationConnector>
+        <AssociationConnector Association="MtpDbModel.FK_UseCaseSecondaryMetric_UseCase" >
+          <ConnectorPoint PointX="9.75" PointY="14.509294814002406" />
+          <ConnectorPoint PointX="10" PointY="14.509294814002406" />
+          <ConnectorPoint PointX="10" PointY="14.999492187499996" />
+          <ConnectorPoint PointX="10.041666666666666" PointY="14.999492187499996" />
+          <ConnectorPoint PointX="10.239583333333334" PointY="14.999492187499996" />
+          <ConnectorPoint PointX="10.322916666666666" PointY="14.999492187499996" />
+          <ConnectorPoint PointX="10.489583333333334" PointY="14.999492187499996" />
+          <ConnectorPoint PointX="12.322916666666666" PointY="14.999492187499996" />
+          <ConnectorPoint PointX="12.489583333333334" PointY="14.999492187499996" />
+          <ConnectorPoint PointX="14.25" PointY="14.999492187499996" />
+          <ConnectorPoint PointX="14.25" PointY="16.25" />
+        </AssociationConnector>
+      </Diagram>
+    </Diagrams>
+  </Designer>
+</edmx:Edmx>

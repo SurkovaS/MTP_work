@@ -1,0 +1,20 @@
+﻿@using MTP1
+@using MTP1.Models
+@model IEnumerable<Dictionaries>
+
+@{
+    this.ViewBag.Title = string.Format("Справочники | {0}", Constants.TITLE);
+
+}
+<h2>Справочники</h2>
+
+<table>
+    @foreach (Dictionaries item in this.Model)
+    {
+        <tr>
+           <td>
+                @this.Html.ActionLink(item.Title, "Index", item.TitleEng)
+            </td>
+        </tr>
+    }
+</table>

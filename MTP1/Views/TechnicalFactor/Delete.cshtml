@@ -1,0 +1,29 @@
+﻿@using MTP1
+@model MTP1.Models.TechnicalFactor
+
+@{
+    this.ViewBag.Title = string.Format("Технический фактор. Удаление | {0}", Constants.TITLE);
+
+}
+<fieldset>
+    <legend>Технический фактор. Удаление "@Model.TechnicalFactorDic.Title"</legend>
+    @this.Html.ActionLink("Отменить", "Index")
+
+    <h2 style="color: Red">Вы уверены, что хотите удалить эту запись?</h2>
+     @using (this.Html.BeginForm())
+    {
+        <input type="submit" value="Удалить" />
+    }
+    <div class="display-label">Use Case</div>
+    <div class="display-field">
+        @this.Html.DisplayFor(model => model.UseCase1.Title)
+    </div>
+    <div class="display-label">Технический фактор</div>
+    <div class="display-field">
+        @this.Html.DisplayFor(model => model.TechnicalFactorDic.Title)
+    </div>
+    <div class="display-label">Весовой коэффициент</div>
+    <div class="display-field">
+        @this.Html.DisplayFor(model => model.WeightCoefficientDic.Value) (@this.Html.DisplayFor(model => model.WeightCoefficientDic.Title))
+    </div>
+</fieldset>

@@ -1,0 +1,29 @@
+﻿@using MTP1
+@model MTP1.Models.UseCasePrimaryMetric
+
+@{
+    this.ViewBag.Title = string.Format("Первичные метрики | {0}", Constants.TITLE);
+
+}
+
+<script src="@this.Url.Content("~/Scripts/jquery.validate.min.js")" type="text/javascript"> </script>
+<script src="@this.Url.Content("~/Scripts/jquery.validate.unobtrusive.min.js")" type="text/javascript"> </script>
+
+
+@using (this.Html.BeginForm())
+{
+    <fieldset>
+        <legend>Первичные метрики - ввод</legend>
+        @this.Html.ActionLink("Отменить", "Index")
+      
+    
+        @this.Html.EditorForModel()
+        <p>
+            <input type="submit" value="Сохранить" />
+        </p>
+    </fieldset>
+}
+
+<div>
+    @this.Html.ActionLink("Первичные метрики Use Case ", "Index", "UseCasePrimaryMetric")
+</div>

@@ -1,0 +1,31 @@
+﻿@using MTP1
+@model MTP1.Models.Actor
+
+@{
+    this.ViewBag.Title = string.Format("Актор {0} | {1}", this.Model.ActorDic.Title, Constants.TITLE);
+
+}
+
+<fieldset>
+    <legend>Актор "@this.Model.ActorDic.Title"</legend>
+    
+    <div class="display-label">Use Case</div>
+    <div class="display-field">
+        @this.Html.DisplayFor(model => model.UseCase1.Title)
+    </div>
+    <div class="display-label">Актор</div>
+    <div class="display-field">
+        @this.Html.DisplayFor(model => model.ActorDic.Title)
+    </div>
+    <div class="display-label">Весовой коэффициент</div>
+    <div class="display-field">
+        @this.Html.DisplayFor(model => model.WeightCoefficientDic.Value) (@this.Html.DisplayFor(model => model.WeightCoefficientDic.Title))
+    </div>
+    <div class="display-label">Количество</div>
+    <div class="display-field">
+        @this.Html.DisplayFor(model => model.Quantity) 
+    </div>
+</fieldset>
+<p>
+   @this.Html.ActionLink("Акторы", "Index")
+</p>

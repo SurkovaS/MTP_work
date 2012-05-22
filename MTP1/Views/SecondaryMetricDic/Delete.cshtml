@@ -1,0 +1,28 @@
+﻿@using MTP1
+@model MTP1.Models.SecondaryMetricDic
+           
+@{
+    this.ViewBag.Title = string.Format("Удаление элемента справочника | {0}", Constants.TITLE);
+
+}
+<fieldset>
+    <legend>Удаление элемента справочника "@this.Model.Title"</legend>
+    @this.Html.ActionLink("Отменить", "Index")
+
+    <h2 style="color: Red">Вы уверены, что хотите удалить эту запись?</h2>
+
+    @using (this.Html.BeginForm())
+    {
+        <input type="submit" value="Удалить" />
+    }
+    <div class="display-label">Вторичная метрика</div>
+    <div class="display-field">
+        @this.Html.DisplayFor(model => model.Title)
+    </div>
+
+    <div class="display-label">Описание</div>  
+    <div class="display-field">
+        @this.Html.DisplayFor(model => model.Description)
+    </div>
+
+    @this.Html.ActionLink("Вторичные метрики", "Index")</fieldset>

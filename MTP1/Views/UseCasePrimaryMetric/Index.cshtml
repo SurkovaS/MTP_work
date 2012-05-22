@@ -1,0 +1,65 @@
+﻿@using MTP1
+@using MTP1.Models
+@model IEnumerable<UseCasePrimaryMetric>
+
+@{
+    this.ViewBag.Title = string.Format("Первичные метрики | {0}", Constants.TITLE);
+
+}
+<p>
+    @this.Html.ActionLink("На главную", "Index", "Home")
+    @Constants.BREADCRUMBS_SEPARATOR
+    Первичные метрики
+</p>
+
+<h2>Первичные метрики</h2>
+
+<p>
+    @this.Html.ActionLink("Создать", "Create", "UseCase")
+
+</p>
+<table>
+    <tr>
+        <th>
+            Первичная метрика
+        </th>
+        <th>
+            Значение
+        </th>
+        <th>
+            Проект
+        </th>
+        <th>
+            Программа тестирования
+        </th>
+        <th>
+            Use-case
+        </th>
+    </tr>
+
+    @foreach (UseCasePrimaryMetric item in this.Model)
+    {
+        <tr>
+            <td>
+                @this.Html.ActionLink(item.PrimaryMetricDic.Title, "Details", new { id = item.ID })
+            </td>
+            <td>
+                @this.Html.DisplayFor(modelItem => item.Value)
+            </td>
+            <td>
+                @this.Html.DisplayFor(modelItem => item.Project1.Title)
+            </td>
+            <td>
+                @this.Html.DisplayFor(modelItem => item.TestProgram.Title)
+            </td>
+            <td>
+                @this.Html.DisplayFor(modelItem => item.UseCase1.Title)
+            </td>
+            <td>
+                @this.Html.ActionLink("Редактировать", "Edit", new { id = item.ID }) |
+                @this.Html.ActionLink("Удалить", "Delete", new { id = item.ID })
+            </td>
+        
+        </tr>
+    }
+</table>

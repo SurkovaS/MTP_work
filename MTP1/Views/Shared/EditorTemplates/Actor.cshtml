@@ -1,0 +1,46 @@
+﻿@using MTP1.Service.Factory
+@model MTP1.Models.Actor
+<div>
+</div>
+
+    
+<div class="display-label">Use Case</div>
+<div class="editor-field">
+    @{
+        var queryUseCases = UseCaseServiceFactory.Create().Get().Select(item => new { item.ID, Name = item.Title }).ToList();
+        List<SelectListItem> listUseCases = queryUseCases.Select(item => new SelectListItem { Text = item.Name.ToString(), Value = item.ID.ToString(), Selected = this.Model != null && this.Model.UseCase == item.ID }).ToList();
+        @this.Html.DropDownListFor(model => model.UseCase, listUseCases, "...")
+
+    } 
+    
+</div>
+<table>
+    <tr>
+        <td>Актор</td>
+        
+        <td>Весовой коэффициент</td>
+
+        <td>Количество</td>
+    </tr>
+    <tr>
+        <td>
+            @{
+                var queryActors = ActorDicServiceFactory.Create().Get().Select(item => new { item.ID, Name = item.Title }).ToList();
+                List<SelectListItem> listActors = queryActors.Select(item => new SelectListItem { Text = item.Name.ToString(), Value = item.ID.ToString(), Selected = this.Model != null && this.Model.Actor1 == item.ID }).ToList();
+                @this.Html.DropDownListFor(model => model.Actor1, listActors, "...")
+
+            } 
+        </td>
+        <td>
+            @{
+                var queryWCs = WeightCoefficientDicServiceFactory.Create().Get().Select(item => new { item.ID, Name = item.Value }).ToList();
+                List<SelectListItem> listWCs = queryWCs.Select(item => new SelectListItem { Text = item.Name.ToString(), Value = item.ID.ToString(), Selected = this.Model != null && this.Model.WeightCoefficient == item.ID }).ToList();
+                @this.Html.DropDownListFor(model => model.WeightCoefficient, listWCs, "...")
+
+            } 
+        </td>
+        <td>
+            @this.Html.EditorFor(model => model.Quantity)
+        </td>
+    </tr>
+</table>

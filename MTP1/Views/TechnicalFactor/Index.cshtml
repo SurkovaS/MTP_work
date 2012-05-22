@@ -1,0 +1,56 @@
+﻿@using MTP1
+@using MTP1.Models
+@model IEnumerable<TechnicalFactor>
+
+@{
+    this.ViewBag.Title = string.Format("Технические факторы | {0}", Constants.TITLE);
+
+}
+<h2>Технические факторы</h2>
+
+<p>
+    @this.Html.ActionLink("Создать", "Create")
+
+</p>
+<table>
+    <tr>
+        <th>
+            Use Case
+        </th>
+        <th>
+            Технический фактор
+        </th>
+        <th>
+            Весовой коэффициент
+        </th>
+        <th>
+            Сложность
+        </th>
+    </tr>
+
+    @foreach (TechnicalFactor item in this.Model)
+    {
+        <tr>
+            <td>
+                @this.Html.DisplayFor(modelItem => item.UseCase1.Title)
+            </td>
+            <td>
+                @this.Html.ActionLink(item.TechnicalFactorDic.Title, "Details", new { id = item.ID })
+            </td>
+            <td>
+                @this.Html.DisplayFor(modelItem => item.WeightCoefficientDic.Value)
+            </td>
+            <td>
+                @this.Html.DisplayFor(modelItem => item.WeightCoefficientDic.Value)
+            </td>
+            <td>
+                @this.Html.ActionLink("Редактировать", "Edit", new { id = item.ID }) |
+                @this.Html.ActionLink("Удалить", "Delete", new { id = item.ID })
+            </td>
+        </tr>
+        
+    }
+</table>
+<p>
+   
+</p>

@@ -1,0 +1,46 @@
+﻿@using MTP1
+@model MTP1.Models.UseCasePrimaryMetric
+
+@{
+    this.ViewBag.Title = string.Format("Первичные метрики Use case {0} | {1}", this.Model.UseCase1.Title, Constants.TITLE);
+
+}
+
+@this.Html.ActionLink("На главную", "Index", "Home")
+@Constants.BREADCRUMBS_SEPARATOR
+@this.Html.ActionLink("Use Case", "Index", "UseCase")
+@Constants.BREADCRUMBS_SEPARATOR
+@this.Model.ID
+
+<h2>Первичные метрики Use Case @this.Model.UseCase1.Title, проект @this.Model.Project1.Title</h2>
+<fieldset>
+    <legend>Первичные метрики Use Case @this.Model.UseCase1.Title, проект @this.Model.Project1.Title</legend>
+
+    <div class="display-label">Первичная метрика</div>
+    <div class="display-field">
+        @this.Html.DisplayFor(model => model.PrimaryMetricDic.Title)
+    </div>
+    <div class="display-label">Значение</div>
+    <div class="display-field">
+        @this.Html.DisplayFor(model => model.Value)
+    </div>
+    <div class="display-label">Проект</div>
+    <div class="display-field">
+        @this.Html.DisplayFor(model => model.Project1.Title)
+    </div>
+    <div class="display-label">Программа тестирования</div>
+    <div class="display-field">
+        @this.Html.DisplayFor(model => model.TestProgram.Title)
+    </div>
+    <div class="display-label">Use-case</div>
+    <div class="display-field">
+        @this.Html.DisplayFor(model => model.UseCase1.Title)
+    </div>
+    
+
+</fieldset>
+<p>
+    @this.Html.ActionLink("Редактировать", "Edit", new { id = this.Model.ID }) 
+    @this.Html.ActionLink("Рассчитать вторичные метрики", "Index", "UseCaseSecondaryMetric") | 
+    @this.Html.ActionLink("Первичные метрики", "Index")
+</p>

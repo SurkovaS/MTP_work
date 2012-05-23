@@ -91,16 +91,16 @@ namespace MTP1.Controllers
                                             cell =
                                     new[]
                                         {
-                                            m.Title /*.ToStringWithDbNullCheck()*/, m.Version
-                                            
-                                            /*.ToStringWithDbNullCheck()*/, // m.EmployeeDic == null
+                                            m.Title /*.ToStringWithDbNullCheck()*/,
+                                            m.Version.ToString()/*.ToStringWithDbNullCheck()*/, 
+                                            // m.EmployeeDic == null
                                             // ? string.Empty
                                             // : m.EmployeeDic.EmployeeFirstName.ToStringWithDbNullCheck() + ", "
                                             // + m.EmployeeDic.EmployeeLastName.ToStringWithDbNullCheck(),
-                                            m.BeginDatePlaning.ToString /*WithDbNullCheck*/(), 
-                                            m.EndDatePlaning.ToString /*WithDbNullCheck*/(), 
-                                            m.BeginDateActual.ToString /*WithDbNullCheck*/(), 
-                                            m.EndDateActual.ToString /*WithDbNullCheck*/()
+                                            m.BeginDatePlaning.ToString()/*WithDbNullCheck*/, 
+                                            m.EndDatePlaning.ToString()/*WithDbNullCheck*/, 
+                                            m.BeginDateActual.ToString()/*WithDbNullCheck*/, 
+                                            m.EndDateActual.ToString()/*WithDbNullCheck*/
                                         }
                                         }).ToArray()
                     };

@@ -1,56 +1,93 @@
 ﻿@using MTP1
-@using MTP1.Models
-@model IEnumerable<TestProgram>
+@model IEnumerable<MTP1.Models.TestProgram>
 
 @{
     this.ViewBag.Title = string.Format("Программы тестирования| {0}", Constants.TITLE);
 
 }
 
-<h2>программы тестирования</h2>
+<h2>Программы тестирования</h2>
 
 <p>
-   @this.Html.ActionLink("Создать", "Create","UseCase")
+   @this.Html.ActionLink("Создать", "Create","TestProgram")
 
 </p>
-<table>
-    <tr>
-        <th>
-            Программа тестирования
-        </th>
-        <th>
-            Описание программы
-        </th>
-        <th>
-            Проект
-        </th>
-        <th>
-            Метод тестирования
-        </th>
-        
-    </tr>
+<div id="myDiv" style="width: 100%">
+    <table id="grid" cellpadding="0" cellspacing="0">
+    </table>
+    <div id="pager" style="text-align: center;">
+    </div>
+    <div id="search" style="margin-left: 30%; display: none">
+    </div>
+</div>
+<script type="text/javascript">
+    var serverRoot = '@Url.Action("GetPrograms", "TestProgram")';
+    var lastsel;
+    $(function () {
 
-    @foreach (TestProgram item in this.Model)
-    {
-        <tr>
-            <td>
-                @this.Html.ActionLink(item.Title, "Details", new { id = item.ID })
-            </td>
-            <td>
-                @this.Html.DisplayFor(modelItem => item.Description)
-            </td>
-            <td>
-                @this.Html.DisplayFor(modelItem => item.Project1.Title)
-            </td>
-            <td>
-                @this.Html.DisplayFor(modelItem => item.TestMethodDic.Title)
-            </td>
-            
-            <td>
-                @this.Html.ActionLink("Редактировать", "Edit", new { id = item.ID }) |
-                @this.Html.ActionLink("Удалить", "Delete", new { id = item.ID })
-            </td>
-        
-        </tr>
-    }
-</table>
+        $("#grid").jqGrid({
+            colNames: ['Программа тестирования', 'Описание', 'Проект тестирования', 'Метод тестирования'],
+            colModel: [
+                {
+                    name: 'Title',
+                    sortable: false,
+                    align: 'center',
+                    width: '250'
+                },
+                {
+                    name: 'Description',
+                    sortable: false,
+                    align: 'center',
+                    width: '300'
+                },
+                {
+                    name: 'Project',
+                    sortable: false,
+                    align: 'left',
+                    width: '200'
+                },
+                {
+                    name: 'TestMethod',
+                    sortable: false,
+                    align: 'left',
+                    width: '200'
+                }
+            ],
+            pager: $("#pager"),
+            sortname: 'Title',
+            sortorder: "",
+            rowNum: 10,
+            rowList: [10, 20, 50],
+            viewrecords: true,
+            rownumbers: true,
+            shrinkToFit: true,
+            width: 1100,
+            altRows: true,
+            altclass: 'myAltRowClass',
+            height: 'auto',
+            gridview: true,
+            url: serverRoot,
+            datatype: 'json',
+            mtype: 'GET',
+            caption: 'Программы тестирования',
+            loadError: function (xhr, status, error) {
+                alert(error);
+            },
+            loadComplete: function (data) {
+            }
+        });
+
+
+        jQuery("#grid").jqGrid('navGrid', '#pager',
+            { edit: false, add: true, del: true, search: false, refresh: true },
+            { closeOnEscape: true, reloadAfterSubmit: true,
+                closeAfterEdit: true, left: 400, top: 300
+            },
+            { closeOnEscape: true, reloadAfterSubmit: true,
+                closeAfterAdd: true, left: 450, top: 300, width: 520
+            },
+            { closeOnEscape: true, reloadAfterSubmit: true, left: 450, top: 300 });
+
+    });
+
+</script>

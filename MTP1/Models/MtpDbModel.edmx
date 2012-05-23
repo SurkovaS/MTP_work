@@ -1764,26 +1764,26 @@
       <Diagram Name="MtpDbModel">
         <EntityTypeShape EntityType="MtpDbModel.Actor" Width="1.5" PointX="10.5" PointY="12.125" Height="2.5571907552083246" />
         <EntityTypeShape EntityType="MtpDbModel.ActorDic" Width="1.5" PointX="8.25" PointY="17.5" Height="1.7879850260416674" />
-        <EntityTypeShape EntityType="MtpDbModel.Defect" Width="1.5" PointX="13.5" PointY="12" Height="2.749492187499996" />
+        <EntityTypeShape EntityType="MtpDbModel.Defect" Width="1.5" PointX="13.5" PointY="12" Height="2.7494921874999818" />
         <EntityTypeShape EntityType="MtpDbModel.DefectDic" Width="1.5" PointX="11.25" PointY="20.5" Height="1.7879850260416674" />
         <EntityTypeShape EntityType="MtpDbModel.DefectPrimaryMetric" Width="1.5" PointX="15.75" PointY="12.125" Height="2.5571907552083246" />
-        <EntityTypeShape EntityType="MtpDbModel.Dictionaries" Width="1.5" PointX="0.75" PointY="0.75" Height="1.5956835937500102" />
+        <EntityTypeShape EntityType="MtpDbModel.Dictionaries" Width="1.5" PointX="0.75" PointY="0.75" Height="1.5956835937499818" />
         <EntityTypeShape EntityType="MtpDbModel.EnvironmentFactor" Width="1.5" PointX="10.5" PointY="8.125" Height="2.5571907552083246" />
         <EntityTypeShape EntityType="MtpDbModel.EnvironmentFactorDic" Width="1.5" PointX="8.25" PointY="6.75" Height="1.7879850260416674" />
         <EntityTypeShape EntityType="MtpDbModel.PrimaryMetricDic" Width="1.5" PointX="11.25" PointY="5.5" Height="1.7879850260416674" />
-        <EntityTypeShape EntityType="MtpDbModel.PriorityDic" Width="1.5" PointX="6" PointY="8.375" Height="1.9802864583333388" />
-        <EntityTypeShape EntityType="MtpDbModel.Project" Width="1.5" PointX="0.75" PointY="11.375" Height="3.903300781249996" />
+        <EntityTypeShape EntityType="MtpDbModel.PriorityDic" Width="1.5" PointX="6" PointY="8.375" Height="1.9802864583333246" />
+        <EntityTypeShape EntityType="MtpDbModel.Project" Width="1.5" PointX="0.75" PointY="11.375" Height="3.9033007812499818" />
         <EntityTypeShape EntityType="MtpDbModel.ReliabilityEvaluation" Width="1.5" PointX="3" PointY="12.125" Height="2.5571907552083246" />
         <EntityTypeShape EntityType="MtpDbModel.ReliabilityEvaluationDic" Width="1.5" PointX="0.75" PointY="8.125" Height="1.7879850260416674" />
-        <EntityTypeShape EntityType="MtpDbModel.SecondaryMetricDic" Width="1.5" PointX="13.5" PointY="19.375" Height="1.9802864583333388" />
-        <EntityTypeShape EntityType="MtpDbModel.TechnicalFactor" Width="1.5" PointX="10.5" PointY="16" Height="2.749492187499996" />
+        <EntityTypeShape EntityType="MtpDbModel.SecondaryMetricDic" Width="1.5" PointX="13.5" PointY="19.375" Height="1.9802864583333246" />
+        <EntityTypeShape EntityType="MtpDbModel.TechnicalFactor" Width="1.5" PointX="10.5" PointY="16" Height="2.7494921874999818" />
         <EntityTypeShape EntityType="MtpDbModel.TechnicalFactorDic" Width="1.5" PointX="8.25" PointY="20.5" Height="1.7879850260416674" />
-        <EntityTypeShape EntityType="MtpDbModel.TestMethodDic" Width="1.5" PointX="3.75" PointY="8.375" Height="1.9802864583333388" />
+        <EntityTypeShape EntityType="MtpDbModel.TestMethodDic" Width="1.5" PointX="3.75" PointY="8.375" Height="1.9802864583333246" />
         <EntityTypeShape EntityType="MtpDbModel.TestProgram" Width="1.5" PointX="6" PointY="11.875" Height="2.9417936197916674" />
         <EntityTypeShape EntityType="MtpDbModel.UseCase" Width="1.5" PointX="8.25" PointY="10.875" Height="4.8648079427083246" />
         <EntityTypeShape EntityType="MtpDbModel.UseCasePrimaryMetric" Width="1.5" PointX="13.5" PointY="7.875" Height="2.9417936197916674" />
-        <EntityTypeShape EntityType="MtpDbModel.UseCaseSecondaryMetric" Width="1.5" PointX="13.5" PointY="16.25" Height="2.1725878906250102" />
-        <EntityTypeShape EntityType="MtpDbModel.WeightCoefficientDic" Width="1.5" PointX="8.25" PointY="3.375" Height="2.5571907552083246" />
+        <EntityTypeShape EntityType="MtpDbModel.UseCaseSecondaryMetric" Width="1.5" PointX="13.5" PointY="16.25" Height="2.1725878906249818" />
+        <EntityTypeShape EntityType="MtpDbModel.WeightCoefficientDic" Width="1.5" PointX="8.25" PointY="3.375" Height="2.557190755208353" />
         <AssociationConnector Association="MtpDbModel.FK_Actor_ActorDic" >
           <ConnectorPoint PointX="9.75" PointY="17.5" />
           <ConnectorPoint PointX="10.125" PointY="17.125" />
@@ -1799,8 +1799,8 @@
           <ConnectorPoint PointX="10.5" PointY="12.701797688802081" />
         </AssociationConnector>
         <AssociationConnector Association="MtpDbModel.FK_Actor_WeightCoefficientDic" >
-          <ConnectorPoint PointX="9.75" PointY="5.8941128321314009" />
-          <ConnectorPoint PointX="10.3125" PointY="6.4566128321314009" />
+          <ConnectorPoint PointX="9.75" PointY="5.8941128321314293" />
+          <ConnectorPoint PointX="10.3125" PointY="6.4566128321314293" />
           <ConnectorPoint PointX="10.3125" PointY="14.074145066406238" />
           <ConnectorPoint PointX="10.322916666666666" PointY="14.074145066406238" />
           <ConnectorPoint PointX="10.489583333333334" PointY="14.074145066406238" />
@@ -1818,8 +1818,8 @@
           <ConnectorPoint PointX="13.5" PointY="12.046875" />
         </AssociationConnector>
         <AssociationConnector Association="MtpDbModel.FK_Defect_PriorityDic" >
-          <ConnectorPoint PointX="7.5" PointY="9.4778852421875044" />
-          <ConnectorPoint PointX="10" PointY="9.4778852421875044" />
+          <ConnectorPoint PointX="7.5" PointY="9.4778852421874973" />
+          <ConnectorPoint PointX="10" PointY="9.4778852421874973" />
           <ConnectorPoint PointX="10" PointY="11.066793619791667" />
           <ConnectorPoint PointX="10.041666666666666" PointY="11.066793619791666" />
           <ConnectorPoint PointX="10.489583333333334" PointY="11.066793619791667" />
@@ -1833,21 +1833,21 @@
           <ConnectorPoint PointX="15.75" PointY="13.403595377604162" />
         </AssociationConnector>
         <AssociationConnector Association="MtpDbModel.FK_DefectPrimaryMetric_MetricDic" >
-          <ConnectorPoint PointX="15" PointY="20.365143229166669" />
-          <ConnectorPoint PointX="16.5" PointY="20.365143229166669" />
+          <ConnectorPoint PointX="15" PointY="20.365143229166662" />
+          <ConnectorPoint PointX="16.5" PointY="20.365143229166662" />
           <ConnectorPoint PointX="16.5" PointY="14.682190755208325" />
         </AssociationConnector>
         <AssociationConnector Association="MtpDbModel.FK_DefectPrimaryMetric_TestMethodDic" >
-          <ConnectorPoint PointX="5.25" PointY="9.36514322916667" />
-          <ConnectorPoint PointX="5.75" PointY="9.36514322916667" />
-          <ConnectorPoint PointX="5.75" PointY="10.605286458333339" />
-          <ConnectorPoint PointX="7.666666666666667" PointY="10.605286458333339" />
-          <ConnectorPoint PointX="7.833333333333333" PointY="10.605286458333339" />
-          <ConnectorPoint PointX="7.8969531250000058" PointY="10.605286458333339" />
-          <ConnectorPoint PointX="8.0636197916666728" PointY="10.605286458333339" />
-          <ConnectorPoint PointX="9.9121494391025582" PointY="10.605286458333339" />
-          <ConnectorPoint PointX="10.083333333333334" PointY="10.605286458333339" />
-          <ConnectorPoint PointX="10.125" PointY="10.605286458333339" />
+          <ConnectorPoint PointX="5.25" PointY="9.3651432291666623" />
+          <ConnectorPoint PointX="5.75" PointY="9.3651432291666623" />
+          <ConnectorPoint PointX="5.75" PointY="10.605286458333325" />
+          <ConnectorPoint PointX="7.666666666666667" PointY="10.605286458333325" />
+          <ConnectorPoint PointX="7.833333333333333" PointY="10.605286458333325" />
+          <ConnectorPoint PointX="7.8969531249999916" PointY="10.605286458333325" />
+          <ConnectorPoint PointX="8.0636197916666585" PointY="10.605286458333325" />
+          <ConnectorPoint PointX="9.9121494391025724" PointY="10.605286458333325" />
+          <ConnectorPoint PointX="10.083333333333334" PointY="10.605286458333325" />
+          <ConnectorPoint PointX="10.125" PointY="10.605286458333325" />
           <ConnectorPoint PointX="10.125" PointY="11.316793619791667" />
           <ConnectorPoint PointX="10.229166666666666" PointY="11.316793619791666" />
           <ConnectorPoint PointX="10.489583333333334" PointY="11.316793619791667" />
@@ -1885,8 +1885,8 @@
           <ConnectorPoint PointX="14.25" PointY="7.875" />
         </AssociationConnector>
         <AssociationConnector Association="MtpDbModel.FK_UseCase_PriorityDic" >
-          <ConnectorPoint PointX="7.5" PointY="10.355286458333339" />
-          <ConnectorPoint PointX="7.875" PointY="10.730286458333339" />
+          <ConnectorPoint PointX="7.5" PointY="10.355286458333325" />
+          <ConnectorPoint PointX="7.875" PointY="10.730286458333325" />
           <ConnectorPoint PointX="7.875" PointY="10.5" />
           <ConnectorPoint PointX="8.25" PointY="10.875" />
         </AssociationConnector>
@@ -1944,15 +1944,15 @@
         </AssociationConnector>
         <AssociationConnector Association="MtpDbModel.FK_UseCaseSecondaryMetric_MetricDic" >
           <ConnectorPoint PointX="14.25" PointY="19.375" />
-          <ConnectorPoint PointX="14.25" PointY="18.42258789062501" />
+          <ConnectorPoint PointX="14.25" PointY="18.422587890624982" />
         </AssociationConnector>
         <AssociationConnector Association="MtpDbModel.FK_TechnicalFactor_TechnicalFactorDic" >
           <ConnectorPoint PointX="9.75" PointY="20.5" />
           <ConnectorPoint PointX="10.125" PointY="20.125" />
-          <ConnectorPoint PointX="10.125" PointY="17.374746093749998" />
-          <ConnectorPoint PointX="10.322916666666666" PointY="17.374746093749998" />
-          <ConnectorPoint PointX="10.489583333333334" PointY="17.374746093749998" />
-          <ConnectorPoint PointX="10.5" PointY="17.374746093749998" />
+          <ConnectorPoint PointX="10.125" PointY="17.374746093749991" />
+          <ConnectorPoint PointX="10.322916666666666" PointY="17.374746093749991" />
+          <ConnectorPoint PointX="10.489583333333334" PointY="17.374746093749991" />
+          <ConnectorPoint PointX="10.5" PointY="17.374746093749991" />
         </AssociationConnector>
         <AssociationConnector Association="MtpDbModel.FK_TechnicalFactor_UseCase" >
           <ConnectorPoint PointX="9.75" PointY="15.677499250400635" />
@@ -1965,19 +1965,19 @@
           <ConnectorPoint PointX="10.5" PointY="16" />
         </AssociationConnector>
         <AssociationConnector Association="MtpDbModel.FK_TechnicalFactor_WeightCoefficientDic" >
-          <ConnectorPoint PointX="9.7130769230769243" PointY="5.9321907552083246" />
-          <ConnectorPoint PointX="10.40625" PointY="6.6253638321314" />
-          <ConnectorPoint PointX="10.40625" PointY="18.093371140624988" />
-          <ConnectorPoint PointX="10.5" PointY="18.093371140624988" />
+          <ConnectorPoint PointX="9.7130769230769243" PointY="5.932190755208353" />
+          <ConnectorPoint PointX="10.40625" PointY="6.6253638321314288" />
+          <ConnectorPoint PointX="10.40625" PointY="18.093371140624981" />
+          <ConnectorPoint PointX="10.5" PointY="18.093371140624981" />
         </AssociationConnector>
         <AssociationConnector Association="MtpDbModel.FK_TechnicalFactor_WeightCoefficientDic1" >
-          <ConnectorPoint PointX="9.75" PointY="5.8998820629006321" />
-          <ConnectorPoint PointX="10.15625" PointY="6.3061320629006321" />
-          <ConnectorPoint PointX="10.15625" PointY="18.093371140624988" />
-          <ConnectorPoint PointX="10.5" PointY="18.093371140624988" />
+          <ConnectorPoint PointX="9.75" PointY="5.8998820629006605" />
+          <ConnectorPoint PointX="10.15625" PointY="6.3061320629006605" />
+          <ConnectorPoint PointX="10.15625" PointY="18.093371140624981" />
+          <ConnectorPoint PointX="10.5" PointY="18.093371140624981" />
         </AssociationConnector>
         <AssociationConnector Association="MtpDbModel.FK_TestProgram_TestMethodDic" >
-          <ConnectorPoint PointX="4.90625" PointY="10.355286458333339" />
+          <ConnectorPoint PointX="4.90625" PointY="10.355286458333325" />
           <ConnectorPoint PointX="4.90625" PointY="14.780742187499996" />
           <ConnectorPoint PointX="6" PointY="14.780742187499996" />
         </AssociationConnector>
@@ -2012,16 +2012,16 @@
           <ConnectorPoint PointX="13.5" PointY="10.816793619791667" />
         </AssociationConnector>
         <AssociationConnector Association="MtpDbModel.FK_UseCaseSecondaryMetric_UseCase" >
-          <ConnectorPoint PointX="9.75" PointY="14.509294814002406" />
-          <ConnectorPoint PointX="10" PointY="14.509294814002406" />
-          <ConnectorPoint PointX="10" PointY="14.999492187499996" />
-          <ConnectorPoint PointX="10.041666666666666" PointY="14.999492187499996" />
-          <ConnectorPoint PointX="10.239583333333334" PointY="14.999492187499996" />
-          <ConnectorPoint PointX="10.322916666666666" PointY="14.999492187499996" />
-          <ConnectorPoint PointX="10.489583333333334" PointY="14.999492187499996" />
-          <ConnectorPoint PointX="12.322916666666666" PointY="14.999492187499996" />
-          <ConnectorPoint PointX="12.489583333333334" PointY="14.999492187499996" />
-          <ConnectorPoint PointX="14.25" PointY="14.999492187499996" />
+          <ConnectorPoint PointX="9.75" PointY="14.509294814002349" />
+          <ConnectorPoint PointX="10" PointY="14.509294814002349" />
+          <ConnectorPoint PointX="10" PointY="14.999492187499982" />
+          <ConnectorPoint PointX="10.041666666666666" PointY="14.999492187499982" />
+          <ConnectorPoint PointX="10.239583333333334" PointY="14.999492187499982" />
+          <ConnectorPoint PointX="10.322916666666666" PointY="14.999492187499982" />
+          <ConnectorPoint PointX="10.489583333333334" PointY="14.999492187499982" />
+          <ConnectorPoint PointX="12.322916666666666" PointY="14.999492187499982" />
+          <ConnectorPoint PointX="12.489583333333334" PointY="14.999492187499982" />
+          <ConnectorPoint PointX="14.25" PointY="14.999492187499982" />
           <ConnectorPoint PointX="14.25" PointY="16.25" />
         </AssociationConnector>
       </Diagram>

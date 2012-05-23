@@ -2,7 +2,7 @@
 @model MTP1.Models.TestProgram
 
 @{
-    this.ViewBag.Title = string.Format("Создание программф тестирования | {0}", Constants.TITLE);
+    this.ViewBag.Title = string.Format("Создание программы тестирования | {0}", Constants.TITLE);
 
 }
 
@@ -13,7 +13,7 @@
 @using (this.Html.BeginForm())
 {
     <fieldset>
-        <legend>Создание Use Case</legend>
+        <legend>Создание программы тестирования</legend>
         @this.Html.ActionLink("Отменить", "Index")
         @this.Html.EditorForModel()
         <p>

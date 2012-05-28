@@ -23,27 +23,27 @@
                     <ul id="menu" class="mega-menu">
                         <li><a href="#">Проекты</a>
                             <ul>
-                                <li><a href="@this.Url.Action("Index", "Project")">Проекты</a></li>
-                                <li><a href="@this.Url.Action("Create", "Project")">Новый проект</a></li>
-                                <li><a href="@this.Url.Action("Index", "TestProgram")">Программы тестирования</a></li>
-                                <li><a href="@this.Url.Action("Create", "TestProgram")">Новая программа тестирования</a></li>
+                                <li><a href="@Url.Action("Index", "Project")">Проекты</a></li>
+                                <li><a href="@Url.Action("Create", "Project")">Новый проект</a></li>
+                                <li><a href="@Url.Action("Index", "TestProgram")">Программы тестирования</a></li>
+                                <li><a href="@Url.Action("Create", "TestProgram")">Новая программа тестирования</a></li>
                             </ul>
                         </li>
                         <li><a href="#">UseCase</a>
                             <ul>
-                                <li><a href="@this.Url.Action("Index", "UseCase")">Use Cases</a></li>
-                                <li><a href="@this.Url.Action("Create", "UseCase")">Новый Use Case</a></li>
-                                <li><a href="@this.Url.Action("Index", "TechnicalFactor")">Технические факторы</a></li>
-                                <li><a href="@this.Url.Action("Index", "EnvironmentFactor")">Факторы окружения</a></li>
-                                <li><a href="@this.Url.Action("Index", "Actor")">Акторы</a></li>
+                                <li><a href="@Url.Action("Index", "UseCase")">Use Cases</a></li>
+                                <li><a href="@Url.Action("Create", "UseCase")">Новый Use Case</a></li>
+                                <li><a href="@Url.Action("Index", "TechnicalFactor")">Технические факторы</a></li>
+                                <li><a href="@Url.Action("Index", "EnvironmentFactor")">Факторы окружения</a></li>
+                                <li><a href="@Url.Action("Index", "Actor")">Акторы</a></li>
                             </ul>
                         </li>
                         <li><a href="#">Метрики</a>
                             <ul>
-                                <li><a href="@this.Url.Action("Index", "UCP")">Трудозатраты</a></li>
-                                <li><a href="@this.Url.Action("Index", "UseCasePrimaryMetric")">Первичные метрики</a></li>
-                                <li><a href="@this.Url.Action("Index", "UseCaseSecondaryMetric")">Вторичные метрики</a></li>
-                                <li><a href="@this.Url.Action("Index", "ReliabilityEvaluation")">Показатели надежности</a></li>
+                                <li><a href="@Url.Action("Index", "UCP")">Трудозатраты</a></li>
+                                <li><a href="@Url.Action("Index", "UseCasePrimaryMetric")">Первичные метрики</a></li>
+                                <li><a href="@Url.Action("Index", "UseCaseSecondaryMetric")">Вторичные метрики</a></li>
+                                <li><a href="@Url.Action("Index", "ReliabilityEvaluation")">Показатели надежности</a></li>
                             </ul>
                         </li>
                         <li><a href="#">Отчеты</a>
@@ -56,23 +56,21 @@
                                 <li>Отчет о состоянии функциональных характеристик</li>
                             </ul>
                         </li>
-                        
-
                         <li><a href="#">Справочники</a>
                             <ul>
-                                <li><a href="@this.Url.Action("Index", "ActorDic")">Акторы</a></li>
-                                <li><a href="@this.Url.Action("Index", "DefectDic")">Типы дефектов</a></li>
-                                <li><a href="@this.Url.Action("Index", "EnvironmentFactorDic")">Типы факторы окружения</a></li>
-                                <li><a href="@this.Url.Action("Index", "PrimaryMetricDic")">Типы первичных метрик</a></li>
-                                <li><a href="@this.Url.Action("Index", "PriorityDic")">Приоритеты</a></li>
-                                <li><a href="@this.Url.Action("Index", "ReliabilityEvaluationDic")">Показатели надежности</a></li>
-                                <li><a href="@this.Url.Action("Index", "SecondaryMetricDic")">Вторичные метрики</a></li>
-                                <li><a href="@this.Url.Action("Index", "TechnicalFactorDic")">Типы технических факторов</a></li>
-                                <li><a href="@this.Url.Action("Index", "TestMethodDic")">Методы тестирования</a></li>
-                                <li><a href="@this.Url.Action("Index", "WeightCoefficientDic")">Весовые коэффициенты</a></li>
+                                <li><a href="@Url.Action("Index", "ActorDic")">Акторы</a></li>
+                                <li><a href="@Url.Action("Index", "DefectDic")">Типы дефектов</a></li>
+                                <li><a href="@Url.Action("Index", "EnvironmentFactorDic")">Типы факторы окружения</a></li>
+                                <li><a href="@Url.Action("Index", "PrimaryMetricDic")">Типы первичных метрик</a></li>
+                                <li><a href="@Url.Action("Index", "PriorityDic")">Приоритеты</a></li>
+                                <li><a href="@Url.Action("Index", "ReliabilityEvaluationDic")">Показатели надежности</a></li>
+                                <li><a href="@Url.Action("Index", "SecondaryMetricDic")">Вторичные метрики</a></li>
+                                <li><a href="@Url.Action("Index", "TechnicalFactorDic")">Типы технических факторов</a></li>
+                                <li><a href="@Url.Action("Index", "TestMethodDic")">Методы тестирования</a></li>
+                                <li><a href="@Url.Action("Index", "WeightCoefficientDic")">Весовые коэффициенты</a></li>
                             </ul>
                         </li>
-                        <li><a href="@this.Url.Action("About", "Home")">О программе</a></li>
+                        <li><a href="@Url.Action("About", "Home")">О программе</a></li>
                     </ul>
                 </div>
                 <div style="height: 10px;">

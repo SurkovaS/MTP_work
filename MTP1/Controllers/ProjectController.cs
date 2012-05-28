@@ -9,12 +9,14 @@
 
 namespace MTP1.Controllers
 {
-    using System;
     using System.Collections.Generic;
     using System.Linq;
     using System.Web.Mvc;
 
+    using MTP.Controllers;
+
     using MTP1.Controllers.Abstract;
+    using MTP1.Helpers;
     using MTP1.Models;
     using MTP1.Service.Factory;
     using MTP1.Service.Interface;
@@ -71,46 +73,34 @@ namespace MTP1.Controllers
         /// </returns>
         public ActionResult GetProjects(int page, int rows, string search, string sidx, string sord)
         {
-            int currentPage = Convert.ToInt32(page) - 1;
             int projectsCount = this.service.Get().Count();
-            var totalPages = (int)Math.Ceiling(projectsCount / (float)rows);
-            List<Project> projects = this.service.Get().OrderBy(a => a.Title).Skip(0).Take(rows).ToList();
+            List<Project> projects = this.service.Get().ApplyPaging("Title", (page - 1) * rows, rows).ToList();
 
-            try
-            {
-                var jsonData = new
+            var jsonData =
+                new
                     {
-                        total = totalPages, 
+                        total = Paging.TotalPages(projectsCount, rows), 
                         page, 
                         records = projectsCount, 
                         rows = (from m in projects
-                                select
-                                    new
-                                        {
-                                            id = m.ID, 
-                                            cell =
-                                    new[]
-                                        {
-                                            m.Title /*.ToStringWithDbNullCheck()*/,
-                                            m.Version.ToString()/*.ToStringWithDbNullCheck()*/, 
-                                            // m.EmployeeDic == null
-                                            // ? string.Empty
-                                            // : m.EmployeeDic.EmployeeFirstName.ToStringWithDbNullCheck() + ", "
-                                            // + m.EmployeeDic.EmployeeLastName.ToStringWithDbNullCheck(),
-                                            m.BeginDatePlaning.ToString()/*WithDbNullCheck*/, 
-                                            m.EndDatePlaning.ToString()/*WithDbNullCheck*/, 
-                                            m.BeginDateActual.ToString()/*WithDbNullCheck*/, 
-                                            m.EndDateActual.ToString()/*WithDbNullCheck*/
-                                        }
-                                        }).ToArray()
+                                select new
+                                    {
+                                        id = m.ID, 
+                                        cell = new[]
+                                            {
+                                                m.Title, m.Version, // m.EmployeeDic == null
+                                                // ? string.Empty
+                                                // : m.EmployeeDic.EmployeeFirstName.ToStringWithDbNullCheck() + ", "
+                                                // + m.EmployeeDic.EmployeeLastName.ToStringWithDbNullCheck(),
+                                                m.BeginDatePlaning.ToStringWithDbNullCheck(), 
+                                                m.EndDatePlaning.ToStringWithDbNullCheck(), 
+                                                m.BeginDateActual.ToStringWithDbNullCheck(), 
+                                                m.EndDateActual.ToStringWithDbNullCheck()
+                                            }
+                                    }).ToArray()
                     };
 
-                return this.Json(jsonData, JsonRequestBehavior.AllowGet);
-            }
-            catch (Exception ex)
-            {
-                throw;
-            }
+            return this.Json(jsonData, JsonRequestBehavior.AllowGet);
         }
 
         #endregion

@@ -2,7 +2,7 @@
 @model MTP1.Models.UseCase
 
 @{
-    this.ViewBag.Title = string.Format("Use case {0} | {1}", this.Model.Title, Constants.TITLE);
+    this.ViewBag.Title = string.Format("Сценарий тестирования {0} | {1}", this.Model.Title, Constants.TITLE);
 
 }
 <p>
@@ -11,7 +11,7 @@
 <fieldset>
     <legend>Use Case "@this.Model.Title", проект "@this.Model.Project1.Title"</legend>
 
-    <div class="display-label">Use Case</div>
+    <div class="display-label">Сценарий тестирования</div>
     <div class="display-field">
         @this.Html.DisplayFor(model => model.Title)
     </div>
@@ -27,7 +27,7 @@
     <div class="display-field">
         @this.Html.DisplayFor(model => model.TestProgram1.Title)
     </div>
-    <div class="display-label">Приоритет Use-case</div>
+    <div class="display-label">Приоритет</div>
     <div class="display-field">
         @this.Html.DisplayFor(model => model.PriorityDic.Title)
     </div>
@@ -38,6 +38,10 @@
     <div class="display-label">Трудозатраты, чел-часы</div>
     <div class="display-field">
         @this.Html.DisplayFor(model => model.ManHour)
+    </div>
+    <div class="display-label">Пользователь</div>
+    <div class="display-field">
+        @this.Html.DisplayFor(model => model.UsersDic.Name)
     </div>
 
 </fieldset>

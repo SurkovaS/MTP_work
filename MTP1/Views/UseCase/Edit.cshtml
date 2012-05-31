@@ -4,7 +4,7 @@
          
 
 @{
-    this.ViewBag.Title = string.Format("Редактирование Use Case {0}| {1}", this.Model.Title, Constants.TITLE);
+    this.ViewBag.Title = string.Format("Редактирование сценария тестирования {0}| {1}", this.Model.Title, Constants.TITLE);
 
 }
 
@@ -18,7 +18,7 @@
 {
     @this.Html.ValidationSummary(true)
     <fieldset>
-        <legend>Редактирование Use Case "@this.Model.Title"</legend>
+        <legend>Редактирование сценария тестирования "@this.Model.Title"</legend>
         @this.Html.EditorForModel()       
         <p>
             <input type="submit" value="Сохранить" />
@@ -27,5 +27,5 @@
 }
 
 <div>
-    @this.Html.ActionLink("Use Case", "Index")
+    @this.Html.ActionLink("Сценарии тестирования", "Index")
 </div>

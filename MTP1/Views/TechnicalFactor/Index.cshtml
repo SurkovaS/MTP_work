@@ -1,56 +1,92 @@
 ﻿@using MTP1
 @using MTP1.Models
 @model IEnumerable<TechnicalFactor>
-
+<script src="@Url.Content("~/Scripts/jqgrid/jquery.jqGrid.min.js")" type="text/javascript"></script>
+<script src="@Url.Content("~/Scripts/jqgrid/i18n/grid.locale-ru.js")" type="text/javascript"></script>
 @{
     this.ViewBag.Title = string.Format("Технические факторы | {0}", Constants.TITLE);
 
 }
-<h2>Технические факторы</h2>
-
 <p>
-    @this.Html.ActionLink("Создать", "Create")
-
+    @Html.ActionLink("Создать", "Create")
 </p>
-<table>
-    <tr>
-        <th>
-            Use Case
-        </th>
-        <th>
-            Технический фактор
-        </th>
-        <th>
-            Весовой коэффициент
-        </th>
-        <th>
-            Сложность
-        </th>
-    </tr>
+<div id="myDiv" style="width: 100%">
+    <table id="grid" cellpadding="0" cellspacing="0">
+    </table>
+    <div id="pager" style="text-align: center;">
+    </div>
+    <div id="search" style="margin-left: 30%; display: none">
+    </div>
+</div>
+<script type="text/javascript">
+    var serverRoot = '@Url.Action("GetTechFactors", "TechnicalFactor")';
+    var lastsel;
 
-    @foreach (TechnicalFactor item in this.Model)
-    {
-        <tr>
-            <td>
-                @this.Html.DisplayFor(modelItem => item.UseCase1.Title)
-            </td>
-            <td>
-                @this.Html.ActionLink(item.TechnicalFactorDic.Title, "Details", new { id = item.ID })
-            </td>
-            <td>
-                @this.Html.DisplayFor(modelItem => item.WeightCoefficientDic.Value)
-            </td>
-            <td>
-                @this.Html.DisplayFor(modelItem => item.WeightCoefficientDic.Value)
-            </td>
-            <td>
-                @this.Html.ActionLink("Редактировать", "Edit", new { id = item.ID }) |
-                @this.Html.ActionLink("Удалить", "Delete", new { id = item.ID })
-            </td>
-        </tr>
-        
-    }
-</table>
-<p>
-   
-</p>
+    $(function () {
+
+        $("#grid").jqGrid({
+            colNames: ['Сценарий тестирования','Технический фактор', 'Весовой коэффициент', 'Сложность'],
+            colModel: [
+                {
+                    name: 'UseCase',
+                    sortable: false,
+                    align: 'center',
+                    width: '250'
+                },
+                {
+                    name: 'TechnicalFactor',
+                    sortable: false,
+                    align: 'center',
+                    width: '100'
+                },
+                {
+                    name: 'WeightCoefficient',
+                    sortable: false,
+                    align: 'left',
+                    width: '50'
+                },
+                {
+                    name: 'Difficulty',
+                    sortable: false,
+                    align: 'left',
+                    width: '50'
+                }
+            ],
+            pager: $("#pager"),
+            sortname: 'Title',
+            sortorder: "",
+            rowNum: 10,
+            rowList: [10, 20, 50],
+            viewrecords: true,
+            rownumbers: true,
+            shrinkToFit: true,
+            width: 1100,
+            altRows: true,
+            altclass: 'myAltRowClass',
+            height: 'auto',
+            gridview: true,
+            url: serverRoot,
+            datatype: 'json',
+            mtype: 'GET',
+            caption: 'Технические факторы',
+            loadError: function (xhr, status, error) {
+                alert(error);
+            },
+            loadComplete: function (data) {
+
+            }
+        });
+
+        jQuery("#grid").jqGrid('navGrid', '#pager',
+            { edit: false, add: true, del: true, search: false, refresh: true },
+            { closeOnEscape: true, reloadAfterSubmit: true,
+                closeAfterEdit: true, left: 400, top: 300
+            },
+            { closeOnEscape: true, reloadAfterSubmit: true,
+                closeAfterAdd: true, left: 450, top: 300, width: 520
+            },
+            { closeOnEscape: true, reloadAfterSubmit: true, left: 450, top: 300 });
+
+    });
+
+</script>

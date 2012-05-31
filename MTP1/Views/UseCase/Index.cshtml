@@ -1,73 +1,116 @@
 ﻿@using MTP1
 @using MTP1.Models
 @model IEnumerable<UseCase>
-
+<script src="@Url.Content("~/Scripts/jqgrid/jquery.jqGrid.min.js")" type="text/javascript"></script>
+<script src="@Url.Content("~/Scripts/jqgrid/i18n/grid.locale-ru.js")" type="text/javascript"></script>
 @{
-    this.ViewBag.Title = string.Format("Use Case| {0}", Constants.TITLE);
+    this.ViewBag.Title = string.Format("Сценарии тестирования | {0}", Constants.TITLE);
 
 }
 
-<h2>Use Case</h2>
+<h2>Сценарии тестирования</h2>
+<div id="myDiv" style="width: 100%">
+    <table id="grid" cellpadding="0" cellspacing="0">
+    </table>
+    <div id="pager" style="text-align: center;">
+    </div>
+    <div id="search" style="margin-left: 30%; display: none">
+    </div>
+</div>
+<script type="text/javascript">
+    var serverRoot = '@Url.Action("GetUseCases", "UseCase")';
+    var lastsel;
 
-<p>
-   @this.Html.ActionLink("Создать", "Create","UseCase")
+    $(function () {
 
-</p>
-<table>
-    <tr>
-        <th>
-            Use Case
-        </th>
-        <th>
-            Описание Use Case
-        </th>
-        <th>
-            Проект
-        </th>
-        <th>
-            Программа тестирования
-        </th>
-        <th>
-            Приоритет Use Case
-        </th>
-        <th>
-            UCP
-        </th>
-        <th>
-            Трудозатраты, чел-часы
-        </th>
+        $("#grid").jqGrid({
+            colNames: ['Сценария тестирования', 'Описание', 'Проект', 'Программа тестирования', 'Приоритет', 'UCP',
+                'Трудозатраты, чел-часы','Пользователь'],
+            colModel: [
+                {
+                    name: 'Title',
+                    sortable: false,
+                    align: 'center',
+                    width: '250'
+                },
+                {
+                    name: 'Description',
+                    sortable: false,
+                    align: 'center',
+                    width: '100'
+                },
+                {
+                    name: 'Project',
+                    sortable: false,
+                    align: 'left',
+                    width: '200'
+                },
+                {
+                    name: 'TestProgram',
+                    sortable: false,
+                    align: 'left',
+                    width: '200'
+                },
+                {
+                    name: 'Priority',
+                    sortable: false,
+                    align: 'left',
+                    width: '200'
+                },
+                {
+                    name: 'Ucp',
+                    sortable: false,
+                    align: 'left',
+                    width: '200'
+                },
+                {
+                    name: 'ManHour',
+                    sortable: false,
+                    align: 'left',
+                    width: '200'
+                },
+                {
+                    name: 'Creator',
+                    sortable: false,
+                    align: 'left',
+                    width: '200'
+                }
+            ],
+            pager: $("#pager"),
+            sortname: 'Title',
+            sortorder: "",
+            rowNum: 10,
+            rowList: [10, 20, 50],
+            viewrecords: true,
+            rownumbers: true,
+            shrinkToFit: true,
+            width: 1100,
+            altRows: true,
+            altclass: 'myAltRowClass',
+            height: 'auto',
+            gridview: true,
+            url: serverRoot,
+            datatype: 'json',
+            mtype: 'GET',
+            caption: 'Сценарии тестирования',
+            loadError: function (xhr, status, error) {
+                alert(error);
+            },
+            loadComplete: function (data) {
 
-    </tr>
+            }
+        });
 
-    @foreach (UseCase item in this.Model)
-    {
-        <tr>
-            <td>
-                @this.Html.ActionLink(item.Title, "Details", new { id = item.ID })
-            </td>
-            <td>
-                @this.Html.DisplayFor(modelItem => item.Description)
-            </td>
-            <td>
-                @this.Html.DisplayFor(modelItem => item.Project1.Title)
-            </td>
-            <td>
-                @this.Html.DisplayFor(modelItem => item.TestProgram1.Title)
-            </td>
-            <td>
-                @this.Html.DisplayFor(modelItem => item.PriorityDic.Title)
-            </td>
-            <td>
-                @this.Html.DisplayFor(modelItem => item.Ucp)
-            </td>
-            <td>
-                @this.Html.DisplayFor(modelItem => item.ManHour)
-            </td>
-            <td>
-                @this.Html.ActionLink("Редактировать", "Edit", new { id = item.ID }) |
-                @this.Html.ActionLink("Удалить", "Delete", new { id = item.ID })
-            </td>
-        
-        </tr>
-    }
-</table>
+        jQuery("#grid").jqGrid('navGrid', '#pager',
+            { edit: false, add: true, del: true, search: false, refresh: true },
+            { closeOnEscape: true, reloadAfterSubmit: true,
+                closeAfterEdit: true, left: 400, top: 300
+            },
+            { closeOnEscape: true, reloadAfterSubmit: true,
+                closeAfterAdd: true, left: 450, top: 300, width: 520
+            },
+            { closeOnEscape: true, reloadAfterSubmit: true, left: 450, top: 300 });
+
+    });
+
+</script>

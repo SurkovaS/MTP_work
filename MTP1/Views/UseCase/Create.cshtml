@@ -2,7 +2,7 @@
 @model MTP1.Models.UseCase
 
 @{
-    this.ViewBag.Title = string.Format("Создание элемента справочника | {0}", Constants.TITLE);
+    this.ViewBag.Title = string.Format("Создание сценария тестирования | {0}", Constants.TITLE);
 
 }
 
@@ -13,7 +13,7 @@
 @using (this.Html.BeginForm())
 {
     <fieldset>
-        <legend>Создание Use Case</legend>
+        <legend>Создание сценария тестирования</legend>
         @this.Html.ActionLink("Отменить", "Index")
         @this.Html.EditorForModel()
         <p>
@@ -23,5 +23,5 @@
 }
 
 <div>
-    @this.Html.ActionLink("Use Case", "Index")
+    @this.Html.ActionLink("Сценарии тестирования", "Index")
 </div>

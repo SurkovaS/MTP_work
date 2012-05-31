@@ -93,7 +93,10 @@ namespace MTP1.Controllers
                                             cell =
                                     new[]
                                         {
-                                           m.Title, m.Description, m.Project1.Title, m.TestMethodDic.Title 
+                                           m.Title, 
+                                           m.Description,
+                                           m.Project1.Title, 
+                                           m.TestMethodDic.Title
                                         }
                                         }).ToArray()
                     };

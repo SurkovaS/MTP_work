@@ -1,6 +1,7 @@
 ﻿@using MTP1
 @model IEnumerable<MTP1.Models.TestProgram>
-
+<script src="@Url.Content("~/Scripts/jqgrid/jquery.jqGrid.min.js")" type="text/javascript"></script>
+<script src="@Url.Content("~/Scripts/jqgrid/i18n/grid.locale-ru.js")" type="text/javascript"></script>
 @{
     this.ViewBag.Title = string.Format("Программы тестирования| {0}", Constants.TITLE);
 
@@ -9,7 +10,7 @@
 <h2>Программы тестирования</h2>
 
 <p>
-   @this.Html.ActionLink("Создать", "Create","TestProgram")
+   @this.Html.ActionLink("Создать", "Create", "TestProgram")
 
 </p>
 <div id="myDiv" style="width: 100%">

@@ -41,8 +41,8 @@
         </td>
         <td>
             @{
-                var queryDifficulties = WeightCoefficientDicServiceFactory.Create().Get().Select(item => new { item.ID, Name = item.Value }).ToList();
-                List<SelectListItem> lisDifficulties = queryWCs.Select(item => new SelectListItem { Text = item.Name.ToString(), Value = item.ID.ToString(), Selected = this.Model != null && this.Model.Difficulty == item.ID }).ToList();
+                var queryDifficulties = PriorityDicServiceFactory.Create().Get().Select(item => new { item.ID, Name = item.Title }).ToList();
+                List<SelectListItem> lisDifficulties = queryDifficulties.Select(item => new SelectListItem { Text = item.Name.ToString(), Value = item.ID.ToString(), Selected = this.Model != null && this.Model.Difficulty == item.ID }).ToList();
                 @this.Html.DropDownListFor(model => model.Difficulty, lisDifficulties, "...")
 
             } 

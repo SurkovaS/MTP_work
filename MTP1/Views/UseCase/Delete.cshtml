@@ -2,11 +2,11 @@
 @model MTP1.Models.UseCase
 
 @{
-    this.ViewBag.Title = string.Format("Удаление Use Case | {0}", Constants.TITLE);
+    this.ViewBag.Title = string.Format("Удаление сценария тестирования | {0}", Constants.TITLE);
 
 }
 <fieldset>
-    <legend>Удаление Use Case "@this.Model.Title"</legend>
+    <legend>Удаление сценария тестирования "@this.Model.Title"</legend>
     @this.Html.ActionLink("Отменить", "Index")
 
     <h2 style="color: Red">Вы уверены, что хотите удалить эту запись?</h2>
@@ -15,7 +15,7 @@
     {
         <input type="submit" value="Удалить" />
     }
-    <div class="display-label">Use Case</div>
+    <div class="display-label">Сценарий тестирования</div>
     <div class="display-field">
         @this.Html.DisplayFor(model => model.Title)
     </div>
@@ -31,7 +31,7 @@
     <div class="display-field">
         @this.Html.DisplayFor(model => model.TestProgram1.Title)
     </div>
-    <div class="display-label">Приоритет Use-case</div>
+    <div class="display-label">Приоритет</div>
     <div class="display-field">
         @this.Html.DisplayFor(model => model.PriorityDic.Title)
     </div>
@@ -42,6 +42,10 @@
     <div class="display-label">Трудозатраты, чел-часы</div>
     <div class="display-field">
         @this.Html.DisplayFor(model => model.ManHour)
+    </div>
+    <div class="display-label">Пользователь</div>
+    <div class="display-field">
+        @this.Html.DisplayFor(model => model.UsersDic.Name)
     </div>
 
     @this.Html.ActionLink("Use Case", "Index")</fieldset>

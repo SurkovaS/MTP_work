@@ -4,6 +4,9 @@
 @{
     ViewBag.Title = string.Format("Проекты тестирования | {0}", MTP1.Constants.TITLE);
 }
+<p>
+    @Html.ActionLink("Создать", "Create")
+</p>
 <div id="myDiv" style="width: 100%">
     <table id="grid" cellpadding="0" cellspacing="0">
     </table>
@@ -13,11 +16,8 @@
     </div>
 </div>
 <script type="text/javascript">
-    var indexUrl = '@Url.Action("GetProjects", "Project")';
-    var editUrl = '@Url.Action("Edit", "Project")';
-    var deleteUrl = '@Url.Action("Delete", "Project")';
-    var addUrl = '@Url.Action("Create", "Project")';
-    var viewUrl = '@Url.Action("Details", "Project")';
+    var serverRoot = '@Url.Action("GetProjects", "Project")';
+    var lastsel;
 
     $(function () {
 
@@ -75,24 +75,27 @@
             altclass: 'myAltRowClass',
             height: 'auto',
             gridview: true,
-            url: indexUrl,
+            url: serverRoot,
             datatype: 'json',
             mtype: 'GET',
             caption: 'Проекты тестирования',
             loadError: function (xhr, status, error) {
                 alert(error);
             },
-            ondblClickRow: function (rowid) {
-                window.location = editUrl + '/' + rowid;
+            loadComplete: function (data) {
+                
             }
         });
 
         jQuery("#grid").jqGrid('navGrid', '#pager',
-            { edit: true, add: true, del: true, search: false, refresh: true },
-            { url: editUrl },
-            { url: addUrl },
-            { url: deleteUrl, reloadAfterSubmit: true },
-            { url: viewUrl });
+            { edit: false, add: true, del: true, search: false, refresh: true },
+            { closeOnEscape: true, reloadAfterSubmit: true,
+                closeAfterEdit: true, left: 400, top: 300
+            },
+            { closeOnEscape: true, reloadAfterSubmit: true,
+                closeAfterAdd: true, left: 450, top: 300, width: 520
+            },
+            { closeOnEscape: true, reloadAfterSubmit: true, left: 450, top: 300 });
 
     });
 

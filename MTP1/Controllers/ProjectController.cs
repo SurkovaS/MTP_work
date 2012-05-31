@@ -88,10 +88,7 @@ namespace MTP1.Controllers
                                         id = m.ID, 
                                         cell = new[]
                                             {
-                                                m.Title, m.Version, // m.EmployeeDic == null
-                                                // ? string.Empty
-                                                // : m.EmployeeDic.EmployeeFirstName.ToStringWithDbNullCheck() + ", "
-                                                // + m.EmployeeDic.EmployeeLastName.ToStringWithDbNullCheck(),
+                                                m.Title, m.Version, 
                                                 m.BeginDatePlaning.ToStringWithDbNullCheck(), 
                                                 m.EndDatePlaning.ToStringWithDbNullCheck(), 
                                                 m.BeginDateActual.ToStringWithDbNullCheck(), 

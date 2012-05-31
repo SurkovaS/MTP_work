@@ -15,7 +15,7 @@
     @{
         var queryPrograms = TestProgramServiceFactory.Create().Get().Select(item => new { item.ID, Name = item.Title }).ToList();
         List<SelectListItem> listPrograms = queryPrograms.Select(item => new SelectListItem { Text = item.Name.ToString(), Value = item.ID.ToString(), Selected = this.Model != null && this.Model.TestProgram == item.ID }).ToList();
-        @this.Html.DropDownListFor(model => model.Project, listPrograms, "...")
+        @this.Html.DropDownListFor(model => model.TestProgram, listPrograms, "...")
 
     }
        
@@ -51,4 +51,13 @@
 <div class="editor-field">
     @this.Html.EditorFor(model => model.ManHour)
     @this.Html.ValidationMessageFor(model => model.ManHour)
+</div>
+<div class="display-label">Пользователь</div>
+<div class="editor-field">
+    @{
+        var queryUsers = UsersDicServiceFactory.Create().Get().Select(item => new { item.ID, Name = item.Name }).ToList();
+        List<SelectListItem> listUsers = queryUsers.Select(item => new SelectListItem { Text = item.Name.ToString(), Value = item.ID.ToString(), Selected = this.Model != null && this.Model.Creator == item.ID }).ToList();
+        @this.Html.DropDownListFor(model => model.Creator, listUsers, "...")
+
+    } 
 </div>

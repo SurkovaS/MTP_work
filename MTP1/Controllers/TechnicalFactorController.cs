@@ -7,20 +7,17 @@
 // </summary>
 // --------------------------------------------------------------------------------------------------------------------
 
-using System;
-using System.Collections.Generic;
-using System.Web.Mvc;
-
 namespace MTP1.Controllers
 {
+    using System;
     using System.Collections.Generic;
     using System.Linq;
     using System.Web.Mvc;
 
-    using MTP1.Controllers;
-    using System;
-    using MTP1.Controllers.Abstract;
+    using MTP.Controllers;
 
+    using MTP1.Controllers.Abstract;
+    using MTP1.Helpers;
     using MTP1.Models;
     using MTP1.Service.Factory;
     using MTP1.Service.Interface;
@@ -79,40 +76,31 @@ namespace MTP1.Controllers
         /// </returns>
         public ActionResult GetTechFactors(int page, int rows, string search, string sidx, string sord)
         {
-            int currentPage = Convert.ToInt32(page) - 1;
-            int techFactorsCount = this.service.Get().Count();
-            var totalPages = (int) Math.Ceiling(techFactorsCount/(float) rows);
-            List<TechnicalFactor> techFactors = this.service.Get().OrderBy(a =>a.TechnicalFactorDic.Title).Skip(0).Take(rows).ToList();
 
-            try
-            {
+                int techFactorsCount = this.service.Get().Count();
+                var techFactors = this.service.Get().ApplyPaging("TechnicalFactorDic.Title", (page - 1) * rows, rows).ToList();
                 var jsonData = new
-                                   {
-                                       total = totalPages,
-                                       page,
-                                       records = techFactorsCount,
-                                       rows = (from m in techFactors
-                                               select
-                                                   new
-                                                       {
-                                                           id = m.ID,
-                                                           cell =
-                                                   new[]
-                                                       {
-                                                           m.UseCase1.Title /*.ToStringWithDbNullCheck()*/,
-                                                           m.TechnicalFactorDic.Title /*.ToStringWithDbNullCheck()*/,
-                                                           m.WeightCoefficientDic.Value.ToString() /*WithDbNullCheck*/,
-                                                           m.PriorityDic.Title /*WithDbNullCheck*/,
-                                                          }
-                                                       }).ToArray()
-                                   };
+                    {
+                        total = Paging.TotalPages(techFactorsCount, rows), 
+                        page, 
+                        records = techFactorsCount, 
+                        rows = (from m in techFactors
+                                select
+                                    new
+                                        {
+                                            id = m.ID, 
+                                            cell =
+                                    new[]
+                                        {
+                                            m.UseCase1.Title.ToStringWithDbNullCheck(), 
+                                            m.TechnicalFactorDic.Title.ToStringWithDbNullCheck(), 
+                                            m.WeightCoefficientDic.Value.ToStringWithDbNullCheck(), 
+                                            m.PriorityDic.Title.ToStringWithDbNullCheck() 
+                                        }
+                                        }).ToArray()
+                    };
 
                 return this.Json(jsonData, JsonRequestBehavior.AllowGet);
-            }
-            catch (Exception ex)
-            {
-                throw;
-            }
         }
 
         #endregion

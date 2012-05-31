@@ -1,5 +1,5 @@
 ﻿// --------------------------------------------------------------------------------------------------------------------
-// <copyright file="ActorDicController.cs" company="">
+// <copyright file="UseCaseController.cs" company="">
 //   
 // </copyright>
 // <summary>
@@ -7,21 +7,16 @@
 // </summary>
 // --------------------------------------------------------------------------------------------------------------------
 
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Web.Mvc;
-
 namespace MTP1.Controllers
 {
     using System.Collections.Generic;
     using System.Linq;
     using System.Web.Mvc;
 
-    using MTP1.Controllers;
-    using System;
-    using MTP1.Controllers.Abstract;
+    using MTP.Controllers;
 
+    using MTP1.Controllers.Abstract;
+    using MTP1.Helpers;
     using MTP1.Models;
     using MTP1.Service.Factory;
     using MTP1.Service.Interface;
@@ -34,6 +29,7 @@ namespace MTP1.Controllers
         #region Constructors and Destructors
 
         /// <summary>
+        /// Initializes a new instance of the <see cref="UseCaseController"/> class. 
         /// Initializes a new instance of the <see cref="ActorDicController"/> class.
         /// </summary>
         /// <param name="service">
@@ -45,6 +41,7 @@ namespace MTP1.Controllers
         }
 
         /// <summary>
+        /// Initializes a new instance of the <see cref="UseCaseController"/> class. 
         /// Initializes a new instance of the <see cref="ActorDicController"/> class.
         /// </summary>
         public UseCaseController()
@@ -54,7 +51,7 @@ namespace MTP1.Controllers
 
         #endregion
 
-     #region Public Methods and Operators
+        #region Public Methods and Operators
 
         /// <summary>
         /// The get projects.
@@ -76,18 +73,14 @@ namespace MTP1.Controllers
         /// </param>
         /// <returns>
         /// </returns>
-         public ActionResult GetUseCases(int page, int rows, string search, string sidx, string sord)
+        public ActionResult GetUseCases(int page, int rows, string search, string sidx, string sord)
         {
-            int currentPage = Convert.ToInt32(page) - 1;
             int useCasesCount = this.service.Get().Count();
-            var totalPages = (int)Math.Ceiling(useCasesCount / (float)rows);
-            List<UseCase> useCases = this.service.Get().OrderBy(a => a.Title).Skip(0).Take(rows).ToList();
-
-            try
-            {
-                var jsonData = new
+            List<UseCase> useCases = this.service.Get().ApplyPaging("Title", (page - 1) * rows, rows).ToList();
+            var jsonData =
+                new
                     {
-                        total = totalPages, 
+                        total = Paging.TotalPages(useCasesCount, rows), 
                         page, 
                         records = useCasesCount, 
                         rows = (from m in useCases
@@ -98,26 +91,16 @@ namespace MTP1.Controllers
                                             cell =
                                     new[]
                                         {
-                                            m.Title /*.ToStringWithDbNullCheck()*/,
-                                            m.Description/*.ToStringWithDbNullCheck()*/, 
-                                            m.Project1.Title/*WithDbNullCheck*/, 
-                                            m.TestProgram1.Title/*WithDbNullCheck*/, 
-                                            m.PriorityDic.Title/*WithDbNullCheck*/, 
-                                            m.Ucp.ToString()/*WithDbNullCheck*/,
-                                            m.ManHour.ToString(),
-                                            m.UsersDic.Name
-                                          
-                                            
+                                            m.Title.ToStringWithDbNullCheck(), m.Description.ToStringWithDbNullCheck(), 
+                                            m.Project1.Title.ToStringWithDbNullCheck(), 
+                                            m.TestProgram1.Title.ToStringWithDbNullCheck(), 
+                                            m.PriorityDic.Title.ToStringWithDbNullCheck(), m.Ucp.ToStringWithDbNullCheck(), 
+                                            m.ManHour.ToStringWithDbNullCheck(), m.UsersDic.Name.ToStringWithDbNullCheck()
                                         }
                                         }).ToArray()
                     };
 
-                return this.Json(jsonData, JsonRequestBehavior.AllowGet);
-            }
-            catch (Exception ex)
-            {
-                throw;
-            }
+            return this.Json(jsonData, JsonRequestBehavior.AllowGet);
         }
 
         #endregion

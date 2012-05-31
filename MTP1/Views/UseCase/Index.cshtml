@@ -8,7 +8,6 @@
 
 }
 
-<h2>Сценарии тестирования</h2>
 <div id="myDiv" style="width: 100%">
     <table id="grid" cellpadding="0" cellspacing="0">
     </table>
@@ -18,10 +17,14 @@
     </div>
 </div>
 <script type="text/javascript">
-    var serverRoot = '@Url.Action("GetUseCases", "UseCase")';
-    var lastsel;
 
     $(function () {
+
+        var indexUrl = '@Url.Action("GetUseCases", "UseCase")';
+        var editUrl = '@Url.Action("Edit", "UseCase")';
+        var deleteUrl = '@Url.Action("Delete", "UseCase")';
+        var addUrl = '@Url.Action("Create", "UseCase")';
+        var viewUrl = '@Url.Action("Details", "UseCase")';
 
         $("#grid").jqGrid({
             colNames: ['Сценария тестирования', 'Описание', 'Проект', 'Программа тестирования', 'Приоритет', 'UCP',
@@ -89,28 +92,34 @@
             altclass: 'myAltRowClass',
             height: 'auto',
             gridview: true,
-            url: serverRoot,
+            url: indexUrl,
             datatype: 'json',
             mtype: 'GET',
             caption: 'Сценарии тестирования',
             loadError: function (xhr, status, error) {
                 alert(error);
             },
-            loadComplete: function (data) {
-
+            ondblClickRow: function (rowid) {
+                window.location = viewUrl + '/' + rowid;
             }
         });
 
-        jQuery("#grid").jqGrid('navGrid', '#pager',
-            { edit: false, add: true, del: true, search: false, refresh: true },
-            { closeOnEscape: true, reloadAfterSubmit: true,
-                closeAfterEdit: true, left: 400, top: 300
+        var grid = jQuery("#grid").jqGrid('navGrid', '#pager', {
+            edit: true,
+            add: true,
+            del: true,
+            search: false,
+            refresh: true,
+            addfunc: function () { window.location = addUrl; },
+            editfunc: function (id) {
+                window.location = editUrl + '/' + id;
             },
-            { closeOnEscape: true, reloadAfterSubmit: true,
-                closeAfterAdd: true, left: 450, top: 300, width: 520
-            },
-            { closeOnEscape: true, reloadAfterSubmit: true, left: 450, top: 300 });
-
+            delfunc: function (id) {
+                $.post(deleteUrl + '/' + id, function () {
+                    grid.trigger("reloadGrid");
+                }).error(function (readyState, responceText) { alert(responceText); });
+            }
+        });
     });
 
 </script>

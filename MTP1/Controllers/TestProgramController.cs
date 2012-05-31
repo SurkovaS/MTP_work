@@ -9,12 +9,14 @@
 
 namespace MTP1.Controllers
 {
-    using System;
     using System.Collections.Generic;
     using System.Linq;
     using System.Web.Mvc;
 
+    using MTP.Controllers;
+
     using MTP1.Controllers.Abstract;
+    using MTP1.Helpers;
     using MTP1.Models;
     using MTP1.Service.Factory;
     using MTP1.Service.Interface;
@@ -73,18 +75,14 @@ namespace MTP1.Controllers
         /// </returns>
         public ActionResult GetPrograms(int page, int rows, string search, string sidx, string sord)
         {
-            int currentPage = Convert.ToInt32(page) - 1;
-            int programsCount = this.service.Get().Count();
-            var totalPages = (int)Math.Ceiling(programsCount / (float)rows);
-            List<TestProgram> programs = this.service.Get().OrderBy(a => a.Title).Skip(0).Take(rows).ToList();
-
-            try
-            {
-                var jsonData = new
+            int testProgramCount = this.service.Get().Count();
+            List<TestProgram> programs = this.service.Get().ApplyPaging("Title", (page - 1) * rows, rows).ToList();
+            var jsonData =
+                new
                     {
-                        total = totalPages, 
+                        total = Paging.TotalPages(testProgramCount, rows), 
                         page, 
-                        records = programsCount, 
+                        records = testProgramCount, 
                         rows = (from m in programs
                                 select
                                     new
@@ -93,20 +91,14 @@ namespace MTP1.Controllers
                                             cell =
                                     new[]
                                         {
-                                           m.Title, 
-                                           m.Description,
-                                           m.Project1.Title, 
-                                           m.TestMethodDic.Title
+                                            m.Title.ToStringWithDbNullCheck(), m.Description.ToStringWithDbNullCheck(), 
+                                            m.Project1.Title.ToStringWithDbNullCheck(), 
+                                            m.TestMethodDic.Title.ToStringWithDbNullCheck()
                                         }
                                         }).ToArray()
                     };
 
-                return this.Json(jsonData, JsonRequestBehavior.AllowGet);
-            }
-            catch (Exception ex)
-            {
-                throw;
-            }
+            return this.Json(jsonData, JsonRequestBehavior.AllowGet);
         }
 
         #endregion

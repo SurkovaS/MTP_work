@@ -18,10 +18,12 @@ namespace MTP1.Controllers
     using System.Linq;
     using System.Web.Mvc;
 
-    using MTP1.Controllers;
     using System;
-    using MTP1.Controllers.Abstract;
 
+    using MTP.Controllers;
+
+    using MTP1.Controllers.Abstract;
+    using MTP1.Helpers;
     using MTP1.Models;
     using MTP1.Service.Factory;
     using MTP1.Service.Interface;
@@ -77,16 +79,14 @@ namespace MTP1.Controllers
         /// </returns>
         public ActionResult GetEnvFactors(int page, int rows, string search, string sidx, string sord)
         {
-            int currentPage = Convert.ToInt32(page) - 1;
-            int envFactorsCount = this.service.Get().Count();
-            var totalPages = (int)Math.Ceiling(envFactorsCount / (float)rows);
-            List<EnvironmentFactor> envFactors = this.service.Get().OrderBy(a => a.EnvironmentFactorDic.Title).Skip(0).Take(rows).ToList();
-
             try
             {
+                int envFactorsCount = this.service.Get().Count();
+                List<EnvironmentFactor> envFactors = this.service.Get().ApplyPaging("EnvironmentFactorDic.Title", (page - 1) * rows, rows).ToList();
+
                 var jsonData = new
                 {
-                    total = totalPages,
+                    total = Paging.TotalPages(envFactorsCount, rows),
                     page,
                     records = envFactorsCount,
                     rows = (from m in envFactors
@@ -94,14 +94,13 @@ namespace MTP1.Controllers
                                 new
                                 {
                                     id = m.ID,
-                                    cell =
-                            new[]
-                                                       {
-                                                           m.UseCase1.Title /*.ToStringWithDbNullCheck()*/,
-                                                           m.EnvironmentFactorDic.Title/*.ToStringWithDbNullCheck()*/,
-                                                           m.WeightCoefficientDic.Value.ToString() /*WithDbNullCheck*/,
-                                                           m.PriorityDic.Title /*WithDbNullCheck*/,
-                                                          }
+                                    cell = new[]
+                                            {
+                                                m.UseCase1.Title.ToStringWithDbNullCheck(),
+                                                m.EnvironmentFactorDic.Title.ToStringWithDbNullCheck(),
+                                                m.WeightCoefficientDic.Value.ToStringWithDbNullCheck(),
+                                                m.PriorityDic.Title.ToStringWithDbNullCheck()
+                                            }
                                 }).ToArray()
                 };
 

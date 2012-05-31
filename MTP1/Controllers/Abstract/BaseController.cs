@@ -9,6 +9,7 @@
 
 namespace MTP1.Controllers.Abstract
 {
+    using System;
     using System.Collections.Generic;
     using System.Web.Mvc;
 
@@ -113,7 +114,15 @@ namespace MTP1.Controllers.Abstract
                 return this.View("NotFound");
             }
 
-            return View(obj);
+            try
+            {
+                this.service.Delete(obj);
+                return Json(true);
+            }
+            catch (Exception ex)
+            {
+                return Json(ex.Message);
+            }
         }
 
         // Удаление объекта после подтверждения

@@ -83,17 +83,39 @@
                 alert(error);
             },
             ondblClickRow: function (rowid) {
-                window.location = editUrl + '/' + rowid;
+                window.location = viewUrl + '/' + rowid;
             }
         });
 
-        jQuery("#grid").jqGrid('navGrid', '#pager',
-            { edit: true, add: true, del: true, search: false, refresh: true },
-            { url: editUrl },
-            { url: addUrl },
-            { url: deleteUrl, reloadAfterSubmit: true },
-            { url: viewUrl });
-
+        var grid = jQuery("#grid").jqGrid('navGrid', '#pager', {
+            edit: true,
+            add: true,
+            del: true,
+            search: false,
+            refresh: true,
+            addfunc: function () { window.location = addUrl; },
+            editfunc: function (id) {
+                window.location = editUrl + '/' + id;
+            },
+            delfunc: function (id) {
+                $.post(deleteUrl + '/' + id, function () {
+                    grid.trigger("reloadGrid");
+                }).error(function (readyState, responceText) { ShowError(responceText); });
+            }
+        });
     });
+
+    function GetSelectedId(grid) {
+        var sel_id = grid.getGridParam('selrow');
+        if (sel_id) {
+            return sel_id;
+        }
+
+        return null;
+    };
+
+    function ShowError(responceText) {
+        alert(responceText);
+    }
 
 </script>

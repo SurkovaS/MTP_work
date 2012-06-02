@@ -18,7 +18,7 @@ namespace MTP1.Controllers
     /// <summary>
     /// The actor dic controller.
     /// </summary>
-    public class UsersDicController : BaseController<UsersDic>
+    public class UsersController : BaseController<Users>
     {
         #region Constructors and Destructors
 
@@ -28,7 +28,7 @@ namespace MTP1.Controllers
         /// <param name="service">
         /// The service.
         /// </param>
-        public UsersDicController(IBaseService<UsersDic> service)
+        public UsersController(IBaseService<Users> service)
             : base(service)
         {
         }
@@ -36,8 +36,8 @@ namespace MTP1.Controllers
         /// <summary>
         /// Initializes a new instance of the <see cref="ActorDicController"/> class.
         /// </summary>
-        public UsersDicController()
-            : this(UsersDicServiceFactory.Create())
+        public UsersController()
+            : this(UsersServiceFactory.Create())
         {
         }
 

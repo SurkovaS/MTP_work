@@ -20,8 +20,7 @@
     $(function () {
 
         $("#grid").jqGrid({
-            colNames: ['Наименование', 'Версия', 'Плановая дата начала', 'Плановая дата окончания', 'Фактическая дата начала',
-                'Фактическая дата окончания'],
+            colNames: ['Наименование', 'Версия', 'Описание', 'Проект-менеджер','Автор'],
             colModel: [
                 {
                     name: 'Title',
@@ -36,25 +35,19 @@
                     width: '100'
                 },
                 {
-                    name: 'BeginDatePlaning',
+                    name: 'Description',
                     sortable: false,
                     align: 'left',
                     width: '200'
                 },
                 {
-                    name: 'EndDatePlaning',
+                    name: 'Manager',
                     sortable: false,
                     align: 'left',
                     width: '200'
                 },
                 {
-                    name: 'BeginDateActual',
-                    sortable: false,
-                    align: 'left',
-                    width: '200'
-                },
-                {
-                    name: 'EndDateActual',
+                    name: 'Creator',
                     sortable: false,
                     align: 'left',
                     width: '200'

@@ -24,39 +24,19 @@
         @Html.DisplayFor(model => model.Version)
     </div>
 
-    <div class="display-label">Плановая дата начала</div>
+    <div class="display-label">Описание</div>
     <div class="display-field">
-        @Html.DisplayFor(model => model.BeginDatePlaning)
+        @Html.DisplayFor(model => model.Description)
     </div>
 
-    <div class="display-label">Плановая дата окончания</div>
+    <div class="display-label">Проект-менеджер</div>
     <div class="display-field">
-        @Html.DisplayFor(model => model.EndDatePlaning)
+        @Html.DisplayFor(model => model.Manager)
     </div>
 
-    <div class="display-label">Фактическая дата начала</div>
+    <div class="display-label">Автор</div>
     <div class="display-field">
-        @Html.DisplayFor(model => model.BeginDateActual)
-    </div>
-
-    <div class="display-label">Фактическая дата окончания</div>
-    <div class="display-field">
-        @Html.DisplayFor(model => model.EndDateActual)
-    </div>
-
-    <div class="display-label">UCP</div>
-    <div class="display-field">
-        @Html.DisplayFor(model => model.Ucp)
-    </div>
-
-    <div class="display-label">Трудозатраты, чел.-часы</div>
-    <div class="display-field">
-        @Html.DisplayFor(model => model.ManHour)
-    </div>
-
-    <div class="display-label">Показатель надежности</div>
-    <div class="display-field">
-        @Html.DisplayFor(model => model.ReliabilityEvaluation)
+        @Html.DisplayFor(model => model.Creator)
     </div>
 </fieldset>
 

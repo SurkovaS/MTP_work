@@ -17,7 +17,7 @@ namespace MTP1.Service
     /// <summary>
     /// The actor dic entity service.
     /// </summary>
-    public class TestCaseAFEntityService : BaseEntityService<TestCaseAF>
+    public class UsersEntityService : BaseEntityService<Users>
     {
         #region Fields
 
@@ -33,11 +33,11 @@ namespace MTP1.Service
         /// <summary>
         /// Gets EntitySet.
         /// </summary>
-        protected override ObjectSet<TestCaseAF> EntitySet
+        protected override ObjectSet<Users> EntitySet
         {
             get
             {
-                return this.entities.TestCaseAF;
+                return this.entities.Users;
             }
         }
 

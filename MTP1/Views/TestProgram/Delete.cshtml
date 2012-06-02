@@ -27,9 +27,21 @@
     <div class="display-field">
         @this.Html.DisplayFor(model => model.Project1.Title)
     </div>
-    <div class="display-label">Метод тестирования</div>
+     <div class="display-label">Плановая дата начала</div>
     <div class="display-field">
-        @this.Html.DisplayFor(model => model.TestMethodDic.Title)
+        @this.Html.DisplayFor(model => model.BeginDatePlan)
+    </div>
+    <div class="display-label">Плановая дата окончания</div>
+    <div class="display-field">
+        @this.Html.DisplayFor(model => model.EndDatePlan)
+    </div>
+     <div class="display-label">Фактическая дата начала</div>
+    <div class="display-field">
+        @this.Html.DisplayFor(model => model.BeginDateActual)
+    </div>
+      <div class="display-label">Фактическая дата окончания</div>
+    <div class="display-field">
+        @this.Html.DisplayFor(model => model.EndDateActual)
     </div>
    
     @this.Html.ActionLink("Программы тестирования", "Index")</fieldset>

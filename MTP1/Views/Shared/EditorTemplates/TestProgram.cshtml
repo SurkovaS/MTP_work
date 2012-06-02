@@ -23,13 +23,19 @@
       
 </div>
 
-<div class="display-label">Метод тестирования</div>
+<div class="display-label">Плановая дата начала</div>
 <div class="editor-field">
-    @{
-        var queryMethods = TestMethodDicServiceFactory.Create().Get().Select(item => new { item.ID, Name = item.Title }).ToList();
-        List<SelectListItem> listMethods = queryMethods.Select(item => new SelectListItem { Text = item.Name.ToString(), Value = item.ID.ToString(), Selected = this.Model != null && this.Model.TestMethod == item.ID }).ToList();
-        @this.Html.DropDownListFor(model => model.TestMethod, listMethods, "...")
-
-    } 
-      
+    @this.Html.EditorFor(model => model.BeginDatePlan)  
+</div>
+<div class="display-label">Плановая дата окончания</div>
+<div class="editor-field">
+    @this.Html.EditorFor(model => model.EndDatePlan)  
+</div>
+<div class="display-label">Фактическая дата начала</div>
+<div class="editor-field">
+    @this.Html.EditorFor(model => model.BeginDateActual)  
+</div>
+<div class="display-label">Фактическая дата окончания</div>
+<div class="editor-field">
+   @this.Html.EditorFor(model => model.EndDateActual)  
 </div>

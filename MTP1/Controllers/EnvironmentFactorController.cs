@@ -98,8 +98,8 @@ namespace MTP1.Controllers
                                             {
                                                 m.UseCase1.Title.ToStringWithDbNullCheck(),
                                                 m.EnvironmentFactorDic.Title.ToStringWithDbNullCheck(),
-                                                m.WeightCoefficientDic.Value.ToStringWithDbNullCheck(),
-                                                m.PriorityDic.Title.ToStringWithDbNullCheck()
+                                                m.WeightCoefficientDic.Value.ToStringWithDbNullCheck()//,
+                                               // m.PriorityDic.Title.ToStringWithDbNullCheck()
                                             }
                                 }).ToArray()
                 };

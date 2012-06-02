@@ -21,7 +21,8 @@
 
     $(function () {
         DrawMTPGrid('grid', 'pager', indexUrl, editUrl, deleteUrl, addUrl, viewUrl,
-        ['Программа тестирования', 'Описание', 'Проект тестирования', 'Метод тестирования'],
+        ['Программа тестирования', 'Описание', 'Проект тестирования', 'Плановая дата начала',
+        'Плановая дата окончания', 'Фактическая дата начала', 'Фактическая дата окончания'],
         [
                 {
                     name: 'Title',
@@ -42,7 +43,25 @@
                     width: '200'
                 },
                 {
-                    name: 'TestMethod',
+                    name: 'BeginDatePlan',
+                    sortable: false,
+                    align: 'left',
+                    width: '200'
+                },
+               {
+                   name: 'EndDatePlan',
+                   sortable: false,
+                   align: 'left',
+                   width: '200'
+               },
+                {
+                    name: 'BeginDateActual',
+                    sortable: false,
+                    align: 'left',
+                    width: '200'
+                },
+                {
+                    name: 'EndDateActual',
                     sortable: false,
                     align: 'left',
                     width: '200'

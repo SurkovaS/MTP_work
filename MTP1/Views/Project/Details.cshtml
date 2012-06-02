@@ -15,40 +15,22 @@
         @Html.DisplayFor(model => model.Version)
     </div>
 
-    <div class="display-label">Плановая дата начала</div>
+    <div class="display-label">Описание</div>
     <div class="display-field">
-        @Html.DisplayFor(model => model.BeginDatePlaning)
+        @Html.DisplayFor(model => model.Description)
     </div>
 
-    <div class="display-label">Плановая дата окончания</div>
+    <div class="display-label">Проект-менеджер</div>
     <div class="display-field">
-        @Html.DisplayFor(model => model.EndDatePlaning)
+        @Html.DisplayFor(model => model.Users.Title)
     </div>
 
-    <div class="display-label">Фактическая дата начала</div>
+    <div class="display-label">Автор</div>
     <div class="display-field">
-        @Html.DisplayFor(model => model.BeginDateActual)
+        @Html.DisplayFor(model => model.Users1.Title)
     </div>
 
-    <div class="display-label">Фактическая дата окончания</div>
-    <div class="display-field">
-        @Html.DisplayFor(model => model.EndDateActual)
-    </div>
-
-    <div class="display-label">UCP</div>
-    <div class="display-field">
-        @Html.DisplayFor(model => model.Ucp)
-    </div>
-
-    <div class="display-label">Трудозатраты, чел.-часы</div>
-    <div class="display-field">
-        @Html.DisplayFor(model => model.ManHour)
-    </div>
-
-    <div class="display-label">Показатель надежности</div>
-    <div class="display-field">
-        @Html.DisplayFor(model => model.ReliabilityEvaluation)
-    </div>
+    
 </fieldset>
 <h3>Программы тестирования проекта</h3>
 
@@ -77,7 +59,8 @@
 
     $(function () {
         DrawMTPGrid('grid', 'pager', indexUrl, editUrl, deleteUrl, addUrl, viewUrl,
-        ['Программа тестирования', 'Описание', 'Проект тестирования', 'Метод тестирования'],
+        ['Программа тестирования', 'Описание', 'Проект тестирования', 'Плановая дата начала',
+        'Плановая дата окончания', 'Фактическая дата начала', 'Фактическая дата окончания'],
         [
                 {
                     name: 'Title',
@@ -98,7 +81,25 @@
                     width: '200'
                 },
                 {
-                    name: 'TestMethod',
+                    name: 'BeginDatePlan',
+                    sortable: false,
+                    align: 'left',
+                    width: '200'
+                },
+               {
+                    name: 'EndDatePlan',
+                    sortable: false,
+                    align: 'left',
+                    width: '200'
+                },
+                {
+                    name: 'BeginDateActual',
+                    sortable: false,
+                    align: 'left',
+                    width: '200'
+                },
+                {
+                    name: 'EndDateActual',
                     sortable: false,
                     align: 'left',
                     width: '200'

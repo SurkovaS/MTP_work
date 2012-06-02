@@ -72,8 +72,7 @@
     <Compile Include="Controllers\Abstract\BaseController.cs" />
     <Compile Include="Controllers\AccountController.cs" />
     <Compile Include="Controllers\ActorDicController.cs" />
-    <Compile Include="Controllers\TestCaseAFController.cs" />
-    <Compile Include="Controllers\UsersDicController.cs" />
+    <Compile Include="Controllers\UsersController.cs" />
     <Compile Include="Controllers\DefectDicController.cs" />
     <Compile Include="Controllers\DictionariesController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
@@ -100,8 +99,7 @@
     <Compile Include="Helpers\StringUtils.cs" />
     <Compile Include="Models\AccountModels.cs" />
     <Compile Include="Models\ActorDic.cs" />
-    <Compile Include="Models\TestCaseAF.cs" />
-    <Compile Include="Models\UsersDic.cs" />
+    <Compile Include="Models\Users.cs" />
     <Compile Include="Models\DefectDic.cs" />
     <Compile Include="Models\Interface\IBase.cs" />
     <Compile Include="Models\MtpDbModel.Designer.cs">
@@ -130,11 +128,9 @@
     <Compile Include="SecondaryMetricsCount.cs" />
     <Compile Include="Service\Abstract\BaseEntityServise.cs" />
     <Compile Include="Service\ActorDicEntityService.cs" />
-    <Compile Include="Service\TestCaseAFEntityService.cs" />
-    <Compile Include="Service\Factory\TestCaseAFServiceFactory.cs" />
-    <Compile Include="Service\UsersDicEntityService.cs" />
+    <Compile Include="Service\UsersEntityService.cs" />
     <Compile Include="Service\Factory\ActorDicServiceFactory.cs" />
-    <Compile Include="Service\Factory\UsersDicServiceFactory.cs" />
+    <Compile Include="Service\Factory\UsersServiceFactory.cs" />
     <Compile Include="Service\Factory\DefectDicServiceFactory.cs" />
     <Compile Include="Service\Factory\DictionariesServiceFactory.cs" />
     <Compile Include="Service\Factory\PrimaryMetricDicServiceFactory.cs" />

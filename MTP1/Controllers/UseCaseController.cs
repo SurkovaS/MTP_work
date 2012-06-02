@@ -95,7 +95,7 @@ namespace MTP1.Controllers
                                             m.Project1.Title.ToStringWithDbNullCheck(), 
                                             m.TestProgram1.Title.ToStringWithDbNullCheck(), 
                                             m.PriorityDic.Title.ToStringWithDbNullCheck(), m.Ucp.ToStringWithDbNullCheck(), 
-                                            m.ManHour.ToStringWithDbNullCheck(), m.UsersDic.Name.ToStringWithDbNullCheck()
+                                            m.ManHour.ToStringWithDbNullCheck()
                                         }
                                         }).ToArray()
                     };

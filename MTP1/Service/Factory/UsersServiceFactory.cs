@@ -15,7 +15,7 @@ namespace MTP1.Service.Factory
     /// <summary>
     /// The actor dic service factory.
     /// </summary>
-    public static class UsersDicServiceFactory
+    public static class UsersServiceFactory
     {
         #region Public Methods and Operators
 
@@ -24,9 +24,9 @@ namespace MTP1.Service.Factory
         /// </summary>
         /// <returns>
         /// </returns>
-        public static IBaseService<UsersDic> Create()
+        public static IBaseService<Users> Create()
         {
-            return new UsersDicEntityService();
+            return new UsersEntityService();
         }
 
         #endregion

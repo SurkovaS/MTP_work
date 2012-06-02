@@ -88,12 +88,12 @@ namespace MTP1.Controllers
                                         id = m.ID, 
                                         cell = new[]
                                             {
-                                                m.Title, m.Version, 
-                                                m.BeginDatePlaning.ToStringWithDbNullCheck(), 
-                                                m.EndDatePlaning.ToStringWithDbNullCheck(), 
-                                                m.BeginDateActual.ToStringWithDbNullCheck(), 
-                                                m.EndDateActual.ToStringWithDbNullCheck()
-                                            }
+                                                m.Title, 
+                                                m.Version, 
+                                                m.Description, 
+                                                m.Users.Title,
+                                                m.Users1.Title
+                                                }
                                     }).ToArray()
                     };
 

@@ -14,7 +14,7 @@ namespace MTP1.Models
     /// <summary>
     /// The actor dic.
     /// </summary>
-    public partial class TestCaseAF : IBase
+    public partial class Users : IBase
     {
         #region Public Methods and Operators
 

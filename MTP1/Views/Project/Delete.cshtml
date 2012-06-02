@@ -9,10 +9,10 @@
 
     <h2 style="color:Red">Вы уверены, что хотите удалить этот проект?</h2>
 
-@using (Html.BeginForm())
-{
-    <input type="submit" value="Удалить" />
-}
+    @using (Html.BeginForm())
+    {
+        <input type="submit" value="Удалить" />
+    }
 
     <div class="display-label">Проект</div>
     <div class="display-field">
@@ -58,6 +58,7 @@
     <div class="display-field">
         @Html.DisplayFor(model => model.ReliabilityEvaluation)
     </div>
-
 </fieldset>
+
+
 

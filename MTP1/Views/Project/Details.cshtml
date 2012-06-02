@@ -50,11 +50,62 @@
         @Html.DisplayFor(model => model.ReliabilityEvaluation)
     </div>
 </fieldset>
+<h3>Программы тестирования проекта</h3>
+
+<div id="myDiv" style="width: 100%">
+    <table id="grid" cellpadding="0" cellspacing="0">
+    </table>
+    <div id="pager" style="text-align: center;">
+    </div>
+    <div id="search" style="margin-left: 30%; display: none">
+    </div>
+</div>
+
 <p>
     @Html.ActionLink("Редактировать", "Edit", new { id = Model.ID }) |
     @Html.ActionLink("Проекты тестирования", "Index")
-</p>
-<p>
     @Html.ActionLink("Группа тестирования", "Index", "TestGroup") 
-
 </p>
+
+<script type="text/javascript">
+    var projectId = @Model.ID;
+    var indexUrl = '@Url.Action("GetProgramsForProject", "TestProgram")' + '?projectId=' + projectId;
+    var editUrl = '@Url.Action("Edit", "TestProgram")';
+    var deleteUrl = '@Url.Action("Delete", "TestProgram")';
+    var addUrl = '@Url.Action("Create", "TestProgram")';
+    var viewUrl = '@Url.Action("Details", "TestProgram")';
+
+    $(function () {
+        DrawMTPGrid('grid', 'pager', indexUrl, editUrl, deleteUrl, addUrl, viewUrl,
+        ['Программа тестирования', 'Описание', 'Проект тестирования', 'Метод тестирования'],
+        [
+                {
+                    name: 'Title',
+                    sortable: false,
+                    align: 'center',
+                    width: '250'
+                },
+                {
+                    name: 'Description',
+                    sortable: false,
+                    align: 'center',
+                    width: '300'
+                },
+                {
+                    name: 'Project',
+                    sortable: false,
+                    align: 'left',
+                    width: '200'
+                },
+                {
+                    name: 'TestMethod',
+                    sortable: false,
+                    align: 'left',
+                    width: '200'
+                }
+            ]);
+    });
+
+</script>
+
+

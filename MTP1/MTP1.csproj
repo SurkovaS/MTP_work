@@ -215,6 +215,7 @@
     <Content Include="Content\mega-menu\images\bg_white.png" />
     <Content Include="Content\ui.jqgrid.css" />
     <Content Include="Global.asax" />
+    <Content Include="Scripts\MTPGrid.js" />
     <Content Include="Scripts\jqgrid\i18n\grid.locale-ru.js" />
     <Content Include="Scripts\jqgrid\jquery.jqGrid.min.js" />
     <Content Include="Scripts\jquery-1.7.2.min.js" />

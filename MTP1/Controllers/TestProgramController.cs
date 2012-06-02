@@ -75,30 +75,43 @@ namespace MTP1.Controllers
         /// </returns>
         public ActionResult GetPrograms(int page, int rows, string search, string sidx, string sord)
         {
+            return this.FormJsonData(null, page, rows, search, sidx, sord);
+        }
+
+        private ActionResult FormJsonData(int? projectId, int page, int rows, string search, string sidx, string sord)
+        {
             int testProgramCount = this.service.Get().Count();
-            List<TestProgram> programs = this.service.Get().ApplyPaging("Title", (page - 1) * rows, rows).ToList();
+            List<TestProgram> programs = this.service.Get().Where(a => a.Project == projectId || projectId == null)
+                .ApplyPaging("Title", (page - 1) * rows, rows).ToList();
+
             var jsonData =
                 new
-                    {
-                        total = Paging.TotalPages(testProgramCount, rows), 
-                        page, 
-                        records = testProgramCount, 
-                        rows = (from m in programs
-                                select
-                                    new
-                                        {
-                                            id = m.ID, 
-                                            cell =
-                                    new[]
+                {
+                    total = Paging.TotalPages(testProgramCount, rows),
+                    page,
+                    records = testProgramCount,
+                    rows = (from m in programs
+                            select
+                                new
+                                {
+                                    id = m.ID,
+                                    cell =
+                            new[]
                                         {
                                             m.Title.ToStringWithDbNullCheck(), m.Description.ToStringWithDbNullCheck(), 
                                             m.Project1.Title.ToStringWithDbNullCheck(), 
                                             m.TestMethodDic.Title.ToStringWithDbNullCheck()
                                         }
-                                        }).ToArray()
-                    };
+                                }).ToArray()
+                };
 
-            return this.Json(jsonData, JsonRequestBehavior.AllowGet);
+            JsonResult jsonResult = this.Json(jsonData, JsonRequestBehavior.AllowGet);
+            return jsonResult;
+        }
+
+        public ActionResult GetProgramsForProject(int projectId, int page, int rows, string search, string sidx, string sord)
+        {
+            return this.FormJsonData(projectId, page, rows, search, sidx, sord);
         }
 
         #endregion

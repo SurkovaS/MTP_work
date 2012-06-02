@@ -13,5 +13,15 @@
 
             return str.ToString();
         }
+
+        public static string DateToShortWithDbNullCheck(this DateTime? date)
+        {
+            if (date == null)
+            {
+                return null;
+            }
+
+            return date.Value.ToShortDateString();
+        }
     }
 }

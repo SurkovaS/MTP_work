@@ -1,60 +1,187 @@
 ﻿@using MTP1
 @model MTP1.Models.UseCase
-
 @{
     this.ViewBag.Title = string.Format("Сценарий тестирования {0} | {1}", this.Model.Title, Constants.TITLE);
 
 }
 <p>
-    @this.Html.ActionLink("Ввод первичных метрик", "Create", "UseCasePrimaryMetric")
+    @this.Html.ActionLink("Редактировать", "Edit", new { id = this.Model.ID }) |
+    @this.Html.ActionLink("Сценарии тестирования", "Index")|
+    @this.Html.ActionLink("Ввод первичных метрик", "Create", "UseCasePrimaryMetric") 
 </p>
 <fieldset>
     <legend>Use Case "@this.Model.Title", проект "@this.Model.Project1.Title"</legend>
-
-    <div class="display-label">Сценарий тестирования</div>
+    <div class="display-label">
+        Сценарий тестирования</div>
     <div class="display-field">
         @this.Html.DisplayFor(model => model.Title)
     </div>
-    <div class="display-label">Описание</div>
+    <div class="display-label">
+        Описание</div>
     <div class="display-field">
         @this.Html.DisplayFor(model => model.Description)
     </div>
-    <div class="display-label">Проект</div>
+    <div class="display-label">
+        Проект</div>
     <div class="display-field">
         @this.Html.DisplayFor(model => model.Project1.Title)
     </div>
-    <div class="display-label">Программа тестирования</div>
+    <div class="display-label">
+        Программа тестирования</div>
     <div class="display-field">
         @this.Html.DisplayFor(model => model.TestProgram1.Title)
     </div>
-    <div class="display-label">Приоритет</div>
+    <div class="display-label">
+        Приоритет</div>
     <div class="display-field">
         @this.Html.DisplayFor(model => model.PriorityDic.Title)
     </div>
-    <div class="display-label">UCP</div>
+    <div class="display-label">
+        UCP</div>
     <div class="display-field">
         @this.Html.DisplayFor(model => model.Ucp)
     </div>
-    <div class="display-label">Трудозатраты, чел-часы</div>
+    <div class="display-label">
+        Трудозатраты, чел-часы</div>
     <div class="display-field">
         @this.Html.DisplayFor(model => model.ManHour)
     </div>
-    <div class="display-label">Пользователь</div>
+    <div class="display-label">
+        Пользователь</div>
     <div class="display-field">
-        @this.Html.DisplayFor(model => model.UsersDic.Name)
+        @this.Html.DisplayFor(model => model.Users.Title)
     </div>
-
 </fieldset>
-<p>
-    @this.Html.ActionLink("Редактировать", "Edit", new { id = this.Model.ID }) |
-    @this.Html.ActionLink("UseCase", "Index")
-</p>
-<p>
-    @this.Html.ActionLink("Технические факторы", "Index", "TechnicalFactor") |@this.Html.ActionLink("Новый", "Create", "TechnicalFactor") 
-</p>
-<p>
-    @this.Html.ActionLink("Факторы окружения", "Index", "EnvironmentFactor") |@this.Html.ActionLink("Новый", "Create", "EnvironmentFactor")
-</p>
-<p>
-    @this.Html.ActionLink("Акторы", "Index", "Actor") |@this.Html.ActionLink("Новый", "Create", "Actor") 
-</p>
+
+<div id="grid_containerTF" style="width: 100%">
+    <table id="gridTF" cellpadding="0" cellspacing="0">
+    </table>
+    <div id="pagerTF" style="text-align: center;">
+    </div>
+    <div id="searchTF" style="margin-left: 30%; display: none">
+    </div>
+</div>
+
+<div id="grid_containerEF" style="width: 100%;margin-top: 15px">
+    <table id="gridEF" cellpadding="0" cellspacing="0">
+    </table>
+    <div id="pagerEF" style="text-align: center;">
+    </div>
+    <div id="searchEF" style="margin-left: 30%; display: none">
+    </div>
+</div>
+
+<div id="grid_containerAc" style="width: 100%;margin-top: 15px">
+    <table id="gridAc" cellpadding="0" cellspacing="0">
+    </table>
+    <div id="pagerAc" style="text-align: center;">
+    </div>
+    <div id="searchAc" style="margin-left: 30%; display: none">
+    </div>
+</div>
+
+
+<script type="text/javascript">
+    var useCaseId = @Model.ID;
+
+    $(function() {
+        GridForTechFacts();
+        GridForEnvFacts();
+        GridForActors();
+    });
+
+    function GridForTechFacts() {
+        var indexUrlTF = '@Url.Action("GetTechFactsForUseCase", "TechnicalFactor")' + '?useCaseId=' + useCaseId;
+        var editUrlTF = '@Url.Action("Edit", "TechnicalFactor")';
+        var deleteUrlTF = '@Url.Action("Delete", "TechnicalFactor")';
+        var addUrlTF = '@Url.Action("Create", "TechnicalFactor")';
+        var viewUrlTF= '@Url.Action("Details", "TechnicalFactor")';
+
+        DrawMTPGrid('gridTF', 'pagerTF', indexUrlTF, editUrlTF, deleteUrlTF, addUrlTF, viewUrlTF,
+         ['Технический фактор', 'Весовой коэффициент', 'Сложность'],
+                [
+                    {
+                        name: 'TechnicalFactor',
+                        sortable: false,
+                        align: 'left',
+                        width: '100'
+                    },
+                    {
+                        name: 'WeightCoefficient',
+                        sortable: false,
+                        align: 'center',
+                        width: '50'
+                    },
+                    {
+                        name: 'Difficulty',
+                        sortable: false,
+                        align: 'center',
+                        width: '50'
+                    }
+                ], 'Технические факторы сценария', true);
+    }
+
+    function GridForEnvFacts() {
+        var indexUrlEF = '@Url.Action("GetEnvFactorsForUseCase", "EnvironmentFactor")' + '?useCaseId=' + useCaseId;
+        var editUrlEF = '@Url.Action("Edit", "EnvironmentFactor")';
+        var deleteUrlEF = '@Url.Action("Delete", "EnvironmentFactor")';
+        var addUrlEF = '@Url.Action("Create", "EnvironmentFactor")';
+        var viewUrlEF = '@Url.Action("Details", "EnvironmentFactor")';
+
+   
+         DrawMTPGrid('gridEF', 'pagerEF', indexUrlEF, editUrlEF, deleteUrlEF, addUrlEF, viewUrlEF,
+         ['Фактор окружения', 'Весовой коэффициент', 'Сложность'],
+                [
+                    {
+                        name: 'EnvironmentFactor',
+                        sortable: false,
+                        align: 'left',
+                        width: '100'
+                    },
+                    {
+                        name: 'WeightCoefficient',
+                        sortable: false,
+                        align: 'center',
+                        width: '50'
+                    },
+                    {
+                        name: 'Difficulty',
+                        sortable: false,
+                        align: 'center',
+                        width: '50'
+                    }
+                ], ' Факторы окружения сценария', true);
+    }
+    
+    function GridForActors() {
+        var indexUrlAc = '@Url.Action("GetActorsForUseCase", "Actor")' + '?useCaseId=' + useCaseId;
+        var editUrlAc = '@Url.Action("Edit", "Actor")';
+        var deleteUrlAc = '@Url.Action("Delete", "Actor")';
+        var addUrlAc = '@Url.Action("Create", "Actor")';
+        var viewUrlAc = '@Url.Action("Details", "Actor")';
+
+        DrawMTPGrid('gridAc', 'pagerAc', indexUrlAc, editUrlAc, deleteUrlAc, addUrlAc,
+                viewUrlAc,
+                ['Актор', 'Весовой коэффициент', 'Количество'],
+                [
+                    {
+                        name: 'Actor',
+                        sortable: false,
+                        align: 'left',
+                        width: '100'
+                    },
+                    {
+                        name: 'WeightCoefficient',
+                        sortable: false,
+                        align: 'center',
+                        width: '50'
+                    },
+                    {
+                        name: 'Quantity',
+                        sortable: false,
+                        align: 'center',
+                        width: '50'
+                    }
+                ],'Участники сценария', true);
+    }
+</script>

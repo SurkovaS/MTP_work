@@ -6,7 +6,8 @@
 
 }
 
-<div id="myDiv" style="width: 100%">
+<link href="@this.Url.Content("~/Content/List.css")" rel="stylesheet" type="text/css" />
+<div id="grid_container" style="width: 100%">
     <table id="grid" cellpadding="0" cellspacing="0">
     </table>
     <div id="pager" style="text-align: center;">
@@ -24,10 +25,10 @@
         var addUrl = '@Url.Action("Create", "UseCase")';
         var viewUrl = '@Url.Action("Details", "UseCase")';
 
-        $("#grid").jqGrid({
-            colNames: ['Сценария тестирования', 'Описание', 'Проект', 'Программа тестирования', 'Приоритет', 'UCP',
-                'Трудозатраты, чел-часы','Пользователь'],
-            colModel: [
+        DrawMTPGrid('grid', 'pager', indexUrl, editUrl, deleteUrl, addUrl, viewUrl,
+            ['Наименование', 'Описание', 'Проект', 'Программа тестирования', 'Приоритет', 'UCP',
+                'Трудозатраты, чел-часы', 'Пользователь'],
+            [
                 {
                     name: 'Title',
                     sortable: false,
@@ -43,81 +44,40 @@
                 {
                     name: 'Project',
                     sortable: false,
-                    align: 'left',
+                    align: 'center',
                     width: '200'
                 },
                 {
                     name: 'TestProgram',
                     sortable: false,
-                    align: 'left',
+                    align: 'center',
                     width: '200'
                 },
                 {
                     name: 'Priority',
                     sortable: false,
-                    align: 'left',
+                    align: 'center',
                     width: '200'
                 },
                 {
                     name: 'Ucp',
                     sortable: false,
-                    align: 'left',
+                    align: 'center',
                     width: '200'
                 },
                 {
                     name: 'ManHour',
                     sortable: false,
-                    align: 'left',
+                    align: 'center',
                     width: '200'
                 },
                 {
                     name: 'Creator',
                     sortable: false,
-                    align: 'left',
+                    align: 'center',
                     width: '200'
                 }
-            ],
-            pager: $("#pager"),
-            sortname: 'Title',
-            sortorder: "",
-            rowNum: 10,
-            rowList: [10, 20, 50],
-            viewrecords: true,
-            rownumbers: true,
-            shrinkToFit: true,
-            width: 1100,
-            altRows: true,
-            altclass: 'myAltRowClass',
-            height: 'auto',
-            gridview: true,
-            url: indexUrl,
-            datatype: 'json',
-            mtype: 'GET',
-            caption: 'Сценарии тестирования',
-            loadError: function (xhr, status, error) {
-                alert(error);
-            },
-            ondblClickRow: function (rowid) {
-                window.location = viewUrl + '/' + rowid;
-            }
-        });
-
-        var grid = jQuery("#grid").jqGrid('navGrid', '#pager', {
-            edit: true,
-            add: true,
-            del: true,
-            search: false,
-            refresh: true,
-            addfunc: function () { window.location = addUrl; },
-            editfunc: function (id) {
-                window.location = editUrl + '/' + id;
-            },
-            delfunc: function (id) {
-                $.post(deleteUrl + '/' + id, function () {
-                    grid.trigger("reloadGrid");
-                }).error(function (readyState, responceText) { alert(responceText); });
-            }
-        });
+            ], 'Сценарии тестирования');
     });
 
 </script>

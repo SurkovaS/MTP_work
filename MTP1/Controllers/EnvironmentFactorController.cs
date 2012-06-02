@@ -79,38 +79,44 @@ namespace MTP1.Controllers
         /// </returns>
         public ActionResult GetEnvFactors(int page, int rows, string search, string sidx, string sord)
         {
-            try
-            {
-                int envFactorsCount = this.service.Get().Count();
-                List<EnvironmentFactor> envFactors = this.service.Get().ApplyPaging("EnvironmentFactorDic.Title", (page - 1) * rows, rows).ToList();
+            return this.FormJsonData(null, page, rows, search, sidx, sord);
+        }
+        public ActionResult FormJsonData(int? useCaseId, int page, int rows, string search, string sidx, string sord)
+        {
+            int envFactorCount = this.service.Get().Count();
+            List<EnvironmentFactor> envFactors = this.service.Get().Where(a => a.UseCase == useCaseId || useCaseId == null)
+                .ApplyPaging("EnvironmentFactorDic.Title", (page - 1) * rows, rows).ToList();
 
-                var jsonData = new
+            var jsonData =
+                new
                 {
-                    total = Paging.TotalPages(envFactorsCount, rows),
+                    total = Paging.TotalPages(envFactorCount, rows),
                     page,
-                    records = envFactorsCount,
+                    records = envFactorCount,
                     rows = (from m in envFactors
                             select
                                 new
                                 {
                                     id = m.ID,
-                                    cell = new[]
-                                            {
-                                                m.UseCase1.Title.ToStringWithDbNullCheck(),
-                                                m.EnvironmentFactorDic.Title.ToStringWithDbNullCheck(),
-                                                m.WeightCoefficientDic.Value.ToStringWithDbNullCheck()//,
-                                               // m.PriorityDic.Title.ToStringWithDbNullCheck()
-                                            }
+                                    cell =
+                            new[]
+                                       {
+                                            m.UseCase1.Title.ToStringWithDbNullCheck(), 
+                                            m.EnvironmentFactorDic.Title.ToStringWithDbNullCheck(), 
+                                            m.WeightCoefficientDic.Value.ToStringWithDbNullCheck(), 
+                                            m.PriorityDic.Title.ToStringWithDbNullCheck() 
+                                        }
                                 }).ToArray()
                 };
 
-                return this.Json(jsonData, JsonRequestBehavior.AllowGet);
-            }
-            catch (Exception ex)
-            {
-                throw;
-            }
+            JsonResult jsonResult = this.Json(jsonData, JsonRequestBehavior.AllowGet);
+            return jsonResult;
         }
+        public ActionResult GetEnvFactorsForUseCase(int useCaseId, int page, int rows, string search, string sidx, string sord)
+        {
+            return this.FormJsonData(useCaseId, page, rows, search, sidx, sord);
+        }
+       
 
         #endregion
     }

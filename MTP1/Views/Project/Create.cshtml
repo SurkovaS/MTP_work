@@ -1,7 +1,7 @@
 ﻿@model MTP1.Models.Project
 
 @{
-    ViewBag.Title = string.Format("Создание проекта тестирования | {0}", MTP1.Constants.TITLE);
+    ViewBag.Title = string.Format("Создание проекта | {0}", MTP1.Constants.TITLE);
 }
 
 <script src="@Url.Content("~/Scripts/jquery.validate.min.js")" type="text/javascript"></script>
@@ -13,7 +13,7 @@
     
     <fieldset>
         <legend>Создание проекта тестирования</legend>
-        @Html.ActionLink("Отменить", "Index")
+        @Html.ActionLink("Отменить", "Index") | @Html.ActionLink("Проекты", "Index")
         @Html.EditorForModel()
         <p>
             <input type="submit" value="Сохранить" />
@@ -21,6 +21,4 @@
     </fieldset>
 }
 
-<div>
-    @Html.ActionLink("Проекты", "Index")
-</div>
+

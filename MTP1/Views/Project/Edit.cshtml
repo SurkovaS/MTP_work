@@ -4,13 +4,13 @@
          
 
 @{
-    this.ViewBag.Title = string.Format("Редактирование проекта тестирования | {0}", Constants.TITLE);
+    this.ViewBag.Title = string.Format("Редактирование проекта | {0}", Constants.TITLE);
 
 }
 
 
 
-@this.Html.ActionLink("Отменить", "Index")
+@this.Html.ActionLink("Отменить", "Index") | @this.Html.ActionLink("Проекты", "Index")
 <h2></h2>
 
 <script src="@this.Url.Content("~/Scripts/jquery.validate.min.js")" type="text/javascript"> </script>
@@ -27,7 +27,3 @@
         </p>
     </fieldset>
 }
-
-<div>
-    @this.Html.ActionLink("Проекты", "Index")
-</div>

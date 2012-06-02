@@ -2,9 +2,11 @@
 @model IEnumerable<MTP1.Models.TestProgram>
 @{
     this.ViewBag.Title = string.Format("Программы тестирования| {0}", Constants.TITLE);
-
 }
-<div id="myDiv" style="width: 100%">
+
+<link href="@this.Url.Content("~/Content/List.css")" rel="stylesheet" type="text/css" />
+
+<div id="grid_container" style="width: 100%">
     <table id="grid" cellpadding="0" cellspacing="0">
     </table>
     <div id="pager" style="text-align: center;">
@@ -39,31 +41,31 @@
                 {
                     name: 'Project',
                     sortable: false,
-                    align: 'left',
+                    align: 'center',
                     width: '200'
                 },
                 {
                     name: 'BeginDatePlan',
                     sortable: false,
-                    align: 'left',
+                    align: 'center',
                     width: '200'
                 },
                {
                    name: 'EndDatePlan',
                    sortable: false,
-                   align: 'left',
+                   align: 'center',
                    width: '200'
                },
                 {
                     name: 'BeginDateActual',
                     sortable: false,
-                    align: 'left',
+                    align: 'center',
                     width: '200'
                 },
                 {
                     name: 'EndDateActual',
                     sortable: false,
-                    align: 'left',
+                    align: 'center',
                     width: '200'
                 }
             ]);

@@ -210,7 +210,9 @@
     <Content Include="Content\mega-menu\images\bg_sub_left.png" />
     <Content Include="Content\mega-menu\images\bg_white.png" />
     <Content Include="Content\ui.jqgrid.css" />
+    <Content Include="Content\List.css" />
     <Content Include="Global.asax" />
+    <Content Include="Scripts\jquery.ui.datepicker-ru.min.js" />
     <Content Include="Scripts\MTPGrid.js" />
     <Content Include="Scripts\jqgrid\i18n\grid.locale-ru.js" />
     <Content Include="Scripts\jqgrid\jquery.jqGrid.min.js" />
@@ -546,16 +548,12 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Content\themes\base\" />
-    <Folder Include="Views\UCP\" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="Views\Project\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="Views\Project\Edit.cshtml" />
-  </ItemGroup>
-  <ItemGroup>
-    <Content Include="Views\Project\Delete.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="Views\Project\Create.cshtml" />
@@ -584,6 +582,12 @@
   <ItemGroup>
     <Content Include="Views\Shared\EditorTemplates\TestProgram.cshtml" />
   </ItemGroup>
+  <ItemGroup>
+    <Content Include="Views\Shared\EditorTemplates\DateTime.cshtml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Views\Shared\DisplayTemplates\DateTime.cshtml" />
+  </ItemGroup>
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
   <Import Project="$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v10.0\WebApplications\Microsoft.WebApplication.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
@@ -601,7 +605,7 @@
         <WebProjectProperties>
           <UseIIS>False</UseIIS>
           <AutoAssignPort>True</AutoAssignPort>
-          <DevelopmentServerPort>3134</DevelopmentServerPort>
+          <DevelopmentServerPort>5183</DevelopmentServerPort>
           <DevelopmentServerVPath>/</DevelopmentServerVPath>
           <IISUrl>
           </IISUrl>

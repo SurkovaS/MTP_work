@@ -49,7 +49,7 @@ namespace MTP1
                 // Имя маршрута
                 "{controller}/{action}/{id}", 
                 // URL-адрес с параметрами
-                new { controller = "Home", action = "Index", id = UrlParameter.Optional } // Параметры по умолчанию
+                new { controller = "Project", action = "Index", id = UrlParameter.Optional } // Параметры по умолчанию
                 );
         }
 

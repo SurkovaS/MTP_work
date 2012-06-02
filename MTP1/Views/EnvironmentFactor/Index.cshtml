@@ -3,10 +3,10 @@
 @model IEnumerable<EnvironmentFactor>
 @{
     this.ViewBag.Title = string.Format("Факторы окружения | {0}", Constants.TITLE);
-
 }
 
-<div id="myDiv" style="width: 100%">
+<link href="@this.Url.Content("~/Content/List.css")" rel="stylesheet" type="text/css" />
+<div id="grid_container" style="width: 100%">
     <table id="grid" cellpadding="0" cellspacing="0">
     </table>
     <div id="pager" style="text-align: center;">
@@ -23,9 +23,9 @@
 
     $(function () {
 
-        $("#grid").jqGrid({
-            colNames: ['Сценарий тестирования', 'Фактор окружения', 'Весовой коэффициент', 'Сложность'],
-            colModel: [
+        DrawMTPGrid('grid', 'pager', indexUrl, editUrl, deleteUrl, addUrl, viewUrl,
+            ['Сценарий тестирования', 'Фактор окружения', 'Весовой коэффициент', 'Сложность'],
+            [
                 {
                     name: 'UseCase',
                     sortable: false,
@@ -50,48 +50,7 @@
                     align: 'left',
                     width: '50'
                 }
-            ],
-            pager: $("#pager"),
-            sortname: 'Title',
-            sortorder: "",
-            rowNum: 10,
-            rowList: [10, 20, 50],
-            viewrecords: true,
-            rownumbers: true,
-            shrinkToFit: true,
-            width: 1100,
-            altRows: true,
-            altclass: 'myAltRowClass',
-            height: 'auto',
-            gridview: true,
-            url: indexUrl,
-            datatype: 'json',
-            mtype: 'GET',
-            caption: 'Факторы окружения',
-            loadError: function (xhr, status, error) {
-                alert(error);
-            },
-            ondblClickRow: function (rowid) {
-                window.location = viewUrl + '/' + rowid;
-            }
-        });
-
-        var grid = jQuery("#grid").jqGrid('navGrid', '#pager', {
-            edit: true,
-            add: true,
-            del: true,
-            search: false,
-            refresh: true,
-            addfunc: function () { window.location = addUrl; },
-            editfunc: function (id) {
-                window.location = editUrl + '/' + id;
-            },
-            delfunc: function (id) {
-                $.post(deleteUrl + '/' + id, function () {
-                    grid.trigger("reloadGrid");
-                }).error(function (readyState, responceText) { alert(responceText); });
-            }
-        });
+            ]);
     });
 
 </script>

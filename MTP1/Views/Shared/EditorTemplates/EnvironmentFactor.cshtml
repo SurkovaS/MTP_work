@@ -17,9 +17,7 @@
 <table>
     <tr>
         <td>Фактор окружения</td>
-        
         <td>Весовой коэффициент</td>
-
         <td>Сложность</td>
     </tr>
     <tr>
@@ -28,15 +26,13 @@
                 var queryEnvFactors = EnvironmentFactorDicServiceFactory.Create().Get().Select(item => new { item.ID, Name = item.Title }).ToList();
                 List<SelectListItem> listEnvFactors = queryEnvFactors.Select(item => new SelectListItem { Text = item.Name.ToString(), Value = item.ID.ToString(), Selected = this.Model != null && this.Model.EnvironmentFactor1 == item.ID }).ToList();
                 @this.Html.DropDownListFor(model => model.EnvironmentFactor1, listEnvFactors, "...")
-
-            } 
+              } 
         </td>
         <td>
             @{
                 var queryWCs = WeightCoefficientDicServiceFactory.Create().Get().Select(item => new { item.ID, Name = item.Value }).ToList();
                 List<SelectListItem> listWCs = queryWCs.Select(item => new SelectListItem { Text = item.Name.ToString(), Value = item.ID.ToString(), Selected = this.Model != null && this.Model.WeightCoefficient == item.ID }).ToList();
                 @this.Html.DropDownListFor(model => model.WeightCoefficient, listWCs, "...")
-
             } 
         </td>
         <td>
@@ -44,7 +40,6 @@
                 var queryDifficulties = PriorityDicServiceFactory.Create().Get().Select(item => new { item.ID, Name = item.Title }).ToList();
                 List<SelectListItem> lisDifficulties = queryDifficulties.Select(item => new SelectListItem { Text = item.Name.ToString(), Value = item.ID.ToString(), Selected = this.Model != null && this.Model.Difficulty == item.ID }).ToList();
                 @this.Html.DropDownListFor(model => model.Difficulty, lisDifficulties, "...")
-
             } 
         </td>
     </tr>

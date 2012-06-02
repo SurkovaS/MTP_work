@@ -8,7 +8,7 @@
         @this.Html.DropDownListFor(model => model.Project, listProjects, "...")
 
     } 
-      
+@this.Html.ValidationMessageFor(model => model.Project)      
 </div>
 <div class="display-label">Программа тестирования</div>
 <div class="editor-field">
@@ -18,9 +18,9 @@
         @this.Html.DropDownListFor(model => model.TestProgram, listPrograms, "...")
 
     }
-       
+      @this.Html.ValidationMessageFor(model => model.TestProgram)  
 </div>
-<div class="display-label">Use Case</div>
+<div class="display-label">Сценарий тестироваия</div>
 <div class="editor-field">
     @this.Html.EditorFor(model => model.Title)
     @this.Html.ValidationMessageFor(model => model.Title)
@@ -33,7 +33,7 @@
 </div>
 
 
-<div class="display-label">Приоритет Use-case</div>
+<div class="display-label">Приоритет сценария</div>
 <div class="editor-field">
     @{
         var queryPriorities = PriorityDicServiceFactory.Create().Get().Select(item => new { item.ID, Name = item.Title }).ToList();
@@ -55,7 +55,7 @@
 <div class="display-label">Пользователь</div>
 <div class="editor-field">
     @{
-        var queryUsers = UsersDicServiceFactory.Create().Get().Select(item => new { item.ID, Name = item.Name }).ToList();
+        var queryUsers = UsersServiceFactory.Create().Get().Select(item => new { item.ID, Name = item.Title }).ToList();
         List<SelectListItem> listUsers = queryUsers.Select(item => new SelectListItem { Text = item.Name.ToString(), Value = item.ID.ToString(), Selected = this.Model != null && this.Model.Creator == item.ID }).ToList();
         @this.Html.DropDownListFor(model => model.Creator, listUsers, "...")
 

@@ -75,32 +75,44 @@ namespace MTP1.Controllers
         /// </returns>
         public ActionResult GetUseCases(int page, int rows, string search, string sidx, string sord)
         {
-            int useCasesCount = this.service.Get().Count();
-            List<UseCase> useCases = this.service.Get().ApplyPaging("Title", (page - 1) * rows, rows).ToList();
+            return this.FormJsonData(null, page, rows, search, sidx, sord);
+        }
+        public ActionResult FormJsonData(int? programId,int page, int rows, string search, string sidx, string sord)
+        {
+            int useCaseCount = this.service.Get().Count();
+            List<UseCase> useCases = this.service.Get().Where(a => a.TestProgram == programId || programId == null)
+                .ApplyPaging("Title", (page - 1) * rows, rows).ToList();
+
             var jsonData =
                 new
-                    {
-                        total = Paging.TotalPages(useCasesCount, rows), 
-                        page, 
-                        records = useCasesCount, 
-                        rows = (from m in useCases
-                                select
-                                    new
-                                        {
-                                            id = m.ID, 
-                                            cell =
-                                    new[]
-                                        {
+                {
+                    total = Paging.TotalPages(useCaseCount, rows),
+                    page,
+                    records = useCaseCount,
+                    rows = (from m in useCases
+                            select
+                                new
+                                {
+                                    id = m.ID,
+                                    cell =
+                            new[]
+                                       {
                                             m.Title.ToStringWithDbNullCheck(), m.Description.ToStringWithDbNullCheck(), 
                                             m.Project1.Title.ToStringWithDbNullCheck(), 
                                             m.TestProgram1.Title.ToStringWithDbNullCheck(), 
-                                            m.PriorityDic.Title.ToStringWithDbNullCheck(), m.Ucp.ToStringWithDbNullCheck(), 
-                                            m.ManHour.ToStringWithDbNullCheck()
+                                            m.PriorityDic == null ? string.Empty : m.PriorityDic.Title.ToStringWithDbNullCheck(), m.Ucp.ToStringWithDbNullCheck(), 
+                                            m.ManHour.ToStringWithDbNullCheck(),
+                                            m.Users.Title.ToStringWithDbNullCheck()
                                         }
                                         }).ToArray()
                     };
 
-            return this.Json(jsonData, JsonRequestBehavior.AllowGet);
+            JsonResult jsonResult = this.Json(jsonData, JsonRequestBehavior.AllowGet);
+            return jsonResult;
+        }
+        public ActionResult GetUseCasesForProgram(int programId, int page, int rows, string search, string sidx, string sord)
+        {
+            return this.FormJsonData(programId, page, rows, search, sidx, sord);
         }
 
         #endregion

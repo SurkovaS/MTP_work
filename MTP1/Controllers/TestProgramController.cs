@@ -100,10 +100,10 @@ namespace MTP1.Controllers
                                         {
                                             m.Title.ToStringWithDbNullCheck(), m.Description.ToStringWithDbNullCheck(), 
                                             m.Project1.Title.ToStringWithDbNullCheck(),
-                                            m.BeginDatePlan.ToStringWithDbNullCheck(),
-                                            m.EndDatePlan.ToStringWithDbNullCheck(),
-                                            m.BeginDateActual.ToStringWithDbNullCheck(),
-                                            m.EndDateActual.ToStringWithDbNullCheck()
+                                            m.BeginDatePlan.DateToShortWithDbNullCheck(),
+                                            m.EndDatePlan.DateToShortWithDbNullCheck(),
+                                            m.BeginDateActual.DateToShortWithDbNullCheck(),
+                                            m.EndDateActual.DateToShortWithDbNullCheck()
 
                                         }
                                 }).ToArray()

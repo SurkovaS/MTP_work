@@ -7,6 +7,11 @@
 // </summary>
 // --------------------------------------------------------------------------------------------------------------------
 
+using System.Collections.Generic;
+
+using MTP1.Helpers;
+using MTP1.Models;
+
 namespace MTP1.Controllers
 {
     using System.Collections.Generic;
@@ -51,53 +56,47 @@ namespace MTP1.Controllers
 
         #region Public Methods and Operators
 
-        /// <summary>
-        /// The get projects.
-        /// </summary>
-        /// <param name="page">
-        /// The page.
-        /// </param>
-        /// <param name="rows">
-        /// The rows.
-        /// </param>
-        /// <param name="search">
-        /// The search.
-        /// </param>
-        /// <param name="sidx">
-        /// The sidx.
-        /// </param>
-        /// <param name="sord">
-        /// The sord.
-        /// </param>
-        /// <returns>
-        /// </returns>
         public ActionResult GetActors(int page, int rows, string search, string sidx, string sord)
         {
-            int actorsCount = this.service.Get().Count();
-            List<Actor> actors = this.service.Get().ApplyPaging("ActorDic.Title", (page - 1) * rows, rows).ToList();
-            var jsonData = new
-            {
-                total = Paging.TotalPages(actorsCount, rows),
-                page,
-                records = actorsCount,
-                rows = (from m in actors
-                        select
-                            new
-                            {
-                                id = m.ID,
-                                cell = new[]
-                                    {
-                                        m.UseCase1.Title.ToStringWithDbNullCheck(),
-                                        m.ActorDic.Title.ToStringWithDbNullCheck(),
-                                        m.WeightCoefficientDic.Value.ToStringWithDbNullCheck(),
-                                        m.Quantity.ToStringWithDbNullCheck(),
-                                    }
-                            }).ToArray()
-            };
-
-            return this.Json(jsonData, JsonRequestBehavior.AllowGet);
+            return this.FormJsonData(null, page, rows, search, sidx, sord);
         }
 
+        public ActionResult FormJsonData(int? useCaseId, int page, int rows, string search, string sidx, string sord)
+        {
+            int actorCount = this.service.Get().Count();
+            List<Actor> actors = this.service.Get().Where(a => a.UseCase == useCaseId || useCaseId == null)
+                .ApplyPaging("ActorDic.Title", (page - 1) * rows, rows).ToList();
+
+            var jsonData =
+                new
+                {
+                    total = Paging.TotalPages(actorCount, rows),
+                    page,
+                    records = actorCount,
+                    rows = (from m in actors
+                            select
+                                new
+                                {
+                                    id = m.ID,
+                                    cell =
+                            new[]
+                                       {
+                                            m.UseCase1.Title.ToStringWithDbNullCheck(), 
+                                            m.ActorDic.Title.ToStringWithDbNullCheck(), 
+                                            m.WeightCoefficientDic.Value.ToStringWithDbNullCheck(), 
+                                            m.Quantity.ToStringWithDbNullCheck() 
+                                        }
+                                }).ToArray()
+                };
+
+            JsonResult jsonResult = this.Json(jsonData, JsonRequestBehavior.AllowGet);
+            return jsonResult;
+        }
+
+        public ActionResult GetActorsForUseCase(int useCaseId, int page, int rows, string search, string sidx, string sord)
+        {
+            return this.FormJsonData(useCaseId, page, rows, search, sidx, sord);
+        }
         #endregion
     }
 }

@@ -43,3 +43,86 @@
     @this.Html.ActionLink("Редактировать", "Edit", new { id = this.Model.ID }) |
     @this.Html.ActionLink("Программы тестирования", "Index")
 </p>
+
+<h3>Сценарии тестирования проекта</h3>
+
+<div id="grid_container" style="width: 100%">
+    <table id="grid" cellpadding="0" cellspacing="0">
+    </table>
+    <div id="pager" style="text-align: center;">
+    </div>
+    <div id="search" style="margin-left: 30%; display: none">
+    </div>
+</div>
+
+<p>
+    @Html.ActionLink("Редактировать", "Edit", new { id = Model.ID }) |
+    @Html.ActionLink("Сценарии тестирования", "Index")
+</p>
+
+<script type="text/javascript">
+    var programId = @Model.ID;
+    var indexUrl = '@Url.Action("GetUseCasesForProgram", "UseCase")' + '?programId=' + programId;
+    var editUrl = '@Url.Action("Edit", "UseCase")';
+    var deleteUrl = '@Url.Action("Delete", "UseCase")';
+    var addUrl = '@Url.Action("Create", "UseCase")';
+    var viewUrl = '@Url.Action("Details", "UseCase")';
+
+    $(function () {
+    DrawMTPGrid('grid', 'pager', indexUrl, editUrl, deleteUrl, addUrl, viewUrl,
+            ['Сценарий тестирования', 'Описание', 'Проект', 'Программа тестирования', 'Приоритет', 'UCP',
+                'Трудозатраты, чел-часы', 'Пользователь'],
+            [
+                {
+                    name: 'Title',
+                    sortable: false,
+                    align: 'center',
+                    width: '250'
+                },
+                {
+                    name: 'Description',
+                    sortable: false,
+                    align: 'center',
+                    width: '100'
+                },
+                {
+                    name: 'Project',
+                    sortable: false,
+                    align: 'center',
+                    width: '200'
+                },
+                {
+                    name: 'TestProgram',
+                    sortable: false,
+                    align: 'center',
+                    width: '200'
+                },
+                {
+                    name: 'Priority',
+                    sortable: false,
+                    align: 'center',
+                    width: '200'
+                },
+                {
+                    name: 'Ucp',
+                    sortable: false,
+                    align: 'center',
+                    width: '200'
+                },
+                {
+                    name: 'ManHour',
+                    sortable: false,
+                    align: 'center',
+                    width: '200'
+                },
+                {
+                    name: 'Creator',
+                    sortable: false,
+                    align: 'center',
+                    width: '200'
+                }
+            ]);
+    });
+
+</script>
+

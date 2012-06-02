@@ -53,56 +53,42 @@ namespace MTP1.Controllers
         #endregion
 
         #region Public Methods and Operators
-
-        /// <summary>
-        /// The get projects.
-        /// </summary>
-        /// <param name="page">
-        /// The page.
-        /// </param>
-        /// <param name="rows">
-        /// The rows.
-        /// </param>
-        /// <param name="search">
-        /// The search.
-        /// </param>
-        /// <param name="sidx">
-        /// The sidx.
-        /// </param>
-        /// <param name="sord">
-        /// The sord.
-        /// </param>
-        /// <returns>
-        /// </returns>
-        public ActionResult GetTechFactors(int page, int rows, string search, string sidx, string sord)
+       
+        public ActionResult GetTechFactsForUseCase(int useCaseId, int page, int rows, string search, string sidx, string sord)
         {
-
-                int techFactorsCount = this.service.Get().Count();
-                var techFactors = this.service.Get().ApplyPaging("TechnicalFactorDic.Title", (page - 1) * rows, rows).ToList();
-                var jsonData = new
-                    {
-                        total = Paging.TotalPages(techFactorsCount, rows), 
-                        page, 
-                        records = techFactorsCount, 
-                        rows = (from m in techFactors
-                                select
-                                    new
-                                        {
-                                            id = m.ID, 
-                                            cell =
-                                    new[]
-                                        {
-                                            m.UseCase1.Title.ToStringWithDbNullCheck(), 
+            List<TechnicalFactor> techFacts = this.service.Get().Where(a => a.UseCase == useCaseId).ToList();
+            List<TechnicalFactorDic> allTechFactors = TechnicalFactorDicServiceFactory.Create().Get().ToList();
+            var missingTechFactors = allTechFactors.Where(a => !techFacts.Any(b => b.TechnicalFactorDic.ID == a.ID));
+            
+            techFacts.AddRange(missingTechFactors.Select(a => new TechnicalFactor { TechnicalFactorDic = a }));
+            int techFactCount = techFacts.Count();
+            var techFactsWithPaging = techFacts.AsQueryable().ApplyPaging("TechnicalFactorDic.Title", (page - 1) * rows, rows);
+            
+            var jsonData =
+                new
+                {
+                    total = Paging.TotalPages(techFactCount, rows),
+                    page,
+                    records = techFactCount,
+                    rows = (from m in techFactsWithPaging
+                            select
+                                new
+                                {
+                                    id = m.ID,
+                                    cell =
+                            new[]
+                                       {
                                             m.TechnicalFactorDic.Title.ToStringWithDbNullCheck(), 
-                                            m.WeightCoefficientDic.Value.ToStringWithDbNullCheck()//, 
-                                            //m.PriorityDic.Title.ToStringWithDbNullCheck() 
+                                            m.WeightCoefficientDic == null ? string.Empty : 
+                                                    m.WeightCoefficientDic.Value.ToStringWithDbNullCheck(), 
+                                            m.PriorityDic == null ? string.Empty : 
+                                                    m.PriorityDic.Title.ToStringWithDbNullCheck() 
                                         }
-                                        }).ToArray()
-                    };
+                                }).ToArray()
+                };
 
-                return this.Json(jsonData, JsonRequestBehavior.AllowGet);
+            return this.Json(jsonData, JsonRequestBehavior.AllowGet);
         }
-
         #endregion
     }
 }

@@ -1,4 +1,7 @@
-function DrawMTPGrid(gridId, pagerId, indexUrl, editUrl, deleteUrl, addUrl, viewUrl, colNames, colModel) {
+function DrawMTPGrid(gridId, pagerId,
+                        indexUrl, editUrl, deleteUrl,
+                        addUrl, viewUrl, colNames, colModel, caption,
+                        hiddengrid) {
 
     $("#" + gridId).jqGrid({
         colNames: colNames,
@@ -11,7 +14,6 @@ function DrawMTPGrid(gridId, pagerId, indexUrl, editUrl, deleteUrl, addUrl, view
         viewrecords: true,
         rownumbers: true,
         shrinkToFit: true,
-        width: 1100,
         altRows: true,
         altclass: 'myAltRowClass',
         height: 'auto',
@@ -19,16 +21,20 @@ function DrawMTPGrid(gridId, pagerId, indexUrl, editUrl, deleteUrl, addUrl, view
         url: indexUrl,
         datatype: 'json',
         mtype: 'GET',
-        caption: 'Программы тестирования',
-        loadError: function (xhr, status, error) {
-            alert(error);
-        },
+        caption: caption,
+        hiddengrid: hiddengrid? hiddengrid : false,
         ondblClickRow: function (rowid) {
             window.location = viewUrl + '/' + rowid;
-        }
+        },
+        loadError: function (jqXHR, textStatus, errorThrown) {
+        alert('HTTP status code: ' + jqXHR.status + '\n' +
+              'textStatus: ' + textStatus + '\n' +
+              'errorThrown: ' + errorThrown);
+        alert('HTTP message body (jqXHR.responseText): ' + '\n' + jqXHR.responseText);
+    }
     });
 
-    var grid = jQuery("#grid").jqGrid('navGrid', '#' + pagerId, {
+    var grid = jQuery("#" + gridId).jqGrid('navGrid', '#' + pagerId, {
         edit: true,
         add: true,
         del: true,
@@ -39,10 +45,21 @@ function DrawMTPGrid(gridId, pagerId, indexUrl, editUrl, deleteUrl, addUrl, view
             window.location = editUrl + '/' + id;
         },
         delfunc: function (id) {
-            $.post(deleteUrl + '/' + id, function () {
-                grid.trigger("reloadGrid");
-            }).error(function (readyState, responceText) { alert(responceText); });
+            if (confirm('Вы действительно хотите удалить запись?')) {
+                $.post(deleteUrl + '/' + id, function () {
+                    grid.trigger("reloadGrid");
+                });
+            }
         }
     });
-    
+     
+    ResizeGrid($("#" + gridId));
+}
+
+function ResizeGrid(grid) {
+    // Get width of parent container
+    var width = jQuery(grid).closest('div[id*="grid_container"]').width();
+    if (width) {
+        jQuery(grid).setGridWidth(width + 5);
+    }
 }

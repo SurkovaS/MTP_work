@@ -83,7 +83,7 @@ namespace MTP1.Controllers
                                             m.EnvironmentFactorDic.Title.ToStringWithDbNullCheck(), 
                                             m.WeightCoefficientDic == null ? string.Empty : 
                                                     m.WeightCoefficientDic.Value.ToStringWithDbNullCheck(), 
-                                            m.WeightCoefficientDic == null ? string.Empty : 
+                                            m.WeightCoefficientDic1 == null ? string.Empty : 
                                                     m.WeightCoefficientDic1.Value.ToStringWithDbNullCheck() 
                                         }
                                 }).ToArray()

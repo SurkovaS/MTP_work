@@ -115,6 +115,13 @@ namespace MTP1.Controllers
             return this.FormJsonData(programId, page, rows, search, sidx, sord);
         }
 
+        public ActionResult EditTechFactor(int useCaseId, int techFactorId, int WeightCoefficient, int difficultyId)
+        {
+            var a = 5;
+            return Json(true);
+        }
+        
+
         #endregion
     }
 }

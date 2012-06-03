@@ -4,7 +4,7 @@ function DrawMTPGrid(gridId, pagerId,
                         hiddengrid) {
 
 
-    DefineMtpGrid(gridId, pagerId, indexUrl, editUrl, colNames, colModel, caption, hiddengrid, viewUrl);
+    DefineMtpGrid(gridId, pagerId, indexUrl, editUrl, colNames, colModel, caption, hiddengrid, viewUrl, false);
 
     var grid = jQuery("#" + gridId).jqGrid('navGrid', '#' + pagerId, {
         edit: true,
@@ -30,32 +30,15 @@ function DrawMTPGrid(gridId, pagerId,
 
 
 function DrawEditableMTPGrid(gridId, pagerId,indexUrl, editUrl, colNames, colModel, caption,hiddengrid) {
-
-    DefineMtpGrid(gridId, pagerId, indexUrl, editUrl, colNames, colModel, caption, hiddengrid);
-
-    var grid = jQuery("#" + gridId).jqGrid('navGrid', '#' + pagerId, {
-        edit: true,
-        add: true,
-        del: true,
-        search: false,
-        refresh: true,
-        addfunc: function () { window.location = addUrl; },
-        editfunc: function (id) {
-            window.location = editUrl + '/' + id;
-        },
-        delfunc: function (id) {
-            if (confirm('Вы действительно хотите удалить запись?')) {
-                $.post(deleteUrl + '/' + id, function () {
-                    grid.trigger("reloadGrid");
-                });
-            }
-        }
-    });
-
+    DefineMtpGrid(gridId, pagerId, indexUrl, editUrl, colNames, colModel, caption, hiddengrid, null, true);
+    jQuery("#" + gridId).jqGrid('navGrid', '#' + pagerId);
+    
     ResizeGrid($("#" + gridId));
 }
 
-function DefineMtpGrid(gridId, pagerId, indexUrl, editUrl, colNames, colModel, caption, hiddengrid, viewUrl) {
+var MTPGridLastCel = new Array();
+
+function DefineMtpGrid(gridId, pagerId, indexUrl, editUrl, colNames, colModel, caption, hiddengrid, viewUrl, editOnRowSelect) {
     $("#" + gridId).jqGrid({
         colNames: colNames,
         colModel: colModel,
@@ -81,6 +64,15 @@ function DefineMtpGrid(gridId, pagerId, indexUrl, editUrl, colNames, colModel, c
                  window.location = viewUrl + '/' + rowid;
             }
         },
+         onSelectRow: editOnRowSelect ? function (id) {
+             if (id) {
+                 debugger 
+                 jQuery('#grid').jqGrid('restoreRow', MTPGridLastCel[gridId]);
+                 jQuery('#grid').jqGrid('editRow', id, true);
+             }
+        } : function () { },
+        cellEdit: true,
+        editurl : editOnRowSelect? editUrl : null,
         loadError: function (jqXHR, textStatus, errorThrown) {
             alert('HTTP status code: ' + jqXHR.status + '\n' +
               'textStatus: ' + textStatus + '\n' +

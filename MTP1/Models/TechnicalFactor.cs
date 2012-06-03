@@ -9,6 +9,8 @@
 
 namespace MTP1.Models
 {
+    using MTP.Controllers;
+
     using MTP1.Models.Interface;
 
     /// <summary>
@@ -27,6 +29,34 @@ namespace MTP1.Models
         public bool CanBeDeleted()
         {
             return true;
+        }
+
+        public string Title
+        {
+            get
+            {
+                return this.TechnicalFactorDic.Title.ToStringWithDbNullCheck();
+            }
+        }
+
+        public string WeightCoefficientValue
+        {
+            get
+            {
+                return this.WeightCoefficientDic == null
+                           ? string.Empty
+                           : this.WeightCoefficientDic.Value.ToStringWithDbNullCheck();
+            }
+        }
+
+        public string DifficultyValue
+        {
+            get
+            {
+                return this.WeightCoefficientDic1 == null
+                           ? string.Empty
+                           : this.WeightCoefficientDic1.Value.ToStringWithDbNullCheck();
+            }
         }
 
         #endregion

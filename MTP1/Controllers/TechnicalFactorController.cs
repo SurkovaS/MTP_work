@@ -53,42 +53,59 @@ namespace MTP1.Controllers
         #endregion
 
         #region Public Methods and Operators
+
+        internal class TechFactDto
+        {
+            public int ID { get; set; }
+            public string Title { get; set; }
+            public string WeightCoefficientValue { get; set; }
+            public string DifficultyValue { get; set; }
+        }
        
         public ActionResult GetTechFactsForUseCase(int useCaseId, int page, int rows, string search, string sidx, string sord)
         {
-            List<TechnicalFactor> techFacts = this.service.Get().Where(a => a.UseCase == useCaseId).ToList();
-            List<TechnicalFactorDic> allTechFactors = TechnicalFactorDicServiceFactory.Create().Get().ToList();
-            var missingTechFactors = allTechFactors.Where(a => !techFacts.Any(b => b.TechnicalFactorDic.ID == a.ID));
-            
-            techFacts.AddRange(missingTechFactors.Select(a => new TechnicalFactor { TechnicalFactorDic = a }));
+            var techFacts =
+                this.service.Get().Where(a => a.UseCase == useCaseId).ToList().Select(
+                    a => new TechFactDto
+                        {
+                            // эта бадяга затеивалась только чтобы взять ID из справочника
+                            ID = a.TechnicalFactorDic.ID,
+                            Title = a.Title,
+                            WeightCoefficientValue = a.WeightCoefficientValue,
+                            DifficultyValue = a.DifficultyValue
+                        }).ToList();
+
+            List<TechnicalFactorDic> allTechFactorsDic = TechnicalFactorDicServiceFactory.Create().Get().ToList();
+            var missingTechFactors = allTechFactorsDic.Where(a => !techFacts.Any(b => b.ID == a.ID));
+            techFacts.AddRange(missingTechFactors.Select(a => new TechFactDto { ID = a.ID, Title = a.Title }));
+
             int techFactCount = techFacts.Count();
-            var techFactsWithPaging = techFacts.AsQueryable().ApplyPaging("TechnicalFactorDic.Title", (page - 1) * rows, rows);
-            
+            var techFactsWithPaging = techFacts.AsQueryable().ApplyPaging("Title", (page - 1) * rows, rows);
+
             var jsonData =
                 new
-                {
-                    total = Paging.TotalPages(techFactCount, rows),
-                    page,
-                    records = techFactCount,
-                    rows = (from m in techFactsWithPaging
-                            select
-                                new
-                                {
-                                    id = m.ID,
-                                    cell =
-                            new[]
-                                       {
-                                            m.TechnicalFactorDic.Title.ToStringWithDbNullCheck(), 
-                                            m.WeightCoefficientDic == null ? string.Empty : 
-                                                    m.WeightCoefficientDic.Value.ToStringWithDbNullCheck(), 
-                                            m.WeightCoefficientDic1 == null ? string.Empty : 
-                                                    m.WeightCoefficientDic1.Value.ToStringWithDbNullCheck() 
+                    {
+                        total = Paging.TotalPages(techFactCount, rows),
+                        page,
+                        records = techFactCount,
+                        rows = (from m in techFactsWithPaging
+                                select
+                                    new
+                                        {
+                                            id = m.ID,
+                                            cell =
+                                    new[]
+                                        {
+                                            m.Title,
+                                            m.WeightCoefficientValue,
+                                            m.DifficultyValue
                                         }
-                                }).ToArray()
-                };
+                                        }).ToArray()
+                    };
 
             return this.Json(jsonData, JsonRequestBehavior.AllowGet);
         }
+
         #endregion
     }
 }

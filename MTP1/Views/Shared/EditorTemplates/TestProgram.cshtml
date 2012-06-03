@@ -20,11 +20,11 @@
 </div>
 <div class="display-label">Плановая дата начала</div>
 <div class="editor-field">
-    @EditorFor(model => model.BeginDatePlan)  
+    @Html.EditorFor(model => model.BeginDatePlan)  
 </div>
 <div class="display-label">Плановая дата окончания</div>
 <div class="editor-field">
-    @EditorFor(model => model.EndDatePlan)  
+    @Html.EditorFor(model => model.EndDatePlan)  
 </div>
 
 <div class="display-label">Фактическая дата начала</div>
@@ -33,5 +33,14 @@
 </div>
 <div class="display-label">Фактическая дата окончания</div>
 <div class="editor-field">
-   @Html.EditorFor(model => model.EndDateActual)  
+    @Html.EditorFor(model => model.EndDateActual)  
+</div>
+
+<div class="editor-label">Автор</div>
+<div class="editor-field">
+    @{
+        var queryCreators = UsersServiceFactory.Create().Get().Select(item => new { item.ID, Name = item.Title }).ToList();
+        List<SelectListItem> listCreators = queryCreators.Select(item => new SelectListItem { Text = item.Name.ToString(), Value = item.ID.ToString(), Selected = this.Model != null && this.Model.Creator == item.ID }).ToList();
+        @Html.DropDownListFor(model => model.Creator, listCreators, "...")
+    } 
 </div>

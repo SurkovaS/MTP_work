@@ -2,22 +2,22 @@
 @model MTP1.Models.SecondaryMetricDic
 
 @{
-    this.ViewBag.Title = string.Format("Элемент справочника {0} | {1}", this.Model.Title, Constants.TITLE);
-
+    ViewBag.Title = string.Format("Элемент справочника | {0}", Constants.TITLE);
 }
-<fieldset>
-    <legend>Элемент справочника "@this.Model.Title"</legend>
 
+<p>
+    @Html.ActionLink("Редактировать", "Edit", new { id = this.Model.ID }) |
+    @Html.ActionLink("Вторичные метрики", "Index")
+</p>
+
+<fieldset>
+    <legend>Элемент справочника Вторичные метрики</legend>
     <div class="display-label">Вторричная метрика</div>
     <div class="display-field">
-        @this.Html.DisplayFor(model => model.Title)
+        @Html.DisplayFor(model => model.Title)
     </div>
     <div class="display-label">Описание</div>
     <div class="display-field">
-        @this.Html.DisplayFor(model => model.Description)
+        @Html.DisplayFor(model => model.Description)
     </div>
 </fieldset>
-<p>
-    @this.Html.ActionLink("Редактировать", "Edit", new { id = this.Model.ID }) |
-    @this.Html.ActionLink("Вторичные метрики", "Index")
-</p>

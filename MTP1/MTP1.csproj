@@ -324,9 +324,6 @@
     <Content Include="Views\PriorityDic\Create.cshtml" />
   </ItemGroup>
   <ItemGroup>
-    <Content Include="Views\PriorityDic\Delete.cshtml" />
-  </ItemGroup>
-  <ItemGroup>
     <Content Include="Views\PriorityDic\Details.cshtml" />
   </ItemGroup>
   <ItemGroup>
@@ -337,9 +334,6 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="Views\TechnicalFactorDic\Create.cshtml" />
-  </ItemGroup>
-  <ItemGroup>
-    <Content Include="Views\TechnicalFactorDic\Delete.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="Views\TechnicalFactorDic\Details.cshtml" />
@@ -357,9 +351,6 @@
     <Content Include="Views\ReliabilityEvaluationDic\Create.cshtml" />
   </ItemGroup>
   <ItemGroup>
-    <Content Include="Views\ReliabilityEvaluationDic\Delete.cshtml" />
-  </ItemGroup>
-  <ItemGroup>
     <Content Include="Views\ReliabilityEvaluationDic\Details.cshtml" />
   </ItemGroup>
   <ItemGroup>
@@ -372,9 +363,6 @@
     <Content Include="Views\SecondaryMetricDic\Create.cshtml" />
   </ItemGroup>
   <ItemGroup>
-    <Content Include="Views\SecondaryMetricDic\Delete.cshtml" />
-  </ItemGroup>
-  <ItemGroup>
     <Content Include="Views\SecondaryMetricDic\Details.cshtml" />
   </ItemGroup>
   <ItemGroup>
@@ -385,9 +373,6 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="Views\TestMethodDic\Create.cshtml" />
-  </ItemGroup>
-  <ItemGroup>
-    <Content Include="Views\TestMethodDic\Delete.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="Views\TestMethodDic\Details.cshtml" />
@@ -417,9 +402,6 @@
     <Content Include="Views\WeightCoefficientDic\Create.cshtml" />
   </ItemGroup>
   <ItemGroup>
-    <Content Include="Views\WeightCoefficientDic\Delete.cshtml" />
-  </ItemGroup>
-  <ItemGroup>
     <Content Include="Views\WeightCoefficientDic\Details.cshtml" />
   </ItemGroup>
   <ItemGroup>
@@ -444,31 +426,7 @@
     <Content Include="Views\Shared\EditorTemplates\UseCase.cshtml" />
   </ItemGroup>
   <ItemGroup>
-    <Content Include="Views\UseCasePrimaryMetric\Create.cshtml" />
-  </ItemGroup>
-  <ItemGroup>
-    <Content Include="Views\UseCasePrimaryMetric\Details.cshtml" />
-  </ItemGroup>
-  <ItemGroup>
-    <Content Include="Views\UseCasePrimaryMetric\Edit.cshtml" />
-  </ItemGroup>
-  <ItemGroup>
-    <Content Include="Views\UseCasePrimaryMetric\Index.cshtml" />
-  </ItemGroup>
-  <ItemGroup>
     <Content Include="Views\Shared\EditorTemplates\UseCasePrimaryMetric.cshtml" />
-  </ItemGroup>
-  <ItemGroup>
-    <Content Include="Views\UseCaseSecondaryMetric\Create.cshtml" />
-  </ItemGroup>
-  <ItemGroup>
-    <Content Include="Views\UseCaseSecondaryMetric\Details.cshtml" />
-  </ItemGroup>
-  <ItemGroup>
-    <Content Include="Views\UseCaseSecondaryMetric\Edit.cshtml" />
-  </ItemGroup>
-  <ItemGroup>
-    <Content Include="Views\UseCaseSecondaryMetric\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Content\themes\base\" />

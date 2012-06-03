@@ -2,23 +2,23 @@
 @model MTP1.Models.TechnicalFactorDic
 
 @{
-    this.ViewBag.Title = string.Format("Элемент справочника {0} | {1}", this.Model.Title, Constants.TITLE);
-
+    ViewBag.Title = string.Format("Элемент справочника | {0}", Constants.TITLE);
 }
 
+<p>
+    @Html.ActionLink("Редактировать", "Edit", new { id = this.Model.ID }) |
+    @Html.ActionLink("Типы технических факторов", "Index")
+</p>
+
 <fieldset>
-    <legend>Элемент справочника "@this.Model.Title"</legend>
+    <legend>Элемент справочника Технические факторы</legend>
 
     <div class="display-label">Тип технического фактора</div>
     <div class="display-field">
-        @this.Html.DisplayFor(model => model.Title)
+        @Html.DisplayFor(model => model.Title)
     </div>
     <div class="display-label">Описание</div>
     <div class="display-field">
-        @this.Html.DisplayFor(model => model.Description)
+        @Html.DisplayFor(model => model.Description)
     </div>
 </fieldset>
-<p>
-    @this.Html.ActionLink("Редактировать", "Edit", new { id = this.Model.ID }) |
-    @this.Html.ActionLink("Типы технических факторов", "Index")
-</p>

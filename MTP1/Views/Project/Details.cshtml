@@ -60,7 +60,7 @@
         DrawMTPGrid('grid', 'pager', indexUrl, editUrl, deleteUrl, addUrl, viewUrl,
         ['Программа тестирования', 'Описание программы', 'Плановая дата начала',
         'Плановая дата окончания', 'Фактическая дата начала', 'Фактическая дата окончания',
-        'Проект'],
+         'Автор','Проект'],
         [
                 {
                     name: 'Title',
@@ -98,6 +98,12 @@
                     align: 'center',
                     width: '200'
                 },
+               {
+                        name: 'Creator',
+                        sortable: false,
+                        align: 'center',
+                        width: '250'
+                 },
                 {
                         name: 'Project',
                         sortable: false,

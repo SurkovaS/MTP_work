@@ -46,6 +46,7 @@ using System.Runtime.Serialization;
 [assembly: EdmRelationshipAttribute("MtpDbModel", "FK_TechnicalFactor_UseCase", "UseCase", System.Data.Metadata.Edm.RelationshipMultiplicity.One, typeof(MTP1.Models.UseCase), "TechnicalFactor", System.Data.Metadata.Edm.RelationshipMultiplicity.Many, typeof(MTP1.Models.TechnicalFactor), true)]
 [assembly: EdmRelationshipAttribute("MtpDbModel", "FK_TechnicalFactor_WeightCoefficientDic", "WeightCoefficientDic", System.Data.Metadata.Edm.RelationshipMultiplicity.One, typeof(MTP1.Models.WeightCoefficientDic), "TechnicalFactor", System.Data.Metadata.Edm.RelationshipMultiplicity.Many, typeof(MTP1.Models.TechnicalFactor), true)]
 [assembly: EdmRelationshipAttribute("MtpDbModel", "FK_TechnicalFactor_WeightCoefficientDic1", "WeightCoefficientDic", System.Data.Metadata.Edm.RelationshipMultiplicity.ZeroOrOne, typeof(MTP1.Models.WeightCoefficientDic), "TechnicalFactor", System.Data.Metadata.Edm.RelationshipMultiplicity.Many, typeof(MTP1.Models.TechnicalFactor), true)]
+[assembly: EdmRelationshipAttribute("MtpDbModel", "FK_TestProgram_Users", "Users", System.Data.Metadata.Edm.RelationshipMultiplicity.ZeroOrOne, typeof(MTP1.Models.Users), "TestProgram", System.Data.Metadata.Edm.RelationshipMultiplicity.Many, typeof(MTP1.Models.TestProgram), true)]
 [assembly: EdmRelationshipAttribute("MtpDbModel", "FK_UseCase_TestProgram", "TestProgram", System.Data.Metadata.Edm.RelationshipMultiplicity.ZeroOrOne, typeof(MTP1.Models.TestProgram), "UseCase", System.Data.Metadata.Edm.RelationshipMultiplicity.Many, typeof(MTP1.Models.UseCase), true)]
 [assembly: EdmRelationshipAttribute("MtpDbModel", "FK_UseCasePrimaryMetric_TestProgram", "TestProgram", System.Data.Metadata.Edm.RelationshipMultiplicity.ZeroOrOne, typeof(MTP1.Models.TestProgram), "UseCasePrimaryMetric", System.Data.Metadata.Edm.RelationshipMultiplicity.Many, typeof(MTP1.Models.UseCasePrimaryMetric), true)]
 [assembly: EdmRelationshipAttribute("MtpDbModel", "FK_UseCase_Users", "Users", System.Data.Metadata.Edm.RelationshipMultiplicity.ZeroOrOne, typeof(MTP1.Models.Users), "UseCase", System.Data.Metadata.Edm.RelationshipMultiplicity.Many, typeof(MTP1.Models.UseCase), true)]
@@ -4163,6 +4164,30 @@ namespace MTP1.Models
         private Nullable<global::System.DateTime> _EndDateActual;
         partial void OnEndDateActualChanging(Nullable<global::System.DateTime> value);
         partial void OnEndDateActualChanged();
+    
+        /// <summary>
+        /// Нет доступной документации по метаданным.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=true)]
+        [DataMemberAttribute()]
+        public Nullable<global::System.Int32> Creator
+        {
+            get
+            {
+                return _Creator;
+            }
+            set
+            {
+                OnCreatorChanging(value);
+                ReportPropertyChanging("Creator");
+                _Creator = StructuralObject.SetValidValue(value);
+                ReportPropertyChanged("Creator");
+                OnCreatorChanged();
+            }
+        }
+        private Nullable<global::System.Int32> _Creator;
+        partial void OnCreatorChanging(Nullable<global::System.Int32> value);
+        partial void OnCreatorChanged();
 
         #endregion
     
@@ -4224,6 +4249,44 @@ namespace MTP1.Models
                 if ((value != null))
                 {
                     ((IEntityWithRelationships)this).RelationshipManager.InitializeRelatedCollection<ReliabilityEvaluation>("MtpDbModel.FK_ReliabilityEvaluation_TestProgram", "ReliabilityEvaluation", value);
+                }
+            }
+        }
+    
+        /// <summary>
+        /// Нет доступной документации по метаданным.
+        /// </summary>
+        [XmlIgnoreAttribute()]
+        [SoapIgnoreAttribute()]
+        [DataMemberAttribute()]
+        [EdmRelationshipNavigationPropertyAttribute("MtpDbModel", "FK_TestProgram_Users", "Users")]
+        public Users Users
+        {
+            get
+            {
+                return ((IEntityWithRelationships)this).RelationshipManager.GetRelatedReference<Users>("MtpDbModel.FK_TestProgram_Users", "Users").Value;
+            }
+            set
+            {
+                ((IEntityWithRelationships)this).RelationshipManager.GetRelatedReference<Users>("MtpDbModel.FK_TestProgram_Users", "Users").Value = value;
+            }
+        }
+        /// <summary>
+        /// Нет доступной документации по метаданным.
+        /// </summary>
+        [BrowsableAttribute(false)]
+        [DataMemberAttribute()]
+        public EntityReference<Users> UsersReference
+        {
+            get
+            {
+                return ((IEntityWithRelationships)this).RelationshipManager.GetRelatedReference<Users>("MtpDbModel.FK_TestProgram_Users", "Users");
+            }
+            set
+            {
+                if ((value != null))
+                {
+                    ((IEntityWithRelationships)this).RelationshipManager.InitializeRelatedReference<Users>("MtpDbModel.FK_TestProgram_Users", "Users", value);
                 }
             }
         }
@@ -5560,6 +5623,28 @@ namespace MTP1.Models
         [XmlIgnoreAttribute()]
         [SoapIgnoreAttribute()]
         [DataMemberAttribute()]
+        [EdmRelationshipNavigationPropertyAttribute("MtpDbModel", "FK_TestProgram_Users", "TestProgram")]
+        public EntityCollection<TestProgram> TestProgram
+        {
+            get
+            {
+                return ((IEntityWithRelationships)this).RelationshipManager.GetRelatedCollection<TestProgram>("MtpDbModel.FK_TestProgram_Users", "TestProgram");
+            }
+            set
+            {
+                if ((value != null))
+                {
+                    ((IEntityWithRelationships)this).RelationshipManager.InitializeRelatedCollection<TestProgram>("MtpDbModel.FK_TestProgram_Users", "TestProgram", value);
+                }
+            }
+        }
+    
+        /// <summary>
+        /// Нет доступной документации по метаданным.
+        /// </summary>
+        [XmlIgnoreAttribute()]
+        [SoapIgnoreAttribute()]
+        [DataMemberAttribute()]
         [EdmRelationshipNavigationPropertyAttribute("MtpDbModel", "FK_UseCase_Users", "UseCase")]
         public EntityCollection<UseCase> UseCase
         {
@@ -5595,7 +5680,7 @@ namespace MTP1.Models
         /// <param name="id">Исходное значение свойства ID.</param>
         /// <param name="title">Исходное значение свойства Title.</param>
         /// <param name="value">Исходное значение свойства Value.</param>
-        public static WeightCoefficientDic CreateWeightCoefficientDic(global::System.Int32 id, global::System.String title, global::System.Int32 value)
+        public static WeightCoefficientDic CreateWeightCoefficientDic(global::System.Int32 id, global::System.String title, global::System.Double value)
         {
             WeightCoefficientDic weightCoefficientDic = new WeightCoefficientDic();
             weightCoefficientDic.ID = id;
@@ -5663,7 +5748,7 @@ namespace MTP1.Models
         /// </summary>
         [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=false)]
         [DataMemberAttribute()]
-        public global::System.Int32 Value
+        public global::System.Double Value
         {
             get
             {
@@ -5678,8 +5763,8 @@ namespace MTP1.Models
                 OnValueChanged();
             }
         }
-        private global::System.Int32 _Value;
-        partial void OnValueChanging(global::System.Int32 value);
+        private global::System.Double _Value;
+        partial void OnValueChanging(global::System.Double value);
         partial void OnValueChanged();
     
         /// <summary>

@@ -40,6 +40,10 @@
     <div class="display-field">
         @this.Html.DisplayFor(model => model.EndDateActual)
     </div>
+    <div class="display-label">Автор</div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.Users.Title)
+    </div>
 
 </fieldset>
 

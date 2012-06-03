@@ -103,6 +103,7 @@ namespace MTP1.Controllers
                                             m.EndDatePlan.DateToShortWithDbNullCheck(),
                                             m.BeginDateActual.DateToShortWithDbNullCheck(),
                                             m.EndDateActual.DateToShortWithDbNullCheck(),
+                                            m.Users.Title,
                                             m.Project1.Title.ToStringWithDbNullCheck()
 
                                         }

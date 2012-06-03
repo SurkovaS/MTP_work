@@ -2,12 +2,15 @@
 @model MTP1.Models.WeightCoefficientDic
 
 @{
-    this.ViewBag.Title = string.Format("Элемент справочника {0} | {1}", this.Model.Title, Constants.TITLE);
-
+    ViewBag.Title = string.Format("Элемент справочника | {0}", Constants.TITLE);
 }
+<p>
+    @Html.ActionLink("Редактировать", "Edit", new { id = this.Model.ID }) |
+    @Html.ActionLink("Весовые коэффициенты", "Index")
+</p>
 
 <fieldset>
-    <legend>Элемент справочника "@this.Model.Title"</legend>
+    <legend>Элемент справочника Весовые коэффициенты</legend>
 
     <div class="display-label">Весовой коэффициент</div>
     <div class="display-field">
@@ -22,7 +25,3 @@
         @this.Html.DisplayFor(model => model.Description)
     </div>
 </fieldset>
-<p>
-    @this.Html.ActionLink("Редактировать", "Edit", new { id = this.Model.ID }) |
-    @this.Html.ActionLink("Весовые коэффициенты", "Index")
-</p>

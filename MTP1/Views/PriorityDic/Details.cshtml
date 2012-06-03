@@ -2,22 +2,22 @@
 @model MTP1.Models.PriorityDic
 
 @{
-    this.ViewBag.Title = string.Format("Элемент справочника {0} | {1}", this.Model.Title, Constants.TITLE);
-
+    ViewBag.Title = string.Format("Элемент справочника | {0}", Constants.TITLE);
 }
-<fieldset>
-    <legend>Элемент справочника "@this.Model.Title"</legend>
 
-    <div class="display-label">Приоритеты</div>
+<p>
+    @Html.ActionLink("Редактировать", "Edit", new { id = Model.ID }) |
+    @Html.ActionLink("Приоритеты", "Index")
+</p>
+<fieldset>
+    <legend>Элемент справочника Приоритеты</legend>
+
+    <div class="display-label">Приоритет</div>
     <div class="display-field">
-        @this.Html.DisplayFor(model => model.Title)
+        @Html.DisplayFor(model => model.Title)
     </div>
     <div class="display-label">Описание</div>
     <div class="display-field">
-        @this.Html.DisplayFor(model => model.Description)
+        @Html.DisplayFor(model => model.Description)
     </div>
 </fieldset>
-<p>
-    @this.Html.ActionLink("Редактировать", "Edit", new { id = this.Model.ID }) |
-    @this.Html.ActionLink("Приоритеты", "Index")
-</p>

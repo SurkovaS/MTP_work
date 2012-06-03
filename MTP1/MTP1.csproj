@@ -74,7 +74,6 @@
     <Compile Include="Controllers\ActorDicController.cs" />
     <Compile Include="Controllers\UsersController.cs" />
     <Compile Include="Controllers\DefectDicController.cs" />
-    <Compile Include="Controllers\DictionariesController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\EnvironmentFactorDicController.cs" />
     <Compile Include="Controllers\PrimaryMetricDicController.cs" />
@@ -108,7 +107,6 @@
       <DependentUpon>MtpDbModel.edmx</DependentUpon>
     </Compile>
     <Compile Include="Models\EnvironmentFactorDic.cs" />
-    <Compile Include="Models\Dictionaries.cs" />
     <Compile Include="Models\PrimaryMetricDic.cs" />
     <Compile Include="Models\PriorityDic.cs" />
     <Compile Include="Models\TechnicalFactorDic.cs" />
@@ -132,7 +130,6 @@
     <Compile Include="Service\Factory\ActorDicServiceFactory.cs" />
     <Compile Include="Service\Factory\UsersServiceFactory.cs" />
     <Compile Include="Service\Factory\DefectDicServiceFactory.cs" />
-    <Compile Include="Service\Factory\DictionariesServiceFactory.cs" />
     <Compile Include="Service\Factory\PrimaryMetricDicServiceFactory.cs" />
     <Compile Include="Service\Factory\PriorityDicServiceFactory.cs" />
     <Compile Include="Service\Factory\TechnicalFactorDicServiceFactory.cs" />
@@ -152,7 +149,6 @@
     <Compile Include="Service\Interface\IBaseService.cs" />
     <Compile Include="Service\DefectDicEntityService.cs" />
     <Compile Include="Service\EnvironmentFactorDicEntityService.cs" />
-    <Compile Include="Service\DictionariesEntityService.cs" />
     <Compile Include="Service\PrimaryMetricDicEntityService.cs" />
     <Compile Include="Service\PriorityDicEntityService.cs" />
     <Compile Include="Service\TechnicalFactorDicEntityService.cs" />
@@ -311,9 +307,6 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="Views\PrimaryMetricDic\Create.cshtml" />
-  </ItemGroup>
-  <ItemGroup>
-    <Content Include="Views\PrimaryMetricDic\Delete.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="Views\PrimaryMetricDic\Details.cshtml" />

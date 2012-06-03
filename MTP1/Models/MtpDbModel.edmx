@@ -12,7 +12,6 @@
           <EntitySet Name="Defect" EntityType="MtpDbModel.Store.Defect" store:Type="Tables" Schema="dbo" />
           <EntitySet Name="DefectDic" EntityType="MtpDbModel.Store.DefectDic" store:Type="Tables" Schema="dbo" />
           <EntitySet Name="DefectPrimaryMetric" EntityType="MtpDbModel.Store.DefectPrimaryMetric" store:Type="Tables" Schema="dbo" />
-          <EntitySet Name="Dictionaries" EntityType="MtpDbModel.Store.Dictionaries" store:Type="Tables" Schema="dbo" />
           <EntitySet Name="EnvironmentFactor" EntityType="MtpDbModel.Store.EnvironmentFactor" store:Type="Tables" Schema="dbo" />
           <EntitySet Name="EnvironmentFactorDic" EntityType="MtpDbModel.Store.EnvironmentFactorDic" store:Type="Tables" Schema="dbo" />
           <EntitySet Name="PrimaryMetricDic" EntityType="MtpDbModel.Store.PrimaryMetricDic" store:Type="Tables" Schema="dbo" />
@@ -70,15 +69,15 @@
             <End Role="EnvironmentFactorDic" EntitySet="EnvironmentFactorDic" />
             <End Role="EnvironmentFactor" EntitySet="EnvironmentFactor" />
           </AssociationSet>
-          <AssociationSet Name="FK_EnvironmentFactor_PriorityDic" Association="MtpDbModel.Store.FK_EnvironmentFactor_PriorityDic">
-            <End Role="PriorityDic" EntitySet="PriorityDic" />
-            <End Role="EnvironmentFactor" EntitySet="EnvironmentFactor" />
-          </AssociationSet>
           <AssociationSet Name="FK_EnvironmentFactor_UseCase" Association="MtpDbModel.Store.FK_EnvironmentFactor_UseCase">
             <End Role="UseCase" EntitySet="UseCase" />
             <End Role="EnvironmentFactor" EntitySet="EnvironmentFactor" />
           </AssociationSet>
           <AssociationSet Name="FK_EnvironmentFactor_WeightCoefficientDic" Association="MtpDbModel.Store.FK_EnvironmentFactor_WeightCoefficientDic">
+            <End Role="WeightCoefficientDic" EntitySet="WeightCoefficientDic" />
+            <End Role="EnvironmentFactor" EntitySet="EnvironmentFactor" />
+          </AssociationSet>
+          <AssociationSet Name="FK_EnvironmentFactor_WeightCoefficientDic1" Association="MtpDbModel.Store.FK_EnvironmentFactor_WeightCoefficientDic1">
             <End Role="WeightCoefficientDic" EntitySet="WeightCoefficientDic" />
             <End Role="EnvironmentFactor" EntitySet="EnvironmentFactor" />
           </AssociationSet>
@@ -102,10 +101,6 @@
             <End Role="TestProgram" EntitySet="TestProgram" />
             <End Role="ReliabilityEvaluation" EntitySet="ReliabilityEvaluation" />
           </AssociationSet>
-          <AssociationSet Name="FK_TechnicalFactor_PriorityDic" Association="MtpDbModel.Store.FK_TechnicalFactor_PriorityDic">
-            <End Role="PriorityDic" EntitySet="PriorityDic" />
-            <End Role="TechnicalFactor" EntitySet="TechnicalFactor" />
-          </AssociationSet>
           <AssociationSet Name="FK_TechnicalFactor_TechnicalFactorDic" Association="MtpDbModel.Store.FK_TechnicalFactor_TechnicalFactorDic">
             <End Role="TechnicalFactorDic" EntitySet="TechnicalFactorDic" />
             <End Role="TechnicalFactor" EntitySet="TechnicalFactor" />
@@ -115,6 +110,10 @@
             <End Role="TechnicalFactor" EntitySet="TechnicalFactor" />
           </AssociationSet>
           <AssociationSet Name="FK_TechnicalFactor_WeightCoefficientDic" Association="MtpDbModel.Store.FK_TechnicalFactor_WeightCoefficientDic">
+            <End Role="WeightCoefficientDic" EntitySet="WeightCoefficientDic" />
+            <End Role="TechnicalFactor" EntitySet="TechnicalFactor" />
+          </AssociationSet>
+          <AssociationSet Name="FK_TechnicalFactor_WeightCoefficientDic1" Association="MtpDbModel.Store.FK_TechnicalFactor_WeightCoefficientDic1">
             <End Role="WeightCoefficientDic" EntitySet="WeightCoefficientDic" />
             <End Role="TechnicalFactor" EntitySet="TechnicalFactor" />
           </AssociationSet>
@@ -209,14 +208,6 @@
           <Property Name="TestMethod" Type="int" Nullable="false" />
           <Property Name="Defect" Type="int" Nullable="false" />
         </EntityType>
-        <EntityType Name="Dictionaries">
-          <Key>
-            <PropertyRef Name="ID" />
-          </Key>
-          <Property Name="ID" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
-          <Property Name="Title" Type="nvarchar(max)" Nullable="false" />
-          <Property Name="TitleEng" Type="nvarchar(max)" />
-        </EntityType>
         <EntityType Name="EnvironmentFactor">
           <Key>
             <PropertyRef Name="ID" />
@@ -295,7 +286,7 @@
           <Property Name="ID" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
           <Property Name="UseCase" Type="int" Nullable="false" />
           <Property Name="TechnicalFactor" Type="int" Nullable="false" />
-          <Property Name="WeightCoefficient" Type="int" />
+          <Property Name="WeightCoefficient" Type="int" Nullable="false" />
           <Property Name="Difficulty" Type="int" />
         </EntityType>
         <EntityType Name="TechnicalFactorDic">
@@ -500,18 +491,6 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK_EnvironmentFactor_PriorityDic">
-          <End Role="PriorityDic" Type="MtpDbModel.Store.PriorityDic" Multiplicity="0..1" />
-          <End Role="EnvironmentFactor" Type="MtpDbModel.Store.EnvironmentFactor" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="PriorityDic">
-              <PropertyRef Name="ID" />
-            </Principal>
-            <Dependent Role="EnvironmentFactor">
-              <PropertyRef Name="Difficulty" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
         <Association Name="FK_EnvironmentFactor_UseCase">
           <End Role="UseCase" Type="MtpDbModel.Store.UseCase" Multiplicity="1" />
           <End Role="EnvironmentFactor" Type="MtpDbModel.Store.EnvironmentFactor" Multiplicity="*" />
@@ -533,6 +512,18 @@
             </Principal>
             <Dependent Role="EnvironmentFactor">
               <PropertyRef Name="WeightCoefficient" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_EnvironmentFactor_WeightCoefficientDic1">
+          <End Role="WeightCoefficientDic" Type="MtpDbModel.Store.WeightCoefficientDic" Multiplicity="0..1" />
+          <End Role="EnvironmentFactor" Type="MtpDbModel.Store.EnvironmentFactor" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="WeightCoefficientDic">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="EnvironmentFactor">
+              <PropertyRef Name="Difficulty" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
@@ -596,18 +587,6 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK_TechnicalFactor_PriorityDic">
-          <End Role="PriorityDic" Type="MtpDbModel.Store.PriorityDic" Multiplicity="0..1" />
-          <End Role="TechnicalFactor" Type="MtpDbModel.Store.TechnicalFactor" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="PriorityDic">
-              <PropertyRef Name="ID" />
-            </Principal>
-            <Dependent Role="TechnicalFactor">
-              <PropertyRef Name="Difficulty" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
         <Association Name="FK_TechnicalFactor_TechnicalFactorDic">
           <End Role="TechnicalFactorDic" Type="MtpDbModel.Store.TechnicalFactorDic" Multiplicity="1" />
           <End Role="TechnicalFactor" Type="MtpDbModel.Store.TechnicalFactor" Multiplicity="*" />
@@ -633,7 +612,7 @@
           </ReferentialConstraint>
         </Association>
         <Association Name="FK_TechnicalFactor_WeightCoefficientDic">
-          <End Role="WeightCoefficientDic" Type="MtpDbModel.Store.WeightCoefficientDic" Multiplicity="0..1" />
+          <End Role="WeightCoefficientDic" Type="MtpDbModel.Store.WeightCoefficientDic" Multiplicity="1" />
           <End Role="TechnicalFactor" Type="MtpDbModel.Store.TechnicalFactor" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="WeightCoefficientDic">
@@ -641,6 +620,18 @@
             </Principal>
             <Dependent Role="TechnicalFactor">
               <PropertyRef Name="WeightCoefficient" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_TechnicalFactor_WeightCoefficientDic1">
+          <End Role="WeightCoefficientDic" Type="MtpDbModel.Store.WeightCoefficientDic" Multiplicity="0..1" />
+          <End Role="TechnicalFactor" Type="MtpDbModel.Store.TechnicalFactor" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="WeightCoefficientDic">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="TechnicalFactor">
+              <PropertyRef Name="Difficulty" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
@@ -788,7 +779,6 @@
           <EntitySet Name="Defect" EntityType="MtpDbModel.Defect" />
           <EntitySet Name="DefectDic" EntityType="MtpDbModel.DefectDic" />
           <EntitySet Name="DefectPrimaryMetric" EntityType="MtpDbModel.DefectPrimaryMetric" />
-          <EntitySet Name="Dictionaries" EntityType="MtpDbModel.Dictionaries" />
           <EntitySet Name="EnvironmentFactor" EntityType="MtpDbModel.EnvironmentFactor" />
           <EntitySet Name="EnvironmentFactorDic" EntityType="MtpDbModel.EnvironmentFactorDic" />
           <EntitySet Name="PrimaryMetricDic" EntityType="MtpDbModel.PrimaryMetricDic" />
@@ -846,10 +836,6 @@
             <End Role="EnvironmentFactorDic" EntitySet="EnvironmentFactorDic" />
             <End Role="EnvironmentFactor" EntitySet="EnvironmentFactor" />
           </AssociationSet>
-          <AssociationSet Name="FK_EnvironmentFactor_PriorityDic" Association="MtpDbModel.FK_EnvironmentFactor_PriorityDic">
-            <End Role="PriorityDic" EntitySet="PriorityDic" />
-            <End Role="EnvironmentFactor" EntitySet="EnvironmentFactor" />
-          </AssociationSet>
           <AssociationSet Name="FK_EnvironmentFactor_UseCase" Association="MtpDbModel.FK_EnvironmentFactor_UseCase">
             <End Role="UseCase" EntitySet="UseCase" />
             <End Role="EnvironmentFactor" EntitySet="EnvironmentFactor" />
@@ -858,13 +844,13 @@
             <End Role="WeightCoefficientDic" EntitySet="WeightCoefficientDic" />
             <End Role="EnvironmentFactor" EntitySet="EnvironmentFactor" />
           </AssociationSet>
+          <AssociationSet Name="FK_EnvironmentFactor_WeightCoefficientDic1" Association="MtpDbModel.FK_EnvironmentFactor_WeightCoefficientDic1">
+            <End Role="WeightCoefficientDic" EntitySet="WeightCoefficientDic" />
+            <End Role="EnvironmentFactor" EntitySet="EnvironmentFactor" />
+          </AssociationSet>
           <AssociationSet Name="FK_UseCasePrimaryMetric_PrimaryMetricDic" Association="MtpDbModel.FK_UseCasePrimaryMetric_PrimaryMetricDic">
             <End Role="PrimaryMetricDic" EntitySet="PrimaryMetricDic" />
             <End Role="UseCasePrimaryMetric" EntitySet="UseCasePrimaryMetric" />
-          </AssociationSet>
-          <AssociationSet Name="FK_TechnicalFactor_PriorityDic" Association="MtpDbModel.FK_TechnicalFactor_PriorityDic">
-            <End Role="PriorityDic" EntitySet="PriorityDic" />
-            <End Role="TechnicalFactor" EntitySet="TechnicalFactor" />
           </AssociationSet>
           <AssociationSet Name="FK_UseCase_PriorityDic" Association="MtpDbModel.FK_UseCase_PriorityDic">
             <End Role="PriorityDic" EntitySet="PriorityDic" />
@@ -915,6 +901,10 @@
             <End Role="TechnicalFactor" EntitySet="TechnicalFactor" />
           </AssociationSet>
           <AssociationSet Name="FK_TechnicalFactor_WeightCoefficientDic" Association="MtpDbModel.FK_TechnicalFactor_WeightCoefficientDic">
+            <End Role="WeightCoefficientDic" EntitySet="WeightCoefficientDic" />
+            <End Role="TechnicalFactor" EntitySet="TechnicalFactor" />
+          </AssociationSet>
+          <AssociationSet Name="FK_TechnicalFactor_WeightCoefficientDic1" Association="MtpDbModel.FK_TechnicalFactor_WeightCoefficientDic1">
             <End Role="WeightCoefficientDic" EntitySet="WeightCoefficientDic" />
             <End Role="TechnicalFactor" EntitySet="TechnicalFactor" />
           </AssociationSet>
@@ -997,14 +987,6 @@
           <NavigationProperty Name="SecondaryMetricDic" Relationship="MtpDbModel.FK_DefectPrimaryMetric_MetricDic" FromRole="DefectPrimaryMetric" ToRole="SecondaryMetricDic" />
           <NavigationProperty Name="TestMethodDic" Relationship="MtpDbModel.FK_DefectPrimaryMetric_TestMethodDic" FromRole="DefectPrimaryMetric" ToRole="TestMethodDic" />
         </EntityType>
-        <EntityType Name="Dictionaries">
-          <Key>
-            <PropertyRef Name="ID" />
-          </Key>
-          <Property Type="Int32" Name="ID" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Type="String" Name="Title" Nullable="false" MaxLength="Max" FixedLength="false" Unicode="true" />
-          <Property Type="String" Name="TitleEng" MaxLength="Max" FixedLength="false" Unicode="true" />
-        </EntityType>
         <EntityType Name="EnvironmentFactor">
           <Key>
             <PropertyRef Name="ID" />
@@ -1015,9 +997,9 @@
           <Property Type="Int32" Name="WeightCoefficient" />
           <Property Type="Int32" Name="Difficulty" />
           <NavigationProperty Name="EnvironmentFactorDic" Relationship="MtpDbModel.FK_EnvironmentFactor_EnvironmentFactorTypeDic" FromRole="EnvironmentFactor" ToRole="EnvironmentFactorDic" />
-          <NavigationProperty Name="PriorityDic" Relationship="MtpDbModel.FK_EnvironmentFactor_PriorityDic" FromRole="EnvironmentFactor" ToRole="PriorityDic" />
           <NavigationProperty Name="UseCase1" Relationship="MtpDbModel.FK_EnvironmentFactor_UseCase" FromRole="EnvironmentFactor" ToRole="UseCase" />
           <NavigationProperty Name="WeightCoefficientDic" Relationship="MtpDbModel.FK_EnvironmentFactor_WeightCoefficientDic" FromRole="EnvironmentFactor" ToRole="WeightCoefficientDic" />
+          <NavigationProperty Name="WeightCoefficientDic1" Relationship="MtpDbModel.FK_EnvironmentFactor_WeightCoefficientDic1" FromRole="EnvironmentFactor" ToRole="WeightCoefficientDic" />
         </EntityType>
         <EntityType Name="EnvironmentFactorDic">
           <Key>
@@ -1045,8 +1027,6 @@
           <Property Type="String" Name="Title" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
           <Property Type="String" Name="Description" MaxLength="Max" FixedLength="false" Unicode="true" />
           <NavigationProperty Name="Defect" Relationship="MtpDbModel.FK_Defect_PriorityDic" FromRole="PriorityDic" ToRole="Defect" />
-          <NavigationProperty Name="EnvironmentFactor" Relationship="MtpDbModel.FK_EnvironmentFactor_PriorityDic" FromRole="PriorityDic" ToRole="EnvironmentFactor" />
-          <NavigationProperty Name="TechnicalFactor" Relationship="MtpDbModel.FK_TechnicalFactor_PriorityDic" FromRole="PriorityDic" ToRole="TechnicalFactor" />
           <NavigationProperty Name="UseCase" Relationship="MtpDbModel.FK_UseCase_PriorityDic" FromRole="PriorityDic" ToRole="UseCase" />
         </EntityType>
         <EntityType Name="Project">
@@ -1105,12 +1085,12 @@
           <Property Type="Int32" Name="ID" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Type="Int32" Name="UseCase" Nullable="false" />
           <Property Type="Int32" Name="TechnicalFactor1" Nullable="false" />
-          <Property Type="Int32" Name="WeightCoefficient" />
+          <Property Type="Int32" Name="WeightCoefficient" Nullable="false" />
           <Property Type="Int32" Name="Difficulty" />
-          <NavigationProperty Name="PriorityDic" Relationship="MtpDbModel.FK_TechnicalFactor_PriorityDic" FromRole="TechnicalFactor" ToRole="PriorityDic" />
           <NavigationProperty Name="TechnicalFactorDic" Relationship="MtpDbModel.FK_TechnicalFactor_TechnicalFactorDic" FromRole="TechnicalFactor" ToRole="TechnicalFactorDic" />
           <NavigationProperty Name="UseCase1" Relationship="MtpDbModel.FK_TechnicalFactor_UseCase" FromRole="TechnicalFactor" ToRole="UseCase" />
           <NavigationProperty Name="WeightCoefficientDic" Relationship="MtpDbModel.FK_TechnicalFactor_WeightCoefficientDic" FromRole="TechnicalFactor" ToRole="WeightCoefficientDic" />
+          <NavigationProperty Name="WeightCoefficientDic1" Relationship="MtpDbModel.FK_TechnicalFactor_WeightCoefficientDic1" FromRole="TechnicalFactor" ToRole="WeightCoefficientDic" />
         </EntityType>
         <EntityType Name="TechnicalFactorDic">
           <Key>
@@ -1220,7 +1200,9 @@
           <Property Type="String" Name="Description" MaxLength="Max" FixedLength="false" Unicode="true" />
           <NavigationProperty Name="Actor" Relationship="MtpDbModel.FK_Actor_WeightCoefficientDic" FromRole="WeightCoefficientDic" ToRole="Actor" />
           <NavigationProperty Name="EnvironmentFactor" Relationship="MtpDbModel.FK_EnvironmentFactor_WeightCoefficientDic" FromRole="WeightCoefficientDic" ToRole="EnvironmentFactor" />
+          <NavigationProperty Name="EnvironmentFactor1" Relationship="MtpDbModel.FK_EnvironmentFactor_WeightCoefficientDic1" FromRole="WeightCoefficientDic" ToRole="EnvironmentFactor" />
           <NavigationProperty Name="TechnicalFactor" Relationship="MtpDbModel.FK_TechnicalFactor_WeightCoefficientDic" FromRole="WeightCoefficientDic" ToRole="TechnicalFactor" />
+          <NavigationProperty Name="TechnicalFactor1" Relationship="MtpDbModel.FK_TechnicalFactor_WeightCoefficientDic1" FromRole="WeightCoefficientDic" ToRole="TechnicalFactor" />
         </EntityType>
         <Association Name="FK_Actor_ActorDic">
           <End Type="MtpDbModel.ActorDic" Role="ActorDic" Multiplicity="1" />
@@ -1342,18 +1324,6 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK_EnvironmentFactor_PriorityDic">
-          <End Type="MtpDbModel.PriorityDic" Role="PriorityDic" Multiplicity="0..1" />
-          <End Type="MtpDbModel.EnvironmentFactor" Role="EnvironmentFactor" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="PriorityDic">
-              <PropertyRef Name="ID" />
-            </Principal>
-            <Dependent Role="EnvironmentFactor">
-              <PropertyRef Name="Difficulty" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
         <Association Name="FK_EnvironmentFactor_UseCase">
           <End Type="MtpDbModel.UseCase" Role="UseCase" Multiplicity="1" />
           <End Type="MtpDbModel.EnvironmentFactor" Role="EnvironmentFactor" Multiplicity="*" />
@@ -1378,6 +1348,18 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
+        <Association Name="FK_EnvironmentFactor_WeightCoefficientDic1">
+          <End Type="MtpDbModel.WeightCoefficientDic" Role="WeightCoefficientDic" Multiplicity="0..1" />
+          <End Type="MtpDbModel.EnvironmentFactor" Role="EnvironmentFactor" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="WeightCoefficientDic">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="EnvironmentFactor">
+              <PropertyRef Name="Difficulty" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
         <Association Name="FK_UseCasePrimaryMetric_PrimaryMetricDic">
           <End Type="MtpDbModel.PrimaryMetricDic" Role="PrimaryMetricDic" Multiplicity="1" />
           <End Type="MtpDbModel.UseCasePrimaryMetric" Role="UseCasePrimaryMetric" Multiplicity="*" />
@@ -1387,18 +1369,6 @@
             </Principal>
             <Dependent Role="UseCasePrimaryMetric">
               <PropertyRef Name="Type" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="FK_TechnicalFactor_PriorityDic">
-          <End Type="MtpDbModel.PriorityDic" Role="PriorityDic" Multiplicity="0..1" />
-          <End Type="MtpDbModel.TechnicalFactor" Role="TechnicalFactor" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="PriorityDic">
-              <PropertyRef Name="ID" />
-            </Principal>
-            <Dependent Role="TechnicalFactor">
-              <PropertyRef Name="Difficulty" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
@@ -1547,7 +1517,7 @@
           </ReferentialConstraint>
         </Association>
         <Association Name="FK_TechnicalFactor_WeightCoefficientDic">
-          <End Type="MtpDbModel.WeightCoefficientDic" Role="WeightCoefficientDic" Multiplicity="0..1" />
+          <End Type="MtpDbModel.WeightCoefficientDic" Role="WeightCoefficientDic" Multiplicity="1" />
           <End Type="MtpDbModel.TechnicalFactor" Role="TechnicalFactor" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="WeightCoefficientDic">
@@ -1555,6 +1525,18 @@
             </Principal>
             <Dependent Role="TechnicalFactor">
               <PropertyRef Name="WeightCoefficient" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_TechnicalFactor_WeightCoefficientDic1">
+          <End Type="MtpDbModel.WeightCoefficientDic" Role="WeightCoefficientDic" Multiplicity="0..1" />
+          <End Type="MtpDbModel.TechnicalFactor" Role="TechnicalFactor" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="WeightCoefficientDic">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="TechnicalFactor">
+              <PropertyRef Name="Difficulty" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
@@ -1671,15 +1653,6 @@
                 <ScalarProperty Name="TestMethod" ColumnName="TestMethod" />
                 <ScalarProperty Name="Value" ColumnName="Value" />
                 <ScalarProperty Name="Type" ColumnName="Type" />
-                <ScalarProperty Name="ID" ColumnName="ID" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
-          <EntitySetMapping Name="Dictionaries">
-            <EntityTypeMapping TypeName="MtpDbModel.Dictionaries">
-              <MappingFragment StoreEntitySet="Dictionaries">
-                <ScalarProperty Name="TitleEng" ColumnName="TitleEng" />
-                <ScalarProperty Name="Title" ColumnName="Title" />
                 <ScalarProperty Name="ID" ColumnName="ID" />
               </MappingFragment>
             </EntityTypeMapping>
@@ -1885,315 +1858,293 @@
     <!-- Diagram content (shape and connector positions) -->
     <Diagrams>
       <Diagram Name="MtpDbModel">
-        <EntityTypeShape EntityType="MtpDbModel.Actor" Width="1.5" PointX="5.25" PointY="15.375" Height="2.5571907552083246" />
-        <EntityTypeShape EntityType="MtpDbModel.ActorDic" Width="1.5" PointX="3" PointY="23.75" Height="1.7879850260416674" />
-        <EntityTypeShape EntityType="MtpDbModel.Defect" Width="1.5" PointX="3" PointY="10.25" Height="2.749492187499996" />
-        <EntityTypeShape EntityType="MtpDbModel.DefectDic" Width="1.5" PointX="0.75" PointY="7.75" Height="1.7879850260416674" />
-        <EntityTypeShape EntityType="MtpDbModel.DefectPrimaryMetric" Width="1.5" PointX="8.25" PointY="10.375" Height="2.5571907552083246" />
-        <EntityTypeShape EntityType="MtpDbModel.Dictionaries" Width="1.5" PointX="5.75" PointY="0.75" Height="1.5956835937500102" />
-        <EntityTypeShape EntityType="MtpDbModel.EnvironmentFactor" Width="1.5" PointX="6" PointY="10.25" Height="2.749492187499996" />
-        <EntityTypeShape EntityType="MtpDbModel.EnvironmentFactorDic" Width="1.5" PointX="3.75" PointY="2.75" Height="1.7879850260416674" />
-        <EntityTypeShape EntityType="MtpDbModel.PrimaryMetricDic" Width="1.5" PointX="6" PointY="22.75" Height="1.7879850260416674" />
-        <EntityTypeShape EntityType="MtpDbModel.PriorityDic" Width="1.5" PointX="0.75" PointY="10.5" Height="2.3648893229166674" />
-        <EntityTypeShape EntityType="MtpDbModel.Project" Width="1.5" PointX="0.75" PointY="14" Height="3.3263964843750102" />
-        <EntityTypeShape EntityType="MtpDbModel.ReliabilityEvaluation" Width="1.5" PointX="8" PointY="19.375" Height="2.5571907552083246" />
-        <EntityTypeShape EntityType="MtpDbModel.ReliabilityEvaluationDic" Width="1.5" PointX="5.75" PointY="25.75" Height="1.7879850260416674" />
-        <EntityTypeShape EntityType="MtpDbModel.SecondaryMetricDic" Width="1.5" PointX="6" PointY="7.375" Height="1.9802864583333388" />
-        <EntityTypeShape EntityType="MtpDbModel.TechnicalFactor" Width="1.5" PointX="3" PointY="6.25" Height="2.749492187499996" />
-        <EntityTypeShape EntityType="MtpDbModel.TechnicalFactorDic" Width="1.5" PointX="0.75" PointY="1.125" Height="1.7879850260416674" />
-        <EntityTypeShape EntityType="MtpDbModel.TestMethodDic" Width="1.5" PointX="6" PointY="4.125" Height="1.7879850260416674" />
-        <EntityTypeShape EntityType="MtpDbModel.TestProgram" Width="1.5" PointX="0.75" PointY="24" Height="3.326396484374996" />
-        <EntityTypeShape EntityType="MtpDbModel.UseCase" Width="1.5" PointX="3" PointY="14" Height="5.2494108072916674" />
-        <EntityTypeShape EntityType="MtpDbModel.UseCasePrimaryMetric" Width="1.5" PointX="8.25" PointY="15.125" Height="2.9417936197916674" />
-        <EntityTypeShape EntityType="MtpDbModel.UseCaseSecondaryMetric" Width="1.5" PointX="5.25" PointY="19.5" Height="2.1725878906250102" />
-        <EntityTypeShape EntityType="MtpDbModel.Users" Width="1.5" PointX="1.5" PointY="20.625" Height="1.9802864583333246" />
-        <EntityTypeShape EntityType="MtpDbModel.WeightCoefficientDic" Width="1.5" PointX="0.75" PointY="3.625" Height="2.3648893229166674" />
+        <EntityTypeShape EntityType="MtpDbModel.Actor" Width="1.5" PointX="12.75" PointY="13.875" Height="2.5571907552083246" />
+        <EntityTypeShape EntityType="MtpDbModel.ActorDic" Width="1.5" PointX="10.5" PointY="19.25" Height="1.7879850260416674" />
+        <EntityTypeShape EntityType="MtpDbModel.Defect" Width="1.5" PointX="15.75" PointY="13.75" Height="2.749492187499996" />
+        <EntityTypeShape EntityType="MtpDbModel.DefectDic" Width="1.5" PointX="13.5" PointY="22.25" Height="1.7879850260416674" />
+        <EntityTypeShape EntityType="MtpDbModel.DefectPrimaryMetric" Width="1.5" PointX="18" PointY="13.875" Height="2.5571907552083246" />
+        <EntityTypeShape EntityType="MtpDbModel.EnvironmentFactor" Width="1.5" PointX="12.75" PointY="9.75" Height="2.749492187499996" />
+        <EntityTypeShape EntityType="MtpDbModel.EnvironmentFactorDic" Width="1.5" PointX="10.5" PointY="8.5" Height="1.7879850260416674" />
+        <EntityTypeShape EntityType="MtpDbModel.PrimaryMetricDic" Width="1.5" PointX="13.5" PointY="6.25" Height="1.7879850260416674" />
+        <EntityTypeShape EntityType="MtpDbModel.PriorityDic" Width="1.5" PointX="8.25" PointY="10.125" Height="1.9802864583333388" />
+        <EntityTypeShape EntityType="MtpDbModel.Project" Width="1.5" PointX="3" PointY="11.75" Height="3.3263964843750102" />
+        <EntityTypeShape EntityType="MtpDbModel.ReliabilityEvaluation" Width="1.5" PointX="7.5" PointY="13.875" Height="2.5571907552083246" />
+        <EntityTypeShape EntityType="MtpDbModel.ReliabilityEvaluationDic" Width="1.5" PointX="5.25" PointY="12.25" Height="1.7879850260416674" />
+        <EntityTypeShape EntityType="MtpDbModel.SecondaryMetricDic" Width="1.5" PointX="15.75" PointY="6.875" Height="1.9802864583333388" />
+        <EntityTypeShape EntityType="MtpDbModel.TechnicalFactor" Width="1.5" PointX="12.75" PointY="17.75" Height="2.749492187499996" />
+        <EntityTypeShape EntityType="MtpDbModel.TechnicalFactorDic" Width="1.5" PointX="10.5" PointY="22.25" Height="1.7879850260416674" />
+        <EntityTypeShape EntityType="MtpDbModel.TestMethodDic" Width="1.5" PointX="15.75" PointY="21.625" Height="1.7879850260416674" />
+        <EntityTypeShape EntityType="MtpDbModel.TestProgram" Width="1.5" PointX="5.25" PointY="15.125" Height="3.326396484374996" />
+        <EntityTypeShape EntityType="MtpDbModel.UseCase" Width="1.5" PointX="10.5" PointY="12.5" Height="5.2494108072916674" />
+        <EntityTypeShape EntityType="MtpDbModel.UseCasePrimaryMetric" Width="1.5" PointX="15.75" PointY="9.625" Height="2.9417936197916674" />
+        <EntityTypeShape EntityType="MtpDbModel.UseCaseSecondaryMetric" Width="1.5" PointX="15.75" PointY="18" Height="2.1725878906250102" />
+        <EntityTypeShape EntityType="MtpDbModel.Users" Width="1.5" PointX="0.75" PointY="12.5" Height="1.9802864583333246" />
+        <EntityTypeShape EntityType="MtpDbModel.WeightCoefficientDic" Width="1.5" PointX="10.5" PointY="4" Height="2.7494921874999818" />
         <AssociationConnector Association="MtpDbModel.FK_Actor_ActorDic" >
-          <ConnectorPoint PointX="4.5" PointY="23.751152846153843" />
-          <ConnectorPoint PointX="4.875" PointY="23.376152846153843" />
-          <ConnectorPoint PointX="4.875" PointY="16.653595377604162" />
-          <ConnectorPoint PointX="4.916666666666667" PointY="16.653595377604162" />
-          <ConnectorPoint PointX="5.083333333333333" PointY="16.653595377604162" />
-          <ConnectorPoint PointX="5.25" PointY="16.653595377604162" />
+          <ConnectorPoint PointX="12" PointY="19.25" />
+          <ConnectorPoint PointX="12.375" PointY="18.875" />
+          <ConnectorPoint PointX="12.375" PointY="15.153595377604162" />
+          <ConnectorPoint PointX="12.385416666666666" PointY="15.153595377604161" />
+          <ConnectorPoint PointX="12.739583333333334" PointY="15.153595377604162" />
+          <ConnectorPoint PointX="12.75" PointY="15.153595377604162" />
         </AssociationConnector>
         <AssociationConnector Association="MtpDbModel.FK_Actor_UseCase" >
-          <ConnectorPoint PointX="4.5" PointY="15.951797688802081" />
-          <ConnectorPoint PointX="4.916666666666667" PointY="15.951797688802081" />
-          <ConnectorPoint PointX="5.083333333333333" PointY="15.951797688802081" />
-          <ConnectorPoint PointX="5.25" PointY="15.951797688802081" />
+          <ConnectorPoint PointX="12" PointY="14.451797688802081" />
+          <ConnectorPoint PointX="12.385416666666666" PointY="14.451797688802079" />
+          <ConnectorPoint PointX="12.739583333333334" PointY="14.451797688802081" />
+          <ConnectorPoint PointX="12.75" PointY="14.451797688802081" />
         </AssociationConnector>
         <AssociationConnector Association="MtpDbModel.FK_Actor_WeightCoefficientDic" >
-          <ConnectorPoint PointX="2.25" PointY="5.2951866744791669" />
-          <ConnectorPoint PointX="3.0572891666666666" PointY="5.295186674479166" />
-          <ConnectorPoint PointX="3.2239558333333336" PointY="5.2951866744791669" />
-          <ConnectorPoint PointX="3.2604166666666665" PointY="5.295186674479166" />
-          <ConnectorPoint PointX="3.4270833333333335" PointY="5.2951866744791669" />
-          <ConnectorPoint PointX="5.541666666666667" PointY="5.295186674479166" />
-          <ConnectorPoint PointX="5.708333333333333" PointY="5.2951866744791669" />
-          <ConnectorPoint PointX="5.75" PointY="5.2951866744791669" />
-          <ConnectorPoint PointX="5.75" PointY="15" />
-          <ConnectorPoint PointX="6" PointY="15" />
-          <ConnectorPoint PointX="6" PointY="15.375" />
+          <ConnectorPoint PointX="12" PointY="6.7114142644230581" />
+          <ConnectorPoint PointX="12.5625" PointY="7.2739142644230581" />
+          <ConnectorPoint PointX="12.5625" PointY="15.824145066406237" />
+          <ConnectorPoint PointX="12.572916666666666" PointY="15.824145066406237" />
+          <ConnectorPoint PointX="12.739583333333334" PointY="15.824145066406237" />
+          <ConnectorPoint PointX="12.75" PointY="15.824145066406237" />
         </AssociationConnector>
         <AssociationConnector Association="MtpDbModel.FK_Defect_Defect" >
-          <ConnectorPoint PointX="3.75" PointY="14" />
-          <ConnectorPoint PointX="3.75" PointY="12.999492187499996" />
+          <ConnectorPoint PointX="12" PointY="13.78125" />
+          <ConnectorPoint PointX="12.385416666666666" PointY="13.781249999999998" />
+          <ConnectorPoint PointX="12.739583333333334" PointY="13.78125" />
+          <ConnectorPoint PointX="15.75" PointY="13.78125" />
         </AssociationConnector>
         <AssociationConnector Association="MtpDbModel.FK_Defect_DefectDic" >
-          <ConnectorPoint PointX="2.2499999999999996" PointY="9.5379850260416674" />
-          <ConnectorPoint PointX="2.625" PointY="9.9129850260416674" />
-          <ConnectorPoint PointX="2.625" PointY="11.624746093749998" />
-          <ConnectorPoint PointX="2.8229166666666665" PointY="11.624746093749998" />
-          <ConnectorPoint PointX="2.9895833333333335" PointY="11.624746093749998" />
-          <ConnectorPoint PointX="3" PointY="11.624746093749998" />
+          <ConnectorPoint PointX="14.65625" PointY="22.25" />
+          <ConnectorPoint PointX="14.65625" PointY="13.796875" />
+          <ConnectorPoint PointX="15.75" PointY="13.796875" />
         </AssociationConnector>
         <AssociationConnector Association="MtpDbModel.FK_Defect_PriorityDic" >
-          <ConnectorPoint PointX="2.25" PointY="12.307317708333333" />
-          <ConnectorPoint PointX="2.8229166666666665" PointY="12.307317708333333" />
-          <ConnectorPoint PointX="2.9895833333333335" PointY="12.307317708333333" />
-          <ConnectorPoint PointX="3" PointY="12.307317708333333" />
+          <ConnectorPoint PointX="9.75" PointY="11.227885242187504" />
+          <ConnectorPoint PointX="12.25" PointY="11.227885242187504" />
+          <ConnectorPoint PointX="12.25" PointY="12.816793619791667" />
+          <ConnectorPoint PointX="12.385416666666666" PointY="12.816793619791666" />
+          <ConnectorPoint PointX="12.739583333333334" PointY="12.816793619791667" />
+          <ConnectorPoint PointX="15.416666666666666" PointY="12.816793619791667" />
+          <ConnectorPoint PointX="15.583333333333334" PointY="12.816793619791667" />
+          <ConnectorPoint PointX="16.5" PointY="12.816793619791667" />
+          <ConnectorPoint PointX="16.5" PointY="13.75" />
         </AssociationConnector>
         <AssociationConnector Association="MtpDbModel.FK_DefectPrimaryMetric_Defect" >
-          <ConnectorPoint PointX="4.5" PointY="12.999492187499996" />
-          <ConnectorPoint PointX="4.875" PointY="13.374492187499996" />
-          <ConnectorPoint PointX="4.875" PointY="13.307190755208325" />
-          <ConnectorPoint PointX="4.916666666666667" PointY="13.307190755208325" />
-          <ConnectorPoint PointX="5.083333333333333" PointY="13.307190755208325" />
-          <ConnectorPoint PointX="5.666666666666667" PointY="13.307190755208325" />
-          <ConnectorPoint PointX="5.833333333333333" PointY="13.307190755208325" />
-          <ConnectorPoint PointX="7.072916666666667" PointY="13.307190755208325" />
-          <ConnectorPoint PointX="7.239583333333333" PointY="13.307190755208325" />
-          <ConnectorPoint PointX="7.875" PointY="13.307190755208325" />
-          <ConnectorPoint PointX="8.25" PointY="12.932190755208325" />
+          <ConnectorPoint PointX="17.25" PointY="15.153595377604162" />
+          <ConnectorPoint PointX="17.541666666666668" PointY="15.153595377604162" />
+          <ConnectorPoint PointX="17.708333333333332" PointY="15.153595377604162" />
+          <ConnectorPoint PointX="18" PointY="15.153595377604162" />
         </AssociationConnector>
         <AssociationConnector Association="MtpDbModel.FK_DefectPrimaryMetric_MetricDic" >
-          <ConnectorPoint PointX="7.5" PointY="8.36514322916667" />
-          <ConnectorPoint PointX="8.5104141666666653" PointY="8.36514322916667" />
-          <ConnectorPoint PointX="8.6770808333333331" PointY="8.36514322916667" />
-          <ConnectorPoint PointX="9" PointY="8.36514322916667" />
-          <ConnectorPoint PointX="9" PointY="10.375" />
+          <ConnectorPoint PointX="17.25" PointY="7.8651432291666694" />
+          <ConnectorPoint PointX="18.75" PointY="7.8651432291666694" />
+          <ConnectorPoint PointX="18.75" PointY="13.875" />
         </AssociationConnector>
         <AssociationConnector Association="MtpDbModel.FK_DefectPrimaryMetric_TestMethodDic" >
-          <ConnectorPoint PointX="7.5" PointY="5.0189925130208337" />
-          <ConnectorPoint PointX="8.5937475" PointY="5.0189925130208337" />
-          <ConnectorPoint PointX="8.5937475" PointY="10.375" />
+          <ConnectorPoint PointX="17.25" PointY="22.518992513020834" />
+          <ConnectorPoint PointX="18.75" PointY="22.518992513020834" />
+          <ConnectorPoint PointX="18.75" PointY="16.432190755208325" />
         </AssociationConnector>
         <AssociationConnector Association="MtpDbModel.FK_EnvironmentFactor_EnvironmentFactorTypeDic" >
-          <ConnectorPoint PointX="5.25" PointY="4.5379850260416674" />
-          <ConnectorPoint PointX="5.625" PointY="4.9129850260416674" />
-          <ConnectorPoint PointX="5.625" PointY="11.624746093749998" />
-          <ConnectorPoint PointX="5.666666666666667" PointY="11.624746093749998" />
-          <ConnectorPoint PointX="5.833333333333333" PointY="11.624746093749998" />
-          <ConnectorPoint PointX="6" PointY="11.624746093749998" />
-        </AssociationConnector>
-        <AssociationConnector Association="MtpDbModel.FK_EnvironmentFactor_PriorityDic" >
-          <ConnectorPoint PointX="2.25" PointY="12.808349861378206" />
-          <ConnectorPoint PointX="2.78125" PointY="13.339599861378206" />
-          <ConnectorPoint PointX="2.78125" PointY="13.124492187499996" />
-          <ConnectorPoint PointX="2.8229166666666665" PointY="13.124492187499996" />
-          <ConnectorPoint PointX="2.9895833333333335" PointY="13.124492187499996" />
-          <ConnectorPoint PointX="3.6666666666666665" PointY="13.124492187499996" />
-          <ConnectorPoint PointX="3.8333333333333335" PointY="13.124492187499996" />
-          <ConnectorPoint PointX="4.541666666666667" PointY="13.124492187499996" />
-          <ConnectorPoint PointX="4.708333333333333" PointY="13.124492187499996" />
-          <ConnectorPoint PointX="4.916666666666667" PointY="13.124492187499996" />
-          <ConnectorPoint PointX="5.083333333333333" PointY="13.124492187499996" />
-          <ConnectorPoint PointX="5.666666666666667" PointY="13.124492187499996" />
-          <ConnectorPoint PointX="5.833333333333333" PointY="13.124492187499996" />
-          <ConnectorPoint PointX="5.8761528461538468" PointY="13.124492187499996" />
-          <ConnectorPoint PointX="6.0011528461538459" PointY="12.999492187499996" />
+          <ConnectorPoint PointX="12" PointY="10.018992513020834" />
+          <ConnectorPoint PointX="12.166666666666666" PointY="10.018992513020834" />
+          <ConnectorPoint PointX="12.333333333333334" PointY="10.018992513020834" />
+          <ConnectorPoint PointX="12.385416666666666" PointY="10.018992513020832" />
+          <ConnectorPoint PointX="12.739583333333334" PointY="10.018992513020834" />
+          <ConnectorPoint PointX="12.75" PointY="10.018992513020834" />
         </AssociationConnector>
         <AssociationConnector Association="MtpDbModel.FK_EnvironmentFactor_UseCase" >
-          <ConnectorPoint PointX="4.5" PointY="18.622050781249996" />
-          <ConnectorPoint PointX="4.791666666666667" PointY="18.622050781249996" />
-          <ConnectorPoint PointX="5.083333333333333" PointY="18.622050781249996" />
-          <ConnectorPoint PointX="7.15625" PointY="18.622050781249996" />
-          <ConnectorPoint PointX="7.15625" PointY="12.999492187499996" />
+          <ConnectorPoint PointX="12" PointY="12.506922076923077" />
+          <ConnectorPoint PointX="12.06607443490112" PointY="12.440847642021957" />
+          <ConnectorPoint PointX="12.183925565098878" PointY="12.3229965118242" />
+          <ConnectorPoint PointX="12.19107443490112" PointY="12.315847642021955" />
+          <ConnectorPoint PointX="12.308925565098878" PointY="12.197996511824199" />
+          <ConnectorPoint PointX="12.40625" PointY="12.100672076923075" />
+          <ConnectorPoint PointX="12.40625" PointY="12.843242187499996" />
+          <ConnectorPoint PointX="12.40982443490112" PointY="12.839667752598874" />
+          <ConnectorPoint PointX="12.715175565098878" PointY="12.534316622401118" />
+          <ConnectorPoint PointX="12.75" PointY="12.499492187499996" />
         </AssociationConnector>
         <AssociationConnector Association="MtpDbModel.FK_EnvironmentFactor_WeightCoefficientDic" >
-          <ConnectorPoint PointX="2.25" PointY="5.9275806306089747" />
-          <ConnectorPoint PointX="2.8125" PointY="6.4900806306089747" />
-          <ConnectorPoint PointX="2.8125" PointY="9.875" />
-          <ConnectorPoint PointX="2.8229166666666665" PointY="9.875" />
-          <ConnectorPoint PointX="2.9895833333333335" PointY="9.875" />
-          <ConnectorPoint PointX="4.916666666666667" PointY="9.875" />
-          <ConnectorPoint PointX="5.083333333333333" PointY="9.875" />
-          <ConnectorPoint PointX="5.6261528461538459" PointY="9.875" />
-          <ConnectorPoint PointX="5.6910744349011217" PointY="9.9399215887472732" />
-          <ConnectorPoint PointX="5.8089255650988791" PointY="10.057772718945031" />
-          <ConnectorPoint PointX="6.0011528461538459" PointY="10.25" />
+          <ConnectorPoint PointX="12" PointY="5.09375" />
+          <ConnectorPoint PointX="13.09375" PointY="5.09375" />
+          <ConnectorPoint PointX="13.09375" PointY="9.75" />
+        </AssociationConnector>
+        <AssociationConnector Association="MtpDbModel.FK_EnvironmentFactor_WeightCoefficientDic1" >
+          <ConnectorPoint PointX="12" PointY="5.6718774999999937" />
+          <ConnectorPoint PointX="12.8906225" PointY="5.6718774999999937" />
+          <ConnectorPoint PointX="12.8906225" PointY="9.75" />
         </AssociationConnector>
         <AssociationConnector Association="MtpDbModel.FK_UseCasePrimaryMetric_PrimaryMetricDic" >
-          <ConnectorPoint PointX="7.328125" PointY="22.75" />
-          <ConnectorPoint PointX="7.328125" PointY="15.21875" />
-          <ConnectorPoint PointX="7.791666666666667" PointY="15.21875" />
-          <ConnectorPoint PointX="7.958333333333333" PointY="15.21875" />
-          <ConnectorPoint PointX="8.25" PointY="15.21875" />
-        </AssociationConnector>
-        <AssociationConnector Association="MtpDbModel.FK_TechnicalFactor_PriorityDic" >
-          <ConnectorPoint PointX="2.25" PointY="10.563460538461539" />
-          <ConnectorPoint PointX="2.5660744349011204" PointY="10.247386103560418" />
-          <ConnectorPoint PointX="2.6839255650988791" PointY="10.129534973362661" />
-          <ConnectorPoint PointX="2.6875" PointY="10.125960538461539" />
-          <ConnectorPoint PointX="2.6875" PointY="7.624746093749998" />
-          <ConnectorPoint PointX="2.7291666666666665" PointY="7.6247460937499971" />
-          <ConnectorPoint PointX="2.8958333333333335" PointY="7.624746093749998" />
-          <ConnectorPoint PointX="3" PointY="7.624746093749998" />
+          <ConnectorPoint PointX="14.65625" PointY="8.0379850260416674" />
+          <ConnectorPoint PointX="14.65625" PointY="9.65625" />
+          <ConnectorPoint PointX="15.291666666666666" PointY="9.65625" />
+          <ConnectorPoint PointX="15.458333333333334" PointY="9.65625" />
+          <ConnectorPoint PointX="15.75" PointY="9.65625" />
         </AssociationConnector>
         <AssociationConnector Association="MtpDbModel.FK_UseCase_PriorityDic" >
-          <ConnectorPoint PointX="2.2257692307692305" PointY="12.864889322916667" />
-          <ConnectorPoint PointX="2.625" PointY="13.264120092147437" />
-          <ConnectorPoint PointX="2.625" PointY="16.624705403645834" />
-          <ConnectorPoint PointX="3" PointY="16.624705403645834" />
+          <ConnectorPoint PointX="9.40625" PointY="12.105286458333339" />
+          <ConnectorPoint PointX="9.40625" PointY="13.15625" />
+          <ConnectorPoint PointX="10.166666666666666" PointY="13.15625" />
+          <ConnectorPoint PointX="10.333333333333334" PointY="13.15625" />
+          <ConnectorPoint PointX="10.5" PointY="13.15625" />
         </AssociationConnector>
         <AssociationConnector Association="MtpDbModel.FK_Project_Users" >
-          <ConnectorPoint PointX="1.875" PointY="20.625" />
-          <ConnectorPoint PointX="1.875" PointY="17.32639648437501" />
+          <ConnectorPoint PointX="2.25" PointY="13.490143229166662" />
+          <ConnectorPoint PointX="2.6666666666666665" PointY="13.490143229166662" />
+          <ConnectorPoint PointX="2.8333333333333335" PointY="13.490143229166662" />
+          <ConnectorPoint PointX="3" PointY="13.490143229166662" />
         </AssociationConnector>
         <AssociationConnector Association="MtpDbModel.FK_Project_Users1" >
-          <ConnectorPoint PointX="2.125" PointY="20.625" />
-          <ConnectorPoint PointX="2.125" PointY="17.32639648437501" />
+          <ConnectorPoint PointX="2.25" PointY="12.932571614583331" />
+          <ConnectorPoint PointX="2.6666666666666665" PointY="12.932571614583331" />
+          <ConnectorPoint PointX="2.8333333333333335" PointY="12.932571614583331" />
+          <ConnectorPoint PointX="3" PointY="12.932571614583331" />
         </AssociationConnector>
         <AssociationConnector Association="MtpDbModel.FK_ReliabilityEvaluation_Project" >
-          <ConnectorPoint PointX="1.09375" PointY="17.32639648437501" />
-          <ConnectorPoint PointX="1.09375" PointY="19.40625" />
-          <ConnectorPoint PointX="1.2447916666666667" PointY="19.40625" />
-          <ConnectorPoint PointX="1.4114583333333333" PointY="19.40625" />
-          <ConnectorPoint PointX="1.7916666666666667" PointY="19.40625" />
-          <ConnectorPoint PointX="1.9583333333333333" PointY="19.40625" />
-          <ConnectorPoint PointX="2.0416666666666665" PointY="19.40625" />
-          <ConnectorPoint PointX="2.2083333333333335" PointY="19.40625" />
-          <ConnectorPoint PointX="2.3854166666666665" PointY="19.40625" />
-          <ConnectorPoint PointX="2.5520833333333335" PointY="19.40625" />
-          <ConnectorPoint PointX="3.6666666666666665" PointY="19.40625" />
-          <ConnectorPoint PointX="3.8333333333333335" PointY="19.40625" />
-          <ConnectorPoint PointX="4.0729191666666669" PointY="19.40625" />
-          <ConnectorPoint PointX="4.2395858333333329" PointY="19.40625" />
-          <ConnectorPoint PointX="4.791666666666667" PointY="19.40625" />
-          <ConnectorPoint PointX="4.958333333333333" PointY="19.40625" />
-          <ConnectorPoint PointX="5.0740695128205129" PointY="19.40625" />
-          <ConnectorPoint PointX="5.240736179487179" PointY="19.40625" />
-          <ConnectorPoint PointX="7.244791666666667" PointY="19.40625" />
-          <ConnectorPoint PointX="7.411458333333333" PointY="19.40625" />
-          <ConnectorPoint PointX="8" PointY="19.40625" />
+          <ConnectorPoint PointX="4.5" PointY="14.588440755208339" />
+          <ConnectorPoint PointX="7.5" PointY="14.588440755208339" />
         </AssociationConnector>
         <AssociationConnector Association="MtpDbModel.FK_TestProgram_Project" >
-          <ConnectorPoint PointX="1.328125" PointY="17.32639648437501" />
-          <ConnectorPoint PointX="1.328125" PointY="24" />
+          <ConnectorPoint PointX="3.75" PointY="15.07639648437501" />
+          <ConnectorPoint PointX="3.75" PointY="16.788198242187498" />
+          <ConnectorPoint PointX="5.25" PointY="16.788198242187498" />
         </AssociationConnector>
         <AssociationConnector Association="MtpDbModel.FK_UseCase_Project" >
-          <ConnectorPoint PointX="2.25" PointY="15.249852701822917" />
-          <ConnectorPoint PointX="2.5416666666666665" PointY="15.249852701822917" />
-          <ConnectorPoint PointX="2.7083333333333335" PointY="15.249852701822917" />
-          <ConnectorPoint PointX="3" PointY="15.249852701822917" />
+          <ConnectorPoint PointX="4.5" PointY="13.137968377604175" />
+          <ConnectorPoint PointX="5" PointY="13.137968377604175" />
+          <ConnectorPoint PointX="5" PointY="12" />
+          <ConnectorPoint PointX="7.666666666666667" PointY="12" />
+          <ConnectorPoint PointX="7.833333333333333" PointY="12" />
+          <ConnectorPoint PointX="8" PointY="12" />
+          <ConnectorPoint PointX="8" PointY="12.25" />
+          <ConnectorPoint PointX="9.3229166666666661" PointY="12.25" />
+          <ConnectorPoint PointX="9.4895833333333339" PointY="12.25" />
+          <ConnectorPoint PointX="10.166666666666666" PointY="12.25" />
+          <ConnectorPoint PointX="10.333333333333334" PointY="12.25" />
+          <ConnectorPoint PointX="11.218748" PointY="12.25" />
+          <ConnectorPoint PointX="11.218748" PointY="12.5" />
         </AssociationConnector>
         <AssociationConnector Association="MtpDbModel.FK_UseCasePrimaryMetric_Project" >
-          <ConnectorPoint PointX="1.5" PointY="14" />
-          <ConnectorPoint PointX="1.5" PointY="13.75" />
-          <ConnectorPoint PointX="2.5416666666666665" PointY="13.75" />
-          <ConnectorPoint PointX="2.7083333333333335" PointY="13.75" />
-          <ConnectorPoint PointX="2.8229166666666665" PointY="13.75" />
-          <ConnectorPoint PointX="2.9895833333333335" PointY="13.75" />
-          <ConnectorPoint PointX="3.6666666666666665" PointY="13.75" />
-          <ConnectorPoint PointX="3.8333333333333335" PointY="13.75" />
-          <ConnectorPoint PointX="4.916666666666667" PointY="13.75" />
-          <ConnectorPoint PointX="5.083333333333333" PointY="13.75" />
-          <ConnectorPoint PointX="5.666666666666667" PointY="13.75" />
-          <ConnectorPoint PointX="5.833333333333333" PointY="13.75" />
-          <ConnectorPoint PointX="7.072916666666667" PointY="13.75" />
-          <ConnectorPoint PointX="7.239583333333333" PointY="13.75" />
-          <ConnectorPoint PointX="7.875" PointY="13.75" />
-          <ConnectorPoint PointX="7.875" PointY="16.674023809895829" />
-          <ConnectorPoint PointX="8.25" PointY="16.674023809895829" />
+          <ConnectorPoint PointX="3.75" PointY="11.75" />
+          <ConnectorPoint PointX="3.75" PointY="9.875" />
+          <ConnectorPoint PointX="10.25" PointY="9.875" />
+          <ConnectorPoint PointX="10.25" PointY="10.537985026041667" />
+          <ConnectorPoint PointX="12.25" PointY="10.537985026041667" />
+          <ConnectorPoint PointX="12.25" PointY="9.25" />
+          <ConnectorPoint PointX="12.385416666666666" PointY="9.2499999999999982" />
+          <ConnectorPoint PointX="12.739583333333334" PointY="9.25" />
+          <ConnectorPoint PointX="12.807289166666665" PointY="9.25" />
+          <ConnectorPoint PointX="12.973955833333333" PointY="9.25" />
+          <ConnectorPoint PointX="13.010416666666666" PointY="9.25" />
+          <ConnectorPoint PointX="13.177083333333334" PointY="9.25" />
+          <ConnectorPoint PointX="14.572916666666666" PointY="9.25" />
+          <ConnectorPoint PointX="14.739583333333334" PointY="9.25" />
+          <ConnectorPoint PointX="15.375" PointY="9.25" />
+          <ConnectorPoint PointX="15.375" PointY="11.142773809895829" />
+          <ConnectorPoint PointX="15.75" PointY="11.142773809895829" />
         </AssociationConnector>
         <AssociationConnector Association="MtpDbModel.FK_ReliabilityEvaluation_ReliabilityEvaluationDic" >
-          <ConnectorPoint PointX="7.25" PointY="26.643992513020834" />
-          <ConnectorPoint PointX="8.75" PointY="26.643992513020834" />
-          <ConnectorPoint PointX="8.75" PointY="21.932190755208325" />
+          <ConnectorPoint PointX="6.75" PointY="13.062499500000001" />
+          <ConnectorPoint PointX="8.25" PointY="13.062499500000001" />
+          <ConnectorPoint PointX="8.25" PointY="13.875" />
         </AssociationConnector>
         <AssociationConnector Association="MtpDbModel.FK_ReliabilityEvaluation_TestProgram" >
-          <ConnectorPoint PointX="0.921875" PointY="24" />
-          <ConnectorPoint PointX="0.921875" PointY="19.421875" />
-          <ConnectorPoint PointX="1.2447916666666667" PointY="19.421875" />
-          <ConnectorPoint PointX="1.4114583333333333" PointY="19.421875" />
-          <ConnectorPoint PointX="1.7916666666666667" PointY="19.421875" />
-          <ConnectorPoint PointX="1.9583333333333333" PointY="19.421875" />
-          <ConnectorPoint PointX="2.0416666666666665" PointY="19.421875" />
-          <ConnectorPoint PointX="2.2083333333333335" PointY="19.421875" />
-          <ConnectorPoint PointX="2.3854166666666665" PointY="19.421875" />
-          <ConnectorPoint PointX="2.5520833333333335" PointY="19.421875" />
-          <ConnectorPoint PointX="3.6666666666666665" PointY="19.421875" />
-          <ConnectorPoint PointX="3.8333333333333335" PointY="19.421875" />
-          <ConnectorPoint PointX="4.0729191666666669" PointY="19.421875" />
-          <ConnectorPoint PointX="4.2395858333333329" PointY="19.421875" />
-          <ConnectorPoint PointX="4.791666666666667" PointY="19.421875" />
-          <ConnectorPoint PointX="4.958333333333333" PointY="19.421875" />
-          <ConnectorPoint PointX="5.0896945128205129" PointY="19.421875" />
-          <ConnectorPoint PointX="5.256361179487179" PointY="19.421875" />
-          <ConnectorPoint PointX="7.244791666666667" PointY="19.421875" />
-          <ConnectorPoint PointX="7.411458333333333" PointY="19.421875" />
-          <ConnectorPoint PointX="8" PointY="19.421875" />
+          <ConnectorPoint PointX="6.75" PointY="15.778595377604162" />
+          <ConnectorPoint PointX="7.5" PointY="15.778595377604162" />
         </AssociationConnector>
         <AssociationConnector Association="MtpDbModel.FK_UseCaseSecondaryMetric_MetricDic" >
-          <ConnectorPoint PointX="6.0011528461538459" PointY="9.3552864583333388" />
-          <ConnectorPoint PointX="5.8761528461538468" PointY="9.4802864583333388" />
-          <ConnectorPoint PointX="5.833333333333333" PointY="9.4802864583333371" />
-          <ConnectorPoint PointX="5.541666666666667" PointY="9.4802864583333388" />
-          <ConnectorPoint PointX="5" PointY="9.4802864583333388" />
-          <ConnectorPoint PointX="5" PointY="19.248847153846153" />
-          <ConnectorPoint PointX="5.2511528461538459" PointY="19.5" />
+          <ConnectorPoint PointX="17.25" PointY="8.8552864583333388" />
+          <ConnectorPoint PointX="17.625" PointY="9.2302864583333388" />
+          <ConnectorPoint PointX="17.625" PointY="17.625" />
+          <ConnectorPoint PointX="17.25" PointY="18" />
         </AssociationConnector>
         <AssociationConnector Association="MtpDbModel.FK_TechnicalFactor_TechnicalFactorDic" >
-          <ConnectorPoint PointX="2.25" PointY="1.90625" />
-          <ConnectorPoint PointX="3.34375" PointY="1.90625" />
-          <ConnectorPoint PointX="3.34375" PointY="6.25" />
+          <ConnectorPoint PointX="12" PointY="22.25" />
+          <ConnectorPoint PointX="12.375" PointY="21.875" />
+          <ConnectorPoint PointX="12.375" PointY="19.124746093749998" />
+          <ConnectorPoint PointX="12.385416666666666" PointY="19.124746093749998" />
+          <ConnectorPoint PointX="12.552083333333334" PointY="19.124746093749998" />
+          <ConnectorPoint PointX="12.572916666666666" PointY="19.124746093749998" />
+          <ConnectorPoint PointX="12.739583333333334" PointY="19.124746093749998" />
+          <ConnectorPoint PointX="12.75" PointY="19.124746093749998" />
         </AssociationConnector>
         <AssociationConnector Association="MtpDbModel.FK_TechnicalFactor_UseCase" >
-          <ConnectorPoint PointX="3.0323066923076918" PointY="14" />
-          <ConnectorPoint PointX="2.90625" PointY="13.873943307692308" />
-          <ConnectorPoint PointX="2.90625" PointY="9.0943950336538428" />
-          <ConnectorPoint PointX="3.0011528461538459" PointY="8.999492187499996" />
+          <ConnectorPoint PointX="12" PointY="17.687102114983976" />
+          <ConnectorPoint PointX="12.316074434901122" PointY="18.003176549885097" />
+          <ConnectorPoint PointX="12.527675565098878" PointY="18.214777680082854" />
+          <ConnectorPoint PointX="12.5625" PointY="18.249602114983976" />
+          <ConnectorPoint PointX="12.5625" PointY="17.5625" />
+          <ConnectorPoint PointX="12.597324434901122" PointY="17.597324434901122" />
+          <ConnectorPoint PointX="12.715175565098878" PointY="17.715175565098878" />
+          <ConnectorPoint PointX="12.75" PointY="17.75" />
         </AssociationConnector>
         <AssociationConnector Association="MtpDbModel.FK_TechnicalFactor_WeightCoefficientDic" >
-          <ConnectorPoint PointX="2.25" PointY="4.9165833502604235" />
-          <ConnectorPoint PointX="3.1406225" PointY="4.9165833502604235" />
-          <ConnectorPoint PointX="3.1406225" PointY="6.25" />
+          <ConnectorPoint PointX="11.963076923076924" PointY="6.7494921874999818" />
+          <ConnectorPoint PointX="12.46875" PointY="7.2551652644230575" />
+          <ConnectorPoint PointX="12.46875" PointY="19.843371140624988" />
+          <ConnectorPoint PointX="12.75" PointY="19.843371140624988" />
+        </AssociationConnector>
+        <AssociationConnector Association="MtpDbModel.FK_TechnicalFactor_WeightCoefficientDic1" >
+          <ConnectorPoint PointX="12" PointY="6.7171834951922893" />
+          <ConnectorPoint PointX="12.65625" PointY="7.3734334951922893" />
+          <ConnectorPoint PointX="12.65625" PointY="19.843371140624988" />
+          <ConnectorPoint PointX="12.75" PointY="19.843371140624988" />
         </AssociationConnector>
         <AssociationConnector Association="MtpDbModel.FK_UseCase_TestProgram" >
-          <ConnectorPoint PointX="2.25" PointY="25.663198242187498" />
-          <ConnectorPoint PointX="2.75" PointY="25.663198242187498" />
-          <ConnectorPoint PointX="2.75" PointY="23.5" />
-          <ConnectorPoint PointX="3.75" PointY="23.5" />
-          <ConnectorPoint PointX="3.75" PointY="19.249410807291667" />
+          <ConnectorPoint PointX="6.75" PointY="17.122050781249996" />
+          <ConnectorPoint PointX="10.166666666666666" PointY="17.122050781249996" />
+          <ConnectorPoint PointX="10.333333333333334" PointY="17.122050781249996" />
+          <ConnectorPoint PointX="10.5" PointY="17.122050781249996" />
         </AssociationConnector>
         <AssociationConnector Association="MtpDbModel.FK_UseCasePrimaryMetric_TestProgram" >
-          <ConnectorPoint PointX="2.25" PointY="25.631945742187504" />
-          <ConnectorPoint PointX="8.6666666666666661" PointY="25.631945742187504" />
-          <ConnectorPoint PointX="8.8333333333333339" PointY="25.631945742187504" />
-          <ConnectorPoint PointX="9.65625" PointY="25.631945742187504" />
-          <ConnectorPoint PointX="9.65625" PointY="18.066793619791667" />
+          <ConnectorPoint PointX="6.75" PointY="17.817975632812491" />
+          <ConnectorPoint PointX="10.25" PointY="17.817975632812491" />
+          <ConnectorPoint PointX="10.25" PointY="12" />
+          <ConnectorPoint PointX="12.125" PointY="12" />
+          <ConnectorPoint PointX="12.125" PointY="12.816793619791667" />
+          <ConnectorPoint PointX="12.229166666666666" PointY="12.816793619791666" />
+          <ConnectorPoint PointX="12.739583333333334" PointY="12.816793619791667" />
+          <ConnectorPoint PointX="15.416666666666666" PointY="12.816793619791667" />
+          <ConnectorPoint PointX="15.583333333333334" PointY="12.816793619791667" />
+          <ConnectorPoint PointX="16.1250005" PointY="12.816793619791667" />
+          <ConnectorPoint PointX="16.1250005" PointY="12.566793619791667" />
         </AssociationConnector>
         <AssociationConnector Association="MtpDbModel.FK_UseCase_Users" >
-          <ConnectorPoint PointX="2.46875" PointY="20.625" />
-          <ConnectorPoint PointX="2.46875" PointY="18.319153645833339" />
-          <ConnectorPoint PointX="3" PointY="18.319153645833339" />
+          <ConnectorPoint PointX="2.25" PointY="14.016466843749988" />
+          <ConnectorPoint PointX="2.75" PointY="14.016466843749988" />
+          <ConnectorPoint PointX="2.75" PointY="11.5" />
+          <ConnectorPoint PointX="3.6666666666666665" PointY="11.5" />
+          <ConnectorPoint PointX="3.8333333333333335" PointY="11.5" />
+          <ConnectorPoint PointX="7.75" PointY="11.5" />
+          <ConnectorPoint PointX="7.75" PointY="12.375" />
+          <ConnectorPoint PointX="9.3229166666666661" PointY="12.375" />
+          <ConnectorPoint PointX="9.4895833333333339" PointY="12.375" />
+          <ConnectorPoint PointX="10.166666666666666" PointY="12.375" />
+          <ConnectorPoint PointX="10.333333333333334" PointY="12.375" />
+          <ConnectorPoint PointX="10.828122" PointY="12.375" />
+          <ConnectorPoint PointX="10.828122" PointY="12.5" />
         </AssociationConnector>
         <AssociationConnector Association="MtpDbModel.FK_UseCasePrimaryMetric_UseCase" >
-          <ConnectorPoint PointX="4.5" PointY="18.030742187499996" />
-          <ConnectorPoint PointX="4.791666666666667" PointY="18.030742187499996" />
-          <ConnectorPoint PointX="5.083333333333333" PointY="18.030742187499996" />
-          <ConnectorPoint PointX="7.072916666666667" PointY="18.030742187499996" />
-          <ConnectorPoint PointX="7.239583333333333" PointY="18.030742187499996" />
-          <ConnectorPoint PointX="7.244791666666667" PointY="18.030742187499996" />
-          <ConnectorPoint PointX="7.411458333333333" PointY="18.030742187499996" />
-          <ConnectorPoint PointX="8.25" PointY="18.030742187499996" />
+          <ConnectorPoint PointX="12" PointY="12.525383615384616" />
+          <ConnectorPoint PointX="12.06607443490112" PointY="12.459309180483494" />
+          <ConnectorPoint PointX="12.183925565098878" PointY="12.341458050285738" />
+          <ConnectorPoint PointX="12.19107443490112" PointY="12.334309180483494" />
+          <ConnectorPoint PointX="12.308925565098878" PointY="12.216458050285738" />
+          <ConnectorPoint PointX="12.3125" PointY="12.212883615384616" />
+          <ConnectorPoint PointX="12.3125" PointY="13.191793619791667" />
+          <ConnectorPoint PointX="12.385416666666666" PointY="13.191793619791666" />
+          <ConnectorPoint PointX="12.739583333333334" PointY="13.191793619791667" />
+          <ConnectorPoint PointX="15.125" PointY="13.191793619791667" />
+          <ConnectorPoint PointX="15.75" PointY="12.566793619791667" />
         </AssociationConnector>
         <AssociationConnector Association="MtpDbModel.FK_UseCaseSecondaryMetric_UseCase" >
-          <ConnectorPoint PointX="4.1562525" PointY="19.249410807291667" />
-          <ConnectorPoint PointX="4.1562525" PointY="20.586293945312505" />
-          <ConnectorPoint PointX="4.791666666666667" PointY="20.586293945312505" />
-          <ConnectorPoint PointX="4.958333333333333" PointY="20.586293945312505" />
-          <ConnectorPoint PointX="5.25" PointY="20.586293945312505" />
+          <ConnectorPoint PointX="12" PointY="16.389096246294073" />
+          <ConnectorPoint PointX="12.25" PointY="16.389096246294073" />
+          <ConnectorPoint PointX="12.25" PointY="16.749492187499996" />
+          <ConnectorPoint PointX="12.291666666666666" PointY="16.749492187499996" />
+          <ConnectorPoint PointX="12.552083333333334" PointY="16.749492187499996" />
+          <ConnectorPoint PointX="12.572916666666666" PointY="16.749492187499996" />
+          <ConnectorPoint PointX="12.739583333333334" PointY="16.749492187499996" />
+          <ConnectorPoint PointX="14.572916666666666" PointY="16.749492187499996" />
+          <ConnectorPoint PointX="14.739583333333334" PointY="16.749492187499996" />
+          <ConnectorPoint PointX="16.468747999999998" PointY="16.749492187499996" />
+          <ConnectorPoint PointX="16.468747999999998" PointY="18" />
         </AssociationConnector>
       </Diagram>
     </Diagrams>

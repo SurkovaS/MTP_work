@@ -9,6 +9,7 @@
 
 namespace MTP1.Controllers
 {
+    using System;
     using System.Collections.Generic;
     using System.Linq;
     using System.Web.Mvc;
@@ -115,12 +116,67 @@ namespace MTP1.Controllers
             return this.FormJsonData(programId, page, rows, search, sidx, sord);
         }
 
-        public ActionResult EditTechFactor(int useCaseId, int techFactorId, int WeightCoefficient, int difficultyId)
+        public ActionResult EditTechFactor(int useCaseId)
         {
-            var a = 5;
+            if (Request.Form["oper"] != "edit")
+            {
+                throw new Exception("поддерживается только редактирование");
+            }
+
+            var useCase = this.service.Get().FirstOrDefault(a => a.ID == useCaseId);
+            if (useCase == null)
+            {
+                throw new Exception(string.Format("use case с id = {0} не найден", useCaseId));
+            }
+
+            int techFactroIdParse;
+            var techFactorId = Request.Form["id"];
+            if (!int.TryParse(techFactorId, out techFactroIdParse))
+            {
+                throw new Exception("не указан id технического фактора");
+            }
+
+            IBaseService<TechnicalFactor> techFactorService = TechnicalFactorServiceFactory.Create();
+            var tFactor = techFactorService.Get().FirstOrDefault(
+                a => a.UseCase == useCaseId &&
+                a.TechnicalFactorDic.ID == techFactroIdParse);
+            if (tFactor == null)
+            {
+                tFactor = new TechnicalFactor { UseCase = useCaseId, TechnicalFactor1 = techFactroIdParse };
+                techFactorService.Add(tFactor);
+            }
+
+            int wcIdParse;
+            var wcId = Request.Form["WeightCoefficient"];
+            if (int.TryParse(wcId, out wcIdParse))
+            {
+                tFactor.WeightCoefficient = wcIdParse;
+            }
+
+            int diffIdParse;
+            var diffId = Request.Form["Difficulty"];
+            if (int.TryParse(diffId, out diffIdParse))
+            {
+                tFactor.Difficulty = diffIdParse;
+            }
+            
+            techFactorService.Save();
+            RecalculateTechFactors(techFactorService, useCase);
+
             return Json(true);
         }
-        
+
+        private void RecalculateTechFactors(IBaseService<TechnicalFactor> techFactorService, UseCase useCase)
+        {
+            var allTechFactorsForUseCase = techFactorService.Get().Where(a => a.UseCase == useCase.ID).ToList();
+            double result;
+            foreach (var technicalFactor in allTechFactorsForUseCase)
+            {
+
+            }
+
+            this.service.Save();
+        }
 
         #endregion
     }

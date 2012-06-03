@@ -3,9 +3,7 @@ function DrawMTPGrid(gridId, pagerId,
                         addUrl, viewUrl, colNames, colModel, caption,
                         hiddengrid) {
 
-
     DefineMtpGrid(gridId, pagerId, indexUrl, editUrl, colNames, colModel, caption, hiddengrid, viewUrl, false);
-
     var grid = jQuery("#" + gridId).jqGrid('navGrid', '#' + pagerId, {
         edit: true,
         add: true,
@@ -39,7 +37,7 @@ function DrawEditableMTPGrid(gridId, pagerId,indexUrl, editUrl, colNames, colMod
 var MTPGridLastCel = new Array();
 
 function DefineMtpGrid(gridId, pagerId, indexUrl, editUrl, colNames, colModel, caption, hiddengrid, viewUrl, editOnRowSelect) {
-    $("#" + gridId).jqGrid({
+    var grid = $("#" + gridId).jqGrid({
         colNames: colNames,
         colModel: colModel,
         pager: $("#" + pagerId),
@@ -61,18 +59,18 @@ function DefineMtpGrid(gridId, pagerId, indexUrl, editUrl, colNames, colModel, c
         hiddengrid: hiddengrid ? hiddengrid : false,
         ondblClickRow: function (rowid) {
             if (viewUrl) {
-                 window.location = viewUrl + '/' + rowid;
+                window.location = viewUrl + '/' + rowid;
             }
         },
-         onSelectRow: editOnRowSelect ? function (id) {
-             if (id) {
-                 debugger 
-                 //jQuery('#grid').jqGrid('restoreRow', MTPGridLastCel[gridId]);
-                 jQuery('#grid').jqGrid('editRow', id, true);
-             }
+        onCellSelect: editOnRowSelect ? function (rowid, iCol, aData) {
+            if (rowid && rowid !== MTPGridLastCel[gridId]) {
+                if (MTPGridLastCel[gridId])
+                    grid.jqGrid('restoreRow', MTPGridLastCel[gridId]);
+                grid.jqGrid('editRow', rowid, true);
+                MTPGridLastCel[gridId] = rowid;
+            }
         } : function () { },
-        cellEdit: true,
-        editurl : editOnRowSelect? editUrl : null,
+        editurl: editOnRowSelect ? editUrl : null,
         loadError: function (jqXHR, textStatus, errorThrown) {
             alert('HTTP status code: ' + jqXHR.status + '\n' +
               'textStatus: ' + textStatus + '\n' +

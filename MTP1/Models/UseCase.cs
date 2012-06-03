@@ -34,14 +34,14 @@ namespace MTP1.Models
             return true;
         }
 
-        public string WFactorList
+        public string WFactorAndDifficultyList
         {
             get
             {
                 if (this.wFactorList == null)
                 {
                     this.wFactorList = string.Empty;
-                    var allWC = WeightCoefficientDicServiceFactory.Create().Get().ToList();
+                    var allWC = WeightCoefficientDicServiceFactory.Create().Get().OrderBy(a => a.Value).ToList();
                     foreach (var wc in allWC)
                     {
                         this.wFactorList += string.Format("{0}:\"{1}\",", wc.ID, wc.Value);

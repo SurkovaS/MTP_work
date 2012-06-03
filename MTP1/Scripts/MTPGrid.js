@@ -67,7 +67,7 @@ function DefineMtpGrid(gridId, pagerId, indexUrl, editUrl, colNames, colModel, c
          onSelectRow: editOnRowSelect ? function (id) {
              if (id) {
                  debugger 
-                 jQuery('#grid').jqGrid('restoreRow', MTPGridLastCel[gridId]);
+                 //jQuery('#grid').jqGrid('restoreRow', MTPGridLastCel[gridId]);
                  jQuery('#grid').jqGrid('editRow', id, true);
              }
         } : function () { },

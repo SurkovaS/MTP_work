@@ -53,7 +53,7 @@
     </div>
 </fieldset>
 
-<div id="grid_containerTF" style="width: 100%">
+<div id="grid_containerTF" style="width: 640px">
     <table id="gridTF" cellpadding="0" cellspacing="0">
     </table>
     <div id="pagerTF" style="text-align: center;">
@@ -86,23 +86,23 @@
 
     $(function() {
         GridForTechFacts();
-        GridForEnvFacts();
-        GridForActors();
+        //GridForEnvFacts();
+        //GridForActors();
     });
-
+    
     function GridForTechFacts() {
+         
+        var wcList = @Html.Raw(@Model.WFactorList);
         var indexUrlTF = '@Url.Action("GetTechFactsForUseCase", "TechnicalFactor")' + '?useCaseId=' + useCaseId;
-        var editUrlTF = '@Url.Action("Edit", "TechnicalFactor")';
-        var deleteUrlTF = '@Url.Action("Delete", "TechnicalFactor")';
-        var addUrlTF = '@Url.Action("Create", "TechnicalFactor")';
-        var viewUrlTF= '@Url.Action("Details", "TechnicalFactor")';
-
-        DrawMTPGrid('gridTF', 'pagerTF', indexUrlTF, editUrlTF, deleteUrlTF, addUrlTF, viewUrlTF,
-         ['Технический фактор', 'Весовой коэффициент', 'Сложность'],
+        var editUrlTF = '@Url.Action("EditTechFactor", "UseCase")' + '?useCaseId=' + useCaseId;
+        
+        DrawEditableMTPGrid('gridTF', 'pagerTF', indexUrlTF, editUrlTF,
+        ['Технический фактор', 'Весовой коэффициент', 'Сложность'],
                 [
                     {
                         name: 'TechnicalFactor',
                         sortable: false,
+                        editable: false,
                         align: 'left',
                         width: '100'
                     },
@@ -110,78 +110,22 @@
                         name: 'WeightCoefficient',
                         sortable: false,
                         align: 'center',
+                        editable: true,
+                        edittype: "select",
+                        editoptions: { multiple: false, value: wcList }, 
+                        editrules: { required: false }, 
+                        formatoptions: { disabled: false},
                         width: '50'
                     },
                     {
                         name: 'Difficulty',
                         sortable: false,
                         align: 'center',
+                        editable: true,
+                        edittype: "select",
                         width: '50'
                     }
                 ], 'Технические факторы сценария', true);
     }
-
-    function GridForEnvFacts() {
-        var indexUrlEF = '@Url.Action("GetEnvFactorsForUseCase", "EnvironmentFactor")' + '?useCaseId=' + useCaseId;
-        var editUrlEF = '@Url.Action("Edit", "EnvironmentFactor")';
-        var deleteUrlEF = '@Url.Action("Delete", "EnvironmentFactor")';
-        var addUrlEF = '@Url.Action("Create", "EnvironmentFactor")';
-        var viewUrlEF = '@Url.Action("Details", "EnvironmentFactor")';
-
-   
-         DrawMTPGrid('gridEF', 'pagerEF', indexUrlEF, editUrlEF, deleteUrlEF, addUrlEF, viewUrlEF,
-         ['Фактор окружения', 'Весовой коэффициент', 'Сложность'],
-                [
-                    {
-                        name: 'EnvironmentFactor',
-                        sortable: false,
-                        align: 'left',
-                        width: '100'
-                    },
-                    {
-                        name: 'WeightCoefficient',
-                        sortable: false,
-                        align: 'center',
-                        width: '50'
-                    },
-                    {
-                        name: 'Difficulty',
-                        sortable: false,
-                        align: 'center',
-                        width: '50'
-                    }
-                ], ' Факторы окружения сценария', true);
-    }
     
-    function GridForActors() {
-        var indexUrlAc = '@Url.Action("GetActorsForUseCase", "Actor")' + '?useCaseId=' + useCaseId;
-        var editUrlAc = '@Url.Action("Edit", "Actor")';
-        var deleteUrlAc = '@Url.Action("Delete", "Actor")';
-        var addUrlAc = '@Url.Action("Create", "Actor")';
-        var viewUrlAc = '@Url.Action("Details", "Actor")';
-
-        DrawMTPGrid('gridAc', 'pagerAc', indexUrlAc, editUrlAc, deleteUrlAc, addUrlAc,
-                viewUrlAc,
-                ['Актор', 'Весовой коэффициент', 'Количество'],
-                [
-                    {
-                        name: 'Actor',
-                        sortable: false,
-                        align: 'left',
-                        width: '100'
-                    },
-                    {
-                        name: 'WeightCoefficient',
-                        sortable: false,
-                        align: 'center',
-                        width: '50'
-                    },
-                    {
-                        name: 'Quantity',
-                        sortable: false,
-                        align: 'center',
-                        width: '50'
-                    }
-                ],'Участники сценария', true);
-    }
-</script>
+    </script>

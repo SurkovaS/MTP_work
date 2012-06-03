@@ -5,59 +5,52 @@
     @{
         var queryProjects = ProjectServiceFactory.Create().Get().Select(item => new { item.ID, Name = item.Title }).ToList();
         List<SelectListItem> listProjects = queryProjects.Select(item => new SelectListItem { Text = item.Name.ToString(), Value = item.ID.ToString(), Selected = this.Model != null && this.Model.Project == item.ID }).ToList();
-        @this.Html.DropDownListFor(model => model.Project, listProjects, "...")
-
-    } 
-@this.Html.ValidationMessageFor(model => model.Project)      
+        @Html.DropDownListFor(model => model.Project, listProjects, "...")
+     } 
+     @Html.ValidationMessageFor(model => model.Project)      
 </div>
 <div class="display-label">Программа тестирования</div>
 <div class="editor-field">
     @{
         var queryPrograms = TestProgramServiceFactory.Create().Get().Select(item => new { item.ID, Name = item.Title }).ToList();
         List<SelectListItem> listPrograms = queryPrograms.Select(item => new SelectListItem { Text = item.Name.ToString(), Value = item.ID.ToString(), Selected = this.Model != null && this.Model.TestProgram == item.ID }).ToList();
-        @this.Html.DropDownListFor(model => model.TestProgram, listPrograms, "...")
-
-    }
-      @this.Html.ValidationMessageFor(model => model.TestProgram)  
+        @Html.DropDownListFor(model => model.TestProgram, listPrograms, "...")
+      }
+      @Html.ValidationMessageFor(model => model.TestProgram)  
 </div>
-<div class="display-label">Сценарий тестироваия</div>
+<div class="display-label">Наименование сценария</div>
 <div class="editor-field">
-    @this.Html.EditorFor(model => model.Title)
-    @this.Html.ValidationMessageFor(model => model.Title)
+    @Html.EditorFor(model => model.Title)
+    @Html.ValidationMessageFor(model => model.Title)
 </div>
-
-<div class="display-label">Описание</div>
+<div class="display-label">Описание сценария</div>
 <div class="editor-field">
-    @this.Html.TextAreaFor(model => model.Description, new { cols = 70, rows = 5 })
-    @this.Html.ValidationMessageFor(model => model.Description)
+    @Html.TextAreaFor(model => model.Description, new { cols = 70, rows = 5 })
+    @Html.ValidationMessageFor(model => model.Description)
 </div>
-
-
 <div class="display-label">Приоритет сценария</div>
 <div class="editor-field">
     @{
         var queryPriorities = PriorityDicServiceFactory.Create().Get().Select(item => new { item.ID, Name = item.Title }).ToList();
         List<SelectListItem> listPriorities = queryPriorities.Select(item => new SelectListItem { Text = item.Name.ToString(), Value = item.ID.ToString(), Selected = this.Model != null && this.Model.Priority == item.ID }).ToList();
-        @this.Html.DropDownListFor(model => model.Priority, listPriorities, "...")
-
+        @Html.DropDownListFor(model => model.Priority, listPriorities, "...")
     } 
 </div>
 <div class="display-label">UCP</div>
 <div class="editor-field">
-    @this.Html.EditorFor(model => model.Ucp)
-    @this.Html.ValidationMessageFor(model => model.Ucp)
+    @Html.EditorFor(model => model.Ucp)
+    @Html.ValidationMessageFor(model => model.Ucp)
 </div>
 <div class="display-label">Трудозатраты, чел-часы</div>
 <div class="editor-field">
-    @this.Html.EditorFor(model => model.ManHour)
-    @this.Html.ValidationMessageFor(model => model.ManHour)
+    @Html.EditorFor(model => model.ManHour)
+    @Html.ValidationMessageFor(model => model.ManHour)
 </div>
 <div class="display-label">Пользователь</div>
 <div class="editor-field">
     @{
         var queryUsers = UsersServiceFactory.Create().Get().Select(item => new { item.ID, Name = item.Title }).ToList();
         List<SelectListItem> listUsers = queryUsers.Select(item => new SelectListItem { Text = item.Name.ToString(), Value = item.ID.ToString(), Selected = this.Model != null && this.Model.Creator == item.ID }).ToList();
-        @this.Html.DropDownListFor(model => model.Creator, listUsers, "...")
-
-    } 
+        @Html.DropDownListFor(model => model.Creator, listUsers, "...")
+     } 
 </div>

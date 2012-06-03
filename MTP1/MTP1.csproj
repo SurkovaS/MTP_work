@@ -268,9 +268,6 @@
     <Content Include="Views\ActorDic\Create.cshtml" />
   </ItemGroup>
   <ItemGroup>
-    <Content Include="Views\ActorDic\Delete.cshtml" />
-  </ItemGroup>
-  <ItemGroup>
     <Content Include="Views\ActorDic\Details.cshtml" />
   </ItemGroup>
   <ItemGroup>
@@ -284,9 +281,6 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="Views\DefectDic\Create.cshtml" />
-  </ItemGroup>
-  <ItemGroup>
-    <Content Include="Views\DefectDic\Delete.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="Views\DefectDic\Details.cshtml" />
@@ -307,9 +301,6 @@
     <Content Include="Views\EnvironmentFactorDic\Create.cshtml" />
   </ItemGroup>
   <ItemGroup>
-    <Content Include="Views\EnvironmentFactorDic\Delete.cshtml" />
-  </ItemGroup>
-  <ItemGroup>
     <Content Include="Views\EnvironmentFactorDic\Details.cshtml" />
   </ItemGroup>
   <ItemGroup>
@@ -317,9 +308,6 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="Views\EnvironmentFactorDic\Index.cshtml" />
-  </ItemGroup>
-  <ItemGroup>
-    <Content Include="Views\Dictionaries\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="Views\PrimaryMetricDic\Create.cshtml" />
@@ -451,9 +439,6 @@
     <Content Include="Views\UseCase\Create.cshtml" />
   </ItemGroup>
   <ItemGroup>
-    <Content Include="Views\UseCase\Delete.cshtml" />
-  </ItemGroup>
-  <ItemGroup>
     <Content Include="Views\UseCase\Details.cshtml" />
   </ItemGroup>
   <ItemGroup>
@@ -493,60 +478,6 @@
     <Content Include="Views\UseCaseSecondaryMetric\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>
-    <Content Include="Views\Shared\EditorTemplates\TechnicalFactor.cshtml" />
-  </ItemGroup>
-  <ItemGroup>
-    <Content Include="Views\Shared\EditorTemplates\EnvironmentFactor.cshtml" />
-  </ItemGroup>
-  <ItemGroup>
-    <Content Include="Views\TechnicalFactor\Create.cshtml" />
-  </ItemGroup>
-  <ItemGroup>
-    <Content Include="Views\TechnicalFactor\Index.cshtml" />
-  </ItemGroup>
-  <ItemGroup>
-    <Content Include="Views\TechnicalFactor\Details.cshtml" />
-  </ItemGroup>
-  <ItemGroup>
-    <Content Include="Views\TechnicalFactor\Delete.cshtml" />
-  </ItemGroup>
-  <ItemGroup>
-    <Content Include="Views\TechnicalFactor\Edit.cshtml" />
-  </ItemGroup>
-  <ItemGroup>
-    <Content Include="Views\EnvironmentFactor\Create.cshtml" />
-  </ItemGroup>
-  <ItemGroup>
-    <Content Include="Views\EnvironmentFactor\Index.cshtml" />
-  </ItemGroup>
-  <ItemGroup>
-    <Content Include="Views\EnvironmentFactor\Delete.cshtml" />
-  </ItemGroup>
-  <ItemGroup>
-    <Content Include="Views\EnvironmentFactor\Details.cshtml" />
-  </ItemGroup>
-  <ItemGroup>
-    <Content Include="Views\EnvironmentFactor\Edit.cshtml" />
-  </ItemGroup>
-  <ItemGroup>
-    <Content Include="Views\Actor\Create.cshtml" />
-  </ItemGroup>
-  <ItemGroup>
-    <Content Include="Views\Actor\Delete.cshtml" />
-  </ItemGroup>
-  <ItemGroup>
-    <Content Include="Views\Actor\Details.cshtml" />
-  </ItemGroup>
-  <ItemGroup>
-    <Content Include="Views\Actor\Edit.cshtml" />
-  </ItemGroup>
-  <ItemGroup>
-    <Content Include="Views\Actor\Index.cshtml" />
-  </ItemGroup>
-  <ItemGroup>
-    <Content Include="Views\Shared\EditorTemplates\Actor.cshtml" />
-  </ItemGroup>
-  <ItemGroup>
     <Folder Include="Content\themes\base\" />
   </ItemGroup>
   <ItemGroup>
@@ -566,9 +497,6 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="Views\TestProgram\Create.cshtml" />
-  </ItemGroup>
-  <ItemGroup>
-    <Content Include="Views\TestProgram\Delete.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="Views\TestProgram\Details.cshtml" />

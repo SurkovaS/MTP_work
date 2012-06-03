@@ -1,23 +1,23 @@
 ﻿@using MTP1
 @model MTP1.Models.UseCase
 @{
-    this.ViewBag.Title = string.Format("Сценарий тестирования {0} | {1}", this.Model.Title, Constants.TITLE);
-
+    ViewBag.Title = string.Format("Сценарий тестирования | {0}", Constants.TITLE);
 }
+
 <p>
-    @this.Html.ActionLink("Редактировать", "Edit", new { id = this.Model.ID }) |
-    @this.Html.ActionLink("Сценарии тестирования", "Index")|
-    @this.Html.ActionLink("Ввод первичных метрик", "Create", "UseCasePrimaryMetric") 
+    @Html.ActionLink("Редактировать", "Edit", new { id = this.Model.ID }) |
+    @Html.ActionLink("Сценарии тестирования", "Index")|
+    @Html.ActionLink("Ввод первичных метрик", "Create", "UseCasePrimaryMetric") 
 </p>
+
 <fieldset>
-    <legend>Use Case "@this.Model.Title", проект "@this.Model.Project1.Title"</legend>
-    <div class="display-label">
-        Сценарий тестирования</div>
+    <legend>Сценарий тестирования</legend>
+    <div class="display-label">Наименование сценария</div>
     <div class="display-field">
         @this.Html.DisplayFor(model => model.Title)
     </div>
     <div class="display-label">
-        Описание</div>
+        Описание сценария</div>
     <div class="display-field">
         @this.Html.DisplayFor(model => model.Description)
     </div>
@@ -32,7 +32,7 @@
         @this.Html.DisplayFor(model => model.TestProgram1.Title)
     </div>
     <div class="display-label">
-        Приоритет</div>
+        Приоритет сценария</div>
     <div class="display-field">
         @this.Html.DisplayFor(model => model.PriorityDic.Title)
     </div>
@@ -47,7 +47,7 @@
         @this.Html.DisplayFor(model => model.ManHour)
     </div>
     <div class="display-label">
-        Пользователь</div>
+        Автор</div>
     <div class="display-field">
         @this.Html.DisplayFor(model => model.Users.Title)
     </div>

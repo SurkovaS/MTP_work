@@ -98,11 +98,11 @@ namespace MTP1.Controllers
                             new[]
                                        {
                                             m.Title.ToStringWithDbNullCheck(), m.Description.ToStringWithDbNullCheck(), 
-                                            m.Project1.Title.ToStringWithDbNullCheck(), 
-                                            m.TestProgram1.Title.ToStringWithDbNullCheck(), 
                                             m.PriorityDic == null ? string.Empty : m.PriorityDic.Title.ToStringWithDbNullCheck(), m.Ucp.ToStringWithDbNullCheck(), 
                                             m.ManHour.ToStringWithDbNullCheck(),
-                                            m.Users.Title.ToStringWithDbNullCheck()
+                                            m.Users.Title.ToStringWithDbNullCheck(),
+                                            m.Project1.Title.ToStringWithDbNullCheck(), 
+                                            m.TestProgram1.Title.ToStringWithDbNullCheck()
                                         }
                                         }).ToArray()
                     };

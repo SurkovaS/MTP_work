@@ -1,42 +1,46 @@
 ﻿@using MTP1
 @using MTP1.Models
 @model IEnumerable<DefectDic>
-
 @{
-    this.ViewBag.Title = string.Format("Элементы справочника | {0}", Constants.TITLE);
-
+    ViewBag.Title = string.Format("Элементы справочника | {0}", Constants.TITLE);
 }
-<h2>Типы дефектов</h2>
 
-<p>
-    @this.Html.ActionLink("Создать", "Create")
+<link href="@Url.Content("~/Content/List.css")" rel="stylesheet" type="text/css" />
+<div id="grid_container" style="width: 100%">
+    <table id="grid" cellpadding="0" cellspacing="0">
+    </table>
+    <div id="pager" style="text-align: center;">
+    </div>
+    <div id="search" style="margin-left: 30%; display: none">
+    </div>
+</div>
 
-</p>
-<table>
-    <tr>
-        <th>
-            Тип дефекта
-        </th>
-        <th>
-            Описание
-        </th>
-    </tr>
+<script type="text/javascript">
 
-    @foreach (DefectDic item in this.Model)
-    {
-        <tr>
-            <td>
-                @this.Html.ActionLink(item.Title, "Details", new { id = item.ID })
-            </td>
-            <td>
-                @this.Html.DisplayFor(modelItem => item.Description)
-            </td>
-        
-        
-            <td>
-                @this.Html.ActionLink("Редактировать", "Edit", new { id = item.ID }) |
-                @this.Html.ActionLink("Удалить", "Delete", new { id = item.ID })
-            </td>
-        </tr>
-    }
-</table>
+    $(function () {
+
+        var indexUrl = '@Url.Action("GetDefects", "DefectDic")';
+        var editUrl = '@Url.Action("Edit", "DefectDic")';
+        var deleteUrl = '@Url.Action("Delete", "DefectDic")';
+        var addUrl = '@Url.Action("Create", "DefectDic")';
+        var viewUrl = '@Url.Action("Details", "DefectDic")';
+
+        DrawMTPGrid('grid', 'pager', indexUrl, editUrl, deleteUrl, addUrl, viewUrl,
+            ['Наименование', 'Описание'],
+            [
+                {
+                    name: 'Title',
+                    sortable: false,
+                    align: 'center',
+                    width: '250'
+                },
+                {
+                    name: 'Description',
+                    sortable: false,
+                    align: 'center',
+                    width: '100'
+                }
+            ], 'Справочник: Типы дефектов');
+    });
+
+</script>

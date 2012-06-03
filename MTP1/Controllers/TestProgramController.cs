@@ -99,11 +99,11 @@ namespace MTP1.Controllers
                             new[]
                                         {
                                             m.Title.ToStringWithDbNullCheck(), m.Description.ToStringWithDbNullCheck(), 
-                                            m.Project1.Title.ToStringWithDbNullCheck(),
                                             m.BeginDatePlan.DateToShortWithDbNullCheck(),
                                             m.EndDatePlan.DateToShortWithDbNullCheck(),
                                             m.BeginDateActual.DateToShortWithDbNullCheck(),
-                                            m.EndDateActual.DateToShortWithDbNullCheck()
+                                            m.EndDateActual.DateToShortWithDbNullCheck(),
+                                            m.Project1.Title.ToStringWithDbNullCheck()
 
                                         }
                                 }).ToArray()

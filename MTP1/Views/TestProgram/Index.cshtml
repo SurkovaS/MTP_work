@@ -1,10 +1,11 @@
 ﻿@using MTP1
 @model IEnumerable<MTP1.Models.TestProgram>
+           
 @{
-    this.ViewBag.Title = string.Format("Программы тестирования| {0}", Constants.TITLE);
+    ViewBag.Title = string.Format("Программы тестирования| {0}", Constants.TITLE);
 }
 
-<link href="@this.Url.Content("~/Content/List.css")" rel="stylesheet" type="text/css" />
+<link href="@Url.Content("~/Content/List.css")" rel="stylesheet" type="text/css" />
 
 <div id="grid_container" style="width: 100%">
     <table id="grid" cellpadding="0" cellspacing="0">
@@ -14,6 +15,7 @@
     <div id="search" style="margin-left: 30%; display: none">
     </div>
 </div>
+
 <script type="text/javascript">
     var indexUrl = '@Url.Action("GetPrograms", "TestProgram")';
     var editUrl = '@Url.Action("Edit", "TestProgram")';
@@ -23,8 +25,9 @@
 
     $(function () {
         DrawMTPGrid('grid', 'pager', indexUrl, editUrl, deleteUrl, addUrl, viewUrl,
-        ['Программа тестирования', 'Описание', 'Проект тестирования', 'Плановая дата начала',
-        'Плановая дата окончания', 'Фактическая дата начала', 'Фактическая дата окончания'],
+        ['Программа тестирования', 'Описание программы', 'Плановая дата начала',
+        'Плановая дата окончания', 'Фактическая дата начала', 'Фактическая дата окончания',
+        'Проект'],
         [
                 {
                     name: 'Title',
@@ -37,12 +40,6 @@
                     sortable: false,
                     align: 'center',
                     width: '300'
-                },
-                {
-                    name: 'Project',
-                    sortable: false,
-                    align: 'center',
-                    width: '200'
                 },
                 {
                     name: 'BeginDatePlan',
@@ -67,8 +64,14 @@
                     sortable: false,
                     align: 'center',
                     width: '200'
+                },
+                {
+                    name: 'Project',
+                    sortable: false,
+                    align: 'center',
+                    width: '200'
                 }
-            ]);
+            ],'Программы тестирования');
     });
 
 </script>

@@ -1,6 +1,6 @@
 ﻿@model IEnumerable<MTP1.Models.Project>
 @{
-    ViewBag.Title = string.Format("Проекты тестирования | {0}", MTP1.Constants.TITLE);
+    ViewBag.Title = string.Format("Проекты | {0}", MTP1.Constants.TITLE);
 }
 <link href="@this.Url.Content("~/Content/List.css")" rel="stylesheet" type="text/css" />
 <div id="grid_container" style="width: 100%">
@@ -21,7 +21,7 @@
     $(function () {
 
         DrawMTPGrid('grid', 'pager', indexUrl, editUrl, deleteUrl, addUrl, viewUrl, 
-            ['Наименование', 'Версия', 'Описание', 'Проект-менеджер', 'Автор'],
+            ['Наименование проекта', 'Версия проекта', 'Описание проекта', 'Проект-менеджер', 'Автор'],
             [
                 {
                     name: 'Title',

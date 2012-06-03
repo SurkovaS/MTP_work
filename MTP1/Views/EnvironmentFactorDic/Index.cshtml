@@ -3,41 +3,45 @@
 @model IEnumerable<EnvironmentFactorDic>
 
 @{
-    this.ViewBag.Title = string.Format("Элементы справочника | {0}", Constants.TITLE);
-
+    ViewBag.Title = string.Format("Элементы справочника | {0}", Constants.TITLE);
 }
 
-<h2>Типы Факторов окружения</h2>
+<link href="@Url.Content("~/Content/List.css")" rel="stylesheet" type="text/css" />
+<div id="grid_container" style="width: 100%">
+    <table id="grid" cellpadding="0" cellspacing="0">
+    </table>
+    <div id="pager" style="text-align: center;">
+    </div>
+    <div id="search" style="margin-left: 30%; display: none">
+    </div>
+</div>
 
-<p>
-    @this.Html.ActionLink("Создать", "Create")
+<script type="text/javascript">
 
-</p>
-<table>
-    <tr>
-        <th>
-            Тип фактора окружения
-        </th>
-        <th>
-            Описание
-        </th>
-    </tr>
+    $(function () {
 
-    @foreach (EnvironmentFactorDic item in this.Model)
-    {
-        <tr>
-            <td>
-                @this.Html.ActionLink(item.Title, "Details", new { id = item.ID })
-            </td>
-            <td>
-                @this.Html.DisplayFor(modelItem => item.Description)
-            </td>
-        
-        
-            <td>
-                @this.Html.ActionLink("Редактировать", "Edit", new { id = item.ID }) |
-                @this.Html.ActionLink("Удалить", "Delete", new { id = item.ID })
-            </td>
-        </tr>
-    }
-</table>
+        var indexUrl = '@Url.Action("GetEnvFactors", "EnvironmentFactorDic")';
+        var editUrl = '@Url.Action("Edit", "EnvironmentFactorDic")';
+        var deleteUrl = '@Url.Action("Delete", "EnvironmentFactorDic")';
+        var addUrl = '@Url.Action("Create", "EnvironmentFactorDic")';
+        var viewUrl = '@Url.Action("Details", "EnvironmentFactorDic")';
+
+        DrawMTPGrid('grid', 'pager', indexUrl, editUrl, deleteUrl, addUrl, viewUrl,
+            ['Наименование', 'Описание'],
+            [
+                {
+                    name: 'Title',
+                    sortable: false,
+                    align: 'center',
+                    width: '250'
+                },
+                {
+                    name: 'Description',
+                    sortable: false,
+                    align: 'center',
+                    width: '100'
+                }
+            ], 'Справочник: Типы факторов окружения');
+    });
+
+</script>

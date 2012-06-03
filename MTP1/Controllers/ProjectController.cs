@@ -51,26 +51,6 @@ namespace MTP1.Controllers
 
         #region Public Methods and Operators
 
-        /// <summary>
-        /// The get projects.
-        /// </summary>
-        /// <param name="page">
-        /// The page.
-        /// </param>
-        /// <param name="rows">
-        /// The rows.
-        /// </param>
-        /// <param name="search">
-        /// The search.
-        /// </param>
-        /// <param name="sidx">
-        /// The sidx.
-        /// </param>
-        /// <param name="sord">
-        /// The sord.
-        /// </param>
-        /// <returns>
-        /// </returns>
         public ActionResult GetProjects(int page, int rows, string search, string sidx, string sord)
         {
             int projectsCount = this.service.Get().Count();

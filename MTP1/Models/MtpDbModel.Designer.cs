@@ -28,11 +28,10 @@ using System.Runtime.Serialization;
 [assembly: EdmRelationshipAttribute("MtpDbModel", "FK_DefectPrimaryMetric_MetricDic", "SecondaryMetricDic", System.Data.Metadata.Edm.RelationshipMultiplicity.One, typeof(MTP1.Models.SecondaryMetricDic), "DefectPrimaryMetric", System.Data.Metadata.Edm.RelationshipMultiplicity.Many, typeof(MTP1.Models.DefectPrimaryMetric), true)]
 [assembly: EdmRelationshipAttribute("MtpDbModel", "FK_DefectPrimaryMetric_TestMethodDic", "TestMethodDic", System.Data.Metadata.Edm.RelationshipMultiplicity.One, typeof(MTP1.Models.TestMethodDic), "DefectPrimaryMetric", System.Data.Metadata.Edm.RelationshipMultiplicity.Many, typeof(MTP1.Models.DefectPrimaryMetric), true)]
 [assembly: EdmRelationshipAttribute("MtpDbModel", "FK_EnvironmentFactor_EnvironmentFactorTypeDic", "EnvironmentFactorDic", System.Data.Metadata.Edm.RelationshipMultiplicity.One, typeof(MTP1.Models.EnvironmentFactorDic), "EnvironmentFactor", System.Data.Metadata.Edm.RelationshipMultiplicity.Many, typeof(MTP1.Models.EnvironmentFactor), true)]
-[assembly: EdmRelationshipAttribute("MtpDbModel", "FK_EnvironmentFactor_PriorityDic", "PriorityDic", System.Data.Metadata.Edm.RelationshipMultiplicity.ZeroOrOne, typeof(MTP1.Models.PriorityDic), "EnvironmentFactor", System.Data.Metadata.Edm.RelationshipMultiplicity.Many, typeof(MTP1.Models.EnvironmentFactor), true)]
 [assembly: EdmRelationshipAttribute("MtpDbModel", "FK_EnvironmentFactor_UseCase", "UseCase", System.Data.Metadata.Edm.RelationshipMultiplicity.One, typeof(MTP1.Models.UseCase), "EnvironmentFactor", System.Data.Metadata.Edm.RelationshipMultiplicity.Many, typeof(MTP1.Models.EnvironmentFactor), true)]
 [assembly: EdmRelationshipAttribute("MtpDbModel", "FK_EnvironmentFactor_WeightCoefficientDic", "WeightCoefficientDic", System.Data.Metadata.Edm.RelationshipMultiplicity.ZeroOrOne, typeof(MTP1.Models.WeightCoefficientDic), "EnvironmentFactor", System.Data.Metadata.Edm.RelationshipMultiplicity.Many, typeof(MTP1.Models.EnvironmentFactor), true)]
+[assembly: EdmRelationshipAttribute("MtpDbModel", "FK_EnvironmentFactor_WeightCoefficientDic1", "WeightCoefficientDic", System.Data.Metadata.Edm.RelationshipMultiplicity.ZeroOrOne, typeof(MTP1.Models.WeightCoefficientDic), "EnvironmentFactor", System.Data.Metadata.Edm.RelationshipMultiplicity.Many, typeof(MTP1.Models.EnvironmentFactor), true)]
 [assembly: EdmRelationshipAttribute("MtpDbModel", "FK_UseCasePrimaryMetric_PrimaryMetricDic", "PrimaryMetricDic", System.Data.Metadata.Edm.RelationshipMultiplicity.One, typeof(MTP1.Models.PrimaryMetricDic), "UseCasePrimaryMetric", System.Data.Metadata.Edm.RelationshipMultiplicity.Many, typeof(MTP1.Models.UseCasePrimaryMetric), true)]
-[assembly: EdmRelationshipAttribute("MtpDbModel", "FK_TechnicalFactor_PriorityDic", "PriorityDic", System.Data.Metadata.Edm.RelationshipMultiplicity.ZeroOrOne, typeof(MTP1.Models.PriorityDic), "TechnicalFactor", System.Data.Metadata.Edm.RelationshipMultiplicity.Many, typeof(MTP1.Models.TechnicalFactor), true)]
 [assembly: EdmRelationshipAttribute("MtpDbModel", "FK_UseCase_PriorityDic", "PriorityDic", System.Data.Metadata.Edm.RelationshipMultiplicity.ZeroOrOne, typeof(MTP1.Models.PriorityDic), "UseCase", System.Data.Metadata.Edm.RelationshipMultiplicity.Many, typeof(MTP1.Models.UseCase), true)]
 [assembly: EdmRelationshipAttribute("MtpDbModel", "FK_Project_Users", "Users", System.Data.Metadata.Edm.RelationshipMultiplicity.ZeroOrOne, typeof(MTP1.Models.Users), "Project", System.Data.Metadata.Edm.RelationshipMultiplicity.Many, typeof(MTP1.Models.Project), true)]
 [assembly: EdmRelationshipAttribute("MtpDbModel", "FK_Project_Users1", "Users", System.Data.Metadata.Edm.RelationshipMultiplicity.ZeroOrOne, typeof(MTP1.Models.Users), "Project", System.Data.Metadata.Edm.RelationshipMultiplicity.Many, typeof(MTP1.Models.Project), true)]
@@ -45,7 +44,9 @@ using System.Runtime.Serialization;
 [assembly: EdmRelationshipAttribute("MtpDbModel", "FK_UseCaseSecondaryMetric_MetricDic", "SecondaryMetricDic", System.Data.Metadata.Edm.RelationshipMultiplicity.One, typeof(MTP1.Models.SecondaryMetricDic), "UseCaseSecondaryMetric", System.Data.Metadata.Edm.RelationshipMultiplicity.Many, typeof(MTP1.Models.UseCaseSecondaryMetric), true)]
 [assembly: EdmRelationshipAttribute("MtpDbModel", "FK_TechnicalFactor_TechnicalFactorDic", "TechnicalFactorDic", System.Data.Metadata.Edm.RelationshipMultiplicity.One, typeof(MTP1.Models.TechnicalFactorDic), "TechnicalFactor", System.Data.Metadata.Edm.RelationshipMultiplicity.Many, typeof(MTP1.Models.TechnicalFactor), true)]
 [assembly: EdmRelationshipAttribute("MtpDbModel", "FK_TechnicalFactor_UseCase", "UseCase", System.Data.Metadata.Edm.RelationshipMultiplicity.One, typeof(MTP1.Models.UseCase), "TechnicalFactor", System.Data.Metadata.Edm.RelationshipMultiplicity.Many, typeof(MTP1.Models.TechnicalFactor), true)]
-[assembly: EdmRelationshipAttribute("MtpDbModel", "FK_TechnicalFactor_WeightCoefficientDic", "WeightCoefficientDic", System.Data.Metadata.Edm.RelationshipMultiplicity.ZeroOrOne, typeof(MTP1.Models.WeightCoefficientDic), "TechnicalFactor", System.Data.Metadata.Edm.RelationshipMultiplicity.Many, typeof(MTP1.Models.TechnicalFactor), true)]
+[assembly: EdmRelationshipAttribute("MtpDbModel", "FK_TechnicalFactor_WeightCoefficientDic", "WeightCoefficientDic", System.Data.Metadata.Edm.RelationshipMultiplicity.One, typeof(MTP1.Models.WeightCoefficientDic), "TechnicalFactor", System.Data.Metadata.Edm.RelationshipMultiplicity.Many, typeof(MTP1.Models.TechnicalFactor), true)]
+[assembly: EdmRelationshipAttribute("MtpDbModel", "FK_TechnicalFactor_WeightCoefficientDic1", "WeightCoefficientDic", System.Data.Metadata.Edm.RelationshipMultiplicity.ZeroOrOne, typeof(MTP1.Models.WeightCoefficientDic), "TechnicalFactor", System.Data.Metadata.Edm.RelationshipMultiplicity.Many, typeof(MTP1.Models.TechnicalFactor), true)]
+[assembly: EdmRelationshipAttribute("MtpDbModel", "FK_TestProgram_Users", "Users", System.Data.Metadata.Edm.RelationshipMultiplicity.ZeroOrOne, typeof(MTP1.Models.Users), "TestProgram", System.Data.Metadata.Edm.RelationshipMultiplicity.Many, typeof(MTP1.Models.TestProgram), true)]
 [assembly: EdmRelationshipAttribute("MtpDbModel", "FK_UseCase_TestProgram", "TestProgram", System.Data.Metadata.Edm.RelationshipMultiplicity.ZeroOrOne, typeof(MTP1.Models.TestProgram), "UseCase", System.Data.Metadata.Edm.RelationshipMultiplicity.Many, typeof(MTP1.Models.UseCase), true)]
 [assembly: EdmRelationshipAttribute("MtpDbModel", "FK_UseCasePrimaryMetric_TestProgram", "TestProgram", System.Data.Metadata.Edm.RelationshipMultiplicity.ZeroOrOne, typeof(MTP1.Models.TestProgram), "UseCasePrimaryMetric", System.Data.Metadata.Edm.RelationshipMultiplicity.Many, typeof(MTP1.Models.UseCasePrimaryMetric), true)]
 [assembly: EdmRelationshipAttribute("MtpDbModel", "FK_UseCase_Users", "Users", System.Data.Metadata.Edm.RelationshipMultiplicity.ZeroOrOne, typeof(MTP1.Models.Users), "UseCase", System.Data.Metadata.Edm.RelationshipMultiplicity.Many, typeof(MTP1.Models.UseCase), true)]
@@ -181,22 +182,6 @@ namespace MTP1.Models
             }
         }
         private ObjectSet<DefectPrimaryMetric> _DefectPrimaryMetric;
-    
-        /// <summary>
-        /// Нет доступной документации по метаданным.
-        /// </summary>
-        public ObjectSet<Dictionaries> Dictionaries
-        {
-            get
-            {
-                if ((_Dictionaries == null))
-                {
-                    _Dictionaries = base.CreateObjectSet<Dictionaries>("Dictionaries");
-                }
-                return _Dictionaries;
-            }
-        }
-        private ObjectSet<Dictionaries> _Dictionaries;
     
         /// <summary>
         /// Нет доступной документации по метаданным.
@@ -511,14 +496,6 @@ namespace MTP1.Models
         public void AddToDefectPrimaryMetric(DefectPrimaryMetric defectPrimaryMetric)
         {
             base.AddObject("DefectPrimaryMetric", defectPrimaryMetric);
-        }
-    
-        /// <summary>
-        /// Устаревший метод для добавления новых объектов в набор EntitySet Dictionaries. Взамен можно использовать метод .Add связанного свойства ObjectSet&lt;T&gt;.
-        /// </summary>
-        public void AddToDictionaries(Dictionaries dictionaries)
-        {
-            base.AddObject("Dictionaries", dictionaries);
         }
     
         /// <summary>
@@ -1774,111 +1751,6 @@ namespace MTP1.Models
     /// <summary>
     /// Нет доступной документации по метаданным.
     /// </summary>
-    [EdmEntityTypeAttribute(NamespaceName="MtpDbModel", Name="Dictionaries")]
-    [Serializable()]
-    [DataContractAttribute(IsReference=true)]
-    public partial class Dictionaries : EntityObject
-    {
-        #region Фабричный метод
-    
-        /// <summary>
-        /// Создание нового объекта Dictionaries.
-        /// </summary>
-        /// <param name="id">Исходное значение свойства ID.</param>
-        /// <param name="title">Исходное значение свойства Title.</param>
-        public static Dictionaries CreateDictionaries(global::System.Int32 id, global::System.String title)
-        {
-            Dictionaries dictionaries = new Dictionaries();
-            dictionaries.ID = id;
-            dictionaries.Title = title;
-            return dictionaries;
-        }
-
-        #endregion
-        #region Свойства-примитивы
-    
-        /// <summary>
-        /// Нет доступной документации по метаданным.
-        /// </summary>
-        [EdmScalarPropertyAttribute(EntityKeyProperty=true, IsNullable=false)]
-        [DataMemberAttribute()]
-        public global::System.Int32 ID
-        {
-            get
-            {
-                return _ID;
-            }
-            set
-            {
-                if (_ID != value)
-                {
-                    OnIDChanging(value);
-                    ReportPropertyChanging("ID");
-                    _ID = StructuralObject.SetValidValue(value);
-                    ReportPropertyChanged("ID");
-                    OnIDChanged();
-                }
-            }
-        }
-        private global::System.Int32 _ID;
-        partial void OnIDChanging(global::System.Int32 value);
-        partial void OnIDChanged();
-    
-        /// <summary>
-        /// Нет доступной документации по метаданным.
-        /// </summary>
-        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=false)]
-        [DataMemberAttribute()]
-        public global::System.String Title
-        {
-            get
-            {
-                return _Title;
-            }
-            set
-            {
-                OnTitleChanging(value);
-                ReportPropertyChanging("Title");
-                _Title = StructuralObject.SetValidValue(value, false);
-                ReportPropertyChanged("Title");
-                OnTitleChanged();
-            }
-        }
-        private global::System.String _Title;
-        partial void OnTitleChanging(global::System.String value);
-        partial void OnTitleChanged();
-    
-        /// <summary>
-        /// Нет доступной документации по метаданным.
-        /// </summary>
-        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=true)]
-        [DataMemberAttribute()]
-        public global::System.String TitleEng
-        {
-            get
-            {
-                return _TitleEng;
-            }
-            set
-            {
-                OnTitleEngChanging(value);
-                ReportPropertyChanging("TitleEng");
-                _TitleEng = StructuralObject.SetValidValue(value, true);
-                ReportPropertyChanged("TitleEng");
-                OnTitleEngChanged();
-            }
-        }
-        private global::System.String _TitleEng;
-        partial void OnTitleEngChanging(global::System.String value);
-        partial void OnTitleEngChanged();
-
-        #endregion
-    
-    }
-    
-    /// <summary>
-    /// Нет доступной документации по метаданным.
-    /// </summary>
     [EdmEntityTypeAttribute(NamespaceName="MtpDbModel", Name="EnvironmentFactor")]
     [Serializable()]
     [DataContractAttribute(IsReference=true)]
@@ -2075,44 +1947,6 @@ namespace MTP1.Models
         [XmlIgnoreAttribute()]
         [SoapIgnoreAttribute()]
         [DataMemberAttribute()]
-        [EdmRelationshipNavigationPropertyAttribute("MtpDbModel", "FK_EnvironmentFactor_PriorityDic", "PriorityDic")]
-        public PriorityDic PriorityDic
-        {
-            get
-            {
-                return ((IEntityWithRelationships)this).RelationshipManager.GetRelatedReference<PriorityDic>("MtpDbModel.FK_EnvironmentFactor_PriorityDic", "PriorityDic").Value;
-            }
-            set
-            {
-                ((IEntityWithRelationships)this).RelationshipManager.GetRelatedReference<PriorityDic>("MtpDbModel.FK_EnvironmentFactor_PriorityDic", "PriorityDic").Value = value;
-            }
-        }
-        /// <summary>
-        /// Нет доступной документации по метаданным.
-        /// </summary>
-        [BrowsableAttribute(false)]
-        [DataMemberAttribute()]
-        public EntityReference<PriorityDic> PriorityDicReference
-        {
-            get
-            {
-                return ((IEntityWithRelationships)this).RelationshipManager.GetRelatedReference<PriorityDic>("MtpDbModel.FK_EnvironmentFactor_PriorityDic", "PriorityDic");
-            }
-            set
-            {
-                if ((value != null))
-                {
-                    ((IEntityWithRelationships)this).RelationshipManager.InitializeRelatedReference<PriorityDic>("MtpDbModel.FK_EnvironmentFactor_PriorityDic", "PriorityDic", value);
-                }
-            }
-        }
-    
-        /// <summary>
-        /// Нет доступной документации по метаданным.
-        /// </summary>
-        [XmlIgnoreAttribute()]
-        [SoapIgnoreAttribute()]
-        [DataMemberAttribute()]
         [EdmRelationshipNavigationPropertyAttribute("MtpDbModel", "FK_EnvironmentFactor_UseCase", "UseCase")]
         public UseCase UseCase1
         {
@@ -2179,6 +2013,44 @@ namespace MTP1.Models
                 if ((value != null))
                 {
                     ((IEntityWithRelationships)this).RelationshipManager.InitializeRelatedReference<WeightCoefficientDic>("MtpDbModel.FK_EnvironmentFactor_WeightCoefficientDic", "WeightCoefficientDic", value);
+                }
+            }
+        }
+    
+        /// <summary>
+        /// Нет доступной документации по метаданным.
+        /// </summary>
+        [XmlIgnoreAttribute()]
+        [SoapIgnoreAttribute()]
+        [DataMemberAttribute()]
+        [EdmRelationshipNavigationPropertyAttribute("MtpDbModel", "FK_EnvironmentFactor_WeightCoefficientDic1", "WeightCoefficientDic")]
+        public WeightCoefficientDic WeightCoefficientDic1
+        {
+            get
+            {
+                return ((IEntityWithRelationships)this).RelationshipManager.GetRelatedReference<WeightCoefficientDic>("MtpDbModel.FK_EnvironmentFactor_WeightCoefficientDic1", "WeightCoefficientDic").Value;
+            }
+            set
+            {
+                ((IEntityWithRelationships)this).RelationshipManager.GetRelatedReference<WeightCoefficientDic>("MtpDbModel.FK_EnvironmentFactor_WeightCoefficientDic1", "WeightCoefficientDic").Value = value;
+            }
+        }
+        /// <summary>
+        /// Нет доступной документации по метаданным.
+        /// </summary>
+        [BrowsableAttribute(false)]
+        [DataMemberAttribute()]
+        public EntityReference<WeightCoefficientDic> WeightCoefficientDic1Reference
+        {
+            get
+            {
+                return ((IEntityWithRelationships)this).RelationshipManager.GetRelatedReference<WeightCoefficientDic>("MtpDbModel.FK_EnvironmentFactor_WeightCoefficientDic1", "WeightCoefficientDic");
+            }
+            set
+            {
+                if ((value != null))
+                {
+                    ((IEntityWithRelationships)this).RelationshipManager.InitializeRelatedReference<WeightCoefficientDic>("MtpDbModel.FK_EnvironmentFactor_WeightCoefficientDic1", "WeightCoefficientDic", value);
                 }
             }
         }
@@ -2569,50 +2441,6 @@ namespace MTP1.Models
                 if ((value != null))
                 {
                     ((IEntityWithRelationships)this).RelationshipManager.InitializeRelatedCollection<Defect>("MtpDbModel.FK_Defect_PriorityDic", "Defect", value);
-                }
-            }
-        }
-    
-        /// <summary>
-        /// Нет доступной документации по метаданным.
-        /// </summary>
-        [XmlIgnoreAttribute()]
-        [SoapIgnoreAttribute()]
-        [DataMemberAttribute()]
-        [EdmRelationshipNavigationPropertyAttribute("MtpDbModel", "FK_EnvironmentFactor_PriorityDic", "EnvironmentFactor")]
-        public EntityCollection<EnvironmentFactor> EnvironmentFactor
-        {
-            get
-            {
-                return ((IEntityWithRelationships)this).RelationshipManager.GetRelatedCollection<EnvironmentFactor>("MtpDbModel.FK_EnvironmentFactor_PriorityDic", "EnvironmentFactor");
-            }
-            set
-            {
-                if ((value != null))
-                {
-                    ((IEntityWithRelationships)this).RelationshipManager.InitializeRelatedCollection<EnvironmentFactor>("MtpDbModel.FK_EnvironmentFactor_PriorityDic", "EnvironmentFactor", value);
-                }
-            }
-        }
-    
-        /// <summary>
-        /// Нет доступной документации по метаданным.
-        /// </summary>
-        [XmlIgnoreAttribute()]
-        [SoapIgnoreAttribute()]
-        [DataMemberAttribute()]
-        [EdmRelationshipNavigationPropertyAttribute("MtpDbModel", "FK_TechnicalFactor_PriorityDic", "TechnicalFactor")]
-        public EntityCollection<TechnicalFactor> TechnicalFactor
-        {
-            get
-            {
-                return ((IEntityWithRelationships)this).RelationshipManager.GetRelatedCollection<TechnicalFactor>("MtpDbModel.FK_TechnicalFactor_PriorityDic", "TechnicalFactor");
-            }
-            set
-            {
-                if ((value != null))
-                {
-                    ((IEntityWithRelationships)this).RelationshipManager.InitializeRelatedCollection<TechnicalFactor>("MtpDbModel.FK_TechnicalFactor_PriorityDic", "TechnicalFactor", value);
                 }
             }
         }
@@ -3558,12 +3386,14 @@ namespace MTP1.Models
         /// <param name="id">Исходное значение свойства ID.</param>
         /// <param name="useCase">Исходное значение свойства UseCase.</param>
         /// <param name="technicalFactor1">Исходное значение свойства TechnicalFactor1.</param>
-        public static TechnicalFactor CreateTechnicalFactor(global::System.Int32 id, global::System.Int32 useCase, global::System.Int32 technicalFactor1)
+        /// <param name="weightCoefficient">Исходное значение свойства WeightCoefficient.</param>
+        public static TechnicalFactor CreateTechnicalFactor(global::System.Int32 id, global::System.Int32 useCase, global::System.Int32 technicalFactor1, global::System.Int32 weightCoefficient)
         {
             TechnicalFactor technicalFactor = new TechnicalFactor();
             technicalFactor.ID = id;
             technicalFactor.UseCase = useCase;
             technicalFactor.TechnicalFactor1 = technicalFactor1;
+            technicalFactor.WeightCoefficient = weightCoefficient;
             return technicalFactor;
         }
 
@@ -3648,9 +3478,9 @@ namespace MTP1.Models
         /// <summary>
         /// Нет доступной документации по метаданным.
         /// </summary>
-        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=true)]
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=false)]
         [DataMemberAttribute()]
-        public Nullable<global::System.Int32> WeightCoefficient
+        public global::System.Int32 WeightCoefficient
         {
             get
             {
@@ -3665,8 +3495,8 @@ namespace MTP1.Models
                 OnWeightCoefficientChanged();
             }
         }
-        private Nullable<global::System.Int32> _WeightCoefficient;
-        partial void OnWeightCoefficientChanging(Nullable<global::System.Int32> value);
+        private global::System.Int32 _WeightCoefficient;
+        partial void OnWeightCoefficientChanging(global::System.Int32 value);
         partial void OnWeightCoefficientChanged();
     
         /// <summary>
@@ -3696,44 +3526,6 @@ namespace MTP1.Models
         #endregion
     
         #region Свойства навигации
-    
-        /// <summary>
-        /// Нет доступной документации по метаданным.
-        /// </summary>
-        [XmlIgnoreAttribute()]
-        [SoapIgnoreAttribute()]
-        [DataMemberAttribute()]
-        [EdmRelationshipNavigationPropertyAttribute("MtpDbModel", "FK_TechnicalFactor_PriorityDic", "PriorityDic")]
-        public PriorityDic PriorityDic
-        {
-            get
-            {
-                return ((IEntityWithRelationships)this).RelationshipManager.GetRelatedReference<PriorityDic>("MtpDbModel.FK_TechnicalFactor_PriorityDic", "PriorityDic").Value;
-            }
-            set
-            {
-                ((IEntityWithRelationships)this).RelationshipManager.GetRelatedReference<PriorityDic>("MtpDbModel.FK_TechnicalFactor_PriorityDic", "PriorityDic").Value = value;
-            }
-        }
-        /// <summary>
-        /// Нет доступной документации по метаданным.
-        /// </summary>
-        [BrowsableAttribute(false)]
-        [DataMemberAttribute()]
-        public EntityReference<PriorityDic> PriorityDicReference
-        {
-            get
-            {
-                return ((IEntityWithRelationships)this).RelationshipManager.GetRelatedReference<PriorityDic>("MtpDbModel.FK_TechnicalFactor_PriorityDic", "PriorityDic");
-            }
-            set
-            {
-                if ((value != null))
-                {
-                    ((IEntityWithRelationships)this).RelationshipManager.InitializeRelatedReference<PriorityDic>("MtpDbModel.FK_TechnicalFactor_PriorityDic", "PriorityDic", value);
-                }
-            }
-        }
     
         /// <summary>
         /// Нет доступной документации по метаданным.
@@ -3845,6 +3637,44 @@ namespace MTP1.Models
                 if ((value != null))
                 {
                     ((IEntityWithRelationships)this).RelationshipManager.InitializeRelatedReference<WeightCoefficientDic>("MtpDbModel.FK_TechnicalFactor_WeightCoefficientDic", "WeightCoefficientDic", value);
+                }
+            }
+        }
+    
+        /// <summary>
+        /// Нет доступной документации по метаданным.
+        /// </summary>
+        [XmlIgnoreAttribute()]
+        [SoapIgnoreAttribute()]
+        [DataMemberAttribute()]
+        [EdmRelationshipNavigationPropertyAttribute("MtpDbModel", "FK_TechnicalFactor_WeightCoefficientDic1", "WeightCoefficientDic")]
+        public WeightCoefficientDic WeightCoefficientDic1
+        {
+            get
+            {
+                return ((IEntityWithRelationships)this).RelationshipManager.GetRelatedReference<WeightCoefficientDic>("MtpDbModel.FK_TechnicalFactor_WeightCoefficientDic1", "WeightCoefficientDic").Value;
+            }
+            set
+            {
+                ((IEntityWithRelationships)this).RelationshipManager.GetRelatedReference<WeightCoefficientDic>("MtpDbModel.FK_TechnicalFactor_WeightCoefficientDic1", "WeightCoefficientDic").Value = value;
+            }
+        }
+        /// <summary>
+        /// Нет доступной документации по метаданным.
+        /// </summary>
+        [BrowsableAttribute(false)]
+        [DataMemberAttribute()]
+        public EntityReference<WeightCoefficientDic> WeightCoefficientDic1Reference
+        {
+            get
+            {
+                return ((IEntityWithRelationships)this).RelationshipManager.GetRelatedReference<WeightCoefficientDic>("MtpDbModel.FK_TechnicalFactor_WeightCoefficientDic1", "WeightCoefficientDic");
+            }
+            set
+            {
+                if ((value != null))
+                {
+                    ((IEntityWithRelationships)this).RelationshipManager.InitializeRelatedReference<WeightCoefficientDic>("MtpDbModel.FK_TechnicalFactor_WeightCoefficientDic1", "WeightCoefficientDic", value);
                 }
             }
         }
@@ -4334,6 +4164,30 @@ namespace MTP1.Models
         private Nullable<global::System.DateTime> _EndDateActual;
         partial void OnEndDateActualChanging(Nullable<global::System.DateTime> value);
         partial void OnEndDateActualChanged();
+    
+        /// <summary>
+        /// Нет доступной документации по метаданным.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=true)]
+        [DataMemberAttribute()]
+        public Nullable<global::System.Int32> Creator
+        {
+            get
+            {
+                return _Creator;
+            }
+            set
+            {
+                OnCreatorChanging(value);
+                ReportPropertyChanging("Creator");
+                _Creator = StructuralObject.SetValidValue(value);
+                ReportPropertyChanged("Creator");
+                OnCreatorChanged();
+            }
+        }
+        private Nullable<global::System.Int32> _Creator;
+        partial void OnCreatorChanging(Nullable<global::System.Int32> value);
+        partial void OnCreatorChanged();
 
         #endregion
     
@@ -4395,6 +4249,44 @@ namespace MTP1.Models
                 if ((value != null))
                 {
                     ((IEntityWithRelationships)this).RelationshipManager.InitializeRelatedCollection<ReliabilityEvaluation>("MtpDbModel.FK_ReliabilityEvaluation_TestProgram", "ReliabilityEvaluation", value);
+                }
+            }
+        }
+    
+        /// <summary>
+        /// Нет доступной документации по метаданным.
+        /// </summary>
+        [XmlIgnoreAttribute()]
+        [SoapIgnoreAttribute()]
+        [DataMemberAttribute()]
+        [EdmRelationshipNavigationPropertyAttribute("MtpDbModel", "FK_TestProgram_Users", "Users")]
+        public Users Users
+        {
+            get
+            {
+                return ((IEntityWithRelationships)this).RelationshipManager.GetRelatedReference<Users>("MtpDbModel.FK_TestProgram_Users", "Users").Value;
+            }
+            set
+            {
+                ((IEntityWithRelationships)this).RelationshipManager.GetRelatedReference<Users>("MtpDbModel.FK_TestProgram_Users", "Users").Value = value;
+            }
+        }
+        /// <summary>
+        /// Нет доступной документации по метаданным.
+        /// </summary>
+        [BrowsableAttribute(false)]
+        [DataMemberAttribute()]
+        public EntityReference<Users> UsersReference
+        {
+            get
+            {
+                return ((IEntityWithRelationships)this).RelationshipManager.GetRelatedReference<Users>("MtpDbModel.FK_TestProgram_Users", "Users");
+            }
+            set
+            {
+                if ((value != null))
+                {
+                    ((IEntityWithRelationships)this).RelationshipManager.InitializeRelatedReference<Users>("MtpDbModel.FK_TestProgram_Users", "Users", value);
                 }
             }
         }
@@ -5731,6 +5623,28 @@ namespace MTP1.Models
         [XmlIgnoreAttribute()]
         [SoapIgnoreAttribute()]
         [DataMemberAttribute()]
+        [EdmRelationshipNavigationPropertyAttribute("MtpDbModel", "FK_TestProgram_Users", "TestProgram")]
+        public EntityCollection<TestProgram> TestProgram
+        {
+            get
+            {
+                return ((IEntityWithRelationships)this).RelationshipManager.GetRelatedCollection<TestProgram>("MtpDbModel.FK_TestProgram_Users", "TestProgram");
+            }
+            set
+            {
+                if ((value != null))
+                {
+                    ((IEntityWithRelationships)this).RelationshipManager.InitializeRelatedCollection<TestProgram>("MtpDbModel.FK_TestProgram_Users", "TestProgram", value);
+                }
+            }
+        }
+    
+        /// <summary>
+        /// Нет доступной документации по метаданным.
+        /// </summary>
+        [XmlIgnoreAttribute()]
+        [SoapIgnoreAttribute()]
+        [DataMemberAttribute()]
         [EdmRelationshipNavigationPropertyAttribute("MtpDbModel", "FK_UseCase_Users", "UseCase")]
         public EntityCollection<UseCase> UseCase
         {
@@ -5766,7 +5680,7 @@ namespace MTP1.Models
         /// <param name="id">Исходное значение свойства ID.</param>
         /// <param name="title">Исходное значение свойства Title.</param>
         /// <param name="value">Исходное значение свойства Value.</param>
-        public static WeightCoefficientDic CreateWeightCoefficientDic(global::System.Int32 id, global::System.String title, global::System.Int32 value)
+        public static WeightCoefficientDic CreateWeightCoefficientDic(global::System.Int32 id, global::System.String title, global::System.Double value)
         {
             WeightCoefficientDic weightCoefficientDic = new WeightCoefficientDic();
             weightCoefficientDic.ID = id;
@@ -5834,7 +5748,7 @@ namespace MTP1.Models
         /// </summary>
         [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=false)]
         [DataMemberAttribute()]
-        public global::System.Int32 Value
+        public global::System.Double Value
         {
             get
             {
@@ -5849,8 +5763,8 @@ namespace MTP1.Models
                 OnValueChanged();
             }
         }
-        private global::System.Int32 _Value;
-        partial void OnValueChanging(global::System.Int32 value);
+        private global::System.Double _Value;
+        partial void OnValueChanging(global::System.Double value);
         partial void OnValueChanged();
     
         /// <summary>
@@ -5931,6 +5845,28 @@ namespace MTP1.Models
         [XmlIgnoreAttribute()]
         [SoapIgnoreAttribute()]
         [DataMemberAttribute()]
+        [EdmRelationshipNavigationPropertyAttribute("MtpDbModel", "FK_EnvironmentFactor_WeightCoefficientDic1", "EnvironmentFactor")]
+        public EntityCollection<EnvironmentFactor> EnvironmentFactor1
+        {
+            get
+            {
+                return ((IEntityWithRelationships)this).RelationshipManager.GetRelatedCollection<EnvironmentFactor>("MtpDbModel.FK_EnvironmentFactor_WeightCoefficientDic1", "EnvironmentFactor");
+            }
+            set
+            {
+                if ((value != null))
+                {
+                    ((IEntityWithRelationships)this).RelationshipManager.InitializeRelatedCollection<EnvironmentFactor>("MtpDbModel.FK_EnvironmentFactor_WeightCoefficientDic1", "EnvironmentFactor", value);
+                }
+            }
+        }
+    
+        /// <summary>
+        /// Нет доступной документации по метаданным.
+        /// </summary>
+        [XmlIgnoreAttribute()]
+        [SoapIgnoreAttribute()]
+        [DataMemberAttribute()]
         [EdmRelationshipNavigationPropertyAttribute("MtpDbModel", "FK_TechnicalFactor_WeightCoefficientDic", "TechnicalFactor")]
         public EntityCollection<TechnicalFactor> TechnicalFactor
         {
@@ -5943,6 +5879,28 @@ namespace MTP1.Models
                 if ((value != null))
                 {
                     ((IEntityWithRelationships)this).RelationshipManager.InitializeRelatedCollection<TechnicalFactor>("MtpDbModel.FK_TechnicalFactor_WeightCoefficientDic", "TechnicalFactor", value);
+                }
+            }
+        }
+    
+        /// <summary>
+        /// Нет доступной документации по метаданным.
+        /// </summary>
+        [XmlIgnoreAttribute()]
+        [SoapIgnoreAttribute()]
+        [DataMemberAttribute()]
+        [EdmRelationshipNavigationPropertyAttribute("MtpDbModel", "FK_TechnicalFactor_WeightCoefficientDic1", "TechnicalFactor")]
+        public EntityCollection<TechnicalFactor> TechnicalFactor1
+        {
+            get
+            {
+                return ((IEntityWithRelationships)this).RelationshipManager.GetRelatedCollection<TechnicalFactor>("MtpDbModel.FK_TechnicalFactor_WeightCoefficientDic1", "TechnicalFactor");
+            }
+            set
+            {
+                if ((value != null))
+                {
+                    ((IEntityWithRelationships)this).RelationshipManager.InitializeRelatedCollection<TechnicalFactor>("MtpDbModel.FK_TechnicalFactor_WeightCoefficientDic1", "TechnicalFactor", value);
                 }
             }
         }

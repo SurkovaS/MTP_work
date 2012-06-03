@@ -1,7 +1,7 @@
 ﻿@model MTP1.Models.Project
 
 @{
-    ViewBag.Title = string.Format("{0} | Проекты | {1}", Model.Title, MTP1.Constants.TITLE);
+    ViewBag.Title = string.Format("{0} | Проект | {1}", Model.Title, MTP1.Constants.TITLE);
 }
 
 <p>
@@ -10,18 +10,18 @@
 </p>
 
 <fieldset>
-    <legend>Название @Model.Title</legend>
-    <div class="display-label">Проект</div>
+    <legend>Проект</legend>
+    <div class="display-label">Наименование проекта</div>
     <div class="display-field">
         @Html.DisplayFor(model => model.Title)
     </div>
 
-    <div class="display-label">Версия</div>
+    <div class="display-label">Версия проекта</div>
     <div class="display-field">
         @Html.DisplayFor(model => model.Version)
     </div>
 
-    <div class="display-label">Описание</div>
+    <div class="display-label">Описание проекта</div>
     <div class="display-field">
         @Html.DisplayFor(model => model.Description)
     </div>
@@ -58,8 +58,9 @@
 
     $(function () {
         DrawMTPGrid('grid', 'pager', indexUrl, editUrl, deleteUrl, addUrl, viewUrl,
-        ['Программа тестирования', 'Описание', 'Проект тестирования', 'Плановая дата начала',
-        'Плановая дата окончания', 'Фактическая дата начала', 'Фактическая дата окончания'],
+        ['Программа тестирования', 'Описание программы', 'Плановая дата начала',
+        'Плановая дата окончания', 'Фактическая дата начала', 'Фактическая дата окончания',
+         'Автор','Проект'],
         [
                 {
                     name: 'Title',
@@ -74,35 +75,41 @@
                     width: '300'
                 },
                 {
-                    name: 'Project',
-                    sortable: false,
-                    align: 'left',
-                    width: '200'
-                },
-                {
                     name: 'BeginDatePlan',
                     sortable: false,
-                    align: 'left',
+                    align: 'center',
                     width: '200'
                 },
                {
                     name: 'EndDatePlan',
                     sortable: false,
-                    align: 'left',
+                    align: 'center',
                     width: '200'
                 },
                 {
                     name: 'BeginDateActual',
                     sortable: false,
-                    align: 'left',
+                    align: 'center',
                     width: '200'
                 },
                 {
                     name: 'EndDateActual',
                     sortable: false,
-                    align: 'left',
+                    align: 'center',
                     width: '200'
-                }
+                },
+               {
+                        name: 'Creator',
+                        sortable: false,
+                        align: 'center',
+                        width: '250'
+                 },
+                {
+                        name: 'Project',
+                        sortable: false,
+                        align: 'center',
+                        width: '250'
+                    }
             ], 'Программы тестирования проекта');
     });
 </script>

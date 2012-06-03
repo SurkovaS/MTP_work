@@ -1,42 +1,45 @@
 ﻿@using MTP1
 @using MTP1.Models
 @model IEnumerable<PriorityDic>
-
 @{
-    this.ViewBag.Title = string.Format("Элементы справочника | {0}", Constants.TITLE);
-
+    ViewBag.Title = string.Format("Элементы справочника | {0}", Constants.TITLE);
 }
-<h2>Пользователи</h2>
+<link href="@Url.Content("~/Content/List.css")" rel="stylesheet" type="text/css" />
+<div id="grid_container" style="width: 100%">
+    <table id="grid" cellpadding="0" cellspacing="0">
+    </table>
+    <div id="pager" style="text-align: center;">
+    </div>
+    <div id="search" style="margin-left: 30%; display: none">
+    </div>
+</div>
 
-<p>
-    @this.Html.ActionLink("Создать", "Create")
+<script type="text/javascript">
 
-</p>
-<table>
-    <tr>
-        <th>
-            Приоритеты
-        </th>
-        <th>
-            Описание
-        </th>
-    </tr>
+    $(function () {
 
-    @foreach (PriorityDic item in this.Model)
-    {
-        <tr>
-            <td>
-                @this.Html.ActionLink(item.Title, "Details", new { id = item.ID })
-            </td>
-            <td>
-                @this.Html.DisplayFor(modelItem => item.Description)
-            </td>
-        
-        
-            <td>
-                @this.Html.ActionLink("Редактировать", "Edit", new { id = item.ID }) |
-                @this.Html.ActionLink("Удалить", "Delete", new { id = item.ID })
-            </td>
-        </tr>
-    }
-</table>
+        var indexUrl = '@Url.Action("GetPriorities", "PriorityDic")';
+        var editUrl = '@Url.Action("Edit", "PriorityDic")';
+        var deleteUrl = '@Url.Action("Delete", "PriorityDic")';
+        var addUrl = '@Url.Action("Create", "PriorityDic")';
+        var viewUrl = '@Url.Action("Details", "PriorityDic")';
+
+        DrawMTPGrid('grid', 'pager', indexUrl, editUrl, deleteUrl, addUrl, viewUrl,
+            ['Наименование', 'Описание'],
+            [
+                {
+                    name: 'Title',
+                    sortable: false,
+                    align: 'center',
+                    width: '250'
+                },
+                {
+                    name: 'Description',
+                    sortable: false,
+                    align: 'center',
+                    width: '100'
+                }
+            ], 'Справочник: Приоритеты');
+    });
+
+</script>

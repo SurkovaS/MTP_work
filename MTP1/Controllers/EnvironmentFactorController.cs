@@ -56,27 +56,6 @@ namespace MTP1.Controllers
 
         #endregion
         #region Public Methods and Operators
-
-        /// <summary>
-        /// The get projects.
-        /// </summary>
-        /// <param name="page">
-        /// The page.
-        /// </param>
-        /// <param name="rows">
-        /// The rows.
-        /// </param>
-        /// <param name="search">
-        /// The search.
-        /// </param>
-        /// <param name="sidx">
-        /// The sidx.
-        /// </param>
-        /// <param name="sord">
-        /// The sord.
-        /// </param>
-        /// <returns>
-        /// </returns>
         public ActionResult GetEnvFactors(int page, int rows, string search, string sidx, string sord)
         {
             return this.FormJsonData(null, page, rows, search, sidx, sord);
@@ -101,10 +80,11 @@ namespace MTP1.Controllers
                                     cell =
                             new[]
                                        {
-                                            m.UseCase1.Title.ToStringWithDbNullCheck(), 
                                             m.EnvironmentFactorDic.Title.ToStringWithDbNullCheck(), 
-                                            m.WeightCoefficientDic.Value.ToStringWithDbNullCheck(), 
-                                            m.PriorityDic.Title.ToStringWithDbNullCheck() 
+                                            m.WeightCoefficientDic == null ? string.Empty : 
+                                                    m.WeightCoefficientDic.Value.ToStringWithDbNullCheck(), 
+                                            m.WeightCoefficientDic1 == null ? string.Empty : 
+                                                    m.WeightCoefficientDic1.Value.ToStringWithDbNullCheck() 
                                         }
                                 }).ToArray()
                 };

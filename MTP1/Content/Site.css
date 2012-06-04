@@ -259,7 +259,10 @@ div#title {
 .display-field, 
 .editor-field {
     margin: 0.5em 0 0 0;
-    height: 14px;
+}
+
+.display-field {
+    min-height: 14px;
 }
 
 .display-field {

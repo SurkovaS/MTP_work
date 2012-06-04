@@ -9,6 +9,8 @@
 
 namespace MTP1.Models
 {
+    using MTP.Controllers;
+
     using MTP1.Models.Interface;
 
     /// <summary>
@@ -29,6 +31,33 @@ namespace MTP1.Models
             return true;
         }
 
+        public string Title
+        {
+            get
+            {
+                return this.ActorDic.Title.ToStringWithDbNullCheck();
+            }
+        }
+
+        public string WeightCoefficientValue
+        {
+            get
+            {
+                return this.WeightCoefficientDic == null
+                           ? string.Empty
+                           : this.WeightCoefficientDic.Value.ToStringWithDbNullCheck();
+            }
+        }
+
+        public string QuantityValue
+        {
+            get
+            {
+                return this.Quantity == null
+                           ? string.Empty
+                           : this.Quantity.ToStringWithDbNullCheck();
+            }
+        }
         #endregion
     }
 }

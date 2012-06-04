@@ -55,48 +55,60 @@ namespace MTP1.Controllers
         }
 
         #endregion
+
         #region Public Methods and Operators
-        public ActionResult GetEnvFactors(int page, int rows, string search, string sidx, string sord)
+
+        internal class EnvFactDto
         {
-            return this.FormJsonData(null, page, rows, search, sidx, sord);
+            public int ID { get; set; }
+            public string Title { get; set; }
+            public string WeightCoefficientValue { get; set; }
+            public string DifficultyValue { get; set; }
         }
-        public ActionResult FormJsonData(int? useCaseId, int page, int rows, string search, string sidx, string sord)
+
+        public ActionResult GetEnvFactsForUseCase(int useCaseId, int page, int rows, string search, string sidx, string sord)
         {
-            int envFactorCount = this.service.Get().Count();
-            List<EnvironmentFactor> envFactors = this.service.Get().Where(a => a.UseCase == useCaseId || useCaseId == null)
-                .ApplyPaging("EnvironmentFactorDic.Title", (page - 1) * rows, rows).ToList();
+            var envFacts =
+                this.service.Get().Where(a => a.UseCase == useCaseId).ToList().Select(
+                    a => new EnvFactDto
+                    {
+                        // эта бадяга затеивалась только чтобы взять ID из справочника
+                        ID = a.EnvironmentFactorDic.ID,
+                        Title = a.Title,
+                        WeightCoefficientValue = a.WeightCoefficientValue,
+                        DifficultyValue = a.DifficultyValue
+                    }).ToList();
+
+            List<EnvironmentFactorDic> allEnvFactorsDic = EnvironmentFactorDicServiceFactory.Create().Get().ToList();
+            var missingEnvFactors = allEnvFactorsDic.Where(a => !envFacts.Any(b => b.ID == a.ID));
+            envFacts.AddRange(missingEnvFactors.Select(a => new EnvFactDto { ID = a.ID, Title = a.Title }));
+
+            int envFactCount = envFacts.Count();
+            var envFactsWithPaging = envFacts.AsQueryable().ApplyPaging("Title", (page - 1) * rows, rows);
 
             var jsonData =
                 new
                 {
-                    total = Paging.TotalPages(envFactorCount, rows),
+                    total = Paging.TotalPages(envFactCount, rows),
                     page,
-                    records = envFactorCount,
-                    rows = (from m in envFactors
+                    records = envFactCount,
+                    rows = (from m in envFactsWithPaging
                             select
                                 new
                                 {
                                     id = m.ID,
                                     cell =
                             new[]
-                                       {
-                                            m.EnvironmentFactorDic.Title.ToStringWithDbNullCheck(), 
-                                            m.WeightCoefficientDic == null ? string.Empty : 
-                                                    m.WeightCoefficientDic.Value.ToStringWithDbNullCheck(), 
-                                            m.WeightCoefficientDic1 == null ? string.Empty : 
-                                                    m.WeightCoefficientDic1.Value.ToStringWithDbNullCheck() 
+                                        {
+                                            m.Title,
+                                            m.WeightCoefficientValue,
+                                            m.DifficultyValue
                                         }
                                 }).ToArray()
                 };
 
-            JsonResult jsonResult = this.Json(jsonData, JsonRequestBehavior.AllowGet);
-            return jsonResult;
+            return this.Json(jsonData, JsonRequestBehavior.AllowGet);
         }
-        public ActionResult GetEnvFactorsForUseCase(int useCaseId, int page, int rows, string search, string sidx, string sord)
-        {
-            return this.FormJsonData(useCaseId, page, rows, search, sidx, sord);
-        }
-       
 
         #endregion
     }

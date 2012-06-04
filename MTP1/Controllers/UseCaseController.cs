@@ -137,9 +137,9 @@ namespace MTP1.Controllers
             }
 
             IBaseService<TechnicalFactor> techFactorService = TechnicalFactorServiceFactory.Create();
-            var tFactor = techFactorService.Get().FirstOrDefault(
-                a => a.UseCase == useCaseId &&
-                a.TechnicalFactorDic.ID == techFactroIdParse);
+            var tFactor =
+                techFactorService.Get().FirstOrDefault(
+                    a => a.UseCase == useCaseId && a.TechnicalFactorDic.ID == techFactroIdParse);
             if (tFactor == null)
             {
                 tFactor = new TechnicalFactor { UseCase = useCaseId, TechnicalFactor1 = techFactroIdParse };
@@ -159,9 +159,111 @@ namespace MTP1.Controllers
             {
                 tFactor.Difficulty = diffIdParse;
             }
-            
+
             techFactorService.Save();
             RecalculateTechFactors(techFactorService, useCase);
+            return Json(true);
+        }
+
+        public ActionResult EditEnvFactor(int useCaseId)
+        {
+            if (Request.Form["oper"] != "edit")
+            {
+                throw new Exception("поддерживается только редактирование");
+            }
+
+            var useCase = this.service.Get().FirstOrDefault(a => a.ID == useCaseId);
+            if (useCase == null)
+            {
+                throw new Exception(string.Format("use case с id = {0} не найден", useCaseId));
+            }
+
+            int envFactroIdParse;
+            var envFactorId = Request.Form["id"];
+            if (!int.TryParse(envFactorId, out envFactroIdParse))
+            {
+                throw new Exception("не указан id технического фактора");
+            }
+
+            IBaseService<EnvironmentFactor> envFactorService = EnvironmentFactorServiceFactory.Create();
+            var eFactor = envFactorService.Get().FirstOrDefault(
+                a => a.UseCase == useCaseId &&
+                a.EnvironmentFactorDic.ID == envFactroIdParse);
+            if (eFactor == null)
+            {
+                eFactor = new EnvironmentFactor { UseCase = useCaseId, EnvironmentFactor1 = envFactroIdParse };
+                envFactorService.Add(eFactor);
+            }
+
+            int envwcIdParse;
+            var envwcId = Request.Form["WeightCoefficient"];
+            if (int.TryParse(envwcId, out envwcIdParse))
+            {
+                eFactor.WeightCoefficient = envwcIdParse;
+            }
+
+            int envdiffIdParse;
+            var envdiffId = Request.Form["Difficulty"];
+            if (int.TryParse(envdiffId, out envdiffIdParse))
+            {
+                eFactor.Difficulty = envdiffIdParse;
+            }
+
+            envFactorService.Save();
+            RecalculateEnvFactors(envFactorService, useCase);
+            
+            return Json(true);
+
+
+        }
+
+
+        public ActionResult EditActor(int useCaseId)
+        {
+            if (Request.Form["oper"] != "edit")
+            {
+                throw new Exception("поддерживается только редактирование");
+            }
+
+            var useCase = this.service.Get().FirstOrDefault(a => a.ID == useCaseId);
+            if (useCase == null)
+            {
+                throw new Exception(string.Format("use case с id = {0} не найден", useCaseId));
+            }
+
+            int actroIdParse;
+            var actorId = Request.Form["id"];
+            if (!int.TryParse(actorId, out actroIdParse))
+            {
+                throw new Exception("не указан id технического фактора");
+            }
+
+            IBaseService<Actor> actorService = ActorServiceFactory.Create();
+            var actor =
+                actorService.Get().FirstOrDefault(
+                    a => a.UseCase == useCaseId && a.ActorDic.ID == actroIdParse);
+            if (actor == null)
+            {
+                actor = new Actor { UseCase = useCaseId, Actor1 = actroIdParse };
+                actorService.Add(actor);
+            }
+
+            int actwcIdParse;
+            var actwcId = Request.Form["WeightCoefficient"];
+            if (int.TryParse(actwcId, out actwcIdParse))
+            {
+                actor.WeightCoefficient = actwcIdParse;
+            }
+
+            int actdiffIdParse;
+            var actdiffId = Request.Form["Quantity"];
+            if (int.TryParse(actdiffId, out actdiffIdParse))
+            {
+                actor.Quantity = actdiffIdParse;
+            }
+
+            actorService.Save();
+            RecalculateActors(actorService, useCase);
 
             return Json(true);
         }
@@ -171,6 +273,30 @@ namespace MTP1.Controllers
             var allTechFactorsForUseCase = techFactorService.Get().Where(a => a.UseCase == useCase.ID).ToList();
             double result;
             foreach (var technicalFactor in allTechFactorsForUseCase)
+            {
+
+            }
+
+            this.service.Save();
+        }
+
+        private void RecalculateEnvFactors(IBaseService<EnvironmentFactor> envFactorService, UseCase useCase)
+        {
+            var allEnvFactorsForUseCase = envFactorService.Get().Where(a => a.UseCase == useCase.ID).ToList();
+            double result;
+            foreach (var environmentFactor in allEnvFactorsForUseCase)
+            {
+
+            }
+
+            this.service.Save();
+        }
+
+        private void RecalculateActors(IBaseService<Actor> actorService, UseCase useCase)
+        {
+            var allActorsForUseCase = actorService.Get().Where(a => a.UseCase == useCase.ID).ToList();
+            double result;
+            foreach (var actor in allActorsForUseCase)
             {
 
             }

@@ -85,14 +85,14 @@
     var useCaseId = @Model.ID;
 
     $(function() {
-        GridForTechFacts();
-        //GridForEnvFacts();
-        //GridForActors();
+       GridForTechFacts();
+       GridForEnvFacts();
+       GridForActors();
     });
     
-    function GridForTechFacts() {
+   function GridForTechFacts() {
          
-        var wcList = @Html.Raw(@Model.WFactorAndDifficultyList);
+        var wcListTF = @Html.Raw(@Model.WFactorAndDifficultyList);
         var indexUrlTF = '@Url.Action("GetTechFactsForUseCase", "TechnicalFactor")' + '?useCaseId=' + useCaseId;
         var editUrlTF = '@Url.Action("EditTechFactor", "UseCase")' + '?useCaseId=' + useCaseId;
         
@@ -105,7 +105,7 @@
                         sortable: false,
                         editable: false,
                         align: 'left',
-                        width: '100'
+                        width: '50'
                     },
                     {
                         name: 'WeightCoefficient',
@@ -114,10 +114,10 @@
                         align: 'center',
                         editable: true,
                         edittype: "select",
-                        editoptions: { multiple: false, value: wcList }, 
+                        editoptions: { multiple: false, value: wcListTF }, 
                         editrules: { required: false }, 
                         formatoptions: { disabled: false},
-                        width: '50'
+                        width: '20'
                     },
                     {
                         name: 'Difficulty',
@@ -126,12 +126,99 @@
                         align: 'center',
                         editable: true,
                         edittype: "select",
-                        editoptions: { multiple: false, value: wcList }, 
+                        editoptions: { multiple: false, value: wcListTF }, 
                         editrules: { required: false }, 
                         formatoptions: { disabled: false},
-                        width: '50'
+                        width: '20'
                     }
                 ], 'Технические факторы сценария', true);
+    }
+    function GridForEnvFacts() {
+         
+        var wcListEF = @Html.Raw(@Model.WFactorAndDifficultyList);
+        var indexUrlEF = '@Url.Action("GetEnvFactsForUseCase", "EnvironmentFactor")' + '?useCaseId=' + useCaseId;
+        var editUrlEF = '@Url.Action("EditEnvFactor", "UseCase")' + '?useCaseId=' + useCaseId;
+        
+        DrawEditableMTPGrid('gridEF', 'pagerEF', indexUrlEF, editUrlEF,
+        ['Фактор окружения', 'Весовой коэффициент', 'Сложность'],
+                [
+                    {
+                        name: 'Title',
+                        index: 'Title',
+                        sortable: false,
+                        editable: false,
+                        align: 'left',
+                        width: '50'
+                    },
+                    {
+                        name: 'WeightCoefficient',
+                        index: 'WeightCoefficient',
+                        sortable: false,
+                        align: 'center',
+                        editable: true,
+                        edittype: "select",
+                        editoptions: { multiple: false, value: wcListEF }, 
+                        editrules: { required: false }, 
+                        formatoptions: { disabled: false},
+                        width: '30'
+                    },
+                    {
+                        name: 'Difficulty',
+                        index: 'Difficulty',
+                        sortable: false,
+                        align: 'center',
+                        editable: true,
+                        edittype: "select",
+                        editoptions: { multiple: false, value: wcListEF }, 
+                        editrules: { required: false }, 
+                        formatoptions: { disabled: false},
+                        width: '30'
+                    }
+                ], 'Факторы окружения сценария', true);
+    }
+    
+    function GridForActors() {
+         
+        var wcListAct = @Html.Raw(@Model.WFactorAndDifficultyList);
+        var indexUrlAct = '@Url.Action("GetActorsForUseCase", "Actor")' + '?useCaseId=' + useCaseId;
+        var editUrlAct = '@Url.Action("EditActor", "UseCase")' + '?useCaseId=' + useCaseId;
+        
+        DrawEditableMTPGrid('gridAct', 'pagerAct', indexUrlAct, editUrlAct,
+        ['Участник сценария', 'Весовой коэффициент', 'Количество'],
+                [
+                    {
+                        name: 'Title',
+                        index: 'Title',
+                        sortable: false,
+                        editable: false,
+                        align: 'left',
+                        width: '50'
+                    },
+                    {
+                        name: 'WeightCoefficient',
+                        index: 'WeightCoefficient',
+                        sortable: false,
+                        align: 'center',
+                        editable: true,
+                        edittype: "select",
+                        editoptions: { multiple: false, value: wcListAct }, 
+                        editrules: { required: false }, 
+                        formatoptions: { disabled: false},
+                        width: '30'
+                    },
+                    {
+                        name: 'Quantity',
+                        index: 'Quantity',
+                        sortable: false,
+                        align: 'center',
+                        editable: true,
+                        edittype: "text",
+                        editoptions: { multiple: false, value: wcListAct }, 
+                        editrules: { required: false }, 
+                        formatoptions: { disabled: false},
+                        width: '30'
+                    }
+                ], 'Участники сценария', true);
     }
     
     </script>

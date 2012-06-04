@@ -56,16 +56,34 @@ namespace MTP1.Controllers
 
         #region Public Methods and Operators
 
-        public ActionResult GetActors(int page, int rows, string search, string sidx, string sord)
+        internal class ActorDto
         {
-            return this.FormJsonData(null, page, rows, search, sidx, sord);
+            public int ID { get; set; }
+            public string Title { get; set; }
+            public string WeightCoefficientValue { get; set; }
+            public string QuantityValue { get; set; }
         }
 
-        public ActionResult FormJsonData(int? useCaseId, int page, int rows, string search, string sidx, string sord)
+
+        public ActionResult GetActorsForUseCase(int useCaseId, int page, int rows, string search, string sidx, string sord)
         {
-            int actorCount = this.service.Get().Count();
-            List<Actor> actors = this.service.Get().Where(a => a.UseCase == useCaseId || useCaseId == null)
-                .ApplyPaging("ActorDic.Title", (page - 1) * rows, rows).ToList();
+            var actors =
+                this.service.Get().Where(a => a.UseCase == useCaseId).ToList().Select(
+                    a => new ActorDto
+                    {
+                        // эта бадяга затеивалась только чтобы взять ID из справочника
+                        ID = a.ActorDic.ID,
+                        Title = a.Title,
+                        WeightCoefficientValue = a.WeightCoefficientValue,
+                        QuantityValue = a.QuantityValue
+                    }).ToList();
+
+            List<ActorDic> allActorsDic = ActorDicServiceFactory.Create().Get().ToList();
+            var missingActors = allActorsDic.Where(a => !actors.Any(b => b.ID == a.ID));
+            actors.AddRange(missingActors.Select(a => new ActorDto { ID = a.ID, Title = a.Title }));
+
+            int actorCount = actors.Count();
+            var actorsWithPaging = actors.AsQueryable().ApplyPaging("Title", (page - 1) * rows, rows);
 
             var jsonData =
                 new
@@ -73,30 +91,24 @@ namespace MTP1.Controllers
                     total = Paging.TotalPages(actorCount, rows),
                     page,
                     records = actorCount,
-                    rows = (from m in actors
+                    rows = (from m in actorsWithPaging
                             select
                                 new
                                 {
                                     id = m.ID,
                                     cell =
                             new[]
-                                       {
-                                            m.UseCase1.Title.ToStringWithDbNullCheck(), 
-                                            m.ActorDic.Title.ToStringWithDbNullCheck(), 
-                                            m.WeightCoefficientDic.Value.ToStringWithDbNullCheck(), 
-                                            m.Quantity.ToStringWithDbNullCheck() 
+                                        {
+                                            m.Title,
+                                            m.WeightCoefficientValue,
+                                            m.QuantityValue
                                         }
                                 }).ToArray()
                 };
 
-            JsonResult jsonResult = this.Json(jsonData, JsonRequestBehavior.AllowGet);
-            return jsonResult;
+            return this.Json(jsonData, JsonRequestBehavior.AllowGet);
         }
 
-        public ActionResult GetActorsForUseCase(int useCaseId, int page, int rows, string search, string sidx, string sord)
-        {
-            return this.FormJsonData(useCaseId, page, rows, search, sidx, sord);
-        }
         #endregion
     }
 }

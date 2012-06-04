@@ -4516,7 +4516,7 @@ namespace MTP1.Models
         /// </summary>
         [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=true)]
         [DataMemberAttribute()]
-        public Nullable<global::System.Int32> Actor
+        public Nullable<global::System.Double> Actor
         {
             get
             {
@@ -4531,8 +4531,8 @@ namespace MTP1.Models
                 OnActorChanged();
             }
         }
-        private Nullable<global::System.Int32> _Actor;
-        partial void OnActorChanging(Nullable<global::System.Int32> value);
+        private Nullable<global::System.Double> _Actor;
+        partial void OnActorChanging(Nullable<global::System.Double> value);
         partial void OnActorChanged();
     
         /// <summary>
@@ -4540,7 +4540,7 @@ namespace MTP1.Models
         /// </summary>
         [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=true)]
         [DataMemberAttribute()]
-        public Nullable<global::System.Int32> EnvironmentFactor
+        public Nullable<global::System.Double> EnvironmentFactor
         {
             get
             {
@@ -4555,8 +4555,8 @@ namespace MTP1.Models
                 OnEnvironmentFactorChanged();
             }
         }
-        private Nullable<global::System.Int32> _EnvironmentFactor;
-        partial void OnEnvironmentFactorChanging(Nullable<global::System.Int32> value);
+        private Nullable<global::System.Double> _EnvironmentFactor;
+        partial void OnEnvironmentFactorChanging(Nullable<global::System.Double> value);
         partial void OnEnvironmentFactorChanged();
     
         /// <summary>
@@ -4564,7 +4564,7 @@ namespace MTP1.Models
         /// </summary>
         [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=true)]
         [DataMemberAttribute()]
-        public Nullable<global::System.Int32> TechnicalFactor
+        public Nullable<global::System.Double> TechnicalFactor
         {
             get
             {
@@ -4579,8 +4579,8 @@ namespace MTP1.Models
                 OnTechnicalFactorChanged();
             }
         }
-        private Nullable<global::System.Int32> _TechnicalFactor;
-        partial void OnTechnicalFactorChanging(Nullable<global::System.Int32> value);
+        private Nullable<global::System.Double> _TechnicalFactor;
+        partial void OnTechnicalFactorChanging(Nullable<global::System.Double> value);
         partial void OnTechnicalFactorChanged();
     
         /// <summary>

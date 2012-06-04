@@ -333,9 +333,9 @@
           <Property Name="Title" Type="nvarchar" Nullable="false" MaxLength="50" />
           <Property Name="Description" Type="nvarchar(max)" />
           <Property Name="Priority" Type="int" />
-          <Property Name="Actor" Type="int" />
-          <Property Name="EnvironmentFactor" Type="int" />
-          <Property Name="TechnicalFactor" Type="int" />
+          <Property Name="Actor" Type="float" />
+          <Property Name="EnvironmentFactor" Type="float" />
+          <Property Name="TechnicalFactor" Type="float" />
           <Property Name="Ucp" Type="int" />
           <Property Name="ManHour" Type="int" />
           <Property Name="Creator" Type="int" />
@@ -1160,9 +1160,9 @@
           <Property Type="String" Name="Title" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
           <Property Type="String" Name="Description" MaxLength="Max" FixedLength="false" Unicode="true" />
           <Property Type="Int32" Name="Priority" />
-          <Property Type="Int32" Name="Actor" />
-          <Property Type="Int32" Name="EnvironmentFactor" />
-          <Property Type="Int32" Name="TechnicalFactor" />
+          <Property Type="Double" Name="Actor" />
+          <Property Type="Double" Name="EnvironmentFactor" />
+          <Property Type="Double" Name="TechnicalFactor" />
           <Property Type="Int32" Name="Ucp" />
           <Property Type="Int32" Name="ManHour" />
           <Property Type="Int32" Name="Creator" />

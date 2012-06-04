@@ -275,12 +275,12 @@ namespace MTP1.Controllers
             double result;
             foreach (var technicalFactor in allTechFactorsForUseCase)
             {
-                useCase.TechnicalFactor += (technicalFactor.Difficulty * technicalFactor.WeightCoefficient);
+                //useCase.TechnicalFactor += (technicalFactor.Difficulty * technicalFactor.WeightCoefficient);
                 
             }
-            useCase.TechnicalFactor = useCase.TechnicalFactor / 100 + 0.6;
-            var tFactor = new TechnicalFactor { UseCase = useCase.ID,TechnicalFactor1 = useCase.TechnicalFactor.Value};
-                techFactorService.Add(tFactor);
+            //useCase.TechnicalFactor = useCase.TechnicalFactor / 100 + 0.6;
+            //var tFactor = new TechnicalFactor { UseCase = useCase.ID,TechnicalFactor1 = useCase.TechnicalFactor.Value};
+            //    techFactorService.Add(tFactor);
             
             this.service.Save();
         }

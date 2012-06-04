@@ -161,6 +161,7 @@ namespace MTP1.Controllers
             }
 
             techFactorService.Save();
+            //Response.Redirect(Request.RawUrl);
             RecalculateTechFactors(techFactorService, useCase);
             return Json(true);
         }
@@ -274,11 +275,15 @@ namespace MTP1.Controllers
             double result;
             foreach (var technicalFactor in allTechFactorsForUseCase)
             {
-
+                useCase.TechnicalFactor += (technicalFactor.Difficulty * technicalFactor.WeightCoefficient);
+                
             }
-
+            var tFactor = new TechnicalFactor { UseCase = useCase.ID,TechnicalFactor1 = useCase.TechnicalFactor.Value};
+                techFactorService.Add(tFactor);
+            
             this.service.Save();
         }
+
 
         private void RecalculateEnvFactors(IBaseService<EnvironmentFactor> envFactorService, UseCase useCase)
         {

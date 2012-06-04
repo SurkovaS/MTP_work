@@ -42,7 +42,7 @@
         @this.Html.DisplayFor(model => model.Ucp)
     </div>
     <div class="display-label">
-        Трудозатраты, чел-часы</div>
+        Трудозатраты, человеко-часы</div>
     <div class="display-field">
         @this.Html.DisplayFor(model => model.ManHour)
     </div>
@@ -51,6 +51,25 @@
     <div class="display-field">
         @this.Html.DisplayFor(model => model.Users.Title)
     </div>
+    
+    <div class="display-label">TF</div>
+    <div class="display-field">
+        @this.Html.DisplayFor(model => model.TechnicalFactor)
+    </div>
+    <div class="display-label">EF</div>
+    <div class="display-field">
+        @this.Html.DisplayFor(model => model.EnvironmentFactor)
+    </div>
+    <div class="display-label">Act</div>
+    <div class="display-field">
+        @this.Html.DisplayFor(model => model.Actor)
+    </div>
+    <div class="display-label">UCP</div>
+    <div class="display-field">
+        @this.Html.DisplayFor(model => model.Ucp)
+    </div>
+    
+
 </fieldset>
 
 <div id="grid_containerTF" style="width: 640px">

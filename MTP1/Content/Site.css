@@ -1,12 +1,12 @@
 ﻿ul{list-style:none;}
 
 /*----------------------------------------------------------
-The base color for this template is #5c87b2. If you'd like
+The base color for this template is #cde7fc. If you'd like
 to use a different color start by replacing all instances of
-#5c87b2 with your new color.
+#cde7fc with your new color.
 ----------------------------------------------------------*/
 body {
-    background-color: #5c87b2;
+    background-color: #cde7fc;
     font-size: .85em;
     font-family: "Trebuchet MS", Verdana, Helvetica, Sans-Serif;
     margin: 0;
@@ -251,7 +251,9 @@ div#title {
 .editor-label {
     margin: 1em 0 0 0;
     font-weight: bold;
-    font-size: 1.1em;
+    font-size: 1.0em;
+    background-color: #fff6b6;
+    width: 300px;
 }
 
 .display-field, 

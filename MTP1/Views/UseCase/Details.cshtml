@@ -3,75 +3,83 @@
 @{
     ViewBag.Title = string.Format("Сценарий тестирования | {0}", Constants.TITLE);
 }
-
 <p>
     @Html.ActionLink("Редактировать", "Edit", new { id = this.Model.ID }) |
     @Html.ActionLink("Сценарии тестирования", "Index")|
-    @Html.ActionLink("Ввод первичных метрик", "Create", "UseCasePrimaryMetric") 
+    @Html.ActionLink("Ввод первичных метрик", "Create", "UseCasePrimaryMetric")
 </p>
-
 <fieldset>
     <legend>Сценарий тестирования</legend>
-    <div class="display-label">Наименование сценария</div>
-    <div class="display-field">
-        @this.Html.DisplayFor(model => model.Title)
+    <div style="float: left;margin-right: 30px;">
+        <div class="display-label">
+            Наименование сценария</div>
+        <div class="display-field">
+            @this.Html.DisplayFor(model => model.Title)
+        </div>
+        <div class="display-label">
+            Описание сценария</div>
+        <div class="display-field">
+            @this.Html.DisplayFor(model => model.Description)
+        </div>
+        <div class="display-label">
+            Проект</div>
+        <div class="display-field">
+            @this.Html.DisplayFor(model => model.Project1.Title)
+        </div>
+        <div class="display-label">
+            Программа тестирования</div>
+        <div class="display-field">
+            @this.Html.DisplayFor(model => model.TestProgram1.Title)
+        </div>
     </div>
-    <div class="display-label">
-        Описание сценария</div>
-    <div class="display-field">
-        @this.Html.DisplayFor(model => model.Description)
-    </div>
-    <div class="display-label">
-        Проект</div>
-    <div class="display-field">
-        @this.Html.DisplayFor(model => model.Project1.Title)
-    </div>
-    <div class="display-label">
-        Программа тестирования</div>
-    <div class="display-field">
-        @this.Html.DisplayFor(model => model.TestProgram1.Title)
-    </div>
-    <div class="display-label">
-        Приоритет сценария</div>
-    <div class="display-field">
-        @this.Html.DisplayFor(model => model.PriorityDic.Title)
-    </div>
-    <div class="display-label">
-        UCP</div>
-    <div class="display-field">
-        @this.Html.DisplayFor(model => model.Ucp)
-    </div>
-    <div class="display-label">
-        Трудозатраты, чел-часы</div>
-    <div class="display-field">
-        @this.Html.DisplayFor(model => model.ManHour)
-    </div>
-    <div class="display-label">
-        Автор</div>
-    <div class="display-field">
-        @this.Html.DisplayFor(model => model.Users.Title)
+    <div style="float: left;margin-right: 30px;">
+        <div class="display-label">
+            Приоритет сценария</div>
+        <div class="display-field">
+            @this.Html.DisplayFor(model => model.PriorityDic.Title)
+        </div>
+        <div class="display-label">
+            UCP</div>
+        <div class="display-field">
+            @this.Html.DisplayFor(model => model.Ucp)
+        </div>
+        <div class="display-label">
+            Трудозатраты, чел-часы</div>
+        <div class="display-field">
+            @this.Html.DisplayFor(model => model.ManHour)
+        </div>
+        <div class="display-label">
+            Автор</div>
+        <div class="display-field">
+            @this.Html.DisplayFor(model => model.Users.Title)
+        </div>
     </div>
 </fieldset>
-
-<div id="grid_containerTF" style="width: 640px">
-    <table id="gridTF" cellpadding="0" cellspacing="0">
-    </table>
-    <div id="pagerTF" style="text-align: center;">
-    </div>
-    <div id="searchTF" style="margin-left: 30%; display: none">
-    </div>
-</div>
-
-<div id="grid_containerEF" style="width: 100%;margin-top: 15px">
-    <table id="gridEF" cellpadding="0" cellspacing="0">
-    </table>
-    <div id="pagerEF" style="text-align: center;">
-    </div>
-    <div id="searchEF" style="margin-left: 30%; display: none">
-    </div>
-</div>
-
-<div id="grid_containerAc" style="width: 100%;margin-top: 15px">
+<table cellpadding="0" cellspacing="0">
+    <tr>
+        <td>
+            <div id="grid_containerTF" style="width: 470px; padding-right: 15px;">
+                <table id="gridTF" cellpadding="0" cellspacing="0">
+                </table>
+                <div id="pagerTF" style="text-align: center;">
+                </div>
+                <div id="searchTF" style="margin-left: 30%; display: none">
+                </div>
+            </div>
+        </td>
+        <td>
+            <div id="grid_containerEF" style="width: 470px; margin-left: 15px;">
+                <table id="gridEF" cellpadding="0" cellspacing="0">
+                </table>
+                <div id="pagerEF" style="text-align: center;">
+                </div>
+                <div id="searchEF" style="margin-left: 30%; display: none">
+                </div>
+            </div>
+        </td>
+    </tr>
+</table>
+<div id="grid_containerAc" style="width: 100%; margin-top: 15px">
     <table id="gridAc" cellpadding="0" cellspacing="0">
     </table>
     <div id="pagerAc" style="text-align: center;">
@@ -79,8 +87,6 @@
     <div id="searchAc" style="margin-left: 30%; display: none">
     </div>
 </div>
-
-
 <script type="text/javascript">
     var useCaseId = @Model.ID;
 
@@ -221,4 +227,4 @@
                 ], 'Участники сценария', true);
     }
     
-    </script>
+</script>

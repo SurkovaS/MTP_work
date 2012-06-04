@@ -203,11 +203,11 @@
     
     function GridForActors() {
          
-        var wcListAct = @Html.Raw(@Model.WFactorAndDifficultyList);
-        var indexUrlAct = '@Url.Action("GetActorsForUseCase", "Actor")' + '?useCaseId=' + useCaseId;
-        var editUrlAct = '@Url.Action("EditActor", "UseCase")' + '?useCaseId=' + useCaseId;
+        var wcListAc = @Html.Raw(@Model.WFactorAndDifficultyList);
+        var indexUrlAc = '@Url.Action("GetActorsForUseCase", "Actor")' + '?useCaseId=' + useCaseId;
+        var editUrlAc = '@Url.Action("EditActor", "UseCase")' + '?useCaseId=' + useCaseId;
         
-        DrawEditableMTPGrid('gridAct', 'pagerAct', indexUrlAct, editUrlAct,
+        DrawEditableMTPGrid('gridAc', 'pagerAc', indexUrlAc, editUrlAc,
         ['Участник сценария', 'Весовой коэффициент', 'Количество'],
                 [
                     {
@@ -225,7 +225,7 @@
                         align: 'center',
                         editable: true,
                         edittype: "select",
-                        editoptions: { multiple: false, value: wcListAct }, 
+                        editoptions: { multiple: false, value: wcListAc }, 
                         editrules: { required: false }, 
                         formatoptions: { disabled: false},
                         width: '30'
@@ -237,7 +237,7 @@
                         align: 'center',
                         editable: true,
                         edittype: "text",
-                        editoptions: { multiple: false, value: wcListAct }, 
+                        editoptions: { multiple: false, value: wcListAc }, 
                         editrules: { required: false }, 
                         formatoptions: { disabled: false},
                         width: '30'

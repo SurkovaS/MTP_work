@@ -272,16 +272,14 @@ namespace MTP1.Controllers
         private void RecalculateTechFactors(IBaseService<TechnicalFactor> techFactorService, UseCase useCase)
         {
             var allTechFactorsForUseCase = techFactorService.Get().Where(a => a.UseCase == useCase.ID).ToList();
-            double result;
+            double result = 0;
             foreach (var technicalFactor in allTechFactorsForUseCase)
             {
-                //useCase.TechnicalFactor += (technicalFactor.Difficulty * technicalFactor.WeightCoefficient);
-                
+                result += (technicalFactor.WeightCoefficientDic1 == null ? 0 : technicalFactor.WeightCoefficientDic1.Value)
+                    * (technicalFactor.WeightCoefficientDic == null ? 0 : technicalFactor.WeightCoefficientDic.Value);
             }
-            //useCase.TechnicalFactor = useCase.TechnicalFactor / 100 + 0.6;
-            //var tFactor = new TechnicalFactor { UseCase = useCase.ID,TechnicalFactor1 = useCase.TechnicalFactor.Value};
-            //    techFactorService.Add(tFactor);
-            
+
+            useCase.TechnicalFactor = (result / 100) + 0.6;
             this.service.Save();
         }
 

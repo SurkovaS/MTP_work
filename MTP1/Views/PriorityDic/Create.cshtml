@@ -19,6 +19,7 @@
         @Html.EditorForModel()
         <p>
             <input type="submit" value="Сохранить" />
+            @Url.Action("AfterEditCreateDetails", "UseCase")
         </p>
     </fieldset>
 }

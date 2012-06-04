@@ -25,7 +25,7 @@
         var viewUrl = '@Url.Action("Details", "PriorityDic")';
 
         DrawMTPGrid('grid', 'pager', indexUrl, editUrl, deleteUrl, addUrl, viewUrl,
-            ['Наименование', 'Описание'],
+            ['Наименование', 'Описание','Значение'],
             [
                 {
                     name: 'Title',
@@ -35,6 +35,12 @@
                 },
                 {
                     name: 'Description',
+                    sortable: false,
+                    align: 'center',
+                    width: '100'
+                },
+                {
+                    name: 'Value',
                     sortable: false,
                     align: 'center',
                     width: '100'

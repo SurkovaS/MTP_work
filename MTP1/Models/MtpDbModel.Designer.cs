@@ -2418,6 +2418,30 @@ namespace MTP1.Models
         private global::System.String _Description;
         partial void OnDescriptionChanging(global::System.String value);
         partial void OnDescriptionChanged();
+    
+        /// <summary>
+        /// Нет доступной документации по метаданным.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=true)]
+        [DataMemberAttribute()]
+        public Nullable<global::System.Int32> Value
+        {
+            get
+            {
+                return _Value;
+            }
+            set
+            {
+                OnValueChanging(value);
+                ReportPropertyChanging("Value");
+                _Value = StructuralObject.SetValidValue(value);
+                ReportPropertyChanged("Value");
+                OnValueChanged();
+            }
+        }
+        private Nullable<global::System.Int32> _Value;
+        partial void OnValueChanging(Nullable<global::System.Int32> value);
+        partial void OnValueChanged();
 
         #endregion
     
@@ -4540,55 +4564,55 @@ namespace MTP1.Models
         /// </summary>
         [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=true)]
         [DataMemberAttribute()]
-        public Nullable<global::System.Double> EnvironmentFactor
+        public Nullable<global::System.Double> EF
         {
             get
             {
-                return _EnvironmentFactor;
+                return _EF;
             }
             set
             {
-                OnEnvironmentFactorChanging(value);
-                ReportPropertyChanging("EnvironmentFactor");
-                _EnvironmentFactor = StructuralObject.SetValidValue(value);
-                ReportPropertyChanged("EnvironmentFactor");
-                OnEnvironmentFactorChanged();
+                OnEFChanging(value);
+                ReportPropertyChanging("EF");
+                _EF = StructuralObject.SetValidValue(value);
+                ReportPropertyChanged("EF");
+                OnEFChanged();
             }
         }
-        private Nullable<global::System.Double> _EnvironmentFactor;
-        partial void OnEnvironmentFactorChanging(Nullable<global::System.Double> value);
-        partial void OnEnvironmentFactorChanged();
+        private Nullable<global::System.Double> _EF;
+        partial void OnEFChanging(Nullable<global::System.Double> value);
+        partial void OnEFChanged();
     
         /// <summary>
         /// Нет доступной документации по метаданным.
         /// </summary>
         [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=true)]
         [DataMemberAttribute()]
-        public Nullable<global::System.Double> TechnicalFactor
+        public Nullable<global::System.Double> TF
         {
             get
             {
-                return _TechnicalFactor;
+                return _TF;
             }
             set
             {
-                OnTechnicalFactorChanging(value);
-                ReportPropertyChanging("TechnicalFactor");
-                _TechnicalFactor = StructuralObject.SetValidValue(value);
-                ReportPropertyChanged("TechnicalFactor");
-                OnTechnicalFactorChanged();
+                OnTFChanging(value);
+                ReportPropertyChanging("TF");
+                _TF = StructuralObject.SetValidValue(value);
+                ReportPropertyChanged("TF");
+                OnTFChanged();
             }
         }
-        private Nullable<global::System.Double> _TechnicalFactor;
-        partial void OnTechnicalFactorChanging(Nullable<global::System.Double> value);
-        partial void OnTechnicalFactorChanged();
+        private Nullable<global::System.Double> _TF;
+        partial void OnTFChanging(Nullable<global::System.Double> value);
+        partial void OnTFChanged();
     
         /// <summary>
         /// Нет доступной документации по метаданным.
         /// </summary>
         [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=true)]
         [DataMemberAttribute()]
-        public Nullable<global::System.Int32> Ucp
+        public Nullable<global::System.Double> Ucp
         {
             get
             {
@@ -4603,8 +4627,8 @@ namespace MTP1.Models
                 OnUcpChanged();
             }
         }
-        private Nullable<global::System.Int32> _Ucp;
-        partial void OnUcpChanging(Nullable<global::System.Int32> value);
+        private Nullable<global::System.Double> _Ucp;
+        partial void OnUcpChanging(Nullable<global::System.Double> value);
         partial void OnUcpChanged();
     
         /// <summary>
@@ -4612,7 +4636,7 @@ namespace MTP1.Models
         /// </summary>
         [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=true)]
         [DataMemberAttribute()]
-        public Nullable<global::System.Int32> ManHour
+        public Nullable<global::System.Double> ManHour
         {
             get
             {
@@ -4627,8 +4651,8 @@ namespace MTP1.Models
                 OnManHourChanged();
             }
         }
-        private Nullable<global::System.Int32> _ManHour;
-        partial void OnManHourChanging(Nullable<global::System.Int32> value);
+        private Nullable<global::System.Double> _ManHour;
+        partial void OnManHourChanging(Nullable<global::System.Double> value);
         partial void OnManHourChanged();
     
         /// <summary>
@@ -4654,6 +4678,30 @@ namespace MTP1.Models
         private Nullable<global::System.Int32> _Creator;
         partial void OnCreatorChanging(Nullable<global::System.Int32> value);
         partial void OnCreatorChanged();
+    
+        /// <summary>
+        /// Нет доступной документации по метаданным.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=true)]
+        [DataMemberAttribute()]
+        public Nullable<global::System.Double> UUCP
+        {
+            get
+            {
+                return _UUCP;
+            }
+            set
+            {
+                OnUUCPChanging(value);
+                ReportPropertyChanging("UUCP");
+                _UUCP = StructuralObject.SetValidValue(value);
+                ReportPropertyChanged("UUCP");
+                OnUUCPChanged();
+            }
+        }
+        private Nullable<global::System.Double> _UUCP;
+        partial void OnUUCPChanging(Nullable<global::System.Double> value);
+        partial void OnUUCPChanged();
 
         #endregion
     
@@ -4710,7 +4758,7 @@ namespace MTP1.Models
         [SoapIgnoreAttribute()]
         [DataMemberAttribute()]
         [EdmRelationshipNavigationPropertyAttribute("MtpDbModel", "FK_EnvironmentFactor_UseCase", "EnvironmentFactor")]
-        public EntityCollection<EnvironmentFactor> EnvironmentFactor1
+        public EntityCollection<EnvironmentFactor> EnvironmentFactor
         {
             get
             {
@@ -4808,7 +4856,7 @@ namespace MTP1.Models
         [SoapIgnoreAttribute()]
         [DataMemberAttribute()]
         [EdmRelationshipNavigationPropertyAttribute("MtpDbModel", "FK_TechnicalFactor_UseCase", "TechnicalFactor")]
-        public EntityCollection<TechnicalFactor> TechnicalFactor1
+        public EntityCollection<TechnicalFactor> TechnicalFactor
         {
             get
             {
@@ -5568,6 +5616,30 @@ namespace MTP1.Models
         private global::System.String _Title;
         partial void OnTitleChanging(global::System.String value);
         partial void OnTitleChanged();
+    
+        /// <summary>
+        /// Нет доступной документации по метаданным.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=true)]
+        [DataMemberAttribute()]
+        public Nullable<global::System.Double> PF
+        {
+            get
+            {
+                return _PF;
+            }
+            set
+            {
+                OnPFChanging(value);
+                ReportPropertyChanging("PF");
+                _PF = StructuralObject.SetValidValue(value);
+                ReportPropertyChanged("PF");
+                OnPFChanged();
+            }
+        }
+        private Nullable<global::System.Double> _PF;
+        partial void OnPFChanging(Nullable<global::System.Double> value);
+        partial void OnPFChanged();
 
         #endregion
     

@@ -163,6 +163,8 @@ namespace MTP1.Controllers
             techFactorService.Save();
             //Response.Redirect(Request.RawUrl);
             RecalculateTechFactors(techFactorService, useCase);
+            RecalculateUcp(useCase);
+            RecalculateManHour(useCase);
             return Json(true);
         }
 
@@ -212,6 +214,8 @@ namespace MTP1.Controllers
 
             envFactorService.Save();
             RecalculateEnvFactors(envFactorService, useCase);
+            RecalculateUcp(useCase);
+            RecalculateManHour(useCase);
             
             return Json(true);
 
@@ -265,10 +269,13 @@ namespace MTP1.Controllers
 
             actorService.Save();
             RecalculateActors(actorService, useCase);
+            RecalculateUcp(useCase);
+            RecalculateManHour(useCase);
 
             return Json(true);
         }
 
+     
         private void RecalculateTechFactors(IBaseService<TechnicalFactor> techFactorService, UseCase useCase)
         {
             var allTechFactorsForUseCase = techFactorService.Get().Where(a => a.UseCase == useCase.ID).ToList();
@@ -279,7 +286,7 @@ namespace MTP1.Controllers
                     * (technicalFactor.WeightCoefficientDic == null ? 0 : technicalFactor.WeightCoefficientDic.Value);
             }
 
-            useCase.TechnicalFactor = (result / 100) + 0.6;
+            useCase.TF = (result / 100) + 0.6;
             this.service.Save();
         }
 
@@ -287,27 +294,46 @@ namespace MTP1.Controllers
         private void RecalculateEnvFactors(IBaseService<EnvironmentFactor> envFactorService, UseCase useCase)
         {
             var allEnvFactorsForUseCase = envFactorService.Get().Where(a => a.UseCase == useCase.ID).ToList();
-            double result;
+            double result = 0;
             foreach (var environmentFactor in allEnvFactorsForUseCase)
             {
-
+                result += (environmentFactor.WeightCoefficientDic1 == null ? 0 : environmentFactor.WeightCoefficientDic1.Value)
+                    * (environmentFactor.WeightCoefficientDic == null ? 0 : environmentFactor.WeightCoefficientDic.Value);
             }
 
+            useCase.EF = 1.4 - (3 * result / 100);
             this.service.Save();
         }
 
         private void RecalculateActors(IBaseService<Actor> actorService, UseCase useCase)
         {
             var allActorsForUseCase = actorService.Get().Where(a => a.UseCase == useCase.ID).ToList();
-            double result;
+            double result = 0;
             foreach (var actor in allActorsForUseCase)
             {
-
+                result += (actor.WeightCoefficientDic.Value == null ? 0 : actor.WeightCoefficientDic.Value)
+                    * (actor.Quantity.Value == null ? 0 : actor.Quantity.Value);
+            
             }
-
+            useCase.Actor = result;
+            useCase.UUCP = useCase.Actor + useCase.Priority;
             this.service.Save();
         }
 
+         private void RecalculateUcp(UseCase useCase)
+         {
+             double result = useCase.UUCP.Value * useCase.TF.Value * useCase.EF.Value;
+             useCase.Ucp = result;
+             this.service.Save();
+         }
+
+
+         private void RecalculateManHour(UseCase useCase)
+        {
+             double result = useCase.Ucp.Value * useCase.Users.PF.Value;
+             useCase.ManHour = result;
+             this.service.Save();
+         }
         #endregion
     }
 }

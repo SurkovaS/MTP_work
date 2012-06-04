@@ -67,7 +67,8 @@ namespace MTP1.Controllers
                             new[]
                                        {
                                             m.Title.ToStringWithDbNullCheck(), 
-                                            m.Description.ToStringWithDbNullCheck()
+                                            m.Description.ToStringWithDbNullCheck(),
+                                            m.Value.ToStringWithDbNullCheck()
                                         }
                                 }).ToArray()
                 };

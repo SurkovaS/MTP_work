@@ -278,9 +278,11 @@ namespace MTP1.Controllers
                 useCase.TechnicalFactor += (technicalFactor.Difficulty * technicalFactor.WeightCoefficient);
                 
             }
+            
             useCase.TechnicalFactor = useCase.TechnicalFactor / 100 + 0.6;
-            var tFactor = new TechnicalFactor { UseCase = useCase.ID,TechnicalFactor1 = useCase.TechnicalFactor.Value};
-                techFactorService.Add(tFactor);
+            
+            //var tFactor = new TechnicalFactor { UseCase = useCase.ID, TechnicalFactor1 = (int)useCase.TechnicalFactor.Value };
+            //    techFactorService.Add(tFactor);
             
             this.service.Save();
         }

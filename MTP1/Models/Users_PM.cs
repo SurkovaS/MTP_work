@@ -1,35 +1,34 @@
 ﻿// --------------------------------------------------------------------------------------------------------------------
-// <copyright file="ActorDicServiceFactory.cs" company="">
+// <copyright file="ActorDic.cs" company="">
 //   
 // </copyright>
 // <summary>
-//   The actor dic service factory.
+//   The actor dic.
 // </summary>
 // --------------------------------------------------------------------------------------------------------------------
 
-namespace MTP1.Service.Factory
+namespace MTP1.Models
 {
-    using MTP1.Models;
-    using MTP1.Service.Interface;
+    using MTP1.Models.Interface;
 
     /// <summary>
-    /// The actor dic service factory.
+    /// The actor dic.
     /// </summary>
-    public static class UsersServiceFactory
+    public partial class Users_PM : IBase
     {
         #region Public Methods and Operators
 
         /// <summary>
-        /// The create.
+        /// The can be deleted.
         /// </summary>
         /// <returns>
+        /// The can be deleted.
         /// </returns>
-        public static IBaseService<Users> Create()
+        public bool CanBeDeleted()
         {
-            return new UsersEntityService();
+            return true;
         }
 
         #endregion
     }
 }
-

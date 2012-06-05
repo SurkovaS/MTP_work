@@ -43,7 +43,7 @@
 <div class="editor-label">Автор</div>
 <div class="editor-field">
     @{
-        var queryCreators = UsersServiceFactory.Create().Get().Select(item => new { item.ID, Name = item.Title }).ToList();
+        var queryCreators = Users_PMServiceFactory.Create().Get().Select(item => new { item.ID, Name = item.Name }).ToList();
         List<SelectListItem> listCreators = queryCreators.Select(item => new SelectListItem { Text = item.Name.ToString(), Value = item.ID.ToString(), Selected = this.Model != null && this.Model.Creator == item.ID }).ToList();
         @Html.DropDownListFor(model => model.Creator, listCreators, "...")
     } 

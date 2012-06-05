@@ -21,7 +21,6 @@ using System.Runtime.Serialization;
 [assembly: EdmRelationshipAttribute("MtpDbModel", "FK_Actor_ActorDic", "ActorDic", System.Data.Metadata.Edm.RelationshipMultiplicity.One, typeof(MTP1.Models.ActorDic), "Actor", System.Data.Metadata.Edm.RelationshipMultiplicity.Many, typeof(MTP1.Models.Actor), true)]
 [assembly: EdmRelationshipAttribute("MtpDbModel", "FK_Actor_UseCase", "UseCase", System.Data.Metadata.Edm.RelationshipMultiplicity.One, typeof(MTP1.Models.UseCase), "Actor", System.Data.Metadata.Edm.RelationshipMultiplicity.Many, typeof(MTP1.Models.Actor), true)]
 [assembly: EdmRelationshipAttribute("MtpDbModel", "FK_Actor_WeightCoefficientDic", "WeightCoefficientDic", System.Data.Metadata.Edm.RelationshipMultiplicity.ZeroOrOne, typeof(MTP1.Models.WeightCoefficientDic), "Actor", System.Data.Metadata.Edm.RelationshipMultiplicity.Many, typeof(MTP1.Models.Actor), true)]
-[assembly: EdmRelationshipAttribute("MtpDbModel", "FK_Defect_Defect", "UseCase", System.Data.Metadata.Edm.RelationshipMultiplicity.One, typeof(MTP1.Models.UseCase), "Defect", System.Data.Metadata.Edm.RelationshipMultiplicity.Many, typeof(MTP1.Models.Defect), true)]
 [assembly: EdmRelationshipAttribute("MtpDbModel", "FK_Defect_DefectDic", "DefectDic", System.Data.Metadata.Edm.RelationshipMultiplicity.One, typeof(MTP1.Models.DefectDic), "Defect", System.Data.Metadata.Edm.RelationshipMultiplicity.Many, typeof(MTP1.Models.Defect), true)]
 [assembly: EdmRelationshipAttribute("MtpDbModel", "FK_Defect_PriorityDic", "PriorityDic", System.Data.Metadata.Edm.RelationshipMultiplicity.One, typeof(MTP1.Models.PriorityDic), "Defect", System.Data.Metadata.Edm.RelationshipMultiplicity.Many, typeof(MTP1.Models.Defect), true)]
 [assembly: EdmRelationshipAttribute("MtpDbModel", "FK_DefectPrimaryMetric_Defect", "Defect", System.Data.Metadata.Edm.RelationshipMultiplicity.One, typeof(MTP1.Models.Defect), "DefectPrimaryMetric", System.Data.Metadata.Edm.RelationshipMultiplicity.Many, typeof(MTP1.Models.DefectPrimaryMetric), true)]
@@ -35,8 +34,8 @@ using System.Runtime.Serialization;
 [assembly: EdmRelationshipAttribute("MtpDbModel", "FK_PrimMetrRE_PrimaryMetricDic", "PrimMetrREDic", System.Data.Metadata.Edm.RelationshipMultiplicity.One, typeof(MTP1.Models.PrimMetrREDic), "PrimMetrRE", System.Data.Metadata.Edm.RelationshipMultiplicity.Many, typeof(MTP1.Models.PrimMetrRE), true)]
 [assembly: EdmRelationshipAttribute("MtpDbModel", "FK_PrimMetrRE_TestProgram", "TestProgram", System.Data.Metadata.Edm.RelationshipMultiplicity.One, typeof(MTP1.Models.TestProgram), "PrimMetrRE", System.Data.Metadata.Edm.RelationshipMultiplicity.Many, typeof(MTP1.Models.PrimMetrRE), true)]
 [assembly: EdmRelationshipAttribute("MtpDbModel", "FK_UseCase_PriorityDic", "PriorityDic", System.Data.Metadata.Edm.RelationshipMultiplicity.ZeroOrOne, typeof(MTP1.Models.PriorityDic), "UseCase", System.Data.Metadata.Edm.RelationshipMultiplicity.Many, typeof(MTP1.Models.UseCase), true)]
-[assembly: EdmRelationshipAttribute("MtpDbModel", "FK_Project_Users", "Users", System.Data.Metadata.Edm.RelationshipMultiplicity.ZeroOrOne, typeof(MTP1.Models.Users), "Project", System.Data.Metadata.Edm.RelationshipMultiplicity.Many, typeof(MTP1.Models.Project), true)]
-[assembly: EdmRelationshipAttribute("MtpDbModel", "FK_Project_Users1", "Users", System.Data.Metadata.Edm.RelationshipMultiplicity.ZeroOrOne, typeof(MTP1.Models.Users), "Project", System.Data.Metadata.Edm.RelationshipMultiplicity.Many, typeof(MTP1.Models.Project), true)]
+[assembly: EdmRelationshipAttribute("MtpDbModel", "FK_Project_Users_PM", "Users_PM", System.Data.Metadata.Edm.RelationshipMultiplicity.ZeroOrOne, typeof(MTP1.Models.Users_PM), "Project", System.Data.Metadata.Edm.RelationshipMultiplicity.Many, typeof(MTP1.Models.Project), true)]
+[assembly: EdmRelationshipAttribute("MtpDbModel", "FK_Project_Users_PM1", "Users_PM", System.Data.Metadata.Edm.RelationshipMultiplicity.ZeroOrOne, typeof(MTP1.Models.Users_PM), "Project", System.Data.Metadata.Edm.RelationshipMultiplicity.Many, typeof(MTP1.Models.Project), true)]
 [assembly: EdmRelationshipAttribute("MtpDbModel", "FK_TestProgram_Project", "Project", System.Data.Metadata.Edm.RelationshipMultiplicity.One, typeof(MTP1.Models.Project), "TestProgram", System.Data.Metadata.Edm.RelationshipMultiplicity.Many, typeof(MTP1.Models.TestProgram), true)]
 [assembly: EdmRelationshipAttribute("MtpDbModel", "FK_UseCase_Project", "Project", System.Data.Metadata.Edm.RelationshipMultiplicity.ZeroOrOne, typeof(MTP1.Models.Project), "UseCase", System.Data.Metadata.Edm.RelationshipMultiplicity.Many, typeof(MTP1.Models.UseCase), true)]
 [assembly: EdmRelationshipAttribute("MtpDbModel", "FK_ReliabilityEvaluation_ReliabilityEvaluationDic", "ReliabilityEvaluationDic", System.Data.Metadata.Edm.RelationshipMultiplicity.One, typeof(MTP1.Models.ReliabilityEvaluationDic), "ReliabilityEvaluation", System.Data.Metadata.Edm.RelationshipMultiplicity.Many, typeof(MTP1.Models.ReliabilityEvaluation), true)]
@@ -48,9 +47,9 @@ using System.Runtime.Serialization;
 [assembly: EdmRelationshipAttribute("MtpDbModel", "FK_TechnicalFactor_UseCase", "UseCase", System.Data.Metadata.Edm.RelationshipMultiplicity.One, typeof(MTP1.Models.UseCase), "TechnicalFactor", System.Data.Metadata.Edm.RelationshipMultiplicity.Many, typeof(MTP1.Models.TechnicalFactor), true)]
 [assembly: EdmRelationshipAttribute("MtpDbModel", "FK_TechnicalFactor_WeightCoefficientDic", "WeightCoefficientDic", System.Data.Metadata.Edm.RelationshipMultiplicity.One, typeof(MTP1.Models.WeightCoefficientDic), "TechnicalFactor", System.Data.Metadata.Edm.RelationshipMultiplicity.Many, typeof(MTP1.Models.TechnicalFactor), true)]
 [assembly: EdmRelationshipAttribute("MtpDbModel", "FK_TechnicalFactor_WeightCoefficientDic1", "WeightCoefficientDic", System.Data.Metadata.Edm.RelationshipMultiplicity.ZeroOrOne, typeof(MTP1.Models.WeightCoefficientDic), "TechnicalFactor", System.Data.Metadata.Edm.RelationshipMultiplicity.Many, typeof(MTP1.Models.TechnicalFactor), true)]
-[assembly: EdmRelationshipAttribute("MtpDbModel", "FK_TestProgram_Users", "Users", System.Data.Metadata.Edm.RelationshipMultiplicity.ZeroOrOne, typeof(MTP1.Models.Users), "TestProgram", System.Data.Metadata.Edm.RelationshipMultiplicity.Many, typeof(MTP1.Models.TestProgram), true)]
+[assembly: EdmRelationshipAttribute("MtpDbModel", "FK_TestProgram_Users", "Users_PM", System.Data.Metadata.Edm.RelationshipMultiplicity.ZeroOrOne, typeof(MTP1.Models.Users_PM), "TestProgram", System.Data.Metadata.Edm.RelationshipMultiplicity.Many, typeof(MTP1.Models.TestProgram), true)]
 [assembly: EdmRelationshipAttribute("MtpDbModel", "FK_UseCase_TestProgram", "TestProgram", System.Data.Metadata.Edm.RelationshipMultiplicity.ZeroOrOne, typeof(MTP1.Models.TestProgram), "UseCase", System.Data.Metadata.Edm.RelationshipMultiplicity.Many, typeof(MTP1.Models.UseCase), true)]
-[assembly: EdmRelationshipAttribute("MtpDbModel", "FK_UseCase_Users", "Users", System.Data.Metadata.Edm.RelationshipMultiplicity.ZeroOrOne, typeof(MTP1.Models.Users), "UseCase", System.Data.Metadata.Edm.RelationshipMultiplicity.Many, typeof(MTP1.Models.UseCase), true)]
+[assembly: EdmRelationshipAttribute("MtpDbModel", "FK_UseCase_Users", "Users_Testers", System.Data.Metadata.Edm.RelationshipMultiplicity.ZeroOrOne, typeof(MTP1.Models.Users_Testers), "UseCase", System.Data.Metadata.Edm.RelationshipMultiplicity.Many, typeof(MTP1.Models.UseCase), true)]
 [assembly: EdmRelationshipAttribute("MtpDbModel", "FK_UseCasePrimaryMetric_UseCase", "UseCase", System.Data.Metadata.Edm.RelationshipMultiplicity.One, typeof(MTP1.Models.UseCase), "UseCasePrimaryMetric", System.Data.Metadata.Edm.RelationshipMultiplicity.Many, typeof(MTP1.Models.UseCasePrimaryMetric), true)]
 [assembly: EdmRelationshipAttribute("MtpDbModel", "FK_UseCaseSecondaryMetric_UseCase", "UseCase", System.Data.Metadata.Edm.RelationshipMultiplicity.One, typeof(MTP1.Models.UseCase), "UseCaseSecondaryMetric", System.Data.Metadata.Edm.RelationshipMultiplicity.Many, typeof(MTP1.Models.UseCaseSecondaryMetric), true)]
 
@@ -491,18 +490,34 @@ namespace MTP1.Models
         /// <summary>
         /// Нет доступной документации по метаданным.
         /// </summary>
-        public ObjectSet<Users> Users
+        public ObjectSet<Users_PM> Users_PM
         {
             get
             {
-                if ((_Users == null))
+                if ((_Users_PM == null))
                 {
-                    _Users = base.CreateObjectSet<Users>("Users");
+                    _Users_PM = base.CreateObjectSet<Users_PM>("Users_PM");
                 }
-                return _Users;
+                return _Users_PM;
             }
         }
-        private ObjectSet<Users> _Users;
+        private ObjectSet<Users_PM> _Users_PM;
+    
+        /// <summary>
+        /// Нет доступной документации по метаданным.
+        /// </summary>
+        public ObjectSet<Users_Testers> Users_Testers
+        {
+            get
+            {
+                if ((_Users_Testers == null))
+                {
+                    _Users_Testers = base.CreateObjectSet<Users_Testers>("Users_Testers");
+                }
+                return _Users_Testers;
+            }
+        }
+        private ObjectSet<Users_Testers> _Users_Testers;
     
         /// <summary>
         /// Нет доступной документации по метаданным.
@@ -716,11 +731,19 @@ namespace MTP1.Models
         }
     
         /// <summary>
-        /// Устаревший метод для добавления новых объектов в набор EntitySet Users. Взамен можно использовать метод .Add связанного свойства ObjectSet&lt;T&gt;.
+        /// Устаревший метод для добавления новых объектов в набор EntitySet Users_PM. Взамен можно использовать метод .Add связанного свойства ObjectSet&lt;T&gt;.
         /// </summary>
-        public void AddToUsers(Users users)
+        public void AddToUsers_PM(Users_PM users_PM)
         {
-            base.AddObject("Users", users);
+            base.AddObject("Users_PM", users_PM);
+        }
+    
+        /// <summary>
+        /// Устаревший метод для добавления новых объектов в набор EntitySet Users_Testers. Взамен можно использовать метод .Add связанного свойства ObjectSet&lt;T&gt;.
+        /// </summary>
+        public void AddToUsers_Testers(Users_Testers users_Testers)
+        {
+            base.AddObject("Users_Testers", users_Testers);
         }
     
         /// <summary>
@@ -1299,44 +1322,6 @@ namespace MTP1.Models
         #endregion
     
         #region Свойства навигации
-    
-        /// <summary>
-        /// Нет доступной документации по метаданным.
-        /// </summary>
-        [XmlIgnoreAttribute()]
-        [SoapIgnoreAttribute()]
-        [DataMemberAttribute()]
-        [EdmRelationshipNavigationPropertyAttribute("MtpDbModel", "FK_Defect_Defect", "UseCase")]
-        public UseCase UseCase1
-        {
-            get
-            {
-                return ((IEntityWithRelationships)this).RelationshipManager.GetRelatedReference<UseCase>("MtpDbModel.FK_Defect_Defect", "UseCase").Value;
-            }
-            set
-            {
-                ((IEntityWithRelationships)this).RelationshipManager.GetRelatedReference<UseCase>("MtpDbModel.FK_Defect_Defect", "UseCase").Value = value;
-            }
-        }
-        /// <summary>
-        /// Нет доступной документации по метаданным.
-        /// </summary>
-        [BrowsableAttribute(false)]
-        [DataMemberAttribute()]
-        public EntityReference<UseCase> UseCase1Reference
-        {
-            get
-            {
-                return ((IEntityWithRelationships)this).RelationshipManager.GetRelatedReference<UseCase>("MtpDbModel.FK_Defect_Defect", "UseCase");
-            }
-            set
-            {
-                if ((value != null))
-                {
-                    ((IEntityWithRelationships)this).RelationshipManager.InitializeRelatedReference<UseCase>("MtpDbModel.FK_Defect_Defect", "UseCase", value);
-                }
-            }
-        }
     
         /// <summary>
         /// Нет доступной документации по метаданным.
@@ -3114,16 +3099,16 @@ namespace MTP1.Models
         [XmlIgnoreAttribute()]
         [SoapIgnoreAttribute()]
         [DataMemberAttribute()]
-        [EdmRelationshipNavigationPropertyAttribute("MtpDbModel", "FK_Project_Users", "Users")]
-        public Users Users
+        [EdmRelationshipNavigationPropertyAttribute("MtpDbModel", "FK_Project_Users_PM", "Users_PM")]
+        public Users_PM Users_PM
         {
             get
             {
-                return ((IEntityWithRelationships)this).RelationshipManager.GetRelatedReference<Users>("MtpDbModel.FK_Project_Users", "Users").Value;
+                return ((IEntityWithRelationships)this).RelationshipManager.GetRelatedReference<Users_PM>("MtpDbModel.FK_Project_Users_PM", "Users_PM").Value;
             }
             set
             {
-                ((IEntityWithRelationships)this).RelationshipManager.GetRelatedReference<Users>("MtpDbModel.FK_Project_Users", "Users").Value = value;
+                ((IEntityWithRelationships)this).RelationshipManager.GetRelatedReference<Users_PM>("MtpDbModel.FK_Project_Users_PM", "Users_PM").Value = value;
             }
         }
         /// <summary>
@@ -3131,17 +3116,17 @@ namespace MTP1.Models
         /// </summary>
         [BrowsableAttribute(false)]
         [DataMemberAttribute()]
-        public EntityReference<Users> UsersReference
+        public EntityReference<Users_PM> Users_PMReference
         {
             get
             {
-                return ((IEntityWithRelationships)this).RelationshipManager.GetRelatedReference<Users>("MtpDbModel.FK_Project_Users", "Users");
+                return ((IEntityWithRelationships)this).RelationshipManager.GetRelatedReference<Users_PM>("MtpDbModel.FK_Project_Users_PM", "Users_PM");
             }
             set
             {
                 if ((value != null))
                 {
-                    ((IEntityWithRelationships)this).RelationshipManager.InitializeRelatedReference<Users>("MtpDbModel.FK_Project_Users", "Users", value);
+                    ((IEntityWithRelationships)this).RelationshipManager.InitializeRelatedReference<Users_PM>("MtpDbModel.FK_Project_Users_PM", "Users_PM", value);
                 }
             }
         }
@@ -3152,16 +3137,16 @@ namespace MTP1.Models
         [XmlIgnoreAttribute()]
         [SoapIgnoreAttribute()]
         [DataMemberAttribute()]
-        [EdmRelationshipNavigationPropertyAttribute("MtpDbModel", "FK_Project_Users1", "Users")]
-        public Users Users1
+        [EdmRelationshipNavigationPropertyAttribute("MtpDbModel", "FK_Project_Users_PM1", "Users_PM")]
+        public Users_PM Users_PM1
         {
             get
             {
-                return ((IEntityWithRelationships)this).RelationshipManager.GetRelatedReference<Users>("MtpDbModel.FK_Project_Users1", "Users").Value;
+                return ((IEntityWithRelationships)this).RelationshipManager.GetRelatedReference<Users_PM>("MtpDbModel.FK_Project_Users_PM1", "Users_PM").Value;
             }
             set
             {
-                ((IEntityWithRelationships)this).RelationshipManager.GetRelatedReference<Users>("MtpDbModel.FK_Project_Users1", "Users").Value = value;
+                ((IEntityWithRelationships)this).RelationshipManager.GetRelatedReference<Users_PM>("MtpDbModel.FK_Project_Users_PM1", "Users_PM").Value = value;
             }
         }
         /// <summary>
@@ -3169,17 +3154,17 @@ namespace MTP1.Models
         /// </summary>
         [BrowsableAttribute(false)]
         [DataMemberAttribute()]
-        public EntityReference<Users> Users1Reference
+        public EntityReference<Users_PM> Users_PM1Reference
         {
             get
             {
-                return ((IEntityWithRelationships)this).RelationshipManager.GetRelatedReference<Users>("MtpDbModel.FK_Project_Users1", "Users");
+                return ((IEntityWithRelationships)this).RelationshipManager.GetRelatedReference<Users_PM>("MtpDbModel.FK_Project_Users_PM1", "Users_PM");
             }
             set
             {
                 if ((value != null))
                 {
-                    ((IEntityWithRelationships)this).RelationshipManager.InitializeRelatedReference<Users>("MtpDbModel.FK_Project_Users1", "Users", value);
+                    ((IEntityWithRelationships)this).RelationshipManager.InitializeRelatedReference<Users_PM>("MtpDbModel.FK_Project_Users_PM1", "Users_PM", value);
                 }
             }
         }
@@ -5116,16 +5101,16 @@ namespace MTP1.Models
         [XmlIgnoreAttribute()]
         [SoapIgnoreAttribute()]
         [DataMemberAttribute()]
-        [EdmRelationshipNavigationPropertyAttribute("MtpDbModel", "FK_TestProgram_Users", "Users")]
-        public Users Users
+        [EdmRelationshipNavigationPropertyAttribute("MtpDbModel", "FK_TestProgram_Users", "Users_PM")]
+        public Users_PM Users_PM
         {
             get
             {
-                return ((IEntityWithRelationships)this).RelationshipManager.GetRelatedReference<Users>("MtpDbModel.FK_TestProgram_Users", "Users").Value;
+                return ((IEntityWithRelationships)this).RelationshipManager.GetRelatedReference<Users_PM>("MtpDbModel.FK_TestProgram_Users", "Users_PM").Value;
             }
             set
             {
-                ((IEntityWithRelationships)this).RelationshipManager.GetRelatedReference<Users>("MtpDbModel.FK_TestProgram_Users", "Users").Value = value;
+                ((IEntityWithRelationships)this).RelationshipManager.GetRelatedReference<Users_PM>("MtpDbModel.FK_TestProgram_Users", "Users_PM").Value = value;
             }
         }
         /// <summary>
@@ -5133,17 +5118,17 @@ namespace MTP1.Models
         /// </summary>
         [BrowsableAttribute(false)]
         [DataMemberAttribute()]
-        public EntityReference<Users> UsersReference
+        public EntityReference<Users_PM> Users_PMReference
         {
             get
             {
-                return ((IEntityWithRelationships)this).RelationshipManager.GetRelatedReference<Users>("MtpDbModel.FK_TestProgram_Users", "Users");
+                return ((IEntityWithRelationships)this).RelationshipManager.GetRelatedReference<Users_PM>("MtpDbModel.FK_TestProgram_Users", "Users_PM");
             }
             set
             {
                 if ((value != null))
                 {
-                    ((IEntityWithRelationships)this).RelationshipManager.InitializeRelatedReference<Users>("MtpDbModel.FK_TestProgram_Users", "Users", value);
+                    ((IEntityWithRelationships)this).RelationshipManager.InitializeRelatedReference<Users_PM>("MtpDbModel.FK_TestProgram_Users", "Users_PM", value);
                 }
             }
         }
@@ -5546,28 +5531,6 @@ namespace MTP1.Models
         [XmlIgnoreAttribute()]
         [SoapIgnoreAttribute()]
         [DataMemberAttribute()]
-        [EdmRelationshipNavigationPropertyAttribute("MtpDbModel", "FK_Defect_Defect", "Defect")]
-        public EntityCollection<Defect> Defect
-        {
-            get
-            {
-                return ((IEntityWithRelationships)this).RelationshipManager.GetRelatedCollection<Defect>("MtpDbModel.FK_Defect_Defect", "Defect");
-            }
-            set
-            {
-                if ((value != null))
-                {
-                    ((IEntityWithRelationships)this).RelationshipManager.InitializeRelatedCollection<Defect>("MtpDbModel.FK_Defect_Defect", "Defect", value);
-                }
-            }
-        }
-    
-        /// <summary>
-        /// Нет доступной документации по метаданным.
-        /// </summary>
-        [XmlIgnoreAttribute()]
-        [SoapIgnoreAttribute()]
-        [DataMemberAttribute()]
         [EdmRelationshipNavigationPropertyAttribute("MtpDbModel", "FK_EnvironmentFactor_UseCase", "EnvironmentFactor")]
         public EntityCollection<EnvironmentFactor> EnvironmentFactor
         {
@@ -5726,16 +5689,16 @@ namespace MTP1.Models
         [XmlIgnoreAttribute()]
         [SoapIgnoreAttribute()]
         [DataMemberAttribute()]
-        [EdmRelationshipNavigationPropertyAttribute("MtpDbModel", "FK_UseCase_Users", "Users")]
-        public Users Users
+        [EdmRelationshipNavigationPropertyAttribute("MtpDbModel", "FK_UseCase_Users", "Users_Testers")]
+        public Users_Testers Users_Testers
         {
             get
             {
-                return ((IEntityWithRelationships)this).RelationshipManager.GetRelatedReference<Users>("MtpDbModel.FK_UseCase_Users", "Users").Value;
+                return ((IEntityWithRelationships)this).RelationshipManager.GetRelatedReference<Users_Testers>("MtpDbModel.FK_UseCase_Users", "Users_Testers").Value;
             }
             set
             {
-                ((IEntityWithRelationships)this).RelationshipManager.GetRelatedReference<Users>("MtpDbModel.FK_UseCase_Users", "Users").Value = value;
+                ((IEntityWithRelationships)this).RelationshipManager.GetRelatedReference<Users_Testers>("MtpDbModel.FK_UseCase_Users", "Users_Testers").Value = value;
             }
         }
         /// <summary>
@@ -5743,17 +5706,17 @@ namespace MTP1.Models
         /// </summary>
         [BrowsableAttribute(false)]
         [DataMemberAttribute()]
-        public EntityReference<Users> UsersReference
+        public EntityReference<Users_Testers> Users_TestersReference
         {
             get
             {
-                return ((IEntityWithRelationships)this).RelationshipManager.GetRelatedReference<Users>("MtpDbModel.FK_UseCase_Users", "Users");
+                return ((IEntityWithRelationships)this).RelationshipManager.GetRelatedReference<Users_Testers>("MtpDbModel.FK_UseCase_Users", "Users_Testers");
             }
             set
             {
                 if ((value != null))
                 {
-                    ((IEntityWithRelationships)this).RelationshipManager.InitializeRelatedReference<Users>("MtpDbModel.FK_UseCase_Users", "Users", value);
+                    ((IEntityWithRelationships)this).RelationshipManager.InitializeRelatedReference<Users_Testers>("MtpDbModel.FK_UseCase_Users", "Users_Testers", value);
                 }
             }
         }
@@ -6228,24 +6191,174 @@ namespace MTP1.Models
     /// <summary>
     /// Нет доступной документации по метаданным.
     /// </summary>
-    [EdmEntityTypeAttribute(NamespaceName="MtpDbModel", Name="Users")]
+    [EdmEntityTypeAttribute(NamespaceName="MtpDbModel", Name="Users_PM")]
     [Serializable()]
     [DataContractAttribute(IsReference=true)]
-    public partial class Users : EntityObject
+    public partial class Users_PM : EntityObject
     {
         #region Фабричный метод
     
         /// <summary>
-        /// Создание нового объекта Users.
+        /// Создание нового объекта Users_PM.
+        /// </summary>
+        /// <param name="id">Исходное значение свойства ID.</param>
+        /// <param name="name">Исходное значение свойства Name.</param>
+        public static Users_PM CreateUsers_PM(global::System.Int32 id, global::System.String name)
+        {
+            Users_PM users_PM = new Users_PM();
+            users_PM.ID = id;
+            users_PM.Name = name;
+            return users_PM;
+        }
+
+        #endregion
+        #region Свойства-примитивы
+    
+        /// <summary>
+        /// Нет доступной документации по метаданным.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=true, IsNullable=false)]
+        [DataMemberAttribute()]
+        public global::System.Int32 ID
+        {
+            get
+            {
+                return _ID;
+            }
+            set
+            {
+                if (_ID != value)
+                {
+                    OnIDChanging(value);
+                    ReportPropertyChanging("ID");
+                    _ID = StructuralObject.SetValidValue(value);
+                    ReportPropertyChanged("ID");
+                    OnIDChanged();
+                }
+            }
+        }
+        private global::System.Int32 _ID;
+        partial void OnIDChanging(global::System.Int32 value);
+        partial void OnIDChanged();
+    
+        /// <summary>
+        /// Нет доступной документации по метаданным.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=false)]
+        [DataMemberAttribute()]
+        public global::System.String Name
+        {
+            get
+            {
+                return _Name;
+            }
+            set
+            {
+                OnNameChanging(value);
+                ReportPropertyChanging("Name");
+                _Name = StructuralObject.SetValidValue(value, false);
+                ReportPropertyChanged("Name");
+                OnNameChanged();
+            }
+        }
+        private global::System.String _Name;
+        partial void OnNameChanging(global::System.String value);
+        partial void OnNameChanged();
+
+        #endregion
+    
+        #region Свойства навигации
+    
+        /// <summary>
+        /// Нет доступной документации по метаданным.
+        /// </summary>
+        [XmlIgnoreAttribute()]
+        [SoapIgnoreAttribute()]
+        [DataMemberAttribute()]
+        [EdmRelationshipNavigationPropertyAttribute("MtpDbModel", "FK_Project_Users_PM", "Project")]
+        public EntityCollection<Project> Project
+        {
+            get
+            {
+                return ((IEntityWithRelationships)this).RelationshipManager.GetRelatedCollection<Project>("MtpDbModel.FK_Project_Users_PM", "Project");
+            }
+            set
+            {
+                if ((value != null))
+                {
+                    ((IEntityWithRelationships)this).RelationshipManager.InitializeRelatedCollection<Project>("MtpDbModel.FK_Project_Users_PM", "Project", value);
+                }
+            }
+        }
+    
+        /// <summary>
+        /// Нет доступной документации по метаданным.
+        /// </summary>
+        [XmlIgnoreAttribute()]
+        [SoapIgnoreAttribute()]
+        [DataMemberAttribute()]
+        [EdmRelationshipNavigationPropertyAttribute("MtpDbModel", "FK_Project_Users_PM1", "Project")]
+        public EntityCollection<Project> Project1
+        {
+            get
+            {
+                return ((IEntityWithRelationships)this).RelationshipManager.GetRelatedCollection<Project>("MtpDbModel.FK_Project_Users_PM1", "Project");
+            }
+            set
+            {
+                if ((value != null))
+                {
+                    ((IEntityWithRelationships)this).RelationshipManager.InitializeRelatedCollection<Project>("MtpDbModel.FK_Project_Users_PM1", "Project", value);
+                }
+            }
+        }
+    
+        /// <summary>
+        /// Нет доступной документации по метаданным.
+        /// </summary>
+        [XmlIgnoreAttribute()]
+        [SoapIgnoreAttribute()]
+        [DataMemberAttribute()]
+        [EdmRelationshipNavigationPropertyAttribute("MtpDbModel", "FK_TestProgram_Users", "TestProgram")]
+        public EntityCollection<TestProgram> TestProgram
+        {
+            get
+            {
+                return ((IEntityWithRelationships)this).RelationshipManager.GetRelatedCollection<TestProgram>("MtpDbModel.FK_TestProgram_Users", "TestProgram");
+            }
+            set
+            {
+                if ((value != null))
+                {
+                    ((IEntityWithRelationships)this).RelationshipManager.InitializeRelatedCollection<TestProgram>("MtpDbModel.FK_TestProgram_Users", "TestProgram", value);
+                }
+            }
+        }
+
+        #endregion
+    }
+    
+    /// <summary>
+    /// Нет доступной документации по метаданным.
+    /// </summary>
+    [EdmEntityTypeAttribute(NamespaceName="MtpDbModel", Name="Users_Testers")]
+    [Serializable()]
+    [DataContractAttribute(IsReference=true)]
+    public partial class Users_Testers : EntityObject
+    {
+        #region Фабричный метод
+    
+        /// <summary>
+        /// Создание нового объекта Users_Testers.
         /// </summary>
         /// <param name="id">Исходное значение свойства ID.</param>
         /// <param name="title">Исходное значение свойства Title.</param>
-        public static Users CreateUsers(global::System.Int32 id, global::System.String title)
+        public static Users_Testers CreateUsers_Testers(global::System.Int32 id, global::System.String title)
         {
-            Users users = new Users();
-            users.ID = id;
-            users.Title = title;
-            return users;
+            Users_Testers users_Testers = new Users_Testers();
+            users_Testers.ID = id;
+            users_Testers.Title = title;
+            return users_Testers;
         }
 
         #endregion
@@ -6329,72 +6442,6 @@ namespace MTP1.Models
         #endregion
     
         #region Свойства навигации
-    
-        /// <summary>
-        /// Нет доступной документации по метаданным.
-        /// </summary>
-        [XmlIgnoreAttribute()]
-        [SoapIgnoreAttribute()]
-        [DataMemberAttribute()]
-        [EdmRelationshipNavigationPropertyAttribute("MtpDbModel", "FK_Project_Users", "Project")]
-        public EntityCollection<Project> Project
-        {
-            get
-            {
-                return ((IEntityWithRelationships)this).RelationshipManager.GetRelatedCollection<Project>("MtpDbModel.FK_Project_Users", "Project");
-            }
-            set
-            {
-                if ((value != null))
-                {
-                    ((IEntityWithRelationships)this).RelationshipManager.InitializeRelatedCollection<Project>("MtpDbModel.FK_Project_Users", "Project", value);
-                }
-            }
-        }
-    
-        /// <summary>
-        /// Нет доступной документации по метаданным.
-        /// </summary>
-        [XmlIgnoreAttribute()]
-        [SoapIgnoreAttribute()]
-        [DataMemberAttribute()]
-        [EdmRelationshipNavigationPropertyAttribute("MtpDbModel", "FK_Project_Users1", "Project")]
-        public EntityCollection<Project> Project1
-        {
-            get
-            {
-                return ((IEntityWithRelationships)this).RelationshipManager.GetRelatedCollection<Project>("MtpDbModel.FK_Project_Users1", "Project");
-            }
-            set
-            {
-                if ((value != null))
-                {
-                    ((IEntityWithRelationships)this).RelationshipManager.InitializeRelatedCollection<Project>("MtpDbModel.FK_Project_Users1", "Project", value);
-                }
-            }
-        }
-    
-        /// <summary>
-        /// Нет доступной документации по метаданным.
-        /// </summary>
-        [XmlIgnoreAttribute()]
-        [SoapIgnoreAttribute()]
-        [DataMemberAttribute()]
-        [EdmRelationshipNavigationPropertyAttribute("MtpDbModel", "FK_TestProgram_Users", "TestProgram")]
-        public EntityCollection<TestProgram> TestProgram
-        {
-            get
-            {
-                return ((IEntityWithRelationships)this).RelationshipManager.GetRelatedCollection<TestProgram>("MtpDbModel.FK_TestProgram_Users", "TestProgram");
-            }
-            set
-            {
-                if ((value != null))
-                {
-                    ((IEntityWithRelationships)this).RelationshipManager.InitializeRelatedCollection<TestProgram>("MtpDbModel.FK_TestProgram_Users", "TestProgram", value);
-                }
-            }
-        }
     
         /// <summary>
         /// Нет доступной документации по метаданным.

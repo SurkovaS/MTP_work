@@ -71,8 +71,8 @@ namespace MTP1.Controllers
                                                 m.Title, 
                                                 m.Version, 
                                                 m.Description, 
-                                                m.Users.Title,
-                                                m.Users1.Title
+                                                m.Users_PM.Name,
+                                                m.Users_PM1.Name
                                                 }
                                     }).ToArray()
                     };

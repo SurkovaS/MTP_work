@@ -5,8 +5,7 @@
 }
 <p>
     @Html.ActionLink("Редактировать", "Edit", new { id = this.Model.ID }) |
-    @Html.ActionLink("Сценарии тестирования", "Index")|
-    @Html.ActionLink("Ввод первичных метрик", "Create", "UseCasePrimaryMetric")
+    @Html.ActionLink("Сценарии тестирования", "Index")
 </p>
 <fieldset>
     <legend>Сценарий тестирования</legend>
@@ -41,7 +40,7 @@
         <div class="display-label">
             Автор</div>
         <div class="display-field">
-            @this.Html.DisplayFor(model => model.Users.Title)
+            @this.Html.DisplayFor(model => model.Users_Testers.Title)
         </div>
         <div class="display-label">
             UCP</div>

@@ -101,7 +101,7 @@ namespace MTP1.Controllers
                                             m.Title.ToStringWithDbNullCheck(), m.Description.ToStringWithDbNullCheck(), 
                                             m.PriorityDic == null ? string.Empty : m.PriorityDic.Title.ToStringWithDbNullCheck(), m.Ucp.ToStringWithDbNullCheck(), 
                                             m.ManHour.ToStringWithDbNullCheck(),
-                                            m.Users.Title.ToStringWithDbNullCheck(),
+                                            m.Users_Testers.Title.ToStringWithDbNullCheck(),
                                             m.Project1.Title.ToStringWithDbNullCheck(), 
                                             m.TestProgram1.Title.ToStringWithDbNullCheck()
                                         }
@@ -370,7 +370,7 @@ namespace MTP1.Controllers
 
          private void RecalculateManHour(UseCase useCase)
         {
-             double result = useCase.Ucp.Value * useCase.Users.PF.Value;
+             double result = useCase.Ucp.Value * useCase.Users_Testers.PF.Value;
              useCase.ManHour = result;
              this.service.Save();
          }

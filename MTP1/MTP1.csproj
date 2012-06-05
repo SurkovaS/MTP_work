@@ -72,7 +72,7 @@
     <Compile Include="Controllers\Abstract\BaseController.cs" />
     <Compile Include="Controllers\AccountController.cs" />
     <Compile Include="Controllers\ActorDicController.cs" />
-    <Compile Include="Controllers\UsersController.cs" />
+    <Compile Include="Controllers\Users_PMController.cs" />
     <Compile Include="Controllers\DefectDicController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\EnvironmentFactorDicController.cs" />
@@ -96,6 +96,7 @@
     <Compile Include="Controllers\PrimMetREController.cs" />
     <Compile Include="Controllers\SecMetrREDicController.cs" />
     <Compile Include="Controllers\SecMetrREController.cs" />
+    <Compile Include="Controllers\Users_TestersController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
@@ -103,7 +104,7 @@
     <Compile Include="Helpers\StringUtils.cs" />
     <Compile Include="Models\AccountModels.cs" />
     <Compile Include="Models\ActorDic.cs" />
-    <Compile Include="Models\Users.cs" />
+    <Compile Include="Models\Users_PM.cs" />
     <Compile Include="Models\DefectDic.cs" />
     <Compile Include="Models\Interface\IBase.cs" />
     <Compile Include="Models\MtpDbModel.Designer.cs">
@@ -132,6 +133,7 @@
     <Compile Include="Models\PrimMetrRE.cs" />
     <Compile Include="Models\SecMetrREDic.cs" />
     <Compile Include="Models\SecMetrRE.cs" />
+    <Compile Include="Models\Users_Testers.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="SecondaryMetricsCount.cs" />
     <Compile Include="Service\Abstract\BaseEntityServise.cs" />
@@ -141,9 +143,10 @@
     <Compile Include="Service\Factory\PrimMetrREServiceFactory.cs" />
     <Compile Include="Service\Factory\SecMetrREDicServiceFactory.cs" />
     <Compile Include="Service\Factory\SecMetrREServiceFactory.cs" />
-    <Compile Include="Service\UsersEntityService.cs" />
+    <Compile Include="Service\Factory\Users_TestersServiceFactory.cs" />
+    <Compile Include="Service\Users_PMEntityService.cs" />
     <Compile Include="Service\Factory\ActorDicServiceFactory.cs" />
-    <Compile Include="Service\Factory\UsersServiceFactory.cs" />
+    <Compile Include="Service\Factory\Users_PMServiceFactory.cs" />
     <Compile Include="Service\Factory\DefectDicServiceFactory.cs" />
     <Compile Include="Service\Factory\PrimaryMetricDicServiceFactory.cs" />
     <Compile Include="Service\Factory\PriorityDicServiceFactory.cs" />
@@ -184,6 +187,7 @@
     <Compile Include="Service\PrimMetrREEntityService.cs" />
     <Compile Include="Service\SecMetrREDicEntityService.cs" />
     <Compile Include="Service\SecMetrREEntityService.cs" />
+    <Compile Include="Service\Users_TestersEntityService.cs" />
     <Compile Include="UCP.cs" />
   </ItemGroup>
   <ItemGroup>

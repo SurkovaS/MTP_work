@@ -32,15 +32,17 @@ using System.Runtime.Serialization;
 [assembly: EdmRelationshipAttribute("MtpDbModel", "FK_EnvironmentFactor_WeightCoefficientDic", "WeightCoefficientDic", System.Data.Metadata.Edm.RelationshipMultiplicity.ZeroOrOne, typeof(MTP1.Models.WeightCoefficientDic), "EnvironmentFactor", System.Data.Metadata.Edm.RelationshipMultiplicity.Many, typeof(MTP1.Models.EnvironmentFactor), true)]
 [assembly: EdmRelationshipAttribute("MtpDbModel", "FK_EnvironmentFactor_WeightCoefficientDic1", "WeightCoefficientDic", System.Data.Metadata.Edm.RelationshipMultiplicity.ZeroOrOne, typeof(MTP1.Models.WeightCoefficientDic), "EnvironmentFactor", System.Data.Metadata.Edm.RelationshipMultiplicity.Many, typeof(MTP1.Models.EnvironmentFactor), true)]
 [assembly: EdmRelationshipAttribute("MtpDbModel", "FK_UseCasePrimaryMetric_PrimaryMetricDic", "PrimaryMetricDic", System.Data.Metadata.Edm.RelationshipMultiplicity.One, typeof(MTP1.Models.PrimaryMetricDic), "UseCasePrimaryMetric", System.Data.Metadata.Edm.RelationshipMultiplicity.Many, typeof(MTP1.Models.UseCasePrimaryMetric), true)]
+[assembly: EdmRelationshipAttribute("MtpDbModel", "FK_PrimMetrRE_PrimaryMetricDic", "PrimMetrREDic", System.Data.Metadata.Edm.RelationshipMultiplicity.One, typeof(MTP1.Models.PrimMetrREDic), "PrimMetrRE", System.Data.Metadata.Edm.RelationshipMultiplicity.Many, typeof(MTP1.Models.PrimMetrRE), true)]
+[assembly: EdmRelationshipAttribute("MtpDbModel", "FK_PrimMetrRE_TestProgram", "TestProgram", System.Data.Metadata.Edm.RelationshipMultiplicity.One, typeof(MTP1.Models.TestProgram), "PrimMetrRE", System.Data.Metadata.Edm.RelationshipMultiplicity.Many, typeof(MTP1.Models.PrimMetrRE), true)]
 [assembly: EdmRelationshipAttribute("MtpDbModel", "FK_UseCase_PriorityDic", "PriorityDic", System.Data.Metadata.Edm.RelationshipMultiplicity.ZeroOrOne, typeof(MTP1.Models.PriorityDic), "UseCase", System.Data.Metadata.Edm.RelationshipMultiplicity.Many, typeof(MTP1.Models.UseCase), true)]
 [assembly: EdmRelationshipAttribute("MtpDbModel", "FK_Project_Users", "Users", System.Data.Metadata.Edm.RelationshipMultiplicity.ZeroOrOne, typeof(MTP1.Models.Users), "Project", System.Data.Metadata.Edm.RelationshipMultiplicity.Many, typeof(MTP1.Models.Project), true)]
 [assembly: EdmRelationshipAttribute("MtpDbModel", "FK_Project_Users1", "Users", System.Data.Metadata.Edm.RelationshipMultiplicity.ZeroOrOne, typeof(MTP1.Models.Users), "Project", System.Data.Metadata.Edm.RelationshipMultiplicity.Many, typeof(MTP1.Models.Project), true)]
-[assembly: EdmRelationshipAttribute("MtpDbModel", "FK_ReliabilityEvaluation_Project", "Project", System.Data.Metadata.Edm.RelationshipMultiplicity.One, typeof(MTP1.Models.Project), "ReliabilityEvaluation", System.Data.Metadata.Edm.RelationshipMultiplicity.Many, typeof(MTP1.Models.ReliabilityEvaluation), true)]
 [assembly: EdmRelationshipAttribute("MtpDbModel", "FK_TestProgram_Project", "Project", System.Data.Metadata.Edm.RelationshipMultiplicity.One, typeof(MTP1.Models.Project), "TestProgram", System.Data.Metadata.Edm.RelationshipMultiplicity.Many, typeof(MTP1.Models.TestProgram), true)]
 [assembly: EdmRelationshipAttribute("MtpDbModel", "FK_UseCase_Project", "Project", System.Data.Metadata.Edm.RelationshipMultiplicity.ZeroOrOne, typeof(MTP1.Models.Project), "UseCase", System.Data.Metadata.Edm.RelationshipMultiplicity.Many, typeof(MTP1.Models.UseCase), true)]
-[assembly: EdmRelationshipAttribute("MtpDbModel", "FK_UseCasePrimaryMetric_Project", "Project", System.Data.Metadata.Edm.RelationshipMultiplicity.ZeroOrOne, typeof(MTP1.Models.Project), "UseCasePrimaryMetric", System.Data.Metadata.Edm.RelationshipMultiplicity.Many, typeof(MTP1.Models.UseCasePrimaryMetric), true)]
 [assembly: EdmRelationshipAttribute("MtpDbModel", "FK_ReliabilityEvaluation_ReliabilityEvaluationDic", "ReliabilityEvaluationDic", System.Data.Metadata.Edm.RelationshipMultiplicity.One, typeof(MTP1.Models.ReliabilityEvaluationDic), "ReliabilityEvaluation", System.Data.Metadata.Edm.RelationshipMultiplicity.Many, typeof(MTP1.Models.ReliabilityEvaluation), true)]
-[assembly: EdmRelationshipAttribute("MtpDbModel", "FK_ReliabilityEvaluation_TestProgram", "TestProgram", System.Data.Metadata.Edm.RelationshipMultiplicity.ZeroOrOne, typeof(MTP1.Models.TestProgram), "ReliabilityEvaluation", System.Data.Metadata.Edm.RelationshipMultiplicity.Many, typeof(MTP1.Models.ReliabilityEvaluation), true)]
+[assembly: EdmRelationshipAttribute("MtpDbModel", "FK_ReliabilityEvaluation_TestProgram", "TestProgram", System.Data.Metadata.Edm.RelationshipMultiplicity.One, typeof(MTP1.Models.TestProgram), "ReliabilityEvaluation", System.Data.Metadata.Edm.RelationshipMultiplicity.Many, typeof(MTP1.Models.ReliabilityEvaluation), true)]
+[assembly: EdmRelationshipAttribute("MtpDbModel", "FK_SecMetrRE_SecMetrREDic", "SecMetrREDic", System.Data.Metadata.Edm.RelationshipMultiplicity.One, typeof(MTP1.Models.SecMetrREDic), "SecMetrRE", System.Data.Metadata.Edm.RelationshipMultiplicity.Many, typeof(MTP1.Models.SecMetrRE), true)]
+[assembly: EdmRelationshipAttribute("MtpDbModel", "FK_SecMetrRE_TestProgram", "TestProgram", System.Data.Metadata.Edm.RelationshipMultiplicity.One, typeof(MTP1.Models.TestProgram), "SecMetrRE", System.Data.Metadata.Edm.RelationshipMultiplicity.Many, typeof(MTP1.Models.SecMetrRE), true)]
 [assembly: EdmRelationshipAttribute("MtpDbModel", "FK_UseCaseSecondaryMetric_MetricDic", "SecondaryMetricDic", System.Data.Metadata.Edm.RelationshipMultiplicity.One, typeof(MTP1.Models.SecondaryMetricDic), "UseCaseSecondaryMetric", System.Data.Metadata.Edm.RelationshipMultiplicity.Many, typeof(MTP1.Models.UseCaseSecondaryMetric), true)]
 [assembly: EdmRelationshipAttribute("MtpDbModel", "FK_TechnicalFactor_TechnicalFactorDic", "TechnicalFactorDic", System.Data.Metadata.Edm.RelationshipMultiplicity.One, typeof(MTP1.Models.TechnicalFactorDic), "TechnicalFactor", System.Data.Metadata.Edm.RelationshipMultiplicity.Many, typeof(MTP1.Models.TechnicalFactor), true)]
 [assembly: EdmRelationshipAttribute("MtpDbModel", "FK_TechnicalFactor_UseCase", "UseCase", System.Data.Metadata.Edm.RelationshipMultiplicity.One, typeof(MTP1.Models.UseCase), "TechnicalFactor", System.Data.Metadata.Edm.RelationshipMultiplicity.Many, typeof(MTP1.Models.TechnicalFactor), true)]
@@ -48,9 +50,8 @@ using System.Runtime.Serialization;
 [assembly: EdmRelationshipAttribute("MtpDbModel", "FK_TechnicalFactor_WeightCoefficientDic1", "WeightCoefficientDic", System.Data.Metadata.Edm.RelationshipMultiplicity.ZeroOrOne, typeof(MTP1.Models.WeightCoefficientDic), "TechnicalFactor", System.Data.Metadata.Edm.RelationshipMultiplicity.Many, typeof(MTP1.Models.TechnicalFactor), true)]
 [assembly: EdmRelationshipAttribute("MtpDbModel", "FK_TestProgram_Users", "Users", System.Data.Metadata.Edm.RelationshipMultiplicity.ZeroOrOne, typeof(MTP1.Models.Users), "TestProgram", System.Data.Metadata.Edm.RelationshipMultiplicity.Many, typeof(MTP1.Models.TestProgram), true)]
 [assembly: EdmRelationshipAttribute("MtpDbModel", "FK_UseCase_TestProgram", "TestProgram", System.Data.Metadata.Edm.RelationshipMultiplicity.ZeroOrOne, typeof(MTP1.Models.TestProgram), "UseCase", System.Data.Metadata.Edm.RelationshipMultiplicity.Many, typeof(MTP1.Models.UseCase), true)]
-[assembly: EdmRelationshipAttribute("MtpDbModel", "FK_UseCasePrimaryMetric_TestProgram", "TestProgram", System.Data.Metadata.Edm.RelationshipMultiplicity.ZeroOrOne, typeof(MTP1.Models.TestProgram), "UseCasePrimaryMetric", System.Data.Metadata.Edm.RelationshipMultiplicity.Many, typeof(MTP1.Models.UseCasePrimaryMetric), true)]
 [assembly: EdmRelationshipAttribute("MtpDbModel", "FK_UseCase_Users", "Users", System.Data.Metadata.Edm.RelationshipMultiplicity.ZeroOrOne, typeof(MTP1.Models.Users), "UseCase", System.Data.Metadata.Edm.RelationshipMultiplicity.Many, typeof(MTP1.Models.UseCase), true)]
-[assembly: EdmRelationshipAttribute("MtpDbModel", "FK_UseCasePrimaryMetric_UseCase", "UseCase", System.Data.Metadata.Edm.RelationshipMultiplicity.ZeroOrOne, typeof(MTP1.Models.UseCase), "UseCasePrimaryMetric", System.Data.Metadata.Edm.RelationshipMultiplicity.Many, typeof(MTP1.Models.UseCasePrimaryMetric), true)]
+[assembly: EdmRelationshipAttribute("MtpDbModel", "FK_UseCasePrimaryMetric_UseCase", "UseCase", System.Data.Metadata.Edm.RelationshipMultiplicity.One, typeof(MTP1.Models.UseCase), "UseCasePrimaryMetric", System.Data.Metadata.Edm.RelationshipMultiplicity.Many, typeof(MTP1.Models.UseCasePrimaryMetric), true)]
 [assembly: EdmRelationshipAttribute("MtpDbModel", "FK_UseCaseSecondaryMetric_UseCase", "UseCase", System.Data.Metadata.Edm.RelationshipMultiplicity.One, typeof(MTP1.Models.UseCase), "UseCaseSecondaryMetric", System.Data.Metadata.Edm.RelationshipMultiplicity.Many, typeof(MTP1.Models.UseCaseSecondaryMetric), true)]
 
 #endregion
@@ -234,6 +235,38 @@ namespace MTP1.Models
         /// <summary>
         /// Нет доступной документации по метаданным.
         /// </summary>
+        public ObjectSet<PrimMetrRE> PrimMetrRE
+        {
+            get
+            {
+                if ((_PrimMetrRE == null))
+                {
+                    _PrimMetrRE = base.CreateObjectSet<PrimMetrRE>("PrimMetrRE");
+                }
+                return _PrimMetrRE;
+            }
+        }
+        private ObjectSet<PrimMetrRE> _PrimMetrRE;
+    
+        /// <summary>
+        /// Нет доступной документации по метаданным.
+        /// </summary>
+        public ObjectSet<PrimMetrREDic> PrimMetrREDic
+        {
+            get
+            {
+                if ((_PrimMetrREDic == null))
+                {
+                    _PrimMetrREDic = base.CreateObjectSet<PrimMetrREDic>("PrimMetrREDic");
+                }
+                return _PrimMetrREDic;
+            }
+        }
+        private ObjectSet<PrimMetrREDic> _PrimMetrREDic;
+    
+        /// <summary>
+        /// Нет доступной документации по метаданным.
+        /// </summary>
         public ObjectSet<PriorityDic> PriorityDic
         {
             get
@@ -294,6 +327,38 @@ namespace MTP1.Models
             }
         }
         private ObjectSet<ReliabilityEvaluationDic> _ReliabilityEvaluationDic;
+    
+        /// <summary>
+        /// Нет доступной документации по метаданным.
+        /// </summary>
+        public ObjectSet<SecMetrRE> SecMetrRE
+        {
+            get
+            {
+                if ((_SecMetrRE == null))
+                {
+                    _SecMetrRE = base.CreateObjectSet<SecMetrRE>("SecMetrRE");
+                }
+                return _SecMetrRE;
+            }
+        }
+        private ObjectSet<SecMetrRE> _SecMetrRE;
+    
+        /// <summary>
+        /// Нет доступной документации по метаданным.
+        /// </summary>
+        public ObjectSet<SecMetrREDic> SecMetrREDic
+        {
+            get
+            {
+                if ((_SecMetrREDic == null))
+                {
+                    _SecMetrREDic = base.CreateObjectSet<SecMetrREDic>("SecMetrREDic");
+                }
+                return _SecMetrREDic;
+            }
+        }
+        private ObjectSet<SecMetrREDic> _SecMetrREDic;
     
         /// <summary>
         /// Нет доступной документации по метаданным.
@@ -523,6 +588,22 @@ namespace MTP1.Models
         }
     
         /// <summary>
+        /// Устаревший метод для добавления новых объектов в набор EntitySet PrimMetrRE. Взамен можно использовать метод .Add связанного свойства ObjectSet&lt;T&gt;.
+        /// </summary>
+        public void AddToPrimMetrRE(PrimMetrRE primMetrRE)
+        {
+            base.AddObject("PrimMetrRE", primMetrRE);
+        }
+    
+        /// <summary>
+        /// Устаревший метод для добавления новых объектов в набор EntitySet PrimMetrREDic. Взамен можно использовать метод .Add связанного свойства ObjectSet&lt;T&gt;.
+        /// </summary>
+        public void AddToPrimMetrREDic(PrimMetrREDic primMetrREDic)
+        {
+            base.AddObject("PrimMetrREDic", primMetrREDic);
+        }
+    
+        /// <summary>
         /// Устаревший метод для добавления новых объектов в набор EntitySet PriorityDic. Взамен можно использовать метод .Add связанного свойства ObjectSet&lt;T&gt;.
         /// </summary>
         public void AddToPriorityDic(PriorityDic priorityDic)
@@ -552,6 +633,22 @@ namespace MTP1.Models
         public void AddToReliabilityEvaluationDic(ReliabilityEvaluationDic reliabilityEvaluationDic)
         {
             base.AddObject("ReliabilityEvaluationDic", reliabilityEvaluationDic);
+        }
+    
+        /// <summary>
+        /// Устаревший метод для добавления новых объектов в набор EntitySet SecMetrRE. Взамен можно использовать метод .Add связанного свойства ObjectSet&lt;T&gt;.
+        /// </summary>
+        public void AddToSecMetrRE(SecMetrRE secMetrRE)
+        {
+            base.AddObject("SecMetrRE", secMetrRE);
+        }
+    
+        /// <summary>
+        /// Устаревший метод для добавления новых объектов в набор EntitySet SecMetrREDic. Взамен можно использовать метод .Add связанного свойства ObjectSet&lt;T&gt;.
+        /// </summary>
+        public void AddToSecMetrREDic(SecMetrREDic secMetrREDic)
+        {
+            base.AddObject("SecMetrREDic", secMetrREDic);
         }
     
         /// <summary>
@@ -2321,6 +2418,346 @@ namespace MTP1.Models
     /// <summary>
     /// Нет доступной документации по метаданным.
     /// </summary>
+    [EdmEntityTypeAttribute(NamespaceName="MtpDbModel", Name="PrimMetrRE")]
+    [Serializable()]
+    [DataContractAttribute(IsReference=true)]
+    public partial class PrimMetrRE : EntityObject
+    {
+        #region Фабричный метод
+    
+        /// <summary>
+        /// Создание нового объекта PrimMetrRE.
+        /// </summary>
+        /// <param name="id">Исходное значение свойства ID.</param>
+        /// <param name="program">Исходное значение свойства Program.</param>
+        /// <param name="pMRE">Исходное значение свойства PMRE.</param>
+        public static PrimMetrRE CreatePrimMetrRE(global::System.Int32 id, global::System.Int32 program, global::System.Int32 pMRE)
+        {
+            PrimMetrRE primMetrRE = new PrimMetrRE();
+            primMetrRE.ID = id;
+            primMetrRE.Program = program;
+            primMetrRE.PMRE = pMRE;
+            return primMetrRE;
+        }
+
+        #endregion
+        #region Свойства-примитивы
+    
+        /// <summary>
+        /// Нет доступной документации по метаданным.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=true, IsNullable=false)]
+        [DataMemberAttribute()]
+        public global::System.Int32 ID
+        {
+            get
+            {
+                return _ID;
+            }
+            set
+            {
+                if (_ID != value)
+                {
+                    OnIDChanging(value);
+                    ReportPropertyChanging("ID");
+                    _ID = StructuralObject.SetValidValue(value);
+                    ReportPropertyChanged("ID");
+                    OnIDChanged();
+                }
+            }
+        }
+        private global::System.Int32 _ID;
+        partial void OnIDChanging(global::System.Int32 value);
+        partial void OnIDChanged();
+    
+        /// <summary>
+        /// Нет доступной документации по метаданным.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=false)]
+        [DataMemberAttribute()]
+        public global::System.Int32 Program
+        {
+            get
+            {
+                return _Program;
+            }
+            set
+            {
+                OnProgramChanging(value);
+                ReportPropertyChanging("Program");
+                _Program = StructuralObject.SetValidValue(value);
+                ReportPropertyChanged("Program");
+                OnProgramChanged();
+            }
+        }
+        private global::System.Int32 _Program;
+        partial void OnProgramChanging(global::System.Int32 value);
+        partial void OnProgramChanged();
+    
+        /// <summary>
+        /// Нет доступной документации по метаданным.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=false)]
+        [DataMemberAttribute()]
+        public global::System.Int32 PMRE
+        {
+            get
+            {
+                return _PMRE;
+            }
+            set
+            {
+                OnPMREChanging(value);
+                ReportPropertyChanging("PMRE");
+                _PMRE = StructuralObject.SetValidValue(value);
+                ReportPropertyChanged("PMRE");
+                OnPMREChanged();
+            }
+        }
+        private global::System.Int32 _PMRE;
+        partial void OnPMREChanging(global::System.Int32 value);
+        partial void OnPMREChanged();
+    
+        /// <summary>
+        /// Нет доступной документации по метаданным.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=true)]
+        [DataMemberAttribute()]
+        public Nullable<global::System.Double> Value
+        {
+            get
+            {
+                return _Value;
+            }
+            set
+            {
+                OnValueChanging(value);
+                ReportPropertyChanging("Value");
+                _Value = StructuralObject.SetValidValue(value);
+                ReportPropertyChanged("Value");
+                OnValueChanged();
+            }
+        }
+        private Nullable<global::System.Double> _Value;
+        partial void OnValueChanging(Nullable<global::System.Double> value);
+        partial void OnValueChanged();
+
+        #endregion
+    
+        #region Свойства навигации
+    
+        /// <summary>
+        /// Нет доступной документации по метаданным.
+        /// </summary>
+        [XmlIgnoreAttribute()]
+        [SoapIgnoreAttribute()]
+        [DataMemberAttribute()]
+        [EdmRelationshipNavigationPropertyAttribute("MtpDbModel", "FK_PrimMetrRE_PrimaryMetricDic", "PrimMetrREDic")]
+        public PrimMetrREDic PrimMetrREDic
+        {
+            get
+            {
+                return ((IEntityWithRelationships)this).RelationshipManager.GetRelatedReference<PrimMetrREDic>("MtpDbModel.FK_PrimMetrRE_PrimaryMetricDic", "PrimMetrREDic").Value;
+            }
+            set
+            {
+                ((IEntityWithRelationships)this).RelationshipManager.GetRelatedReference<PrimMetrREDic>("MtpDbModel.FK_PrimMetrRE_PrimaryMetricDic", "PrimMetrREDic").Value = value;
+            }
+        }
+        /// <summary>
+        /// Нет доступной документации по метаданным.
+        /// </summary>
+        [BrowsableAttribute(false)]
+        [DataMemberAttribute()]
+        public EntityReference<PrimMetrREDic> PrimMetrREDicReference
+        {
+            get
+            {
+                return ((IEntityWithRelationships)this).RelationshipManager.GetRelatedReference<PrimMetrREDic>("MtpDbModel.FK_PrimMetrRE_PrimaryMetricDic", "PrimMetrREDic");
+            }
+            set
+            {
+                if ((value != null))
+                {
+                    ((IEntityWithRelationships)this).RelationshipManager.InitializeRelatedReference<PrimMetrREDic>("MtpDbModel.FK_PrimMetrRE_PrimaryMetricDic", "PrimMetrREDic", value);
+                }
+            }
+        }
+    
+        /// <summary>
+        /// Нет доступной документации по метаданным.
+        /// </summary>
+        [XmlIgnoreAttribute()]
+        [SoapIgnoreAttribute()]
+        [DataMemberAttribute()]
+        [EdmRelationshipNavigationPropertyAttribute("MtpDbModel", "FK_PrimMetrRE_TestProgram", "TestProgram")]
+        public TestProgram TestProgram
+        {
+            get
+            {
+                return ((IEntityWithRelationships)this).RelationshipManager.GetRelatedReference<TestProgram>("MtpDbModel.FK_PrimMetrRE_TestProgram", "TestProgram").Value;
+            }
+            set
+            {
+                ((IEntityWithRelationships)this).RelationshipManager.GetRelatedReference<TestProgram>("MtpDbModel.FK_PrimMetrRE_TestProgram", "TestProgram").Value = value;
+            }
+        }
+        /// <summary>
+        /// Нет доступной документации по метаданным.
+        /// </summary>
+        [BrowsableAttribute(false)]
+        [DataMemberAttribute()]
+        public EntityReference<TestProgram> TestProgramReference
+        {
+            get
+            {
+                return ((IEntityWithRelationships)this).RelationshipManager.GetRelatedReference<TestProgram>("MtpDbModel.FK_PrimMetrRE_TestProgram", "TestProgram");
+            }
+            set
+            {
+                if ((value != null))
+                {
+                    ((IEntityWithRelationships)this).RelationshipManager.InitializeRelatedReference<TestProgram>("MtpDbModel.FK_PrimMetrRE_TestProgram", "TestProgram", value);
+                }
+            }
+        }
+
+        #endregion
+    }
+    
+    /// <summary>
+    /// Нет доступной документации по метаданным.
+    /// </summary>
+    [EdmEntityTypeAttribute(NamespaceName="MtpDbModel", Name="PrimMetrREDic")]
+    [Serializable()]
+    [DataContractAttribute(IsReference=true)]
+    public partial class PrimMetrREDic : EntityObject
+    {
+        #region Фабричный метод
+    
+        /// <summary>
+        /// Создание нового объекта PrimMetrREDic.
+        /// </summary>
+        /// <param name="id">Исходное значение свойства ID.</param>
+        /// <param name="title">Исходное значение свойства Title.</param>
+        public static PrimMetrREDic CreatePrimMetrREDic(global::System.Int32 id, global::System.String title)
+        {
+            PrimMetrREDic primMetrREDic = new PrimMetrREDic();
+            primMetrREDic.ID = id;
+            primMetrREDic.Title = title;
+            return primMetrREDic;
+        }
+
+        #endregion
+        #region Свойства-примитивы
+    
+        /// <summary>
+        /// Нет доступной документации по метаданным.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=true, IsNullable=false)]
+        [DataMemberAttribute()]
+        public global::System.Int32 ID
+        {
+            get
+            {
+                return _ID;
+            }
+            set
+            {
+                if (_ID != value)
+                {
+                    OnIDChanging(value);
+                    ReportPropertyChanging("ID");
+                    _ID = StructuralObject.SetValidValue(value);
+                    ReportPropertyChanged("ID");
+                    OnIDChanged();
+                }
+            }
+        }
+        private global::System.Int32 _ID;
+        partial void OnIDChanging(global::System.Int32 value);
+        partial void OnIDChanged();
+    
+        /// <summary>
+        /// Нет доступной документации по метаданным.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=false)]
+        [DataMemberAttribute()]
+        public global::System.String Title
+        {
+            get
+            {
+                return _Title;
+            }
+            set
+            {
+                OnTitleChanging(value);
+                ReportPropertyChanging("Title");
+                _Title = StructuralObject.SetValidValue(value, false);
+                ReportPropertyChanged("Title");
+                OnTitleChanged();
+            }
+        }
+        private global::System.String _Title;
+        partial void OnTitleChanging(global::System.String value);
+        partial void OnTitleChanged();
+    
+        /// <summary>
+        /// Нет доступной документации по метаданным.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=true)]
+        [DataMemberAttribute()]
+        public global::System.String Description
+        {
+            get
+            {
+                return _Description;
+            }
+            set
+            {
+                OnDescriptionChanging(value);
+                ReportPropertyChanging("Description");
+                _Description = StructuralObject.SetValidValue(value, true);
+                ReportPropertyChanged("Description");
+                OnDescriptionChanged();
+            }
+        }
+        private global::System.String _Description;
+        partial void OnDescriptionChanging(global::System.String value);
+        partial void OnDescriptionChanged();
+
+        #endregion
+    
+        #region Свойства навигации
+    
+        /// <summary>
+        /// Нет доступной документации по метаданным.
+        /// </summary>
+        [XmlIgnoreAttribute()]
+        [SoapIgnoreAttribute()]
+        [DataMemberAttribute()]
+        [EdmRelationshipNavigationPropertyAttribute("MtpDbModel", "FK_PrimMetrRE_PrimaryMetricDic", "PrimMetrRE")]
+        public EntityCollection<PrimMetrRE> PrimMetrRE
+        {
+            get
+            {
+                return ((IEntityWithRelationships)this).RelationshipManager.GetRelatedCollection<PrimMetrRE>("MtpDbModel.FK_PrimMetrRE_PrimaryMetricDic", "PrimMetrRE");
+            }
+            set
+            {
+                if ((value != null))
+                {
+                    ((IEntityWithRelationships)this).RelationshipManager.InitializeRelatedCollection<PrimMetrRE>("MtpDbModel.FK_PrimMetrRE_PrimaryMetricDic", "PrimMetrRE", value);
+                }
+            }
+        }
+
+        #endregion
+    }
+    
+    /// <summary>
+    /// Нет доступной документации по метаданным.
+    /// </summary>
     [EdmEntityTypeAttribute(NamespaceName="MtpDbModel", Name="PriorityDic")]
     [Serializable()]
     [DataContractAttribute(IsReference=true)]
@@ -2753,28 +3190,6 @@ namespace MTP1.Models
         [XmlIgnoreAttribute()]
         [SoapIgnoreAttribute()]
         [DataMemberAttribute()]
-        [EdmRelationshipNavigationPropertyAttribute("MtpDbModel", "FK_ReliabilityEvaluation_Project", "ReliabilityEvaluation")]
-        public EntityCollection<ReliabilityEvaluation> ReliabilityEvaluation
-        {
-            get
-            {
-                return ((IEntityWithRelationships)this).RelationshipManager.GetRelatedCollection<ReliabilityEvaluation>("MtpDbModel.FK_ReliabilityEvaluation_Project", "ReliabilityEvaluation");
-            }
-            set
-            {
-                if ((value != null))
-                {
-                    ((IEntityWithRelationships)this).RelationshipManager.InitializeRelatedCollection<ReliabilityEvaluation>("MtpDbModel.FK_ReliabilityEvaluation_Project", "ReliabilityEvaluation", value);
-                }
-            }
-        }
-    
-        /// <summary>
-        /// Нет доступной документации по метаданным.
-        /// </summary>
-        [XmlIgnoreAttribute()]
-        [SoapIgnoreAttribute()]
-        [DataMemberAttribute()]
         [EdmRelationshipNavigationPropertyAttribute("MtpDbModel", "FK_TestProgram_Project", "TestProgram")]
         public EntityCollection<TestProgram> TestProgram
         {
@@ -2812,28 +3227,6 @@ namespace MTP1.Models
                 }
             }
         }
-    
-        /// <summary>
-        /// Нет доступной документации по метаданным.
-        /// </summary>
-        [XmlIgnoreAttribute()]
-        [SoapIgnoreAttribute()]
-        [DataMemberAttribute()]
-        [EdmRelationshipNavigationPropertyAttribute("MtpDbModel", "FK_UseCasePrimaryMetric_Project", "UseCasePrimaryMetric")]
-        public EntityCollection<UseCasePrimaryMetric> UseCasePrimaryMetric
-        {
-            get
-            {
-                return ((IEntityWithRelationships)this).RelationshipManager.GetRelatedCollection<UseCasePrimaryMetric>("MtpDbModel.FK_UseCasePrimaryMetric_Project", "UseCasePrimaryMetric");
-            }
-            set
-            {
-                if ((value != null))
-                {
-                    ((IEntityWithRelationships)this).RelationshipManager.InitializeRelatedCollection<UseCasePrimaryMetric>("MtpDbModel.FK_UseCasePrimaryMetric_Project", "UseCasePrimaryMetric", value);
-                }
-            }
-        }
 
         #endregion
     }
@@ -2852,16 +3245,14 @@ namespace MTP1.Models
         /// Создание нового объекта ReliabilityEvaluation.
         /// </summary>
         /// <param name="id">Исходное значение свойства ID.</param>
-        /// <param name="reliabilityEvaluation1">Исходное значение свойства ReliabilityEvaluation1.</param>
-        /// <param name="value">Исходное значение свойства Value.</param>
-        /// <param name="project">Исходное значение свойства Project.</param>
-        public static ReliabilityEvaluation CreateReliabilityEvaluation(global::System.Int32 id, global::System.Int32 reliabilityEvaluation1, global::System.Int32 value, global::System.Int32 project)
+        /// <param name="program">Исходное значение свойства Program.</param>
+        /// <param name="rE">Исходное значение свойства RE.</param>
+        public static ReliabilityEvaluation CreateReliabilityEvaluation(global::System.Int32 id, global::System.Int32 program, global::System.Int32 rE)
         {
             ReliabilityEvaluation reliabilityEvaluation = new ReliabilityEvaluation();
             reliabilityEvaluation.ID = id;
-            reliabilityEvaluation.ReliabilityEvaluation1 = reliabilityEvaluation1;
-            reliabilityEvaluation.Value = value;
-            reliabilityEvaluation.Project = project;
+            reliabilityEvaluation.Program = program;
+            reliabilityEvaluation.RE = rE;
             return reliabilityEvaluation;
         }
 
@@ -2900,79 +3291,7 @@ namespace MTP1.Models
         /// </summary>
         [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=false)]
         [DataMemberAttribute()]
-        public global::System.Int32 ReliabilityEvaluation1
-        {
-            get
-            {
-                return _ReliabilityEvaluation1;
-            }
-            set
-            {
-                OnReliabilityEvaluation1Changing(value);
-                ReportPropertyChanging("ReliabilityEvaluation1");
-                _ReliabilityEvaluation1 = StructuralObject.SetValidValue(value);
-                ReportPropertyChanged("ReliabilityEvaluation1");
-                OnReliabilityEvaluation1Changed();
-            }
-        }
-        private global::System.Int32 _ReliabilityEvaluation1;
-        partial void OnReliabilityEvaluation1Changing(global::System.Int32 value);
-        partial void OnReliabilityEvaluation1Changed();
-    
-        /// <summary>
-        /// Нет доступной документации по метаданным.
-        /// </summary>
-        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=false)]
-        [DataMemberAttribute()]
-        public global::System.Int32 Value
-        {
-            get
-            {
-                return _Value;
-            }
-            set
-            {
-                OnValueChanging(value);
-                ReportPropertyChanging("Value");
-                _Value = StructuralObject.SetValidValue(value);
-                ReportPropertyChanged("Value");
-                OnValueChanged();
-            }
-        }
-        private global::System.Int32 _Value;
-        partial void OnValueChanging(global::System.Int32 value);
-        partial void OnValueChanged();
-    
-        /// <summary>
-        /// Нет доступной документации по метаданным.
-        /// </summary>
-        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=false)]
-        [DataMemberAttribute()]
-        public global::System.Int32 Project
-        {
-            get
-            {
-                return _Project;
-            }
-            set
-            {
-                OnProjectChanging(value);
-                ReportPropertyChanging("Project");
-                _Project = StructuralObject.SetValidValue(value);
-                ReportPropertyChanged("Project");
-                OnProjectChanged();
-            }
-        }
-        private global::System.Int32 _Project;
-        partial void OnProjectChanging(global::System.Int32 value);
-        partial void OnProjectChanged();
-    
-        /// <summary>
-        /// Нет доступной документации по метаданным.
-        /// </summary>
-        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=true)]
-        [DataMemberAttribute()]
-        public Nullable<global::System.Int32> Program
+        public global::System.Int32 Program
         {
             get
             {
@@ -2987,51 +3306,61 @@ namespace MTP1.Models
                 OnProgramChanged();
             }
         }
-        private Nullable<global::System.Int32> _Program;
-        partial void OnProgramChanging(Nullable<global::System.Int32> value);
+        private global::System.Int32 _Program;
+        partial void OnProgramChanging(global::System.Int32 value);
         partial void OnProgramChanged();
+    
+        /// <summary>
+        /// Нет доступной документации по метаданным.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=false)]
+        [DataMemberAttribute()]
+        public global::System.Int32 RE
+        {
+            get
+            {
+                return _RE;
+            }
+            set
+            {
+                OnREChanging(value);
+                ReportPropertyChanging("RE");
+                _RE = StructuralObject.SetValidValue(value);
+                ReportPropertyChanged("RE");
+                OnREChanged();
+            }
+        }
+        private global::System.Int32 _RE;
+        partial void OnREChanging(global::System.Int32 value);
+        partial void OnREChanged();
+    
+        /// <summary>
+        /// Нет доступной документации по метаданным.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=true)]
+        [DataMemberAttribute()]
+        public Nullable<global::System.Double> Value
+        {
+            get
+            {
+                return _Value;
+            }
+            set
+            {
+                OnValueChanging(value);
+                ReportPropertyChanging("Value");
+                _Value = StructuralObject.SetValidValue(value);
+                ReportPropertyChanged("Value");
+                OnValueChanged();
+            }
+        }
+        private Nullable<global::System.Double> _Value;
+        partial void OnValueChanging(Nullable<global::System.Double> value);
+        partial void OnValueChanged();
 
         #endregion
     
         #region Свойства навигации
-    
-        /// <summary>
-        /// Нет доступной документации по метаданным.
-        /// </summary>
-        [XmlIgnoreAttribute()]
-        [SoapIgnoreAttribute()]
-        [DataMemberAttribute()]
-        [EdmRelationshipNavigationPropertyAttribute("MtpDbModel", "FK_ReliabilityEvaluation_Project", "Project")]
-        public Project Project1
-        {
-            get
-            {
-                return ((IEntityWithRelationships)this).RelationshipManager.GetRelatedReference<Project>("MtpDbModel.FK_ReliabilityEvaluation_Project", "Project").Value;
-            }
-            set
-            {
-                ((IEntityWithRelationships)this).RelationshipManager.GetRelatedReference<Project>("MtpDbModel.FK_ReliabilityEvaluation_Project", "Project").Value = value;
-            }
-        }
-        /// <summary>
-        /// Нет доступной документации по метаданным.
-        /// </summary>
-        [BrowsableAttribute(false)]
-        [DataMemberAttribute()]
-        public EntityReference<Project> Project1Reference
-        {
-            get
-            {
-                return ((IEntityWithRelationships)this).RelationshipManager.GetRelatedReference<Project>("MtpDbModel.FK_ReliabilityEvaluation_Project", "Project");
-            }
-            set
-            {
-                if ((value != null))
-                {
-                    ((IEntityWithRelationships)this).RelationshipManager.InitializeRelatedReference<Project>("MtpDbModel.FK_ReliabilityEvaluation_Project", "Project", value);
-                }
-            }
-        }
     
         /// <summary>
         /// Нет доступной документации по метаданным.
@@ -3235,6 +3564,346 @@ namespace MTP1.Models
                 if ((value != null))
                 {
                     ((IEntityWithRelationships)this).RelationshipManager.InitializeRelatedCollection<ReliabilityEvaluation>("MtpDbModel.FK_ReliabilityEvaluation_ReliabilityEvaluationDic", "ReliabilityEvaluation", value);
+                }
+            }
+        }
+
+        #endregion
+    }
+    
+    /// <summary>
+    /// Нет доступной документации по метаданным.
+    /// </summary>
+    [EdmEntityTypeAttribute(NamespaceName="MtpDbModel", Name="SecMetrRE")]
+    [Serializable()]
+    [DataContractAttribute(IsReference=true)]
+    public partial class SecMetrRE : EntityObject
+    {
+        #region Фабричный метод
+    
+        /// <summary>
+        /// Создание нового объекта SecMetrRE.
+        /// </summary>
+        /// <param name="id">Исходное значение свойства ID.</param>
+        /// <param name="program">Исходное значение свойства Program.</param>
+        /// <param name="sMRE">Исходное значение свойства SMRE.</param>
+        public static SecMetrRE CreateSecMetrRE(global::System.Int32 id, global::System.Int32 program, global::System.Int32 sMRE)
+        {
+            SecMetrRE secMetrRE = new SecMetrRE();
+            secMetrRE.ID = id;
+            secMetrRE.Program = program;
+            secMetrRE.SMRE = sMRE;
+            return secMetrRE;
+        }
+
+        #endregion
+        #region Свойства-примитивы
+    
+        /// <summary>
+        /// Нет доступной документации по метаданным.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=true, IsNullable=false)]
+        [DataMemberAttribute()]
+        public global::System.Int32 ID
+        {
+            get
+            {
+                return _ID;
+            }
+            set
+            {
+                if (_ID != value)
+                {
+                    OnIDChanging(value);
+                    ReportPropertyChanging("ID");
+                    _ID = StructuralObject.SetValidValue(value);
+                    ReportPropertyChanged("ID");
+                    OnIDChanged();
+                }
+            }
+        }
+        private global::System.Int32 _ID;
+        partial void OnIDChanging(global::System.Int32 value);
+        partial void OnIDChanged();
+    
+        /// <summary>
+        /// Нет доступной документации по метаданным.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=false)]
+        [DataMemberAttribute()]
+        public global::System.Int32 Program
+        {
+            get
+            {
+                return _Program;
+            }
+            set
+            {
+                OnProgramChanging(value);
+                ReportPropertyChanging("Program");
+                _Program = StructuralObject.SetValidValue(value);
+                ReportPropertyChanged("Program");
+                OnProgramChanged();
+            }
+        }
+        private global::System.Int32 _Program;
+        partial void OnProgramChanging(global::System.Int32 value);
+        partial void OnProgramChanged();
+    
+        /// <summary>
+        /// Нет доступной документации по метаданным.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=false)]
+        [DataMemberAttribute()]
+        public global::System.Int32 SMRE
+        {
+            get
+            {
+                return _SMRE;
+            }
+            set
+            {
+                OnSMREChanging(value);
+                ReportPropertyChanging("SMRE");
+                _SMRE = StructuralObject.SetValidValue(value);
+                ReportPropertyChanged("SMRE");
+                OnSMREChanged();
+            }
+        }
+        private global::System.Int32 _SMRE;
+        partial void OnSMREChanging(global::System.Int32 value);
+        partial void OnSMREChanged();
+    
+        /// <summary>
+        /// Нет доступной документации по метаданным.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=true)]
+        [DataMemberAttribute()]
+        public Nullable<global::System.Double> Value
+        {
+            get
+            {
+                return _Value;
+            }
+            set
+            {
+                OnValueChanging(value);
+                ReportPropertyChanging("Value");
+                _Value = StructuralObject.SetValidValue(value);
+                ReportPropertyChanged("Value");
+                OnValueChanged();
+            }
+        }
+        private Nullable<global::System.Double> _Value;
+        partial void OnValueChanging(Nullable<global::System.Double> value);
+        partial void OnValueChanged();
+
+        #endregion
+    
+        #region Свойства навигации
+    
+        /// <summary>
+        /// Нет доступной документации по метаданным.
+        /// </summary>
+        [XmlIgnoreAttribute()]
+        [SoapIgnoreAttribute()]
+        [DataMemberAttribute()]
+        [EdmRelationshipNavigationPropertyAttribute("MtpDbModel", "FK_SecMetrRE_SecMetrREDic", "SecMetrREDic")]
+        public SecMetrREDic SecMetrREDic
+        {
+            get
+            {
+                return ((IEntityWithRelationships)this).RelationshipManager.GetRelatedReference<SecMetrREDic>("MtpDbModel.FK_SecMetrRE_SecMetrREDic", "SecMetrREDic").Value;
+            }
+            set
+            {
+                ((IEntityWithRelationships)this).RelationshipManager.GetRelatedReference<SecMetrREDic>("MtpDbModel.FK_SecMetrRE_SecMetrREDic", "SecMetrREDic").Value = value;
+            }
+        }
+        /// <summary>
+        /// Нет доступной документации по метаданным.
+        /// </summary>
+        [BrowsableAttribute(false)]
+        [DataMemberAttribute()]
+        public EntityReference<SecMetrREDic> SecMetrREDicReference
+        {
+            get
+            {
+                return ((IEntityWithRelationships)this).RelationshipManager.GetRelatedReference<SecMetrREDic>("MtpDbModel.FK_SecMetrRE_SecMetrREDic", "SecMetrREDic");
+            }
+            set
+            {
+                if ((value != null))
+                {
+                    ((IEntityWithRelationships)this).RelationshipManager.InitializeRelatedReference<SecMetrREDic>("MtpDbModel.FK_SecMetrRE_SecMetrREDic", "SecMetrREDic", value);
+                }
+            }
+        }
+    
+        /// <summary>
+        /// Нет доступной документации по метаданным.
+        /// </summary>
+        [XmlIgnoreAttribute()]
+        [SoapIgnoreAttribute()]
+        [DataMemberAttribute()]
+        [EdmRelationshipNavigationPropertyAttribute("MtpDbModel", "FK_SecMetrRE_TestProgram", "TestProgram")]
+        public TestProgram TestProgram
+        {
+            get
+            {
+                return ((IEntityWithRelationships)this).RelationshipManager.GetRelatedReference<TestProgram>("MtpDbModel.FK_SecMetrRE_TestProgram", "TestProgram").Value;
+            }
+            set
+            {
+                ((IEntityWithRelationships)this).RelationshipManager.GetRelatedReference<TestProgram>("MtpDbModel.FK_SecMetrRE_TestProgram", "TestProgram").Value = value;
+            }
+        }
+        /// <summary>
+        /// Нет доступной документации по метаданным.
+        /// </summary>
+        [BrowsableAttribute(false)]
+        [DataMemberAttribute()]
+        public EntityReference<TestProgram> TestProgramReference
+        {
+            get
+            {
+                return ((IEntityWithRelationships)this).RelationshipManager.GetRelatedReference<TestProgram>("MtpDbModel.FK_SecMetrRE_TestProgram", "TestProgram");
+            }
+            set
+            {
+                if ((value != null))
+                {
+                    ((IEntityWithRelationships)this).RelationshipManager.InitializeRelatedReference<TestProgram>("MtpDbModel.FK_SecMetrRE_TestProgram", "TestProgram", value);
+                }
+            }
+        }
+
+        #endregion
+    }
+    
+    /// <summary>
+    /// Нет доступной документации по метаданным.
+    /// </summary>
+    [EdmEntityTypeAttribute(NamespaceName="MtpDbModel", Name="SecMetrREDic")]
+    [Serializable()]
+    [DataContractAttribute(IsReference=true)]
+    public partial class SecMetrREDic : EntityObject
+    {
+        #region Фабричный метод
+    
+        /// <summary>
+        /// Создание нового объекта SecMetrREDic.
+        /// </summary>
+        /// <param name="id">Исходное значение свойства ID.</param>
+        /// <param name="title">Исходное значение свойства Title.</param>
+        public static SecMetrREDic CreateSecMetrREDic(global::System.Int32 id, global::System.String title)
+        {
+            SecMetrREDic secMetrREDic = new SecMetrREDic();
+            secMetrREDic.ID = id;
+            secMetrREDic.Title = title;
+            return secMetrREDic;
+        }
+
+        #endregion
+        #region Свойства-примитивы
+    
+        /// <summary>
+        /// Нет доступной документации по метаданным.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=true, IsNullable=false)]
+        [DataMemberAttribute()]
+        public global::System.Int32 ID
+        {
+            get
+            {
+                return _ID;
+            }
+            set
+            {
+                if (_ID != value)
+                {
+                    OnIDChanging(value);
+                    ReportPropertyChanging("ID");
+                    _ID = StructuralObject.SetValidValue(value);
+                    ReportPropertyChanged("ID");
+                    OnIDChanged();
+                }
+            }
+        }
+        private global::System.Int32 _ID;
+        partial void OnIDChanging(global::System.Int32 value);
+        partial void OnIDChanged();
+    
+        /// <summary>
+        /// Нет доступной документации по метаданным.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=false)]
+        [DataMemberAttribute()]
+        public global::System.String Title
+        {
+            get
+            {
+                return _Title;
+            }
+            set
+            {
+                OnTitleChanging(value);
+                ReportPropertyChanging("Title");
+                _Title = StructuralObject.SetValidValue(value, false);
+                ReportPropertyChanged("Title");
+                OnTitleChanged();
+            }
+        }
+        private global::System.String _Title;
+        partial void OnTitleChanging(global::System.String value);
+        partial void OnTitleChanged();
+    
+        /// <summary>
+        /// Нет доступной документации по метаданным.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=true)]
+        [DataMemberAttribute()]
+        public global::System.String Description
+        {
+            get
+            {
+                return _Description;
+            }
+            set
+            {
+                OnDescriptionChanging(value);
+                ReportPropertyChanging("Description");
+                _Description = StructuralObject.SetValidValue(value, true);
+                ReportPropertyChanged("Description");
+                OnDescriptionChanged();
+            }
+        }
+        private global::System.String _Description;
+        partial void OnDescriptionChanging(global::System.String value);
+        partial void OnDescriptionChanged();
+
+        #endregion
+    
+        #region Свойства навигации
+    
+        /// <summary>
+        /// Нет доступной документации по метаданным.
+        /// </summary>
+        [XmlIgnoreAttribute()]
+        [SoapIgnoreAttribute()]
+        [DataMemberAttribute()]
+        [EdmRelationshipNavigationPropertyAttribute("MtpDbModel", "FK_SecMetrRE_SecMetrREDic", "SecMetrRE")]
+        public EntityCollection<SecMetrRE> SecMetrRE
+        {
+            get
+            {
+                return ((IEntityWithRelationships)this).RelationshipManager.GetRelatedCollection<SecMetrRE>("MtpDbModel.FK_SecMetrRE_SecMetrREDic", "SecMetrRE");
+            }
+            set
+            {
+                if ((value != null))
+                {
+                    ((IEntityWithRelationships)this).RelationshipManager.InitializeRelatedCollection<SecMetrRE>("MtpDbModel.FK_SecMetrRE_SecMetrREDic", "SecMetrRE", value);
                 }
             }
         }
@@ -4212,10 +4881,152 @@ namespace MTP1.Models
         private Nullable<global::System.Int32> _Creator;
         partial void OnCreatorChanging(Nullable<global::System.Int32> value);
         partial void OnCreatorChanged();
+    
+        /// <summary>
+        /// Нет доступной документации по метаданным.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=true)]
+        [DataMemberAttribute()]
+        public Nullable<global::System.Double> REPlan
+        {
+            get
+            {
+                return _REPlan;
+            }
+            set
+            {
+                OnREPlanChanging(value);
+                ReportPropertyChanging("REPlan");
+                _REPlan = StructuralObject.SetValidValue(value);
+                ReportPropertyChanged("REPlan");
+                OnREPlanChanged();
+            }
+        }
+        private Nullable<global::System.Double> _REPlan;
+        partial void OnREPlanChanging(Nullable<global::System.Double> value);
+        partial void OnREPlanChanged();
+    
+        /// <summary>
+        /// Нет доступной документации по метаданным.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=true)]
+        [DataMemberAttribute()]
+        public Nullable<global::System.Double> REMark
+        {
+            get
+            {
+                return _REMark;
+            }
+            set
+            {
+                OnREMarkChanging(value);
+                ReportPropertyChanging("REMark");
+                _REMark = StructuralObject.SetValidValue(value);
+                ReportPropertyChanged("REMark");
+                OnREMarkChanged();
+            }
+        }
+        private Nullable<global::System.Double> _REMark;
+        partial void OnREMarkChanging(Nullable<global::System.Double> value);
+        partial void OnREMarkChanged();
+    
+        /// <summary>
+        /// Нет доступной документации по метаданным.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=true)]
+        [DataMemberAttribute()]
+        public Nullable<global::System.Double> REInternal
+        {
+            get
+            {
+                return _REInternal;
+            }
+            set
+            {
+                OnREInternalChanging(value);
+                ReportPropertyChanging("REInternal");
+                _REInternal = StructuralObject.SetValidValue(value);
+                ReportPropertyChanged("REInternal");
+                OnREInternalChanged();
+            }
+        }
+        private Nullable<global::System.Double> _REInternal;
+        partial void OnREInternalChanging(Nullable<global::System.Double> value);
+        partial void OnREInternalChanged();
+    
+        /// <summary>
+        /// Нет доступной документации по метаданным.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=true)]
+        [DataMemberAttribute()]
+        public Nullable<global::System.Double> REExternal
+        {
+            get
+            {
+                return _REExternal;
+            }
+            set
+            {
+                OnREExternalChanging(value);
+                ReportPropertyChanging("REExternal");
+                _REExternal = StructuralObject.SetValidValue(value);
+                ReportPropertyChanged("REExternal");
+                OnREExternalChanged();
+            }
+        }
+        private Nullable<global::System.Double> _REExternal;
+        partial void OnREExternalChanging(Nullable<global::System.Double> value);
+        partial void OnREExternalChanged();
+    
+        /// <summary>
+        /// Нет доступной документации по метаданным.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=true)]
+        [DataMemberAttribute()]
+        public global::System.String Resolution
+        {
+            get
+            {
+                return _Resolution;
+            }
+            set
+            {
+                OnResolutionChanging(value);
+                ReportPropertyChanging("Resolution");
+                _Resolution = StructuralObject.SetValidValue(value, true);
+                ReportPropertyChanged("Resolution");
+                OnResolutionChanged();
+            }
+        }
+        private global::System.String _Resolution;
+        partial void OnResolutionChanging(global::System.String value);
+        partial void OnResolutionChanged();
 
         #endregion
     
         #region Свойства навигации
+    
+        /// <summary>
+        /// Нет доступной документации по метаданным.
+        /// </summary>
+        [XmlIgnoreAttribute()]
+        [SoapIgnoreAttribute()]
+        [DataMemberAttribute()]
+        [EdmRelationshipNavigationPropertyAttribute("MtpDbModel", "FK_PrimMetrRE_TestProgram", "PrimMetrRE")]
+        public EntityCollection<PrimMetrRE> PrimMetrRE
+        {
+            get
+            {
+                return ((IEntityWithRelationships)this).RelationshipManager.GetRelatedCollection<PrimMetrRE>("MtpDbModel.FK_PrimMetrRE_TestProgram", "PrimMetrRE");
+            }
+            set
+            {
+                if ((value != null))
+                {
+                    ((IEntityWithRelationships)this).RelationshipManager.InitializeRelatedCollection<PrimMetrRE>("MtpDbModel.FK_PrimMetrRE_TestProgram", "PrimMetrRE", value);
+                }
+            }
+        }
     
         /// <summary>
         /// Нет доступной документации по метаданным.
@@ -4283,6 +5094,28 @@ namespace MTP1.Models
         [XmlIgnoreAttribute()]
         [SoapIgnoreAttribute()]
         [DataMemberAttribute()]
+        [EdmRelationshipNavigationPropertyAttribute("MtpDbModel", "FK_SecMetrRE_TestProgram", "SecMetrRE")]
+        public EntityCollection<SecMetrRE> SecMetrRE
+        {
+            get
+            {
+                return ((IEntityWithRelationships)this).RelationshipManager.GetRelatedCollection<SecMetrRE>("MtpDbModel.FK_SecMetrRE_TestProgram", "SecMetrRE");
+            }
+            set
+            {
+                if ((value != null))
+                {
+                    ((IEntityWithRelationships)this).RelationshipManager.InitializeRelatedCollection<SecMetrRE>("MtpDbModel.FK_SecMetrRE_TestProgram", "SecMetrRE", value);
+                }
+            }
+        }
+    
+        /// <summary>
+        /// Нет доступной документации по метаданным.
+        /// </summary>
+        [XmlIgnoreAttribute()]
+        [SoapIgnoreAttribute()]
+        [DataMemberAttribute()]
         [EdmRelationshipNavigationPropertyAttribute("MtpDbModel", "FK_TestProgram_Users", "Users")]
         public Users Users
         {
@@ -4333,28 +5166,6 @@ namespace MTP1.Models
                 if ((value != null))
                 {
                     ((IEntityWithRelationships)this).RelationshipManager.InitializeRelatedCollection<UseCase>("MtpDbModel.FK_UseCase_TestProgram", "UseCase", value);
-                }
-            }
-        }
-    
-        /// <summary>
-        /// Нет доступной документации по метаданным.
-        /// </summary>
-        [XmlIgnoreAttribute()]
-        [SoapIgnoreAttribute()]
-        [DataMemberAttribute()]
-        [EdmRelationshipNavigationPropertyAttribute("MtpDbModel", "FK_UseCasePrimaryMetric_TestProgram", "UseCasePrimaryMetric")]
-        public EntityCollection<UseCasePrimaryMetric> UseCasePrimaryMetric
-        {
-            get
-            {
-                return ((IEntityWithRelationships)this).RelationshipManager.GetRelatedCollection<UseCasePrimaryMetric>("MtpDbModel.FK_UseCasePrimaryMetric_TestProgram", "UseCasePrimaryMetric");
-            }
-            set
-            {
-                if ((value != null))
-                {
-                    ((IEntityWithRelationships)this).RelationshipManager.InitializeRelatedCollection<UseCasePrimaryMetric>("MtpDbModel.FK_UseCasePrimaryMetric_TestProgram", "UseCasePrimaryMetric", value);
                 }
             }
         }
@@ -5008,14 +5819,14 @@ namespace MTP1.Models
         /// Создание нового объекта UseCasePrimaryMetric.
         /// </summary>
         /// <param name="id">Исходное значение свойства ID.</param>
+        /// <param name="useCase">Исходное значение свойства UseCase.</param>
         /// <param name="type">Исходное значение свойства Type.</param>
-        /// <param name="value">Исходное значение свойства Value.</param>
-        public static UseCasePrimaryMetric CreateUseCasePrimaryMetric(global::System.Int32 id, global::System.Int32 type, global::System.Int32 value)
+        public static UseCasePrimaryMetric CreateUseCasePrimaryMetric(global::System.Int32 id, global::System.Int32 useCase, global::System.Int32 type)
         {
             UseCasePrimaryMetric useCasePrimaryMetric = new UseCasePrimaryMetric();
             useCasePrimaryMetric.ID = id;
+            useCasePrimaryMetric.UseCase = useCase;
             useCasePrimaryMetric.Type = type;
-            useCasePrimaryMetric.Value = value;
             return useCasePrimaryMetric;
         }
 
@@ -5052,57 +5863,9 @@ namespace MTP1.Models
         /// <summary>
         /// Нет доступной документации по метаданным.
         /// </summary>
-        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=true)]
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=false)]
         [DataMemberAttribute()]
-        public Nullable<global::System.Int32> Project
-        {
-            get
-            {
-                return _Project;
-            }
-            set
-            {
-                OnProjectChanging(value);
-                ReportPropertyChanging("Project");
-                _Project = StructuralObject.SetValidValue(value);
-                ReportPropertyChanged("Project");
-                OnProjectChanged();
-            }
-        }
-        private Nullable<global::System.Int32> _Project;
-        partial void OnProjectChanging(Nullable<global::System.Int32> value);
-        partial void OnProjectChanged();
-    
-        /// <summary>
-        /// Нет доступной документации по метаданным.
-        /// </summary>
-        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=true)]
-        [DataMemberAttribute()]
-        public Nullable<global::System.Int32> Program
-        {
-            get
-            {
-                return _Program;
-            }
-            set
-            {
-                OnProgramChanging(value);
-                ReportPropertyChanging("Program");
-                _Program = StructuralObject.SetValidValue(value);
-                ReportPropertyChanged("Program");
-                OnProgramChanged();
-            }
-        }
-        private Nullable<global::System.Int32> _Program;
-        partial void OnProgramChanging(Nullable<global::System.Int32> value);
-        partial void OnProgramChanged();
-    
-        /// <summary>
-        /// Нет доступной документации по метаданным.
-        /// </summary>
-        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=true)]
-        [DataMemberAttribute()]
-        public Nullable<global::System.Int32> UseCase
+        public global::System.Int32 UseCase
         {
             get
             {
@@ -5117,8 +5880,8 @@ namespace MTP1.Models
                 OnUseCaseChanged();
             }
         }
-        private Nullable<global::System.Int32> _UseCase;
-        partial void OnUseCaseChanging(Nullable<global::System.Int32> value);
+        private global::System.Int32 _UseCase;
+        partial void OnUseCaseChanging(global::System.Int32 value);
         partial void OnUseCaseChanged();
     
         /// <summary>
@@ -5148,9 +5911,9 @@ namespace MTP1.Models
         /// <summary>
         /// Нет доступной документации по метаданным.
         /// </summary>
-        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=false)]
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=true)]
         [DataMemberAttribute()]
-        public global::System.Int32 Value
+        public Nullable<global::System.Int32> Value
         {
             get
             {
@@ -5165,8 +5928,8 @@ namespace MTP1.Models
                 OnValueChanged();
             }
         }
-        private global::System.Int32 _Value;
-        partial void OnValueChanging(global::System.Int32 value);
+        private Nullable<global::System.Int32> _Value;
+        partial void OnValueChanging(Nullable<global::System.Int32> value);
         partial void OnValueChanged();
 
         #endregion
@@ -5207,82 +5970,6 @@ namespace MTP1.Models
                 if ((value != null))
                 {
                     ((IEntityWithRelationships)this).RelationshipManager.InitializeRelatedReference<PrimaryMetricDic>("MtpDbModel.FK_UseCasePrimaryMetric_PrimaryMetricDic", "PrimaryMetricDic", value);
-                }
-            }
-        }
-    
-        /// <summary>
-        /// Нет доступной документации по метаданным.
-        /// </summary>
-        [XmlIgnoreAttribute()]
-        [SoapIgnoreAttribute()]
-        [DataMemberAttribute()]
-        [EdmRelationshipNavigationPropertyAttribute("MtpDbModel", "FK_UseCasePrimaryMetric_Project", "Project")]
-        public Project Project1
-        {
-            get
-            {
-                return ((IEntityWithRelationships)this).RelationshipManager.GetRelatedReference<Project>("MtpDbModel.FK_UseCasePrimaryMetric_Project", "Project").Value;
-            }
-            set
-            {
-                ((IEntityWithRelationships)this).RelationshipManager.GetRelatedReference<Project>("MtpDbModel.FK_UseCasePrimaryMetric_Project", "Project").Value = value;
-            }
-        }
-        /// <summary>
-        /// Нет доступной документации по метаданным.
-        /// </summary>
-        [BrowsableAttribute(false)]
-        [DataMemberAttribute()]
-        public EntityReference<Project> Project1Reference
-        {
-            get
-            {
-                return ((IEntityWithRelationships)this).RelationshipManager.GetRelatedReference<Project>("MtpDbModel.FK_UseCasePrimaryMetric_Project", "Project");
-            }
-            set
-            {
-                if ((value != null))
-                {
-                    ((IEntityWithRelationships)this).RelationshipManager.InitializeRelatedReference<Project>("MtpDbModel.FK_UseCasePrimaryMetric_Project", "Project", value);
-                }
-            }
-        }
-    
-        /// <summary>
-        /// Нет доступной документации по метаданным.
-        /// </summary>
-        [XmlIgnoreAttribute()]
-        [SoapIgnoreAttribute()]
-        [DataMemberAttribute()]
-        [EdmRelationshipNavigationPropertyAttribute("MtpDbModel", "FK_UseCasePrimaryMetric_TestProgram", "TestProgram")]
-        public TestProgram TestProgram
-        {
-            get
-            {
-                return ((IEntityWithRelationships)this).RelationshipManager.GetRelatedReference<TestProgram>("MtpDbModel.FK_UseCasePrimaryMetric_TestProgram", "TestProgram").Value;
-            }
-            set
-            {
-                ((IEntityWithRelationships)this).RelationshipManager.GetRelatedReference<TestProgram>("MtpDbModel.FK_UseCasePrimaryMetric_TestProgram", "TestProgram").Value = value;
-            }
-        }
-        /// <summary>
-        /// Нет доступной документации по метаданным.
-        /// </summary>
-        [BrowsableAttribute(false)]
-        [DataMemberAttribute()]
-        public EntityReference<TestProgram> TestProgramReference
-        {
-            get
-            {
-                return ((IEntityWithRelationships)this).RelationshipManager.GetRelatedReference<TestProgram>("MtpDbModel.FK_UseCasePrimaryMetric_TestProgram", "TestProgram");
-            }
-            set
-            {
-                if ((value != null))
-                {
-                    ((IEntityWithRelationships)this).RelationshipManager.InitializeRelatedReference<TestProgram>("MtpDbModel.FK_UseCasePrimaryMetric_TestProgram", "TestProgram", value);
                 }
             }
         }
@@ -5342,16 +6029,14 @@ namespace MTP1.Models
         /// Создание нового объекта UseCaseSecondaryMetric.
         /// </summary>
         /// <param name="id">Исходное значение свойства ID.</param>
-        /// <param name="type">Исходное значение свойства Type.</param>
-        /// <param name="value">Исходное значение свойства Value.</param>
         /// <param name="useCase">Исходное значение свойства UseCase.</param>
-        public static UseCaseSecondaryMetric CreateUseCaseSecondaryMetric(global::System.Int32 id, global::System.Int32 type, global::System.Int32 value, global::System.Int32 useCase)
+        /// <param name="type">Исходное значение свойства Type.</param>
+        public static UseCaseSecondaryMetric CreateUseCaseSecondaryMetric(global::System.Int32 id, global::System.Int32 useCase, global::System.Int32 type)
         {
             UseCaseSecondaryMetric useCaseSecondaryMetric = new UseCaseSecondaryMetric();
             useCaseSecondaryMetric.ID = id;
-            useCaseSecondaryMetric.Type = type;
-            useCaseSecondaryMetric.Value = value;
             useCaseSecondaryMetric.UseCase = useCase;
+            useCaseSecondaryMetric.Type = type;
             return useCaseSecondaryMetric;
         }
 
@@ -5390,6 +6075,30 @@ namespace MTP1.Models
         /// </summary>
         [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=false)]
         [DataMemberAttribute()]
+        public global::System.Int32 UseCase
+        {
+            get
+            {
+                return _UseCase;
+            }
+            set
+            {
+                OnUseCaseChanging(value);
+                ReportPropertyChanging("UseCase");
+                _UseCase = StructuralObject.SetValidValue(value);
+                ReportPropertyChanged("UseCase");
+                OnUseCaseChanged();
+            }
+        }
+        private global::System.Int32 _UseCase;
+        partial void OnUseCaseChanging(global::System.Int32 value);
+        partial void OnUseCaseChanged();
+    
+        /// <summary>
+        /// Нет доступной документации по метаданным.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=false)]
+        [DataMemberAttribute()]
         public global::System.Int32 Type
         {
             get
@@ -5412,9 +6121,9 @@ namespace MTP1.Models
         /// <summary>
         /// Нет доступной документации по метаданным.
         /// </summary>
-        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=false)]
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=true)]
         [DataMemberAttribute()]
-        public global::System.Int32 Value
+        public Nullable<global::System.Double> Value
         {
             get
             {
@@ -5429,33 +6138,9 @@ namespace MTP1.Models
                 OnValueChanged();
             }
         }
-        private global::System.Int32 _Value;
-        partial void OnValueChanging(global::System.Int32 value);
+        private Nullable<global::System.Double> _Value;
+        partial void OnValueChanging(Nullable<global::System.Double> value);
         partial void OnValueChanged();
-    
-        /// <summary>
-        /// Нет доступной документации по метаданным.
-        /// </summary>
-        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=false)]
-        [DataMemberAttribute()]
-        public global::System.Int32 UseCase
-        {
-            get
-            {
-                return _UseCase;
-            }
-            set
-            {
-                OnUseCaseChanging(value);
-                ReportPropertyChanging("UseCase");
-                _UseCase = StructuralObject.SetValidValue(value);
-                ReportPropertyChanged("UseCase");
-                OnUseCaseChanged();
-            }
-        }
-        private global::System.Int32 _UseCase;
-        partial void OnUseCaseChanging(global::System.Int32 value);
-        partial void OnUseCaseChanged();
 
         #endregion
     

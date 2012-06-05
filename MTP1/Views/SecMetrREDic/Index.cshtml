@@ -1,0 +1,45 @@
+﻿@using MTP1
+@using MTP1.Models
+@model IEnumerable<SecMetrREDic>
+@{
+    ViewBag.Title = string.Format("Элементы справочника | {0}", Constants.TITLE);
+}
+<link href="@Url.Content("~/Content/List.css")" rel="stylesheet" type="text/css" />
+<div id="grid_container" style="width: 100%">
+    <table id="grid" cellpadding="0" cellspacing="0">
+    </table>
+    <div id="pager" style="text-align: center;">
+    </div>
+    <div id="search" style="margin-left: 30%; display: none">
+    </div>
+</div>
+
+<script type="text/javascript">
+
+    $(function () {
+
+        var indexUrl = '@Url.Action("GetSecMetrREDic", "SecMetrREDic")';
+        var editUrl = '@Url.Action("Edit", "SecMetrREDic")';
+        var deleteUrl = '@Url.Action("Delete", "SecMetrREDic")';
+        var addUrl = '@Url.Action("Create", "SecMetrREDic")';
+        var viewUrl = '@Url.Action("Details", "SecMetrREDic")';
+
+        DrawMTPGrid('grid', 'pager', indexUrl, editUrl, deleteUrl, addUrl, viewUrl,
+            ['Наименование', 'Описание'],
+            [
+                {
+                    name: 'Title',
+                    sortable: false,
+                    align: 'center',
+                    width: '250'
+                },
+                {
+                    name: 'Description',
+                    sortable: false,
+                    align: 'center',
+                    width: '100'
+                }
+            ], 'Справочник: Вторичные метрики (оценка надежности)');
+    });
+
+</script>

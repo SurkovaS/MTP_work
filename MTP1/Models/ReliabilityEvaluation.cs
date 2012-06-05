@@ -1,5 +1,5 @@
 ﻿// --------------------------------------------------------------------------------------------------------------------
-// <copyright file="Project.cs" company="">
+// <copyright file="ReliabilityEvaluationDic.cs" company="">
 //   
 // </copyright>
 // <summary>
@@ -16,7 +16,7 @@ namespace MTP1.Models
     /// <summary>
     /// The actor dic.
     /// </summary>
-    public partial class UseCaseSecondaryMetric : IBase
+    public partial class ReliabilityEvaluation : IBase
     {
         #region Public Methods and Operators
 
@@ -35,11 +35,11 @@ namespace MTP1.Models
         {
             get
             {
-                return this.SecondaryMetricDic.Title.ToStringWithDbNullCheck();
+                return this.ReliabilityEvaluationDic.Title.ToStringWithDbNullCheck();
             }
         }
 
-        public string SMValue
+        public string REValue
         {
             get
             {
@@ -48,6 +48,7 @@ namespace MTP1.Models
                            : this.Value.ToStringWithDbNullCheck();
             }
         }
+
         #endregion
     }
 }

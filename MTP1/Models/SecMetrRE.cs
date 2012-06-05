@@ -1,5 +1,5 @@
 ﻿// --------------------------------------------------------------------------------------------------------------------
-// <copyright file="Project.cs" company="">
+// <copyright file="PrimaryMetricDic.cs" company="">
 //   
 // </copyright>
 // <summary>
@@ -13,19 +13,11 @@ namespace MTP1.Models
 
     using MTP1.Models.Interface;
 
-    /// <summary>
-    /// The actor dic.
-    /// </summary>
-    public partial class UseCaseSecondaryMetric : IBase
+ 
+    public partial class SecMetrRE : IBase
     {
         #region Public Methods and Operators
 
-        /// <summary>
-        /// The can be deleted.
-        /// </summary>
-        /// <returns>
-        /// The can be deleted.
-        /// </returns>
         public bool CanBeDeleted()
         {
             return true;
@@ -35,11 +27,11 @@ namespace MTP1.Models
         {
             get
             {
-                return this.SecondaryMetricDic.Title.ToStringWithDbNullCheck();
+                return this.SecMetrREDic.Title.ToStringWithDbNullCheck();
             }
         }
 
-        public string SMValue
+        public string SMREValue
         {
             get
             {

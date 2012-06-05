@@ -9,6 +9,7 @@
 
 namespace MTP1.Controllers
 {
+    using System;
     using System.Collections.Generic;
     using System.Linq;
     using System.Web.Mvc;
@@ -118,6 +119,113 @@ namespace MTP1.Controllers
         {
             return this.FormJsonData(projectId, page, rows, search, sidx, sord);
         }
+
+
+        public ActionResult EditRE(int programId)
+        {
+            if (Request.Form["oper"] != "edit")
+            {
+                throw new Exception("поддерживается только редактирование");
+            }
+
+            var program = this.service.Get().FirstOrDefault(a => a.ID == programId);
+            if (program == null)
+            {
+                throw new Exception(string.Format("программа тестирования с id = {0} не найдена", programId));
+            }
+
+            int reIdParse;
+            var reId = Request.Form["id"];
+            if (!int.TryParse(reId, out reIdParse))
+            {
+                throw new Exception("не указан id показателя");
+            }
+
+            IBaseService<ReliabilityEvaluation> reService = ReliabilityEvaluationServiceFactory.Create();
+            var re =
+                reService.Get().FirstOrDefault(
+                    a => a.Program == programId && a.ReliabilityEvaluationDic.ID == reIdParse);
+            if (re == null)
+            {
+                re = new ReliabilityEvaluation { Program = programId, RE = reIdParse };
+                reService.Add(re);
+            }
+            int reValueIdParse;
+            var reValueId = Request.Form["Value"];
+            if (int.TryParse(reValueId, out reValueIdParse))
+            {
+                re.Value = reValueIdParse;
+            }
+
+            reService.Save();
+            RecalculateREMark(reService, program);
+            return Json(true);
+        }
+
+        public ActionResult EditPMRE(int programId)
+        {
+            if (Request.Form["oper"] != "edit")
+            {
+                throw new Exception("поддерживается только редактирование");
+            }
+
+            var program = this.service.Get().FirstOrDefault(a => a.ID == programId);
+            if (program == null)
+            {
+                throw new Exception(string.Format("программа тестирования с id = {0} не найдена", programId));
+            }
+
+            int pmreIdParse;
+            var pmreId = Request.Form["id"];
+            if (!int.TryParse(pmreId, out pmreIdParse))
+            {
+                throw new Exception("не указан id показателя");
+            }
+
+            IBaseService<PrimMetrRE> pmreService = PrimMetrREServiceFactory.Create();
+            var pmre =
+                pmreService.Get().FirstOrDefault(
+                    a => a.Program == programId && a.PrimMetrREDic.ID == pmreIdParse);
+            if (pmre == null)
+            {
+                pmre = new PrimMetrRE { Program = programId, PMRE = pmreIdParse };
+                pmreService.Add(pmre);
+            }
+            int pmreValueIdParse;
+            var pmreValueId = Request.Form["Value"];
+            if (int.TryParse(pmreValueId, out pmreValueIdParse))
+            {
+                pmre.Value = pmreValueIdParse;
+            }
+
+            pmreService.Save();
+            return Json(true);
+        }
+
+        private void RecalculateREMark(IBaseService<ReliabilityEvaluation> reService, TestProgram program)
+        {
+            var allREsForProgram = reService.Get().Where(a => a.Program == program.ID).ToList();
+            double result = 0;
+            foreach (var re in allREsForProgram)
+            {
+                result += (re.Value.Value == null ? 0 : re.Value.Value) * 5 / 100;
+
+            }
+            program.REMark = result;
+            string good = "Достигнут желаемый уровень надежности";
+            string bad = "Не достигнут желаемый уровень надежности";
+            if (program.REMark>=program.REPlan)
+            {
+                program.Resolution = good.ToString();
+            }
+            else
+            {
+                program.Resolution = bad.ToString();
+            }
+
+            this.service.Save();
+        }
+
 
         #endregion
     }

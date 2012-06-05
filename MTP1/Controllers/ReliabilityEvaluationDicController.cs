@@ -44,9 +44,10 @@ namespace MTP1.Controllers
         /// Initializes a new instance of the <see cref="ActorDicController"/> class.
         /// </summary>
         public ReliabilityEvaluationDicController()
-            : this(ReliabilityEvaluationServiceFactory.Create())
+            : this(ReliabilityEvaluationDicServiceFactory.Create())
         {
         }
+
         public ActionResult GetREs(int page, int rows, string search, string sidx, string sord)
         {
             int REsCount = this.service.Get().Count();
@@ -74,7 +75,7 @@ namespace MTP1.Controllers
 
             return this.Json(jsonData, JsonRequestBehavior.AllowGet);
         }
-
+        
         #endregion
     }
 }

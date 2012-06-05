@@ -1,12 +1,12 @@
-﻿@model MTP1.Models.PrimaryMetricDic
+﻿@model MTP1.Models.SecMetrREDic
 @Html.ValidationSummary()
-<div class="editor-label">Первичная метрика</div>
+<div class="editor-label">Вторичная метрика</div>
 <div class="editor-field">
     @Html.TextAreaFor(model => model.Title, new { cols = 70, rows = 1 })
     @Html.ValidationMessageFor(model => model.Title)
 </div>
 <div class="editor-label">Описание</div>
 <div class="editor-field">
-    @Html.TextAreaFor(model => model.Description, new { cols = 70, rows = 5 })
+    @Html.TextAreaFor(model => model.Description, new { cols = 70, rows = 2 })
     @Html.ValidationMessageFor(model => model.Description)
 </div>

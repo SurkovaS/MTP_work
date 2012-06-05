@@ -9,6 +9,8 @@
 
 namespace MTP1.Models
 {
+    using MTP.Controllers;
+
     using MTP1.Models.Interface;
 
     /// <summary>
@@ -27,6 +29,24 @@ namespace MTP1.Models
         public bool CanBeDeleted()
         {
             return true;
+        }
+
+        public string Title
+        {
+            get
+            {
+                return this.PrimaryMetricDic.Title.ToStringWithDbNullCheck();
+            }
+        }
+
+       public string PMValue
+        {
+            get
+            {
+                return this.Value == null
+                           ? string.Empty
+                           : this.Value.ToStringWithDbNullCheck();
+            }
         }
 
         #endregion

@@ -1,0 +1,23 @@
+﻿@using MTP1
+@model MTP1.Models.PrimMetrREDic
+
+@{
+    ViewBag.Title = string.Format("Элемент справочника | {0}", Constants.TITLE);
+}
+
+<p>
+    @Html.ActionLink("Редактировать", "Edit", new { id = Model.ID }) |
+    @Html.ActionLink("Первичные метрики", "Index")
+</p>
+
+<fieldset>
+    <legend>Элемент справочника Первичные метрики</legend>
+    <div class="display-label">Первичная метрика</div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.Title)
+    </div>
+    <div class="display-label">Описание</div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.Description)
+    </div>
+</fieldset>

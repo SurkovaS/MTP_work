@@ -1,0 +1,23 @@
+﻿@using MTP1
+@model MTP1.Models.SecMetrREDic
+
+@{
+    ViewBag.Title = string.Format("Элемент справочника | {0}", Constants.TITLE);
+}
+
+<p>
+    @Html.ActionLink("Редактировать", "Edit", new { id = this.Model.ID }) |
+    @Html.ActionLink("Вторичные метрики", "Index")
+</p>
+
+<fieldset>
+    <legend>Элемент справочника Вторичные метрики</legend>
+    <div class="display-label">Вторричная метрика</div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.Title)
+    </div>
+    <div class="display-label">Описание</div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.Description)
+    </div>
+</fieldset>

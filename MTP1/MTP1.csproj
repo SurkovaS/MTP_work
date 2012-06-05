@@ -78,7 +78,7 @@
     <Compile Include="Controllers\EnvironmentFactorDicController.cs" />
     <Compile Include="Controllers\PrimaryMetricDicController.cs" />
     <Compile Include="Controllers\PriorityDicController.cs" />
-    <Compile Include="Controllers\ReliabilityEvaluationDic.cs" />
+    <Compile Include="Controllers\ReliabilityEvaluationDicController.cs" />
     <Compile Include="Controllers\SecondaryMetricDicController.cs" />
     <Compile Include="Controllers\TestMethodDicController.cs" />
     <Compile Include="Controllers\WeightCoefficientDicController.cs" />
@@ -91,6 +91,11 @@
     <Compile Include="Controllers\TechnicalFactorController.cs" />
     <Compile Include="Controllers\EnvironmentFactorController.cs" />
     <Compile Include="Controllers\ActorController.cs" />
+    <Compile Include="Controllers\ReliabilityEvaluationController.cs" />
+    <Compile Include="Controllers\PrimMetREDicController.cs" />
+    <Compile Include="Controllers\PrimMetREController.cs" />
+    <Compile Include="Controllers\SecMetrREDicController.cs" />
+    <Compile Include="Controllers\SecMetrREController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
@@ -122,10 +127,20 @@
     <Compile Include="Models\TechnicalFactor.cs" />
     <Compile Include="Models\EnvironmentFactor.cs" />
     <Compile Include="Models\Actor.cs" />
+    <Compile Include="Models\ReliabilityEvaluation.cs" />
+    <Compile Include="Models\PrimMetrREDic.cs" />
+    <Compile Include="Models\PrimMetrRE.cs" />
+    <Compile Include="Models\SecMetrREDic.cs" />
+    <Compile Include="Models\SecMetrRE.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="SecondaryMetricsCount.cs" />
     <Compile Include="Service\Abstract\BaseEntityServise.cs" />
     <Compile Include="Service\ActorDicEntityService.cs" />
+    <Compile Include="Service\Factory\ReliabilityEvaluationServiceFactory.cs" />
+    <Compile Include="Service\Factory\PrimMetrREDicServiceFactory.cs" />
+    <Compile Include="Service\Factory\PrimMetrREServiceFactory.cs" />
+    <Compile Include="Service\Factory\SecMetrREDicServiceFactory.cs" />
+    <Compile Include="Service\Factory\SecMetrREServiceFactory.cs" />
     <Compile Include="Service\UsersEntityService.cs" />
     <Compile Include="Service\Factory\ActorDicServiceFactory.cs" />
     <Compile Include="Service\Factory\UsersServiceFactory.cs" />
@@ -164,6 +179,11 @@
     <Compile Include="Service\TechnicalFactorEntityService.cs" />
     <Compile Include="Service\EnvironmentFactorEntityService.cs" />
     <Compile Include="Service\ActorEntityService.cs" />
+    <Compile Include="Service\ReliabilityEvaluationEntityService.cs" />
+    <Compile Include="Service\PrimMetrREDicEntityService.cs" />
+    <Compile Include="Service\PrimMetrREEntityService.cs" />
+    <Compile Include="Service\SecMetrREDicEntityService.cs" />
+    <Compile Include="Service\SecMetrREEntityService.cs" />
     <Compile Include="UCP.cs" />
   </ItemGroup>
   <ItemGroup>
@@ -466,6 +486,36 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="Views\Shared\DisplayTemplates\DateTime.cshtml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Views\PrimMetrREDic\Create.cshtml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Views\PrimMetrREDic\Details.cshtml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Views\PrimMetrREDic\Edit.cshtml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Views\PrimMetrREDic\Index.cshtml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Views\Shared\EditorTemplates\PrimMetrREDic.cshtml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Views\Shared\EditorTemplates\SecMetrREDic.cshtml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Views\SecMetrREDic\Create.cshtml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Views\SecMetrREDic\Details.cshtml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Views\SecMetrREDic\Edit.cshtml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Views\SecMetrREDic\Index.cshtml" />
   </ItemGroup>
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
   <Import Project="$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v10.0\WebApplications\Microsoft.WebApplication.targets" />

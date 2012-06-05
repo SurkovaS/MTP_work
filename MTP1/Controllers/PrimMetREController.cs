@@ -13,6 +13,8 @@ namespace MTP1.Controllers
     using System.Linq;
     using System.Web.Mvc;
 
+    using MTP.Controllers;
+
     using MTP1.Controllers.Abstract;
     using MTP1.Helpers;
     using MTP1.Service.Factory;
@@ -23,7 +25,7 @@ namespace MTP1.Controllers
     /// <summary>
     /// The actor dic controller.
     /// </summary>
-    public class UseCasePrimaryMetricController : BaseController<UseCasePrimaryMetric>
+    public class PrimMetrREController : BaseController<PrimMetrRE>
     {
         #region Constructors and Destructors
 
@@ -33,7 +35,7 @@ namespace MTP1.Controllers
         /// <param name="service">
         /// The service.
         /// </param>
-        public UseCasePrimaryMetricController(IBaseService<UseCasePrimaryMetric> service)
+        public PrimMetrREController(IBaseService<PrimMetrRE> service)
             : base(service)
         {
         }
@@ -41,44 +43,44 @@ namespace MTP1.Controllers
         /// <summary>
         /// Initializes a new instance of the <see cref="ActorDicController"/> class.
         /// </summary>
-        public UseCasePrimaryMetricController()
-            : this(UseCasePrimaryMetricServiceFactory.Create())
+        public PrimMetrREController()
+            : this(PrimMetrREServiceFactory.Create())
         {
         }
-        internal class PMDto
+
+        internal class PMREDto
         {
             public int ID { get; set; }
             public string Title { get; set; }
-            public string PMValue { get; set; }
+            public string PMREValue { get; set; }
         }
 
-
-        public ActionResult GetPMsForUseCase(int useCaseId, int page, int rows, string search, string sidx, string sord)
+        public ActionResult GetPMREsForProgram(int programId, int page, int rows, string search, string sidx, string sord)
         {
-            var primMetrics =
-                this.service.Get().Where(a => a.UseCase == useCaseId).ToList().Select(
-                    a => new PMDto
+            var PMREs =
+                this.service.Get().Where(a => a.Program == programId).ToList().Select(
+                    a => new PMREDto
                     {
                         // эта бадяга затеивалась только чтобы взять ID из справочника
-                        ID = a.PrimaryMetricDic.ID,
+                        ID = a.PrimMetrREDic.ID,
                         Title = a.Title,
-                        PMValue = a.Value.ToString()
+                        PMREValue = a.PMREValue
                     }).ToList();
 
-            List<PrimaryMetricDic> allPMsDic = PrimaryMetricDicServiceFactory.Create().Get().ToList();
-            var missingPMs = allPMsDic.Where(a => !primMetrics.Any(b => b.ID == a.ID));
-            primMetrics.AddRange(missingPMs.Select(a => new PMDto { ID = a.ID, Title = a.Title }));
+            List<PrimMetrREDic> allPMREsDic = PrimMetrREDicServiceFactory.Create().Get().ToList();
+            var missingPMREs = allPMREsDic.Where(a => !PMREs.Any(b => b.ID == a.ID));
+            PMREs.AddRange(missingPMREs.Select(a => new PMREDto { ID = a.ID, Title = a.Title }));
 
-            int PMCount = primMetrics.Count();
-            var PMsWithPaging = primMetrics.AsQueryable().ApplyPaging("Title", (page - 1) * rows, rows);
+            int PMRECount = PMREs.Count();
+            var PMREsWithPaging = PMREs.AsQueryable().ApplyPaging("Title", (page - 1) * rows, rows);
 
             var jsonData =
                 new
                 {
-                    total = Paging.TotalPages(PMCount, rows),
+                    total = Paging.TotalPages(PMRECount, rows),
                     page,
-                    records = PMCount,
-                    rows = (from m in PMsWithPaging
+                    records = PMRECount,
+                    rows = (from m in PMREsWithPaging
                             select
                                 new
                                 {
@@ -87,13 +89,16 @@ namespace MTP1.Controllers
                             new[]
                                         {
                                             m.Title,
-                                            m.PMValue
+                                            m.PMREValue
                                         }
                                 }).ToArray()
                 };
 
+
             return this.Json(jsonData, JsonRequestBehavior.AllowGet);
         }
+
+        
         #endregion
     }
 }

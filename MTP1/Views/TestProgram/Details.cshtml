@@ -12,39 +12,56 @@
 
 <fieldset>
     <legend>Программа тестирования</legend>
-    <div class="display-label">Наименование программы</div>
-    <div class="display-field">
-        @this.Html.DisplayFor(model => model.Title)
+    <div style="float: left; margin-right: 30px;">
+        <div class="display-label">Наименование программы</div>
+        <div class="display-field">
+            @this.Html.DisplayFor(model => model.Title)
+        </div>
+        <div class="display-label">Описание программы</div>
+        <div class="display-field">
+            @this.Html.DisplayFor(model => model.Description)
+        </div>
+        <div class="display-label">Проект</div>
+        <div class="display-field">
+            @this.Html.DisplayFor(model => model.Project1.Title)
+        </div>
+         <div class="display-label">Автор</div>
+         <div class="display-field">
+         @Html.DisplayFor(model => model.Users.Title)
+         </div>
     </div>
-    <div class="display-label">Описание программы</div>
-    <div class="display-field">
-        @this.Html.DisplayFor(model => model.Description)
+    <div style="float: left; margin-right: 30px;">
+        <div class="display-label">Плановая дата начала</div>
+        <div class="display-field">
+            @this.Html.DisplayFor(model => model.BeginDatePlan)
+        </div>
+        <div class="display-label">Плановая дата окончания</div>
+        <div class="display-field">
+            @this.Html.DisplayFor(model => model.EndDatePlan)
+        </div>
+        <div class="display-label">Фактическая дата начала</div>
+        <div class="display-field">
+            @this.Html.DisplayFor(model => model.BeginDateActual)
+        </div>
+        <div class="display-label">Фактическая дата окончания</div>
+        <div class="display-field">
+            @this.Html.DisplayFor(model => model.EndDateActual)
+        </div>
     </div>
-    <div class="display-label">Проект</div>
-    <div class="display-field">
-        @this.Html.DisplayFor(model => model.Project1.Title)
-    </div>
-    <div class="display-label">Плановая дата начала</div>
-    <div class="display-field">
-        @this.Html.DisplayFor(model => model.BeginDatePlan)
-    </div>
-    <div class="display-label">Плановая дата окончания</div>
-    <div class="display-field">
-        @this.Html.DisplayFor(model => model.EndDatePlan)
-    </div>
-     <div class="display-label">Фактическая дата начала</div>
-    <div class="display-field">
-        @this.Html.DisplayFor(model => model.BeginDateActual)
-    </div>
-      <div class="display-label">Фактическая дата окончания</div>
-    <div class="display-field">
-        @this.Html.DisplayFor(model => model.EndDateActual)
-    </div>
-    <div class="display-label">Автор</div>
-    <div class="display-field">
-        @Html.DisplayFor(model => model.Users.Title)
-    </div>
-
+    <div style="float: left; margin-right: 30px;">
+        <div class="display-label">Базовый показатель надежности</div>
+        <div class="display-field">
+            @Html.DisplayFor(model => model.REPlan)
+        </div>
+        <div class="display-label">Экспертная оценка</div>
+        <div class="display-field">
+            @Html.DisplayFor(model => model.REMark)
+        </div>
+        <div class="display-label">Рекомендация</div>
+        <div class="display-field">
+            @Html.DisplayFor(model => model.Resolution)
+        </div>
+     </div>
 </fieldset>
 
 <div id="grid_container" style="width: 100%">
@@ -54,71 +71,202 @@
     </div>
     <div id="search" style="margin-left: 30%; display: none">
     </div>
+
 </div>
 
+<table cellpadding="0" cellspacing="0" style="border: none">
+    <tr  style="border: none">
+        <td style="vertical-align: top; border: none">
+            <div id="grid_containerRE" style="width: 600px; padding-right: 5px;">
+                <table id="gridRE" cellpadding="0" cellspacing="0">
+                </table>
+                <div id="pagerRE" style="text-align: center;">
+                </div>
+                <div id="searchRE" style="margin-left: 30%; display: none">
+                </div>
+            </div>
+        </td>
+        <td style="vertical-align: top; border: none">
+            <div id="grid_containerPMRE" style="width: 600px; padding-left: 5px;">
+            <table id="gridPMRE" cellpadding="0" cellspacing="0">
+            </table>
+            <div id="pagerPMRE" style="text-align: center;">
+            </div>
+            <div id="searchPMRE" style="margin-left: 30%; display: none">
+            </div>
+        </div>
+        </td>
+    </tr>
+
+</table>
+
+<div id="grid_containerSMRE" style="width: 100%">
+    <table id="gridSMRE" cellpadding="0" cellspacing="0">
+    </table>
+    <div id="pagerSMRE" style="text-align: center;">
+    </div>
+    <div id="searchSMRE" style="margin-left: 30%; display: none">
+    </div>
+
+</div>
+
+
 <script type="text/javascript">
+    
     var programId = @Model.ID;
-    var indexUrl = '@Url.Action("GetUseCasesForProgram", "UseCase")' + '?programId=' + programId;
-    var editUrl = '@Url.Action("Edit", "UseCase")';
-    var deleteUrl = '@Url.Action("Delete", "UseCase")';
-    var addUrl = '@Url.Action("Create", "UseCase")';
-    var viewUrl = '@Url.Action("Details", "UseCase")';
 
-    $(function () {
-    DrawMTPGrid('grid', 'pager', indexUrl, editUrl, deleteUrl, addUrl, viewUrl,
-            ['Сценарий тестирования', 'Описание', 'Приоритет', 'UCP','Трудозатраты, чел-часы',
-                'Пользователь','Проект', 'Программа тестирования' ],
-            [
-                {
-                    name: 'Title',
-                    sortable: false,
-                    align: 'center',
-                    width: '250'
-                },
-                {
-                    name: 'Description',
-                    sortable: false,
-                    align: 'center',
-                    width: '100'
-                },
-                {
-                    name: 'Priority',
-                    sortable: false,
-                    align: 'center',
-                    width: '200'
-                },
-                {
-                    name: 'Ucp',
-                    sortable: false,
-                    align: 'center',
-                    width: '200'
-                },
-                {
-                    name: 'ManHour',
-                    sortable: false,
-                    align: 'center',
-                    width: '200'
-                },
-                {
-                    name: 'Creator',
-                    sortable: false,
-                    align: 'center',
-                    width: '200'
-                },
-                {
-                    name: 'Project',
-                    sortable: false,
-                    align: 'center',
-                    width: '200'
-                },
-                {
-                    name: 'TestProgram',
-                    sortable: false,
-                    align: 'center',
-                    width: '200'
-                }
-            ], 'Сценарии тестирования программы');
+    $(function() {
+       GridForTestCases();
+       GridForREMarks();
+       GridForPrimMetricsRE();
+       GridForSecMetricsRE();
     });
+    
+    function GridForTestCases() {
+        var indexUrl = '@Url.Action("GetUseCasesForProgram", "UseCase")' + '?programId=' + programId;
+        var editUrl = '@Url.Action("Edit", "UseCase")';
+        var deleteUrl = '@Url.Action("Delete", "UseCase")';
+        var addUrl = '@Url.Action("Create", "UseCase")';
+        var viewUrl = '@Url.Action("Details", "UseCase")';
 
+        $(function() {
+            DrawMTPGrid('grid', 'pager', indexUrl, editUrl, deleteUrl, addUrl, viewUrl,
+                ['Сценарий тестирования', 'Описание', 'Приоритет', 'UCP', 'Трудозатраты, чел-часы',
+                    'Пользователь', 'Проект', 'Программа тестирования'],
+                [
+                    {
+                        name: 'Title',
+                        sortable: false,
+                        align: 'center',
+                        width: '250'
+                    },
+                    {
+                        name: 'Description',
+                        sortable: false,
+                        align: 'center',
+                        width: '100'
+                    },
+                    {
+                        name: 'Priority',
+                        sortable: false,
+                        align: 'center',
+                        width: '200'
+                    },
+                    {
+                        name: 'Ucp',
+                        sortable: false,
+                        align: 'center',
+                        width: '200'
+                    },
+                    {
+                        name: 'ManHour',
+                        sortable: false,
+                        align: 'center',
+                        width: '200'
+                    },
+                    {
+                        name: 'Creator',
+                        sortable: false,
+                        align: 'center',
+                        width: '200'
+                    },
+                    {
+                        name: 'Project',
+                        sortable: false,
+                        align: 'center',
+                        width: '200'
+                    },
+                    {
+                        name: 'TestProgram',
+                        sortable: false,
+                        align: 'center',
+                        width: '200'
+                    }
+                ], 'Сценарии тестирования программы');
+        });
+    }
+    
+    function GridForREMarks() {
+        
+        var indexUrlRE = '@Url.Action("GetREsForProgram", "ReliabilityEvaluation")' + '?programId=' + programId;
+        var editUrlRE = '@Url.Action("EditRE", "TestProgram")' + '?programId=' + programId;
+        
+        DrawEditableMTPGrid('gridRE', 'pagerRE', indexUrlRE, editUrlRE,
+        ['Наименование', 'Экспертная оценка'],
+                [
+                    {
+                        name: 'Title',
+                        index: 'Title',
+                        sortable: false,
+                        editable: false,
+                        align: 'left',
+                        width: '80'
+                    },
+                    {
+                        name: 'Value',
+                        index: 'Value',
+                        sortable: false,
+                        align: 'center',
+                        editable: true,
+                        edittype: "text",
+                        editrules: {integer:true},
+                        width: '30'
+                    }
+                ], 'Экспертные оценки надежности', true);
+    }
+    
+    function GridForPrimMetricsRE() {
+        
+        var indexUrlPMRE = '@Url.Action("GetPMREsForProgram", "PrimMetrRE")' + '?programId=' + programId;
+        var editUrlPMRE = '@Url.Action("EditPMRE", "TestProgram")' + '?programId=' + programId;
+        
+        DrawEditableMTPGrid('gridPMRE', 'pagerPMRE', indexUrlPMRE, editUrlPMRE,
+        ['Первичная метрика', 'Значение'],
+                [
+                    {
+                        name: 'Title',
+                        index: 'Title',
+                        sortable: false,
+                        editable: false,
+                        align: 'left',
+                        width: '80'
+                    },
+                    {
+                        name: 'Value',
+                        index: 'Value',
+                        sortable: false,
+                        align: 'center',
+                        editable: true,
+                        edittype: "text",
+                        editrules: {integer:true},
+                        width: '30'
+                    }
+                ], 'Первичные метрики для оценки надежности', true);
+    }
+    function GridForSecMetricsRE() {
+        var indexUrlSMRE = '@Url.Action("GetSMREsForProgram", "SecMetrRE")' + '?programId=' + programId;
+        
+        DrawEditableMTPGrid('gridSMRE', 'pagerSMRE', indexUrlSMRE,indexUrlSMRE,
+        ['Вторичная метрика', 'Значение'],
+                [
+                    {
+                        name: 'Title',
+                        index: 'Title',
+                        sortable: false,
+                        editable: false,
+                        align: 'left',
+                        width: '200'
+                    },
+                    {
+                        name: 'Value',
+                        index: 'Value',
+                        sortable: false,
+                        align: 'center',
+                        editable: false,
+                        width: '30'
+                    }
+                ], 'Вторичные метрики надежности', true);
+    }
+    
 </script>
 

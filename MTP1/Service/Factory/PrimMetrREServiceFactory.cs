@@ -15,7 +15,7 @@ namespace MTP1.Service.Factory
     /// <summary>
     /// The actor dic service factory.
     /// </summary>
-    public static class ReliabilityEvaluationDicServiceFactory
+    public static class PrimMetrREServiceFactory
     {
         #region Public Methods and Operators
 
@@ -24,9 +24,9 @@ namespace MTP1.Service.Factory
         /// </summary>
         /// <returns>
         /// </returns>
-        public static IBaseService<ReliabilityEvaluationDic> Create()
+        public static IBaseService<PrimMetrRE> Create()
         {
-            return new ReliabilityEvaluationDicEntityService();
+            return new PrimMetrREEntityService();
         }
 
         #endregion

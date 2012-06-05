@@ -1,5 +1,5 @@
 ﻿// --------------------------------------------------------------------------------------------------------------------
-// <copyright file="ReliabilityEvaluationDic.cs" company="">
+// <copyright file="PrimaryMetricDic.cs" company="">
 //   
 // </copyright>
 // <summary>
@@ -11,7 +11,8 @@ namespace MTP1.Models
 {
     using MTP1.Models.Interface;
 
-    public partial class ReliabilityEvaluationDic : IBase
+ 
+    public partial class PrimMetrREDic : IBase
     {
         #region Public Methods and Operators
 
@@ -20,6 +21,7 @@ namespace MTP1.Models
             return true;
         }
 
+        
         #endregion
     }
 }

@@ -45,6 +45,55 @@ namespace MTP1.Controllers
             : this(UseCaseSecondaryMetricServiceFactory.Create())
         {
         }
+        internal class SMDto
+        {
+            public int ID { get; set; }
+            public string Title { get; set; }
+            public string SMValue { get; set; }
+        }
+
+
+        public ActionResult GetSMsForUseCase(int useCaseId, int page, int rows, string search, string sidx, string sord)
+        {
+            var secMetrics =
+                this.service.Get().Where(a => a.UseCase == useCaseId).ToList().Select(
+                    a => new SMDto
+                    {
+                        // эта бадяга затеивалась только чтобы взять ID из справочника
+                        ID = a.SecondaryMetricDic.ID,
+                        Title = a.Title,
+                        SMValue = a.Value.ToString()
+                    }).ToList();
+
+            List<SecondaryMetricDic> allSMsDic = SecondaryMetricDicServiceFactory.Create().Get().ToList();
+            var missingSMs = allSMsDic.Where(a => !secMetrics.Any(b => b.ID == a.ID));
+            secMetrics.AddRange(missingSMs.Select(a => new SMDto { ID = a.ID, Title = a.Title }));
+
+            int SMCount = secMetrics.Count();
+            var SMsWithPaging = secMetrics.AsQueryable().ApplyPaging("Title", (page - 1) * rows, rows);
+
+            var jsonData =
+                new
+                {
+                    total = Paging.TotalPages(SMCount, rows),
+                    page,
+                    records = SMCount,
+                    rows = (from m in SMsWithPaging
+                            select
+                                new
+                                {
+                                    id = m.ID,
+                                    cell =
+                            new[]
+                                        {
+                                            m.Title,
+                                            m.SMValue
+                                        }
+                                }).ToArray()
+                };
+
+            return this.Json(jsonData, JsonRequestBehavior.AllowGet);
+        }
         
 
         #endregion

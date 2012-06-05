@@ -185,7 +185,7 @@ namespace MTP1.Controllers
             var envFactorId = Request.Form["id"];
             if (!int.TryParse(envFactorId, out envFactroIdParse))
             {
-                throw new Exception("не указан id технического фактора");
+                throw new Exception("не указан id фактора окружения");
             }
 
             IBaseService<EnvironmentFactor> envFactorService = EnvironmentFactorServiceFactory.Create();
@@ -236,20 +236,20 @@ namespace MTP1.Controllers
                 throw new Exception(string.Format("use case с id = {0} не найден", useCaseId));
             }
 
-            int actroIdParse;
+            int actorIdParse;
             var actorId = Request.Form["id"];
-            if (!int.TryParse(actorId, out actroIdParse))
+            if (!int.TryParse(actorId, out actorIdParse))
             {
-                throw new Exception("не указан id технического фактора");
+                throw new Exception("не указан id участника сценария");
             }
 
             IBaseService<Actor> actorService = ActorServiceFactory.Create();
             var actor =
                 actorService.Get().FirstOrDefault(
-                    a => a.UseCase == useCaseId && a.ActorDic.ID == actroIdParse);
+                    a => a.UseCase == useCaseId && a.ActorDic.ID == actorIdParse);
             if (actor == null)
             {
-                actor = new Actor { UseCase = useCaseId, Actor1 = actroIdParse };
+                actor = new Actor { UseCase = useCaseId, Actor1 = actorIdParse };
                 actorService.Add(actor);
             }
 
@@ -275,6 +275,46 @@ namespace MTP1.Controllers
             return Json(true);
         }
 
+        public ActionResult EditPM(int useCaseId)
+        {
+            if (Request.Form["oper"] != "edit")
+            {
+                throw new Exception("поддерживается только редактирование");
+            }
+
+            var useCase = this.service.Get().FirstOrDefault(a => a.ID == useCaseId);
+            if (useCase == null)
+            {
+                throw new Exception(string.Format("use case с id = {0} не найден", useCaseId));
+            }
+
+            int pmIdParse;
+            var pmId = Request.Form["id"];
+            if (!int.TryParse(pmId, out pmIdParse))
+            {
+                throw new Exception("не указан id первичной метрики");
+            }
+
+            IBaseService<UseCasePrimaryMetric> pmService = UseCasePrimaryMetricServiceFactory.Create();
+            var pm =
+                pmService.Get().FirstOrDefault(
+                    a => a.UseCase == useCaseId && a.PrimaryMetricDic.ID == pmIdParse);
+            if (pm == null)
+            {
+                pm = new UseCasePrimaryMetric { UseCase = useCaseId, Type = pmIdParse };
+                pmService.Add(pm);
+            }
+            int pmValueIdParse;
+            var pmValueId = Request.Form["Value"];
+            if (int.TryParse(pmValueId, out pmValueIdParse))
+            {
+                pm.Value = pmValueIdParse;
+            }
+
+            pmService.Save();
+            this.RecalculateSecMetrics();
+            return Json(true);
+        }
      
         private void RecalculateTechFactors(IBaseService<TechnicalFactor> techFactorService, UseCase useCase)
         {
@@ -334,6 +374,11 @@ namespace MTP1.Controllers
              useCase.ManHour = result;
              this.service.Save();
          }
+
+        private void RecalculateSecMetrics()
+        {
+        }
+
         #endregion
     }
 }

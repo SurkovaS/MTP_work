@@ -35,7 +35,7 @@
         <div class="display-label">
             Приоритет сценария</div>
         <div class="display-field">
-            @this.Html.DisplayFor(model => model.PriorityDic.Title)  (@this.Html.DisplayFor(model => model.PriorityDic.Value))
+            @this.Html.DisplayFor(model => model.PriorityDic.Title) (@this.Html.DisplayFor(model => model.PriorityDic.Value))
         </div>
         <div class="display-label">
             Автор</div>
@@ -52,7 +52,6 @@
         <div class="display-field">
             @this.Html.DisplayFor(model => model.ManHour)
         </div>
-        
     </div>
     <div style="float: left; margin-right: 30px;">
         <div class="display-label">
@@ -75,12 +74,12 @@
         <div class="display-field">
             @this.Html.DisplayFor(model => model.UUCP)
         </div>
-     </div>
+    </div>
 </fieldset>
-<table cellpadding="0" cellspacing="0" style="border: none;">
-    <tr  style="border: none">
-        <td style="vertical-align: top; border: none" >
-            <div id="grid_containerTF" style="width: 600px; padding-right: 5px;">
+<table cellpadding="0" cellspacing="0" style="border: none; width: 1000px;">
+    <tr style="border: none">
+        <td style="vertical-align: top; border: none">
+            <div id="grid_containerTF" style="width: 490px;">
                 <table id="gridTF" cellpadding="0" cellspacing="0">
                 </table>
                 <div id="pagerTF" style="text-align: center;">
@@ -89,8 +88,8 @@
                 </div>
             </div>
         </td>
-        <td style="vertical-align: top;  border: none">
-            <div id="grid_containerEF" style="width: 600px; margin-left: 5px;">
+        <td style="vertical-align: top; border: none">
+            <div id="grid_containerEF" style="width: 490px;">
                 <table id="gridEF" cellpadding="0" cellspacing="0">
                 </table>
                 <div id="pagerEF" style="text-align: center;">
@@ -100,9 +99,9 @@
             </div>
         </td>
     </tr>
-    <tr  style="border: none">
+    <tr style="border: none">
         <td style="vertical-align: top; border: none">
-            <div id="grid_containerAc" style="width: 600px; margin-right: 5px;">
+            <div id="grid_containerAc" style="width: 490px;">
                 <table id="gridAc" cellpadding="0" cellspacing="0">
                 </table>
                 <div id="pagerAc" style="text-align: center;">
@@ -112,7 +111,7 @@
             </div>
         </td>
         <td style="vertical-align: top; border: none">
-            <div id="grid_containerPM" style="width: 600px; margin-left: 5px;">
+            <div id="grid_containerPM" style="width: 490px;">
                 <table id="gridPM" cellpadding="0" cellspacing="0">
                 </table>
                 <div id="pagerPM" style="text-align: center;">
@@ -122,16 +121,19 @@
             </div>
         </td>
     </tr>
-</table>
-
-<div id="grid_containerSM" style="width: 100%; padding-right: 15px;">
+    <tr>
+        <td colspan="2">
+            <div id="grid_containerSM" style="width: 990px;">
                 <table id="gridSM" cellpadding="0" cellspacing="0">
                 </table>
                 <div id="pagerSM" style="text-align: center;">
                 </div>
                 <div id="searchSM" style="margin-left: 30%; display: none">
                 </div>
-</div>
+            </div>
+        </td>
+    </tr>
+</table>
 <script type="text/javascript">
     var useCaseId = @Model.ID;
 
